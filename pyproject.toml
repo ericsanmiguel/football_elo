@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 name = "football-elo"
 version = "0.1.0"
 description = "Elo ratings for women's international football teams"
-license = "CC0-1.0"
+license = "MIT"
 requires-python = ">=3.10"
 dependencies = [
     "pandas>=2.0",
