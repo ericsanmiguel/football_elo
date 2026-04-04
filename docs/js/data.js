@@ -4,7 +4,7 @@
  */
 
 const cache = new Map();
-let currentGender = localStorage.getItem('gender') || 'women';
+let currentGender = localStorage.getItem('gender') || 'men';
 
 const BASE = document.querySelector('base')?.href
     || window.location.pathname.replace(/\/[^/]*$/, '/');
