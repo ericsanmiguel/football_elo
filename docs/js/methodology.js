@@ -54,12 +54,18 @@ export async function render(container) {
         <h2>Initial Rating</h2>
         <p>All teams start at <strong>1500</strong>. The Elo system is self-correcting — after 20&ndash;30 matches, the initial rating has minimal impact on a team's current rating.</p>
 
+        <h2>Data Sources</h2>
+        <p>Match data is provided by Mart J&uuml;risoo (CC0 public domain):</p>
+        <ul style="color:var(--text-secondary);line-height:2;padding-left:20px">
+            <li><strong>Women's:</strong> <a href="https://github.com/martj42/womens-international-results" target="_blank" rel="noopener">womens-international-results</a> &mdash; 11,000+ matches from 1956 to present.</li>
+            <li><strong>Men's:</strong> <a href="https://github.com/martj42/international_results" target="_blank" rel="noopener">international_results</a> &mdash; 49,000+ matches from 1872 to present.</li>
+        </ul>
+
         <h2>References</h2>
         <ul style="color:var(--text-secondary);line-height:2;padding-left:20px">
             <li>Elo, A. E. (1978). <em>The Rating of Chessplayers, Past and Present.</em> Arco Publishing.</li>
             <li>World Football Elo Ratings. <a href="https://www.eloratings.net/about" target="_blank" rel="noopener">eloratings.net</a>. The methodology used here is adapted from this system, which has rated men's national teams since 1997.</li>
-            <li>J&uuml;risoo, M. <a href="https://github.com/martj42/womens-international-results" target="_blank" rel="noopener">Women's International Football Results</a>. Match data (CC0 public domain), 11,000+ matches from 1956 to present.</li>
-            <li>FIFA Women's World Ranking. <a href="https://inside.fifa.com/fifa-world-ranking/women" target="_blank" rel="noopener">FIFA</a>. The official FIFA ranking system has used an Elo-based methodology since 2003.</li>
+            <li>FIFA World Rankings. <a href="https://inside.fifa.com/fifa-world-ranking/men" target="_blank" rel="noopener">Men</a> | <a href="https://inside.fifa.com/fifa-world-ranking/women" target="_blank" rel="noopener">Women</a>. The official FIFA ranking systems have used Elo-based methodologies since 2018 (men) and 2003 (women).</li>
         </ul>
 
         <h2>About</h2>
