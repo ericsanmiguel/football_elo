@@ -26,6 +26,17 @@ export function el(tag, attrs = {}, children = []) {
     return elem;
 }
 
+export function flagImg(code, alt, size = 'sm') {
+    if (!code) return null;
+    const w = size === 'lg' ? 160 : 40;
+    const img = document.createElement('img');
+    img.src = `https://flagcdn.com/w${w}/${code}.png`;
+    img.alt = alt;
+    img.className = `flag-${size}`;
+    img.loading = 'lazy';
+    return img;
+}
+
 export function formatRating(r) {
     return Math.round(r).toString();
 }

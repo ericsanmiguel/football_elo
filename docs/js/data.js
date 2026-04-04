@@ -37,3 +37,7 @@ export async function getHistoryTop20() {
 export async function getTournaments() {
     return fetchJSON('tournaments.json');
 }
+
+export async function getTeamFlags() {
+    return fetchJSON('team_flags.json');
+}

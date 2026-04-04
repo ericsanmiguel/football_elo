@@ -524,6 +524,106 @@ a:hover { color: var(--accent-hover); }
     .stat-card { min-width: 100px; }
 }
 
+/* ===== Flags ===== */
+.flag-sm {
+    width: 24px;
+    height: 16px;
+    object-fit: cover;
+    border-radius: 2px;
+    vertical-align: middle;
+    margin-right: 6px;
+    box-shadow: 0 0 2px rgba(0,0,0,0.3);
+}
+.flag-lg {
+    width: 80px;
+    height: 54px;
+    object-fit: cover;
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    margin-right: 16px;
+}
+
+/* ===== Chart Toggle ===== */
+.chart-toggle {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 16px;
+}
+.toggle-btn {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 500;
+    padding: 8px 18px;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    background: transparent;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.toggle-btn:hover {
+    border-color: var(--accent);
+    color: var(--text-primary);
+}
+.toggle-btn.active {
+    background: var(--accent-muted);
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+/* ===== Theme Toggle ===== */
+.theme-toggle {
+    background: none;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 6px 10px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    line-height: 1;
+    color: var(--text-secondary);
+    transition: all 0.2s;
+}
+.theme-toggle:hover {
+    border-color: var(--accent);
+    color: var(--text-primary);
+}
+
+/* ===== Light Theme ===== */
+[data-theme="light"] {
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8f9fa;
+    --bg-tertiary: #e9ecef;
+    --bg-surface: #f1f3f5;
+    --accent: #0ea17a;
+    --accent-hover: #0c8c6a;
+    --accent-muted: #d1fae5;
+    --accent-secondary: #d97706;
+    --text-primary: #1a1a2e;
+    --text-secondary: #4a5568;
+    --text-tertiary: #718096;
+    --positive: #16a34a;
+    --negative: #dc2626;
+    --border: #e2e8f0;
+    --border-hover: #cbd5e1;
+    --chart-bg: #ffffff;
+    --chart-grid: #e2e8f0;
+}
+
+[data-theme="light"] #main-nav {
+    background: rgba(255, 255, 255, 0.92);
+}
+
+[data-theme="light"] .hero h1 {
+    background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+[data-theme="light"] .flag-sm {
+    box-shadow: 0 0 2px rgba(0,0,0,0.15);
+}
+
 /* ===== Transitions ===== */
 @media (prefers-reduced-motion: no-preference) {
     #app { animation: fadeIn 0.3s ease; }

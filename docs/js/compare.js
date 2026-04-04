@@ -3,7 +3,7 @@
  */
 
 import { getRankings, getTeamHistory, getTeamColors } from './data.js';
-import { CHART_LAYOUT, CHART_CONFIG, DEFAULT_COLOR, baselineShape } from './charts.js';
+import { getChartLayout, CHART_CONFIG, DEFAULT_COLOR, baselineShape } from './charts.js';
 import { el, formatRating } from './utils.js';
 
 let selectedSlugs = [];
@@ -160,10 +160,10 @@ async function renderCompareChart() {
     }
 
     const layout = {
-        ...CHART_LAYOUT,
+        ...getChartLayout(),
         shapes: [baselineShape()],
         xaxis: {
-            ...CHART_LAYOUT.xaxis,
+            ...getChartLayout().xaxis,
             range: ['1990-01-01', undefined],
         },
     };

@@ -7,6 +7,13 @@ import requests
 
 from .config import DATA_DIR, RESULTS_URL, SHOOTOUTS_URL
 
+# Normalize team names for successor states (treat as continuous teams)
+TEAM_NAME_MAP = {
+    "Macedonia": "North Macedonia",
+    "FR Yugoslavia": "Serbia",
+    "Serbia and Montenegro": "Serbia",
+}
+
 
 def download_file(url: str, dest: Path, force: bool = False) -> Path:
     """Download a file from URL to dest. Skips if file exists unless force=True."""
@@ -42,6 +49,9 @@ def load_results(data_dir: Path = DATA_DIR) -> pd.DataFrame:
     )
     # Normalize neutral column (may be TRUE/FALSE strings)
     df["neutral"] = df["neutral"].astype(str).str.upper() == "TRUE"
+    # Normalize successor state names
+    df["home_team"] = df["home_team"].replace(TEAM_NAME_MAP)
+    df["away_team"] = df["away_team"].replace(TEAM_NAME_MAP)
     return df.sort_values("date").reset_index(drop=True)
 
 
@@ -50,7 +60,11 @@ def load_shootouts(data_dir: Path = DATA_DIR) -> pd.DataFrame:
     path = data_dir / "shootouts.csv"
     if not path.exists():
         return pd.DataFrame(columns=["date", "home_team", "away_team", "winner"])
-    return pd.read_csv(path, parse_dates=["date"])
+    df = pd.read_csv(path, parse_dates=["date"])
+    for col in ["home_team", "away_team", "winner"]:
+        if col in df.columns:
+            df[col] = df[col].replace(TEAM_NAME_MAP)
+    return df
 
 
 def load_all(data_dir: Path = DATA_DIR) -> pd.DataFrame:

@@ -2,15 +2,17 @@
  * Rankings table view — the home page.
  */
 
-import { getRankings } from './data.js';
-import { el, formatRating, formatChange, changeClass } from './utils.js';
+import { getRankings, getTeamFlags } from './data.js';
+import { el, formatRating, formatChange, changeClass, flagImg } from './utils.js';
 
 let currentSort = { key: 'rank', asc: true };
 let allTeams = [];
 let filteredTeams = [];
+let flags = {};
 
 export async function render(container) {
-    const data = await getRankings();
+    const [data, flagsData] = await Promise.all([getRankings(), getTeamFlags()]);
+    flags = flagsData;
     allTeams = data.teams;
     filteredTeams = [...allTeams];
 
@@ -145,7 +147,11 @@ function buildTable(teams) {
 
         const rankClass = t.rank <= 3 ? 'rank-cell top3' : 'rank-cell';
         tr.appendChild(el('td', { class: rankClass, text: t.rank.toString() }));
-        tr.appendChild(el('td', { class: 'team-cell', text: t.team }));
+        const teamTd = el('td', { class: 'team-cell' });
+        const flag = flagImg(flags[t.slug], t.team, 'sm');
+        if (flag) { teamTd.appendChild(flag); teamTd.appendChild(document.createTextNode(' ')); }
+        teamTd.appendChild(document.createTextNode(t.team));
+        tr.appendChild(teamTd);
         tr.appendChild(el('td', { class: 'rating-cell text-right', text: formatRating(t.rating) }));
 
         const chg = el('td', {
