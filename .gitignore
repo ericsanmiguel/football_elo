@@ -17,6 +17,13 @@ venv/
 .vscode/
 .idea/
 
+# LaTeX build artifacts
+*.aux
+*.log
+*.out
+*.toc
+*.pdf
+
 # OS
 .DS_Store
 Thumbs.db
