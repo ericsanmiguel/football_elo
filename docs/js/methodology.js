@@ -1,5 +1,5 @@
 /**
- * Methodology page — static content explaining the Elo system.
+ * Methodology and About page.
  */
 
 export async function render(container) {
@@ -54,9 +54,17 @@ export async function render(container) {
         <h2>Initial Rating</h2>
         <p>All teams start at <strong>1500</strong>. The Elo system is self-correcting — after 20&ndash;30 matches, the initial rating has minimal impact on a team's current rating.</p>
 
-        <h2>Data Source</h2>
-        <p>Match data is from <a href="https://github.com/martj42/womens-international-results" target="_blank" rel="noopener">martj42/womens-international-results</a> on GitHub (CC0 public domain). The dataset contains 11,000+ women's international matches from 1956 to present.</p>
-        <p>Source code for this project is available on <a href="https://github.com/e-san-miguel/football_elo" target="_blank" rel="noopener">GitHub</a>.</p>
+        <h2>References</h2>
+        <ul style="color:var(--text-secondary);line-height:2;padding-left:20px">
+            <li>Elo, A. E. (1978). <em>The Rating of Chessplayers, Past and Present.</em> Arco Publishing.</li>
+            <li>World Football Elo Ratings. <a href="https://www.eloratings.net/about" target="_blank" rel="noopener">eloratings.net</a>. The methodology used here is adapted from this system, which has rated men's national teams since 1997.</li>
+            <li>J&uuml;risoo, M. <a href="https://github.com/martj42/womens-international-results" target="_blank" rel="noopener">Women's International Football Results</a>. Match data (CC0 public domain), 11,000+ matches from 1956 to present.</li>
+            <li>FIFA Women's World Ranking. <a href="https://inside.fifa.com/fifa-world-ranking/women" target="_blank" rel="noopener">FIFA</a>. The official FIFA ranking system has used an Elo-based methodology since 2003.</li>
+        </ul>
+
+        <h2>About</h2>
+        <p>This project was developed by <strong>Eric San Miguel</strong>. The source code is available on <a href="https://github.com/e-san-miguel/football_elo" target="_blank" rel="noopener">GitHub</a>.</p>
+        <p>For questions, suggestions, or corrections, reach out at <a href="mailto:eric.sanmiguel@psu.edu">eric.sanmiguel@psu.edu</a>.</p>
     </div>
     `;
 }
