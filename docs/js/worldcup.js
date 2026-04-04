@@ -177,6 +177,14 @@ function buildGroupCard(groupName, group, flags) {
     detail.appendChild(el('div', { class: 'wc-matches-title', text: 'Match Predictions', style: 'margin-top:16px' }));
 
     for (const m of group.matches) {
+        // Date and venue header
+        if (m.date) {
+            detail.appendChild(el('div', {
+                class: 'wc-match-date',
+                text: `${m.date}${m.venue ? ' \u2014 ' + m.venue : ''}`,
+            }));
+        }
+
         const matchRow = el('div', { class: 'wc-match-row' });
 
         const homeDiv = el('div', { class: 'wc-match-team wc-match-home' });

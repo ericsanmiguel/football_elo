@@ -32,13 +32,113 @@ GROUPS_2026 = {
     "F": ["Netherlands", "Japan", "Sweden", "Tunisia"],
     "G": ["Belgium", "Egypt", "Iran", "New Zealand"],
     "H": ["Spain", "Cape Verde", "Saudi Arabia", "Uruguay"],
-    "I": ["France", "Senegal", "DR Congo", "Norway"],
+    "I": ["France", "Senegal", "Iraq", "Norway"],
     "J": ["Argentina", "Algeria", "Austria", "Jordan"],
-    "K": ["Portugal", "Iraq", "Uzbekistan", "Colombia"],
+    "K": ["Portugal", "DR Congo", "Uzbekistan", "Colombia"],
     "L": ["England", "Croatia", "Ghana", "Panama"],
 }
 
 HOST_NATIONS = {"United States", "Mexico", "Canada"}
+
+# Match schedule: group -> [(team_a, team_b, date, venue), ...]
+MATCH_SCHEDULE = {
+    "A": [
+        (0, 1, "Jun 11", "Mexico City"),
+        (2, 3, "Jun 11", "Guadalajara"),
+        (3, 1, "Jun 18", "Atlanta"),
+        (0, 2, "Jun 18", "Guadalajara"),
+        (3, 0, "Jun 24", "Mexico City"),
+        (1, 2, "Jun 24", "Guadalajara"),
+    ],
+    "B": [
+        (0, 1, "Jun 12", "Toronto"),
+        (2, 3, "Jun 13", "Santa Clara"),
+        (3, 1, "Jun 18", "Inglewood"),
+        (0, 2, "Jun 18", "Vancouver"),
+        (3, 0, "Jun 24", "Vancouver"),
+        (1, 2, "Jun 24", "Seattle"),
+    ],
+    "C": [
+        (0, 1, "Jun 13", "East Rutherford"),
+        (2, 3, "Jun 13", "Foxborough"),
+        (3, 1, "Jun 19", "Foxborough"),
+        (0, 2, "Jun 19", "Philadelphia"),
+        (3, 0, "Jun 24", "Miami"),
+        (1, 2, "Jun 24", "Atlanta"),
+    ],
+    "D": [
+        (0, 1, "Jun 12", "Inglewood"),
+        (2, 3, "Jun 13", "Vancouver"),
+        (0, 2, "Jun 19", "Seattle"),
+        (3, 1, "Jun 19", "Santa Clara"),
+        (3, 0, "Jun 25", "Inglewood"),
+        (1, 2, "Jun 25", "Santa Clara"),
+    ],
+    "E": [
+        (0, 1, "Jun 14", "Houston"),
+        (2, 3, "Jun 14", "Philadelphia"),
+        (0, 2, "Jun 20", "Toronto"),
+        (3, 1, "Jun 20", "Kansas City"),
+        (3, 0, "Jun 25", "East Rutherford"),
+        (1, 2, "Jun 25", "Philadelphia"),
+    ],
+    "F": [
+        (0, 1, "Jun 14", "Arlington"),
+        (2, 3, "Jun 14", "Guadalajara"),
+        (0, 2, "Jun 20", "Houston"),
+        (3, 1, "Jun 20", "Guadalajara"),
+        (1, 2, "Jun 25", "Arlington"),
+        (3, 0, "Jun 25", "Kansas City"),
+    ],
+    "G": [
+        (0, 1, "Jun 15", "Seattle"),
+        (2, 3, "Jun 15", "Inglewood"),
+        (0, 2, "Jun 21", "Inglewood"),
+        (3, 1, "Jun 21", "Vancouver"),
+        (1, 2, "Jun 26", "Seattle"),
+        (3, 0, "Jun 26", "Vancouver"),
+    ],
+    "H": [
+        (0, 1, "Jun 15", "Atlanta"),
+        (2, 3, "Jun 15", "Miami"),
+        (0, 2, "Jun 21", "Atlanta"),
+        (3, 1, "Jun 21", "Miami"),
+        (1, 2, "Jun 26", "Houston"),
+        (3, 0, "Jun 26", "Guadalajara"),
+    ],
+    "I": [
+        (0, 1, "Jun 16", "East Rutherford"),
+        (2, 3, "Jun 16", "Foxborough"),
+        (0, 2, "Jun 22", "Philadelphia"),
+        (3, 1, "Jun 22", "East Rutherford"),
+        (3, 0, "Jun 26", "Foxborough"),
+        (1, 2, "Jun 26", "Toronto"),
+    ],
+    "J": [
+        (0, 1, "Jun 16", "Kansas City"),
+        (2, 3, "Jun 16", "Santa Clara"),
+        (0, 2, "Jun 22", "Arlington"),
+        (3, 1, "Jun 22", "Santa Clara"),
+        (1, 2, "Jun 27", "Kansas City"),
+        (3, 0, "Jun 27", "Arlington"),
+    ],
+    "K": [
+        (0, 1, "Jun 17", "Houston"),
+        (2, 3, "Jun 17", "Mexico City"),
+        (0, 2, "Jun 23", "Houston"),
+        (3, 1, "Jun 23", "Guadalajara"),
+        (3, 0, "Jun 27", "Miami"),
+        (1, 2, "Jun 27", "Atlanta"),
+    ],
+    "L": [
+        (0, 1, "Jun 17", "Arlington"),
+        (2, 3, "Jun 17", "Toronto"),
+        (0, 2, "Jun 23", "Foxborough"),
+        (3, 1, "Jun 23", "Toronto"),
+        (3, 0, "Jun 27", "East Rutherford"),
+        (1, 2, "Jun 27", "Philadelphia"),
+    ],
+}
 
 # R32 bracket: each entry is (team_a_source, team_b_source)
 # Sources: "1X" = winner of group X, "2X" = runner-up of group X, "3" = 3rd place slot
@@ -351,10 +451,10 @@ def export_worldcup_json(elo: EloSystem, output_dir: Path) -> None:
     for group_name, teams in GROUPS_2026.items():
         team_ratings = {t: all_ratings[t] for t in teams}
 
-        # Match probabilities for display
+        # Match probabilities ordered by schedule
         matches = []
-        matchups = list(combinations(range(4), 2))
-        for i, j in matchups:
+        schedule = MATCH_SCHEDULE.get(group_name, [])
+        for i, j, date, venue in schedule:
             team_a, team_b = teams[i], teams[j]
             is_neutral = team_a not in HOST_NATIONS and team_b not in HOST_NATIONS
             home = team_a if team_a in HOST_NATIONS else (
@@ -371,6 +471,7 @@ def export_worldcup_json(elo: EloSystem, output_dir: Path) -> None:
                     "p_draw": round(pd * 100, 1),
                     "p_away": round(pb * 100, 1),
                     "is_neutral": False,
+                    "date": date, "venue": venue,
                 })
             else:
                 pa, pd, pb = match_probabilities(
@@ -383,6 +484,7 @@ def export_worldcup_json(elo: EloSystem, output_dir: Path) -> None:
                     "p_draw": round(pd * 100, 1),
                     "p_away": round(pb * 100, 1),
                     "is_neutral": is_neutral,
+                    "date": date, "venue": venue,
                 })
 
         team_list = []

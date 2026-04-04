@@ -638,6 +638,12 @@ a:hover { color: var(--accent-hover); }
 .wc-group-table tbody tr:hover { background: var(--bg-tertiary); }
 
 /* Match predictions */
+.wc-match-date {
+    font-size: 0.75rem;
+    color: var(--text-tertiary);
+    margin: 12px 0 4px;
+    font-weight: 500;
+}
 .wc-matches { padding: 12px 16px; border-top: 1px solid var(--border); }
 .wc-matches-title {
     font-family: var(--font-display);
