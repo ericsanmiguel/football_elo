@@ -128,8 +128,8 @@ export async function render(container, slug) {
 
 function rankDateLabel(first, last, prefix) {
     if (!first) return prefix;
-    if (first === last) return `${prefix} (${first})`;
-    return `${prefix} (first: ${first}, last: ${last})`;
+    if (first === last) return `${prefix}<br>${first}`;
+    return `${prefix}<br>First: ${first}<br>Last: ${last}`;
 }
 
 function bestRankLabel(data) {
@@ -143,7 +143,7 @@ function worstRankLabel(data) {
 function statCard(value, label) {
     return el('div', { class: 'stat-card' }, [
         el('div', { class: 'stat-value', text: value }),
-        el('div', { class: 'stat-label', text: label }),
+        el('div', { class: 'stat-label', html: label }),
     ]);
 }
 
