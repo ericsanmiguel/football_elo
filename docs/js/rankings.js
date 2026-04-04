@@ -30,7 +30,7 @@ export async function render(container) {
         const wcBtn = el('a', {
             href: '#/worldcup',
             class: 'wc-cta-btn',
-            html: '\u26bd 2026 World Cup Predictions',
+            text: '2026 World Cup Predictions',
         });
         container.appendChild(el('div', { style: 'text-align:center;margin-bottom:28px' }, [wcBtn]));
     }
