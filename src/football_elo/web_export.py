@@ -107,6 +107,30 @@ TEAM_FLAGS = {
 }
 
 
+# Non-FIFA teams to exclude from rankings (CONIFA, island games, historical, etc.)
+NON_FIFA_SLUGS = {
+    # CONIFA / non-FIFA entities
+    "abkhazia", "alderney", "ambazonia", "andalusia", "arameans-suryoye",
+    "artsakh", "asturias", "aymara", "barawa", "basque-country",
+    "catalonia", "chameria", "chagos-islands", "darfur", "ellan-vannin",
+    "felvidek", "froya", "gozo", "hitra", "iraqi-kurdistan",
+    "isle-of-man", "isle-of-wight", "jersey", "guernsey", "kabylia",
+    "kernow", "luhansk", "mapuche", "matabeleland", "menorca",
+    "northern-cyprus", "occitania", "orkney", "padania", "panjab",
+    "prince-edward-island", "raetia", "rhodes", "roma", "saare-county",
+    "sapmi", "shetland", "shetland-islands", "somaliland", "south-ossetia",
+    "surrey", "szekely-land", "tamil-eelam", "tibet", "tuvalu",
+    "western-armenia", "western-isles", "western-sahara", "ynys-mon",
+    "zazaland", "gotland", "aland", "aland-islands",
+    # Overseas territories (not separate FIFA members)
+    "reunion", "martinique", "guadeloupe", "mayotte",
+    "bonaire", "great-britain",
+    # Historical / defunct (already filtered by inactive cutoff, but just in case)
+    "czechoslovakia", "yugoslavia", "fr-yugoslavia", "serbia-and-montenegro",
+    "netherlands-antilles",
+}
+
+
 def slugify(name: str) -> str:
     """Convert team name to URL-safe slug."""
     s = unicodedata.normalize("NFKD", name)
@@ -278,11 +302,14 @@ def export_rankings_json(
         team_hist = history_df[history_df["team"] == team]
         matches = len(team_hist)
 
-        # Filter: minimum matches and recent activity
+        # Filter: minimum matches, recent activity, and FIFA members only
+        slug = slugify(team)
         if matches < MIN_MATCHES:
             continue
         last_match_date = str(team_hist.iloc[-1]["date"].date())
         if last_match_date < INACTIVE_CUTOFF:
+            continue
+        if slug in NON_FIFA_SLUGS:
             continue
 
         filtered_rank += 1
