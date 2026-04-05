@@ -153,6 +153,60 @@ function simulateFullTournament() {
     saveState();
 }
 
+async function animatedSimulate() {
+    // 1. Show thinking overlay
+    const overlay = el('div', { class: 'sim-overlay', id: 'sim-overlay' }, [
+        el('div', { class: 'sim-spinner' }),
+        el('div', { class: 'sim-thinking-text', text: 'Simulating tournament...' }),
+    ]);
+    document.body.appendChild(overlay);
+
+    // Compute results immediately (instant)
+    simulateFullTournament();
+
+    // Wait for dramatic effect
+    await delay(1500);
+
+    // Remove overlay
+    overlay.remove();
+
+    // Re-render with empty state visually, then animate
+    const builder = document.querySelector('.bracket-builder');
+    if (builder) {
+        builder.remove();
+        renderBracketBuilder(containerRef, null, flags);
+    }
+
+    // 2. Animate groups opening one by one
+    const groups = Object.keys(GROUPS).sort();
+    for (let gi = 0; gi < groups.length; gi++) {
+        const g = groups[gi];
+        const detail = document.getElementById(`bracket-group-${g}`);
+        if (detail) {
+            // Close any open group
+            document.querySelectorAll('.bracket-group-detail').forEach(d => { d.style.display = 'none'; });
+            detail.style.display = 'block';
+            // Scroll into view
+            detail.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+        await delay(400);
+    }
+
+    // Close last group
+    document.querySelectorAll('.bracket-group-detail').forEach(d => { d.style.display = 'none'; });
+
+    // 3. Scroll to knockout bracket
+    await delay(300);
+    const knockout = document.getElementById('bracket-knockout');
+    if (knockout) {
+        knockout.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+}
+
+function delay(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 // ===== Computation =====
 
 function computeGroupStandings(group) {
@@ -322,15 +376,7 @@ export function renderBracketBuilder(container, wcData, flagsData) {
         class: 'wc-cta-btn',
         text: 'Simulate Tournament',
         style: 'font-size:0.95rem;padding:12px 28px',
-        onclick: () => {
-            simulateFullTournament();
-            // Re-render entire bracket builder
-            const builder = document.querySelector('.bracket-builder');
-            if (builder) {
-                builder.remove();
-                renderBracketBuilder(containerRef, null, flags);
-            }
-        },
+        onclick: () => animatedSimulate(),
     }));
     section.appendChild(actions);
 
