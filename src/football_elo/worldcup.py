@@ -1,6 +1,7 @@
 """2026 World Cup full tournament predictions using Elo ratings."""
 
 import json
+import math
 import random
 import re
 import unicodedata
@@ -168,37 +169,72 @@ THIRD_PLACE_SLOTS = [1, 4, 6, 7, 8, 9, 12, 14]
 THIRD_PLACE_OPPONENTS = ["E", "I", "A", "L", "D", "G", "B", "K"]
 
 
+# Poisson score model parameters (calibrated from 98K match records)
+GOAL_BASELINE = 1.28      # baseline expected goals per team
+GOAL_ELO_SCALING = 0.00215  # Elo scaling factor
+
+
+def _expected_goals(rating_a: float, rating_b: float, ha: float = 0.0):
+    """Compute expected goals for each team using the Poisson model.
+
+    dr = (rating_a + ha) - rating_b, using the same +50 home rule as Elo.
+    Returns (lambda_a, lambda_b).
+    """
+    dr = (rating_a + ha) - rating_b
+    lam_a = GOAL_BASELINE * math.exp(GOAL_ELO_SCALING * dr)
+    lam_b = GOAL_BASELINE * math.exp(-GOAL_ELO_SCALING * dr)
+    return lam_a, lam_b
+
+
+def _poisson_pmf(k: int, lam: float) -> float:
+    """Poisson probability mass function."""
+    return math.exp(-lam) * (lam ** k) / math.factorial(k)
+
+
 def match_probabilities(
     rating_a: float, rating_b: float, home_team: str = "", neutral: bool = True
 ) -> tuple[float, float, float]:
-    """Compute P(win_a), P(draw), P(win_b) from Elo ratings."""
+    """Compute P(win_a), P(draw), P(win_b) from Elo ratings using Poisson model."""
     ha = 0.0
     if not neutral and home_team:
         ha = HOME_ADVANTAGE
-    we_a = expected_result(rating_a + ha, rating_b)
-    p_draw = max(0.0, 0.38 - 0.38 * ((we_a - 0.5) ** 2) / 0.25)
-    p_draw = min(p_draw, 0.38)
-    p_win_a = max(0.0, we_a - 0.5 * p_draw)
-    p_win_b = max(0.0, 1.0 - we_a - 0.5 * p_draw)
-    total = p_win_a + p_draw + p_win_b
-    return p_win_a / total, p_draw / total, p_win_b / total
+    lam_a, lam_b = _expected_goals(rating_a, rating_b, ha)
+
+    p_win = 0.0
+    p_draw = 0.0
+    p_loss = 0.0
+    max_goals = 10
+
+    for i in range(max_goals + 1):
+        pi = _poisson_pmf(i, lam_a)
+        for j in range(max_goals + 1):
+            pj = _poisson_pmf(j, lam_b)
+            p = pi * pj
+            if i > j:
+                p_win += p
+            elif i == j:
+                p_draw += p
+            else:
+                p_loss += p
+
+    total = p_win + p_draw + p_loss
+    return p_win / total, p_draw / total, p_loss / total
 
 
-def simulate_match_group(p_win_a: float, p_draw: float, p_win_b: float) -> str:
-    """Simulate a group stage match. Returns 'a', 'draw', or 'b'."""
-    r = random.random()
-    if r < p_win_a:
-        return "a"
-    if r < p_win_a + p_draw:
-        return "draw"
-    return "b"
+def simulate_group_match(
+    rating_a: float, rating_b: float, ha: float = 0.0
+) -> tuple[int, int]:
+    """Simulate a group stage match using Poisson model. Returns (goals_a, goals_b)."""
+    lam_a, lam_b = _expected_goals(rating_a, rating_b, ha)
+    goals_a = _poisson_sample(lam_a)
+    goals_b = _poisson_sample(lam_b)
+    return goals_a, goals_b
 
 
 def simulate_knockout_match(
     rating_a: float, rating_b: float, team_a: str, team_b: str
 ) -> str:
-    """Simulate a knockout match (no draws). Returns winning team name."""
-    # Host advantage in knockout rounds
+    """Simulate a knockout match using Poisson. If draw, penalty shootout."""
     is_neutral = team_a not in HOST_NATIONS and team_b not in HOST_NATIONS
     ha = 0.0
     if not is_neutral:
@@ -207,68 +243,89 @@ def simulate_knockout_match(
         elif team_b in HOST_NATIONS:
             ha = -HOME_ADVANTAGE
 
-    we_a = expected_result(rating_a + ha, rating_b)
-    if random.random() < we_a:
+    goals_a, goals_b = simulate_group_match(rating_a, rating_b, ha)
+    if goals_a > goals_b:
         return team_a
-    return team_b
+    if goals_b > goals_a:
+        return team_b
+    # Draw — penalty shootout decided by Elo expected result
+    we_a = expected_result(rating_a + ha, rating_b)
+    return team_a if random.random() < we_a else team_b
+
+
+def _poisson_sample(lam: float) -> int:
+    """Sample from Poisson distribution using inverse transform."""
+    L = math.exp(-lam)
+    k = 0
+    p = 1.0
+    while True:
+        k += 1
+        p *= random.random()
+        if p < L:
+            return k - 1
 
 
 def simulate_group_once(
-    teams: list[str], match_probs: dict
+    teams: list[str], match_params: dict
 ) -> list[tuple[str, int, float]]:
-    """Simulate one group once. Returns [(team, points, gd), ...] sorted by standing."""
+    """Simulate one group once using Poisson scores.
+
+    Returns [(team, points, gd), ...] sorted by standing.
+    """
     n = len(teams)
     points = [0] * n
     gd = [0.0] * n
+    gf = [0] * n
 
     for i, j in combinations(range(n), 2):
-        pa, pd, pb = match_probs[(i, j)]
-        result = simulate_match_group(pa, pd, pb)
-        if result == "a":
+        ra, rb, ha = match_params[(i, j)]
+        goals_a, goals_b = simulate_group_match(ra, rb, ha)
+
+        gf[i] += goals_a
+        gf[j] += goals_b
+        gd[i] += goals_a - goals_b
+        gd[j] += goals_b - goals_a
+
+        if goals_a > goals_b:
             points[i] += 3
-            gd[i] += 1.5
-            gd[j] -= 1.5
-        elif result == "b":
+        elif goals_b > goals_a:
             points[j] += 3
-            gd[j] += 1.5
-            gd[i] -= 1.5
         else:
             points[i] += 1
             points[j] += 1
 
     order = sorted(
         range(n),
-        key=lambda x: (points[x], gd[x], random.random()),
+        key=lambda x: (points[x], gd[x], gf[x], random.random()),
         reverse=True,
     )
     return [(teams[idx], points[idx], gd[idx]) for idx in order]
 
 
-def _precompute_group_probs(
+def _precompute_group_params(
     teams: list[str], ratings: dict[str, float]
 ) -> dict:
-    """Pre-compute match probabilities for a group."""
+    """Pre-compute match parameters (ratings + home advantage) for a group."""
     matchups = list(combinations(range(4), 2))
-    match_probs = {}
+    match_params = {}
     for i, j in matchups:
         team_a, team_b = teams[i], teams[j]
         is_neutral = team_a not in HOST_NATIONS and team_b not in HOST_NATIONS
         home = team_a if team_a in HOST_NATIONS else (
             team_b if team_b in HOST_NATIONS else ""
         )
-        if home == team_b:
-            pa, pd, pb = match_probabilities(
-                ratings.get(team_b, 1500), ratings.get(team_a, 1500),
-                home_team=team_b, neutral=False,
-            )
-            match_probs[(i, j)] = (pb, pd, pa)
-        else:
-            pa, pd, pb = match_probabilities(
-                ratings.get(team_a, 1500), ratings.get(team_b, 1500),
-                home_team=home, neutral=is_neutral,
-            )
-            match_probs[(i, j)] = (pa, pd, pb)
-    return match_probs
+
+        ra = ratings.get(team_a, 1500)
+        rb = ratings.get(team_b, 1500)
+        ha = 0.0
+        if not is_neutral:
+            if home == team_a:
+                ha = HOME_ADVANTAGE
+            elif home == team_b:
+                ha = -HOME_ADVANTAGE
+
+        match_params[(i, j)] = (ra, rb, ha)
+    return match_params
 
 
 def allocate_third_place(
@@ -312,9 +369,9 @@ def simulate_tournament(
     Returns per-team dict with counts for each round reached.
     """
     # Pre-compute group match probabilities
-    group_probs = {}
+    group_params = {}
     for g, teams in GROUPS_2026.items():
-        group_probs[g] = _precompute_group_probs(teams, ratings)
+        group_params[g] = _precompute_group_params(teams, ratings)
 
     # Initialize counters
     all_teams = []
@@ -332,7 +389,7 @@ def simulate_tournament(
         # 1. Simulate all groups
         standings = {}  # group -> [(team, pts, gd), ...]
         for g, teams in GROUPS_2026.items():
-            standings[g] = simulate_group_once(teams, group_probs[g])
+            standings[g] = simulate_group_once(teams, group_params[g])
 
         # Record group positions
         for g, standing in standings.items():

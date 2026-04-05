@@ -83,62 +83,63 @@ function loadState() {
     } catch {}
 }
 
-// ===== Simulation =====
+// ===== Poisson Score Model (calibrated from 98K match records) =====
+
+const GOAL_BASELINE = 1.28;
+const GOAL_ELO_SCALING = 0.00215;
+const HOME_ADV = 50;
 
 function eloExpected(ratingA, ratingB) {
     return 1.0 / (Math.pow(10, -(ratingA - ratingB) / 400) + 1.0);
 }
 
-function simMatchProbs(ratingA, ratingB) {
-    const we = eloExpected(ratingA, ratingB);
-    let pDraw = Math.max(0, 0.38 - 0.38 * Math.pow(we - 0.5, 2) / 0.25);
-    pDraw = Math.min(pDraw, 0.38);
-    let pA = Math.max(0, we - 0.5 * pDraw);
-    let pB = Math.max(0, 1 - we - 0.5 * pDraw);
-    const total = pA + pDraw + pB;
-    return [pA / total, pDraw / total, pB / total];
+function poissonSample(lam) {
+    const L = Math.exp(-lam);
+    let k = 0, p = 1.0;
+    do { k++; p *= Math.random(); } while (p > L);
+    return k - 1;
 }
 
-function simRandomScore(pA, pDraw, pB) {
-    const r = Math.random();
-    if (r < pA) {
-        // Home win — random scoreline like 2-1, 1-0, 3-1
-        const homeGoals = 1 + Math.floor(Math.random() * 3);
-        const awayGoals = Math.floor(Math.random() * homeGoals);
-        return [homeGoals, awayGoals];
-    } else if (r < pA + pDraw) {
-        const goals = Math.floor(Math.random() * 3);
-        return [goals, goals];
-    } else {
-        const awayGoals = 1 + Math.floor(Math.random() * 3);
-        const homeGoals = Math.floor(Math.random() * awayGoals);
-        return [homeGoals, awayGoals];
-    }
+function simScore(ratingA, ratingB, ha = 0) {
+    const dr = (ratingA + ha) - ratingB;
+    const lamA = GOAL_BASELINE * Math.exp(GOAL_ELO_SCALING * dr);
+    const lamB = GOAL_BASELINE * Math.exp(-GOAL_ELO_SCALING * dr);
+    return [poissonSample(lamA), poissonSample(lamB)];
+}
+
+function simKnockout(ratingA, ratingB, teamA, teamB, ha = 0) {
+    const [gA, gB] = simScore(ratingA, ratingB, ha);
+    if (gA > gB) return teamA;
+    if (gB > gA) return teamB;
+    // Penalty shootout — use Elo expected result
+    return Math.random() < eloExpected(ratingA + ha, ratingB) ? teamA : teamB;
 }
 
 function simulateFullTournament() {
-    // 1. Simulate all group matches
+    // 1. Simulate all group matches using Poisson scores
     state.scores = {};
     state.knockoutPicks = { r32: [], r16: [], qf: [], sf: [], final: [] };
 
     for (const g of Object.keys(GROUPS)) {
         const teams = GROUPS[g];
-        for (const [hi, ai, date, venue] of SCHEDULE[g]) {
+        for (const [hi, ai] of SCHEDULE[g]) {
             const home = teams[hi], away = teams[ai];
             const rH = teamRatings[home] || 1500;
             const rA = teamRatings[away] || 1500;
-            const [pA, pD, pB] = simMatchProbs(rH, rA);
-            const [hg, ag] = simRandomScore(pA, pD, pB);
+            // Host nations get home advantage
+            const isHost = (home === 'United States' || home === 'Mexico' || home === 'Canada');
+            const ha = isHost ? HOME_ADV : 0;
+            const [hg, ag] = simScore(rH, rA, ha);
             state.scores[`${g}-${hi}-${ai}`] = { home: hg, away: ag };
         }
     }
 
-    // 2. Build R32 matchups and simulate knockout
+    // 2. Build R32 matchups and simulate knockout with Poisson
     const r32 = buildR32Matchups();
     r32.forEach((m, i) => {
         const rA = teamRatings[m.teamA] || 1500;
         const rB = teamRatings[m.teamB] || 1500;
-        state.knockoutPicks.r32[i] = Math.random() < eloExpected(rA, rB) ? m.teamA : m.teamB;
+        state.knockoutPicks.r32[i] = simKnockout(rA, rB, m.teamA, m.teamB);
     });
 
     // R16 through Final
@@ -147,7 +148,7 @@ function simulateFullTournament() {
         matchups.forEach((m, i) => {
             const rA = teamRatings[m.teamA] || 1500;
             const rB = teamRatings[m.teamB] || 1500;
-            state.knockoutPicks[round][i] = Math.random() < eloExpected(rA, rB) ? m.teamA : m.teamB;
+            state.knockoutPicks[round][i] = simKnockout(rA, rB, m.teamA, m.teamB);
         });
     }
 

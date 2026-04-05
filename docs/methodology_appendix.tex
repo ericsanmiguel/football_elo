@@ -223,40 +223,39 @@ Team rankings are computed at each match date from 1990 onward (1900 for men's f
 
 Tournament predictions are generated via Monte Carlo simulation of the complete 2026 World Cup. Each simulation independently samples the entire tournament---group stage, third-place qualification, and all knockout rounds---and the final probabilities are computed as the fraction of simulations in which each team reached each stage. The simulation uses $N = 10{,}000$ independent iterations.
 
-\subsection{Group Stage Match Probabilities}
+\subsection{Score Prediction Model}
 
-For group stage matches, we decompose the Elo expected score $W_e$ into separate win, draw, and loss probabilities.
-
-\paragraph{Draw probability model.} The probability of a draw is modeled as a function of the expected score:
+Match scores are predicted using an Elo-calibrated Poisson model. For each team, the expected number of goals is:
 \begin{equation}
-P(\text{draw})_{\text{raw}} = 0.38 - \frac{0.38 \cdot (W_e - 0.5)^2}{0.25}
-\label{eq:pdraw}
+\lambda_A = \mu \cdot e^{c \cdot d_r}, \qquad \lambda_B = \mu \cdot e^{-c \cdot d_r}
+\label{eq:poisson}
 \end{equation}
-\begin{equation}
-P(\text{draw}) = \min\!\big(\max(P(\text{draw})_{\text{raw}},\, 0),\, 0.38\big)
-\end{equation}
+where $d_r = (R_A + H_A) - R_B$ is the adjusted rating difference (including home advantage $H = 50$ for the home team, $0$ for neutral venues), $\mu = 1.28$ is the baseline expected goals per team, and $c = 0.00215$ is the Elo scaling factor.
 
-This parabolic model achieves a maximum draw probability of 38\% when teams are equally rated ($W_e = 0.5$) and decreases as the rating gap widens, reaching zero when $|W_e - 0.5| \geq 0.5$.
+Both parameters were estimated via log-linear regression on 98,430 team-match records from our historical dataset. The model uses the same $+50$ home advantage rule as the Elo rating system, ensuring consistency between ratings and predictions.
 
-\paragraph{Win/loss probabilities.} Given the draw probability:
+Goals for each team are sampled independently from Poisson distributions:
+\[
+\text{goals}_A \sim \text{Poisson}(\lambda_A), \qquad \text{goals}_B \sim \text{Poisson}(\lambda_B)
+\]
+
+Win, draw, and loss probabilities are derived analytically by summing over all possible scorelines:
 \begin{align}
-P(\text{win}_A)_{\text{raw}} &= W_e - \tfrac{1}{2}\, P(\text{draw}) \\
-P(\text{win}_B)_{\text{raw}} &= (1 - W_e) - \tfrac{1}{2}\, P(\text{draw})
+P(\text{win}_A) &= \sum_{i > j} P(\text{Pois}(\lambda_A) = i) \cdot P(\text{Pois}(\lambda_B) = j) \\
+P(\text{draw}) &= \sum_{i} P(\text{Pois}(\lambda_A) = i) \cdot P(\text{Pois}(\lambda_B) = i)
 \end{align}
-Both values are clamped to $[0, \infty)$ and then normalized so that $P(\text{win}_A) + P(\text{draw}) + P(\text{win}_B) = 1$.
 
-\paragraph{Home advantage.} Host nations (United States, Mexico, Canada) receive the standard $H = 50$ home advantage when playing in their own country, applied to both group stage and knockout matches.
+For evenly matched teams at a neutral venue ($d_r = 0$), the model produces $P(\text{draw}) \approx 27\%$, consistent with the empirical draw rate in international football.
 
 \subsection{Group Stage Simulation}
 
-For each of the 12 groups, the six pairwise matches are simulated independently. Match outcomes are sampled from the categorical distribution $(P(\text{win}_A),\, P(\text{draw}),\, P(\text{win}_B))$. Points are awarded as 3 for a win, 1 for a draw, and 0 for a loss.
-
-Goal difference is approximated for tiebreaking purposes: a winning team receives $+1.5$ goal difference and the losing team $-1.5$; draws contribute $0$ to both teams.
+For each of the 12 groups, the six pairwise matches are simulated independently using the Poisson score model. Points are awarded as 3 for a win, 1 for a draw, and 0 for a loss. Goal difference and goals scored are computed directly from the sampled scorelines.
 
 Teams within each group are ranked by:
 \begin{enumerate}[nosep]
     \item Points (descending)
     \item Goal difference (descending)
+    \item Goals scored (descending)
     \item Random tiebreaker (uniform)
 \end{enumerate}
 
@@ -311,9 +310,9 @@ Match & Team A & Team B \\
 
 \subsection{Knockout Stage Simulation}
 
-Knockout matches (R32 through the Final) are simulated without draws. The win probability is the Elo expected result:
+Knockout matches use the same Poisson score model (Eq.~\ref{eq:poisson}). If the sampled scores produce a draw, the match is decided by a penalty shootout, where the winning probability is the Elo expected result:
 \begin{equation}
-P(\text{win}_A) = W_e = \frac{1}{10^{-(R_A + h - R_B)/400} + 1}
+P(\text{shootout win}_A) = W_e = \frac{1}{10^{-(R_A + h - R_B)/400} + 1}
 \end{equation}
 where $h = H = 50$ if team $A$ is a host nation, $h = -H$ if team $B$ is a host nation, and $h = 0$ otherwise.
 

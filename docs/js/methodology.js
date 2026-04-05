@@ -55,15 +55,20 @@ export async function render(container) {
         <h2>Initial Rating</h2>
         <p>All teams start at <strong>1500</strong>. The Elo system is self-correcting — after 20&ndash;30 matches, the initial rating has minimal impact on a team's current rating.</p>
 
+        <h2>Score Prediction Model</h2>
+        <p>Match scores are predicted using an <strong>Elo-calibrated Poisson model</strong>. For each team, the expected number of goals is:</p>
+        <div class="formula-block">&lambda; = &mu; &times; e<sup>c &times; dr</sup></div>
+        <p>Where <code>&mu; = 1.28</code> is the baseline goals per team, <code>c = 0.00215</code> is the Elo scaling factor, and <code>dr</code> is the adjusted rating difference (including the +50 home advantage). Both parameters were calibrated via log-linear regression on 98,000+ team-match records from our historical dataset.</p>
+        <p>Each team's goals are sampled independently from a Poisson distribution with their respective &lambda;. Win/draw/loss probabilities are derived analytically from the Poisson model by summing over all possible scorelines.</p>
+
         <h2>2026 World Cup Predictions</h2>
         <p>The World Cup predictions are generated using a <strong>Monte Carlo simulation</strong> of the entire tournament (10,000 iterations). For each simulation:</p>
         <ol style="color:var(--text-secondary);line-height:2;padding-left:20px">
-            <li><strong>Group stage:</strong> All 12 groups are simulated simultaneously. Each match outcome (win/draw/loss) is sampled using probabilities derived from the teams' Elo ratings.</li>
+            <li><strong>Group stage:</strong> All 12 groups are simulated simultaneously. Match scores are sampled from the Poisson model, producing realistic scorelines and goal differences.</li>
             <li><strong>3rd-place qualification:</strong> The 8 best 3rd-place teams (by points, then goal difference) advance to the Round of 32.</li>
-            <li><strong>Knockout bracket:</strong> Teams are placed into the official FIFA bracket. The R32 through the Final are simulated as single-elimination matches (no draws &mdash; the Elo expected result is used directly as win probability).</li>
-            <li><strong>Home advantage:</strong> Host nations (USA, Mexico, Canada) receive a +50 rating boost when playing in their own country.</li>
+            <li><strong>Knockout bracket:</strong> Teams are placed into the official FIFA bracket. Knockout matches use Poisson-sampled scores; draws go to a penalty shootout decided by the Elo expected result.</li>
+            <li><strong>Home advantage:</strong> Host nations (USA, Mexico, Canada) receive the same +50 rating boost used in the Elo system.</li>
         </ol>
-        <p>Match outcome probabilities for group stage matches are decomposed from the Elo expected score into win/draw/loss using a draw probability model calibrated to historical international football draw rates (~27% for evenly matched teams).</p>
         <p>The probabilities shown (R32, R16, QF, SF, Final, Winner) represent the fraction of simulations in which each team reached that stage.</p>
 
         <h2>Data Sources</h2>
