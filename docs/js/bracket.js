@@ -170,7 +170,7 @@ async function animatedSimulate() {
     // Compute everything instantly
     simulateFullTournament();
 
-    await delay(1500);
+    await delay(2000);
     overlay.remove();
 
     // Re-render with all results
