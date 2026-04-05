@@ -41,6 +41,8 @@ Uses the [World Football Elo Rating](https://www.eloratings.net/about) formula:
 | We | Expected result: `1 / (10^(-dr/400) + 1)`, with +50 home advantage |
 | W | Actual result: win = 1, draw = 0.5, loss = 0 (shootouts count as draws) |
 
+World Cup predictions use an **Elo-calibrated Poisson score model**: expected goals per team are `λ = 1.28 × exp(0.00215 × dr)`, with goals sampled from independent Poisson distributions. Parameters calibrated from 98,000+ historical match records.
+
 See the [full methodology](https://e-san-miguel.github.io/football_elo/#/methodology) on the website, or the [LaTeX appendix](docs/methodology_appendix.tex) for formal documentation.
 
 ## Data Sources
