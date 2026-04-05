@@ -56,6 +56,7 @@ let state = { scores: {}, knockoutPicks: { r32: [], r16: [], qf: [], sf: [], fin
 let flags = {};
 let containerRef = null;
 let teamRatings = {};  // team name -> Elo rating from JSON
+let cachedWcData = null;  // preserve across re-renders
 
 // ===== Slugify =====
 
@@ -186,7 +187,7 @@ async function animatedSimulate() {
     const builder = document.querySelector('.bracket-builder');
     if (builder) {
         builder.remove();
-        renderBracketBuilder(containerRef, null, flags);
+        renderBracketBuilder(containerRef, cachedWcData, flags);
     }
 
     // 4. Fill in groups one at a time
@@ -426,8 +427,9 @@ export function renderBracketBuilder(container, wcData, flagsData) {
     containerRef = container;
     loadState();
 
-    // Extract ratings from wcData (only if provided — preserve existing on re-render)
+    // Extract ratings from wcData
     if (wcData) {
+        cachedWcData = wcData;
         teamRatings = {};
         for (const group of Object.values(wcData.groups)) {
             for (const t of group.teams) {
@@ -785,7 +787,7 @@ function resetButton() {
                 const builder = document.querySelector('.bracket-builder');
                 if (builder) {
                     builder.remove();
-                    renderBracketBuilder(containerRef, null, flags);
+                    renderBracketBuilder(containerRef, cachedWcData, flags);
                 }
             },
         }),
