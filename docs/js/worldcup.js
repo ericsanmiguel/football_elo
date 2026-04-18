@@ -12,6 +12,8 @@ const BASE = document.querySelector('base')?.href
 let cachedWcData = null;
 let cachedFlags = null;
 let currentTab = 'overview';
+// Rankings-table sort state. 'default' = p_winner with a full tiebreaker cascade.
+let rankingsSort = { key: 'default', asc: false };
 
 export async function render(container) {
     container.innerHTML = '<div class="loading">Loading World Cup data...</div>';
@@ -80,6 +82,49 @@ function renderTabContent(tab) {
     }
 }
 
+const RANKINGS_COLUMNS = [
+    { key: 'rank', label: '#', sortable: false },
+    { key: 'team', label: 'Team', asc: true, get: (t) => t.team.toLowerCase() },
+    { key: 'group', label: 'Grp', asc: true, get: (t) => t.group },
+    { key: 'elo_base', label: 'Elo', asc: false, tip: 'Base Elo rating',
+      get: (t) => t.elo_base ?? t.rating },
+    { key: 'squad_index', label: 'Squad', asc: false,
+      tip: 'Squad-strength index (50–100, rescaled across the 48 teams)',
+      get: (t) => t.squad_index ?? -Infinity },
+    { key: 'combined_index', label: 'Total', asc: false,
+      tip: 'Combined Elo + squad index (50–100)',
+      get: (t) => t.combined_index },
+    { key: 'p_r32', label: 'R32', asc: false, get: (t) => t.p_r32 ?? 0 },
+    { key: 'p_r16', label: 'R16', asc: false, get: (t) => t.p_r16 ?? 0 },
+    { key: 'p_qf', label: 'QF', asc: false, get: (t) => t.p_qf ?? 0 },
+    { key: 'p_sf', label: 'SF', asc: false, get: (t) => t.p_sf ?? 0 },
+    { key: 'p_final', label: 'Final', asc: false, get: (t) => t.p_final ?? 0 },
+    { key: 'p_winner', label: 'Win', asc: false, get: (t) => t.p_winner ?? 0 },
+];
+
+function sortRankings(allTeams) {
+    if (rankingsSort.key === 'default') {
+        return [...allTeams].sort((a, b) =>
+            (b.p_winner ?? 0) - (a.p_winner ?? 0)
+            || (b.p_final ?? 0) - (a.p_final ?? 0)
+            || (b.p_sf ?? 0) - (a.p_sf ?? 0)
+            || (b.p_qf ?? 0) - (a.p_qf ?? 0)
+            || (b.p_r16 ?? 0) - (a.p_r16 ?? 0)
+            || (b.p_r32 ?? 0) - (a.p_r32 ?? 0)
+        );
+    }
+    const col = RANKINGS_COLUMNS.find(c => c.key === rankingsSort.key);
+    if (!col) return [...allTeams];
+    const dir = rankingsSort.asc ? 1 : -1;
+    return [...allTeams].sort((a, b) => {
+        const va = col.get(a);
+        const vb = col.get(b);
+        if (va < vb) return -1 * dir;
+        if (va > vb) return 1 * dir;
+        return 0;
+    });
+}
+
 function buildRankingsCard(wcData, flags) {
     const card = el('div', { class: 'card' });
     card.appendChild(el('h2', { text: 'World Cup Team Rankings' }));
@@ -90,43 +135,66 @@ function buildRankingsCard(wcData, flags) {
             allTeams.push({ ...t, group: gName });
         }
     }
-    allTeams.sort((a, b) =>
-        (b.p_winner ?? 0) - (a.p_winner ?? 0)
-        || (b.p_final ?? 0) - (a.p_final ?? 0)
-        || (b.p_sf ?? 0) - (a.p_sf ?? 0)
-        || (b.p_qf ?? 0) - (a.p_qf ?? 0)
-        || (b.p_r16 ?? 0) - (a.p_r16 ?? 0)
-        || (b.p_r32 ?? 0) - (a.p_r32 ?? 0)
-    );
+    const sorted = sortRankings(allTeams);
 
+    // Precompute min/max for Elo tinting across the 48 teams
+    const elos = allTeams.map(t => t.elo_base ?? t.rating);
+    const minElo = Math.min(...elos);
+    const maxElo = Math.max(...elos);
+
+    const wrap = el('div', { class: 'rankings-table-wrap', id: 'wc-rankings-wrap' });
+    wrap.appendChild(buildRankingsTable(sorted, flags, { minElo, maxElo }));
+    card.appendChild(wrap);
+    return card;
+}
+
+function rerenderRankingsTable() {
+    if (!cachedWcData) return;
+    const wrap = document.getElementById('wc-rankings-wrap');
+    if (!wrap) return;
+    const allTeams = [];
+    for (const [gName, group] of Object.entries(cachedWcData.groups)) {
+        for (const t of group.teams) allTeams.push({ ...t, group: gName });
+    }
+    const elos = allTeams.map(t => t.elo_base ?? t.rating);
+    wrap.innerHTML = '';
+    wrap.appendChild(buildRankingsTable(
+        sortRankings(allTeams), cachedFlags,
+        { minElo: Math.min(...elos), maxElo: Math.max(...elos) }
+    ));
+}
+
+function buildRankingsTable(sorted, flags, ctx) {
     const table = el('table', { class: 'rankings-table' });
     const thead = el('thead');
     const headerRow = el('tr');
-    const headers = [
-        { label: '#' },
-        { label: 'Team' },
-        { label: 'Grp' },
-        { label: 'Elo', tip: 'Base Elo rating' },
-        { label: 'Squad', tip: 'Squad-strength index (50–100, rescaled across the 48 teams)' },
-        { label: 'Total', tip: 'Combined Elo + squad index (50–100)' },
-        { label: 'R32' },
-        { label: 'R16' },
-        { label: 'QF' },
-        { label: 'SF' },
-        { label: 'Final' },
-        { label: 'Win' },
-    ];
-    for (const h of headers) {
-        const cls = ['#', 'Team', 'Grp'].includes(h.label) ? '' : 'text-right';
-        const attrs = { text: h.label, class: cls };
-        if (h.tip) attrs.title = h.tip;
+    for (const col of RANKINGS_COLUMNS) {
+        const cls = ['rank', 'team', 'group'].includes(col.key) ? '' : 'text-right';
+        const isActive = rankingsSort.key === col.key;
+        const arrow = isActive ? (rankingsSort.asc ? ' \u25B2' : ' \u25BC') : '';
+        const attrs = {
+            class: `${cls} ${isActive ? 'sort-active' : ''}`.trim(),
+            html: `${col.label}<span class="sort-arrow">${arrow}</span>`,
+        };
+        if (col.tip) attrs.title = col.tip;
+        if (col.sortable !== false) {
+            attrs.style = 'cursor:pointer';
+            attrs.onclick = () => {
+                if (rankingsSort.key === col.key) {
+                    rankingsSort.asc = !rankingsSort.asc;
+                } else {
+                    rankingsSort = { key: col.key, asc: col.asc };
+                }
+                rerenderRankingsTable();
+            };
+        }
         headerRow.appendChild(el('th', attrs));
     }
     thead.appendChild(headerRow);
     table.appendChild(thead);
 
     const tbody = el('tbody');
-    allTeams.forEach((t, idx) => {
+    sorted.forEach((t, idx) => {
         const tr = el('tr', {
             style: 'cursor:pointer',
             onclick: () => { window.location.hash = `#/team/${t.slug}`; },
@@ -143,9 +211,8 @@ function buildRankingsCard(wcData, flags) {
 
         tr.appendChild(el('td', { text: t.group, style: 'color:var(--text-tertiary)' }));
 
-        // Elo (base), Squad index, Combined index
         const eloBase = t.elo_base ?? t.rating;
-        tr.appendChild(el('td', { class: 'rating-cell text-right', text: Math.round(eloBase).toString() }));
+        tr.appendChild(eloCell(eloBase, ctx.minElo, ctx.maxElo));
         tr.appendChild(indexCell(t.squad_index));
         tr.appendChild(indexCell(t.combined_index, true));
 
@@ -157,11 +224,19 @@ function buildRankingsCard(wcData, flags) {
         tbody.appendChild(tr);
     });
     table.appendChild(tbody);
+    return table;
+}
 
-    const wrap = el('div', { class: 'rankings-table-wrap' });
-    wrap.appendChild(table);
-    card.appendChild(wrap);
-    return card;
+function eloCell(elo, minElo, maxElo) {
+    const intensity = maxElo > minElo
+        ? Math.max(0, Math.min(1, (elo - minElo) / (maxElo - minElo)))
+        : 0.5;
+    const bg = `rgba(93, 143, 255, ${intensity * 0.28})`;
+    return el('td', {
+        class: 'wc-prob-cell text-right',
+        text: Math.round(elo).toString(),
+        style: `background:${bg}`,
+    });
 }
 
 function buildGroupCard(groupName, group, flags) {
