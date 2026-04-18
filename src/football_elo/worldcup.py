@@ -362,21 +362,29 @@ def allocate_third_place(
 
 
 def simulate_tournament(
-    ratings: dict[str, float], n_sims: int = 50000
+    ratings: dict[str, float], n_sims: int = 50000,
+    rating_sigma: float = 0.0,
 ) -> dict[str, dict]:
     """Run full tournament Monte Carlo simulation.
 
+    rating_sigma > 0 samples each team's rating from N(mu, sigma) once per
+    simulation — captures uncertainty in the point-estimate Elo. Default 0
+    preserves the pre-existing deterministic behavior.
+
     Returns per-team dict with counts for each round reached.
     """
-    # Pre-compute group match probabilities
-    group_params = {}
-    for g, teams in GROUPS_2026.items():
-        group_params[g] = _precompute_group_params(teams, ratings)
-
     # Initialize counters
     all_teams = []
     for teams in GROUPS_2026.values():
         all_teams.extend(teams)
+
+    # Pre-compute group params only when ratings are deterministic (sigma=0).
+    # With sigma>0 we re-compute per simulation since ratings change.
+    group_params = None
+    if rating_sigma <= 0:
+        group_params = {}
+        for g, teams in GROUPS_2026.items():
+            group_params[g] = _precompute_group_params(teams, ratings)
 
     counts = {
         team: {"gs": 0, "r32": 0, "r16": 0, "qf": 0, "sf": 0, "final": 0, "winner": 0}
@@ -386,10 +394,24 @@ def simulate_tournament(
     pos_counts = {team: [0, 0, 0, 0] for team in all_teams}
 
     for _ in range(n_sims):
+        # Sample per-sim ratings if uncertainty is enabled
+        if rating_sigma > 0:
+            sim_ratings = {
+                t: ratings.get(t, 1500.0) + random.gauss(0, rating_sigma)
+                for t in all_teams
+            }
+            sim_group_params = {
+                g: _precompute_group_params(teams, sim_ratings)
+                for g, teams in GROUPS_2026.items()
+            }
+        else:
+            sim_ratings = ratings
+            sim_group_params = group_params
+
         # 1. Simulate all groups
         standings = {}  # group -> [(team, pts, gd), ...]
         for g, teams in GROUPS_2026.items():
-            standings[g] = simulate_group_once(teams, group_params[g])
+            standings[g] = simulate_group_once(teams, sim_group_params[g])
 
         # Record group positions
         for g, standing in standings.items():
@@ -454,7 +476,7 @@ def simulate_tournament(
             winners = []
             for team_a, team_b in current_round:
                 w = simulate_knockout_match(
-                    ratings.get(team_a, 1500), ratings.get(team_b, 1500),
+                    sim_ratings.get(team_a, 1500), sim_ratings.get(team_b, 1500),
                     team_a, team_b,
                 )
                 winners.append(w)
@@ -490,25 +512,75 @@ def simulate_tournament(
     return results
 
 
+# Composite-rating parameters calibrated on 2018+2022 men's WCs
+# (see docs/methodology_appendix.tex and src/football_elo/backtest.py).
+SQUAD_BETA = 0.25
+RATING_SIGMA = 120.0
+
+
+def _compose_ratings(base_ratings: dict[str, float], beta: float) -> dict[str, float]:
+    """Blend base Elo with log-transformed age-adjusted squad z-score."""
+    if beta <= 0:
+        return dict(base_ratings)
+    try:
+        from .squad_strength import load_tournament_squads, squad_scores, z_scores
+        squads = load_tournament_squads(2026)
+    except FileNotFoundError:
+        return dict(base_ratings)
+    scores = squad_scores(squads, use_log=True)
+    z = z_scores(scores)
+    vals = list(base_ratings.values())
+    mu = sum(vals) / len(vals)
+    sigma_elo = (sum((v - mu) ** 2 for v in vals) / len(vals)) ** 0.5
+    return {t: base_ratings[t] + beta * z.get(t, 0.0) * sigma_elo for t in base_ratings}
+
+
+def _marginal_match_probs(
+    rating_a: float, rating_b: float, home: str, neutral: bool,
+    sigma: float, n_samples: int, rng: random.Random,
+) -> tuple[float, float, float]:
+    """match_probabilities marginalized over independent rating noise ~N(0, sigma)."""
+    if sigma <= 0:
+        return match_probabilities(rating_a, rating_b, home_team=home, neutral=neutral)
+    pw = pd_ = pl = 0.0
+    for _ in range(n_samples):
+        ra = rating_a + rng.gauss(0, sigma)
+        rb = rating_b + rng.gauss(0, sigma)
+        h, d, a = match_probabilities(ra, rb, home_team=home, neutral=neutral)
+        pw += h; pd_ += d; pl += a
+    return pw / n_samples, pd_ / n_samples, pl / n_samples
+
+
 def export_worldcup_json(elo: EloSystem, output_dir: Path) -> None:
-    """Export World Cup 2026 predictions as JSON."""
+    """Export World Cup 2026 predictions as JSON.
+
+    Uses composite ratings (Elo + beta * squad_z * sigma_Elo) and rating
+    uncertainty in the Monte Carlo, with parameters calibrated on 2018+2022.
+    If squad data is unavailable, falls back to pure Elo.
+    """
     random.seed(2026)
 
-    # Get all ratings
-    all_ratings = {}
+    # Base Elo per team
+    base_ratings: dict[str, float] = {}
     for teams in GROUPS_2026.values():
         for t in teams:
-            all_ratings[t] = elo.get_rating(t)
+            base_ratings[t] = elo.get_rating(t)
 
-    # Run full tournament simulation
-    sim_results = simulate_tournament(all_ratings, n_sims=10000)
+    # Composite ratings: base Elo + squad tilt
+    all_ratings = _compose_ratings(base_ratings, SQUAD_BETA)
 
-    # Build per-group data (match probabilities for display)
+    # Tournament simulation with rating uncertainty
+    sim_results = simulate_tournament(
+        all_ratings, n_sims=10000, rating_sigma=RATING_SIGMA,
+    )
+
+    # Match-level probabilities shown on the Groups tab also marginalize over sigma
+    rng = random.Random(20260611)
+
     groups = {}
     for group_name, teams in GROUPS_2026.items():
         team_ratings = {t: all_ratings[t] for t in teams}
 
-        # Match probabilities ordered by schedule
         matches = []
         schedule = MATCH_SCHEDULE.get(group_name, [])
         for i, j, date, venue in schedule:
@@ -518,9 +590,10 @@ def export_worldcup_json(elo: EloSystem, output_dir: Path) -> None:
                 team_b if team_b in HOST_NATIONS else ""
             )
             if home == team_b:
-                pa, pd, pb = match_probabilities(
+                pa, pd, pb = _marginal_match_probs(
                     team_ratings[team_b], team_ratings[team_a],
-                    home_team=team_b, neutral=False,
+                    home=team_b, neutral=False,
+                    sigma=RATING_SIGMA, n_samples=400, rng=rng,
                 )
                 matches.append({
                     "home": team_b, "away": team_a,
@@ -531,9 +604,10 @@ def export_worldcup_json(elo: EloSystem, output_dir: Path) -> None:
                     "date": date, "venue": venue,
                 })
             else:
-                pa, pd, pb = match_probabilities(
+                pa, pd, pb = _marginal_match_probs(
                     team_ratings[team_a], team_ratings[team_b],
-                    home_team=home, neutral=is_neutral,
+                    home=home, neutral=is_neutral,
+                    sigma=RATING_SIGMA, n_samples=400, rng=rng,
                 )
                 matches.append({
                     "home": team_a, "away": team_b,

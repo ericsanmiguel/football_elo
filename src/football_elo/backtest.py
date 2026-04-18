@@ -13,6 +13,7 @@ from __future__ import annotations
 
 import argparse
 import math
+import random
 from typing import Callable
 
 import pandas as pd
@@ -76,14 +77,38 @@ def _match_scores(prob_home: float, prob_draw: float, prob_away: float,
     return brier, log_loss
 
 
+def _match_probs_with_uncertainty(
+    r_home: float, r_away: float, home: str, is_neutral: bool,
+    sigma: float, n_samples: int, rng: random.Random,
+) -> tuple[float, float, float]:
+    """Average match_probabilities over N samples of ratings ~ N(mu, sigma).
+
+    Each team's rating is sampled independently. Returns marginal W/D/L.
+    """
+    if sigma <= 0:
+        return match_probabilities(r_home, r_away, home_team=home, neutral=is_neutral)
+    pw = pd_ = pl = 0.0
+    for _ in range(n_samples):
+        rh = r_home + rng.gauss(0, sigma)
+        ra = r_away + rng.gauss(0, sigma)
+        h, d, a = match_probabilities(rh, ra, home_team=home, neutral=is_neutral)
+        pw += h; pd_ += d; pl += a
+    return pw / n_samples, pd_ / n_samples, pl / n_samples
+
+
 def backtest_worldcup(
     year: int,
     ratings_fn: RatingsFn | None = None,
     gender: str = "men",
+    sigma: float = 0.0,
+    n_rating_samples: int = 400,
+    seed: int = 42,
 ) -> dict:
     """Score a rating function on a past WC.
 
     ratings_fn: team_name -> rating. If None, uses pure Elo snapshot at kickoff.
+    sigma: std dev of Gaussian rating uncertainty applied per-team per-sample.
+           0 disables uncertainty (pure analytical match_probabilities).
     Returns dict with n_matches, mean_brier, mean_log_loss, per_match list.
     """
     meta = WC_METADATA[year]
@@ -92,6 +117,7 @@ def backtest_worldcup(
         ratings_fn = lambda team: ratings.get(team, 1500.0)
 
     matches = load_tournament_matches(year, gender=gender)
+    rng = random.Random(seed)
     briers: list[float] = []
     losses: list[float] = []
     per_match: list[dict] = []
@@ -103,8 +129,8 @@ def backtest_worldcup(
         r_home = ratings_fn(home)
         r_away = ratings_fn(away)
 
-        p_home, p_draw, p_away = match_probabilities(
-            r_home, r_away, home_team=home, neutral=is_neutral
+        p_home, p_draw, p_away = _match_probs_with_uncertainty(
+            r_home, r_away, home, is_neutral, sigma, n_rating_samples, rng
         )
 
         brier, log_loss = _match_scores(
@@ -132,10 +158,39 @@ def backtest_worldcup(
         "year": year,
         "gender": gender,
         "n_matches": n,
+        "sigma": sigma,
         "mean_brier": sum(briers) / n if n else float("nan"),
         "mean_log_loss": sum(losses) / n if n else float("nan"),
         "per_match": per_match,
     }
+
+
+def calibrate_sigma(
+    years: list[int] = (2018, 2022),
+    gender: str = "men",
+    sigmas: list[float] = None,
+) -> dict:
+    """Grid search rating-uncertainty sigma to minimize pooled Brier."""
+    if sigmas is None:
+        sigmas = [0, 20, 40, 60, 80, 100, 120, 150, 200]
+    results = []
+    for s in sigmas:
+        row = {"sigma": s}
+        total_brier = 0.0
+        total_loss = 0.0
+        total_n = 0
+        for y in years:
+            r = backtest_worldcup(y, gender=gender, sigma=s)
+            row[f"brier_{y}"] = r["mean_brier"]
+            row[f"log_loss_{y}"] = r["mean_log_loss"]
+            total_brier += r["mean_brier"] * r["n_matches"]
+            total_loss += r["mean_log_loss"] * r["n_matches"]
+            total_n += r["n_matches"]
+        row["brier_pooled"] = total_brier / total_n
+        row["log_loss_pooled"] = total_loss / total_n
+        results.append(row)
+    best = min(results, key=lambda r: r["brier_pooled"])
+    return {"grid": results, "best": best}
 
 
 TEAM_NAME_MAP_SQUAD_TO_ELO = {
@@ -194,15 +249,16 @@ def calibrate_beta(
     years: list[int] = (2018, 2022),
     gender: str = "men",
     betas=None,
+    sigma: float = 0.0,
 ) -> dict:
-    """Grid search beta minimizing mean Brier across given WCs."""
+    """Grid search beta minimizing mean Brier. sigma fixes the rating uncertainty."""
     if betas is None:
-        betas = [round(x * 0.1, 1) for x in range(0, 16)]  # 0.0 to 1.5
+        betas = [round(x * 0.05, 2) for x in range(0, 11)]  # 0.00 to 0.50 by 0.05
 
-    # Baseline pure Elo for each year
+    # Baseline pure Elo for each year (at the given sigma)
     baseline = {}
     for y in years:
-        r = backtest_worldcup(y, gender=gender)
+        r = backtest_worldcup(y, gender=gender, sigma=sigma)
         baseline[y] = {"brier": r["mean_brier"], "log_loss": r["mean_log_loss"]}
 
     # Grid search
@@ -214,7 +270,7 @@ def calibrate_beta(
         total_matches = 0
         for y in years:
             fn, _ = composite_ratings_fn(y, gender=gender, beta=b)
-            r = backtest_worldcup(y, ratings_fn=fn, gender=gender)
+            r = backtest_worldcup(y, ratings_fn=fn, gender=gender, sigma=sigma)
             row[f"brier_{y}"] = r["mean_brier"]
             row[f"log_loss_{y}"] = r["mean_log_loss"]
             total_brier += r["mean_brier"] * r["n_matches"]
@@ -225,7 +281,54 @@ def calibrate_beta(
         results.append(row)
 
     best = min(results, key=lambda r: r["brier_pooled"])
-    return {"baseline": baseline, "grid": results, "best": best}
+    return {"baseline": baseline, "grid": results, "best": best, "sigma": sigma}
+
+
+def joint_calibrate(
+    years: list[int] = (2018, 2022),
+    gender: str = "men",
+    betas: list[float] = None,
+    sigmas: list[float] = None,
+) -> dict:
+    """Joint grid search over (beta, sigma) minimizing pooled Brier."""
+    if betas is None:
+        betas = [0.0, 0.05, 0.1, 0.15, 0.2, 0.3]
+    if sigmas is None:
+        sigmas = [0, 40, 60, 80, 100, 120, 150]
+
+    # Baseline pure Elo
+    base_total = 0.0; base_n = 0
+    for y in years:
+        r = backtest_worldcup(y, gender=gender, sigma=0)
+        base_total += r["mean_brier"] * r["n_matches"]
+        base_n += r["n_matches"]
+    baseline_brier = base_total / base_n
+
+    results = []
+    for b in betas:
+        for s in sigmas:
+            total_brier = 0.0
+            total_loss = 0.0
+            total_n = 0
+            for y in years:
+                if b > 0:
+                    fn, _ = composite_ratings_fn(y, gender=gender, beta=b)
+                else:
+                    meta = WC_METADATA[y]
+                    ratings = snapshot_ratings(gender=gender, through_date=meta["kickoff"])
+                    fn = lambda team, r=ratings: r.get(team, 1500.0)
+                r = backtest_worldcup(y, ratings_fn=fn, gender=gender, sigma=s)
+                total_brier += r["mean_brier"] * r["n_matches"]
+                total_loss += r["mean_log_loss"] * r["n_matches"]
+                total_n += r["n_matches"]
+            results.append({
+                "beta": b, "sigma": s,
+                "brier_pooled": total_brier / total_n,
+                "log_loss_pooled": total_loss / total_n,
+                "brier_lift_pct": (baseline_brier - total_brier / total_n) / baseline_brier * 100,
+            })
+    best = min(results, key=lambda r: r["brier_pooled"])
+    return {"baseline_brier": baseline_brier, "grid": results, "best": best}
 
 
 def cross_validate(gender: str = "men") -> dict:
@@ -262,8 +365,14 @@ def main() -> None:
     p.add_argument("--show-matches", type=int, default=0)
     p.add_argument("--calibrate", action="store_true",
                    help="Grid search beta across 2018+2022 and report best")
+    p.add_argument("--calibrate-sigma", action="store_true",
+                   help="Grid search rating-uncertainty sigma across 2018+2022")
+    p.add_argument("--joint-calibrate", action="store_true",
+                   help="2D grid search over (beta, sigma)")
     p.add_argument("--cross-validate", action="store_true",
                    help="Fit beta on one WC, test on the other")
+    p.add_argument("--sigma", type=float, default=0.0,
+                   help="Rating-uncertainty std dev (Elo points) for a single run")
     args = p.parse_args()
 
     if args.calibrate:
@@ -283,6 +392,38 @@ def main() -> None:
               f"pooled_log_loss={b['log_loss_pooled']:.4f}")
         return
 
+    if args.calibrate_sigma:
+        cal = calibrate_sigma(gender=args.gender)
+        print(f"=== Sigma calibration (men's WCs 2018+2022) ===")
+        print(f"  {'sigma':>6}  {'B_2018':>8}  {'B_2022':>8}  {'B_pool':>8}  {'LL_pool':>8}")
+        for r in cal["grid"]:
+            print(f"  {r['sigma']:>6.0f}  {r['brier_2018']:>8.4f}  "
+                  f"{r['brier_2022']:>8.4f}  {r['brier_pooled']:>8.4f}  "
+                  f"{r['log_loss_pooled']:>8.4f}")
+        b = cal["best"]
+        print(f"\nBest: sigma={b['sigma']}  pooled_brier={b['brier_pooled']:.4f}  "
+              f"pooled_log_loss={b['log_loss_pooled']:.4f}")
+        return
+
+    if args.joint_calibrate:
+        cal = joint_calibrate(gender=args.gender)
+        print(f"=== Joint (beta, sigma) calibration — baseline Brier {cal['baseline_brier']:.4f} ===")
+        # Build a matrix view: rows=beta, cols=sigma
+        betas = sorted(set(r["beta"] for r in cal["grid"]))
+        sigmas = sorted(set(r["sigma"] for r in cal["grid"]))
+        header = "  beta\\sigma " + "".join(f"{s:>8}" for s in sigmas)
+        print(header)
+        for b in betas:
+            line = f"  beta={b:<5.2f} "
+            for s in sigmas:
+                cell = next(r for r in cal["grid"] if r["beta"] == b and r["sigma"] == s)
+                line += f"{cell['brier_pooled']:>8.4f}"
+            print(line)
+        bst = cal["best"]
+        print(f"\nBest: beta={bst['beta']}  sigma={bst['sigma']}  "
+              f"brier_pooled={bst['brier_pooled']:.4f}  lift={bst['brier_lift_pct']:+.2f}%")
+        return
+
     if args.cross_validate:
         cv = cross_validate(gender=args.gender)
         print(f"=== Cross-validation ===")
@@ -298,10 +439,10 @@ def main() -> None:
         raise SystemExit("Need --year, or use --calibrate / --cross-validate")
 
     if args.model == "elo":
-        result = backtest_worldcup(args.year, gender=args.gender)
+        result = backtest_worldcup(args.year, gender=args.gender, sigma=args.sigma)
     else:
         fn, _ = composite_ratings_fn(args.year, gender=args.gender, beta=args.beta)
-        result = backtest_worldcup(args.year, ratings_fn=fn, gender=args.gender)
+        result = backtest_worldcup(args.year, ratings_fn=fn, gender=args.gender, sigma=args.sigma)
 
     header = f"=== {args.year} {args.gender}'s WC — {args.model} model"
     if args.model == "composite":
