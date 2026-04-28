@@ -58,7 +58,7 @@ export async function render(container) {
         <h2>Score Prediction Model</h2>
         <p>Match scores are predicted using an <strong>Elo-calibrated Poisson model</strong>. For each team, the expected number of goals is:</p>
         <div class="formula-block">&lambda; = &mu; &times; e<sup>c &times; dr + c<sub>2</sub> &times; dr<sup>2</sup></sup></div>
-        <p>Where <code>&mu; = 1.24</code> is the baseline goals per team, <code>c = 2.17 &times; 10<sup>&minus;3</sup></code> is the linear Elo scaling factor, <code>c<sub>2</sub> = &minus;5.25 &times; 10<sup>&minus;7</sup></code> is the quadratic term (negative, encoding sublinearity at extreme rating gaps), and <code>dr</code> is the adjusted rating difference including the +50 home advantage. Parameters were estimated by Poisson GLM on 64,202 team-match records from men's international results since 1990 (cluster-robust SEs by match) — see <code>src/football_elo/calibrate_poisson.py</code>.</p>
+        <p>Where <code>&mu; = 1.24</code> is the baseline goals per team, <code>c = 2.17 &times; 10<sup>&minus;3</sup></code> is the linear Elo scaling factor, <code>c<sub>2</sub> = &minus;5.25 &times; 10<sup>&minus;7</sup></code> is the quadratic term (negative, encoding sublinearity at extreme rating gaps), and <code>dr</code> is the adjusted rating difference including the +50 home advantage. Parameters were estimated by Poisson GLM on 64,202 team-match records from men's international results since 1990.</p>
         <p>Each team's goals are sampled independently from a Poisson distribution with their respective &lambda;. Win/draw/loss probabilities are derived analytically from the Poisson model by summing over all possible scorelines.</p>
 
         <h2>2026 World Cup Predictions</h2>
@@ -110,7 +110,7 @@ export async function render(container) {
         </ul>
 
         <h2>About</h2>
-        <p>This project was developed by <strong>Eric San Miguel</strong>.</p>
+        <p>This project was developed by <a href="https://ericsanmiguel.github.io/"><strong>Eric San Miguel</strong></a>.</p>
         <p>For questions, suggestions, or corrections, reach out at <a href="mailto:eric.sanmiguel@psu.edu">eric.sanmiguel@psu.edu</a>.</p>
     </div>
     `;
