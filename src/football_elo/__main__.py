@@ -139,7 +139,7 @@ def _export_gender(gender: str) -> None:
     """Download, compute, and export for a single gender."""
     print(f"\n=== {gender.upper()} ===")
     print("Downloading data...")
-    download_data(gender=gender)
+    download_data(gender=gender, force=True)
     print("Loading matches...")
     matches = load_all(gender=gender)
     print(f"  {len(matches)} matches loaded")
