@@ -44,13 +44,15 @@ def load_results(gender: str = "women", data_dir: Path = DATA_DIR) -> pd.DataFra
         dtype={
             "home_team": str,
             "away_team": str,
-            "home_score": int,
-            "away_score": int,
             "tournament": str,
             "city": str,
             "country": str,
         },
     )
+    # Drop scheduled/unplayed matches (NA scores) before casting to int.
+    df = df.dropna(subset=["home_score", "away_score"]).copy()
+    df["home_score"] = df["home_score"].astype(int)
+    df["away_score"] = df["away_score"].astype(int)
     # Normalize neutral column (may be TRUE/FALSE strings)
     df["neutral"] = df["neutral"].astype(str).str.upper() == "TRUE"
     # Normalize successor state names
