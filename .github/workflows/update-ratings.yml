@@ -2,8 +2,8 @@ name: Update Elo Ratings
 
 on:
   schedule:
-    # Every Monday at 6:00 AM UTC
-    - cron: '0 6 * * 1'
+    # Daily at 6:00 AM UTC (frequent updates through the 2026 World Cup)
+    - cron: '0 6 * * *'
   workflow_dispatch:  # Allow manual trigger from GitHub UI
 
 jobs:

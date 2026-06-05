@@ -1,6 +1,7 @@
 """Data download and loading from GitHub."""
 
 from pathlib import Path
+from uuid import uuid4
 
 import pandas as pd
 import requests
@@ -16,11 +17,19 @@ TEAM_NAME_MAP = {
 
 
 def download_file(url: str, dest: Path, force: bool = False) -> Path:
-    """Download a file from URL to dest. Skips if file exists unless force=True."""
+    """Download a file from URL to dest. Skips if file exists unless force=True.
+
+    Busts CDN caches: raw.githubusercontent.com edge nodes (hit by CI runners)
+    can serve a stale copy of frequently-updated source files for hours. A
+    no-cache header plus a throwaway query param forces a fresh fetch.
+    """
     if dest.exists() and not force:
         return dest
     dest.parent.mkdir(parents=True, exist_ok=True)
-    resp = requests.get(url, timeout=30)
+    sep = "&" if "?" in url else "?"
+    fetch_url = f"{url}{sep}nocache={uuid4().hex}"
+    headers = {"Cache-Control": "no-cache", "Pragma": "no-cache"}
+    resp = requests.get(fetch_url, headers=headers, timeout=30)
     resp.raise_for_status()
     dest.write_bytes(resp.content)
     return dest
