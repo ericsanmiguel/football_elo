@@ -413,13 +413,6 @@ async function renderSquads(content) {
     }
     content.innerHTML = '';
 
-    content.appendChild(el('p', {
-        style: 'color:var(--text-tertiary);margin-bottom:14px;font-size:0.9rem',
-        html: 'Every player is rated against others in his position (50&ndash;100, average 75), from '
-            + 'age-corrected Transfermarkt values. Each team\u2019s four unit scores rank it against the other '
-            + '47 squads. Click a team for the full roster.',
-    }));
-
     // Sort control
     const controls = el('div', { class: 'squads-controls' });
     controls.appendChild(el('span', { class: 'squads-sort-label', text: 'Sort by' }));
