@@ -8,8 +8,10 @@ Per nation we read three Transfermarkt views and join them on the stable player 
 * ``leistungsdaten/.../reldata/FIWC&2025`` — the *authoritative tournament squad*
   (exactly the registered 23-26), giving player id, name, position group and shirt
   number, but no market value or club.
-* ``kader/.../saison_id/2025`` — the national-team pool, which carries market value,
-  club and date of birth for the players TM already lists there.
+* ``kader/...`` (current squad view) — the national-team pool, which carries the
+  current market value, club and date of birth for the players TM already lists
+  there. We deliberately omit ``saison_id`` because the season-pinned view returns
+  stale season-start valuations for players whose value moved recently.
 * the player profile page — fallback for squad members not yet on the pool page
   (new call-ups TM hasn't folded into the curated national squad).
 
@@ -41,7 +43,6 @@ HEADERS = {
 
 # 2026 World Cup tournament coordinates on Transfermarkt.
 COMPETITION = "FIWC"          # FIFA World Cup competition id
-SEASON_ID = "2025"           # 2025/26 season hosts the 2026 finals
 RELDATA = "FIWC%262025"      # reldata/<competition>&<season>, %26 == '&'
 KICKOFF = datetime.date(2026, 6, 11)
 
@@ -246,8 +247,12 @@ def scrape_nation(fetch: _Fetcher, team: str, slug: str, vid: str) -> list[dict]
     squad = _parse_squad_table(
         fetch.get(f"{BASE}/{slug}/leistungsdaten/verein/{vid}/reldata/{RELDATA}/plus/1")
     )
+    # No saison_id: TM serves the *current* squad with current market values.
+    # The season-pinned view returns stale season-start valuations for players
+    # whose value moved recently (e.g. rising youngsters), so we avoid it and
+    # let the profile-page fallback cover squad members not in the current pool.
     pool = _parse_squad_table(
-        fetch.get(f"{BASE}/{slug}/kader/verein/{vid}/saison_id/{SEASON_ID}/plus/1")
+        fetch.get(f"{BASE}/{slug}/kader/verein/{vid}/plus/1")
     )
     rows: list[dict] = []
     for pid, p in squad.items():

@@ -393,6 +393,9 @@ function slugify(name) {
 
 const POS_GROUPS = ['GK', 'DEF', 'MID', 'FWD'];
 const POS_LABELS = { GK: 'Goalkeepers', DEF: 'Defenders', MID: 'Midfielders', FWD: 'Forwards' };
+// Ratings live in [RATING_FLOOR, 100]; map that band to 0-100% for bar/color.
+const RATING_FLOOR = 50;
+const ratingFrac = (v) => Math.max(0, Math.min(1, (v - RATING_FLOOR) / (100 - RATING_FLOOR)));
 const SQUAD_SORT_KEYS = [
     ['overall', 'Average'], ['GK', 'GK'], ['DEF', 'Defense'], ['MID', 'Midfield'], ['FWD', 'Attack'],
 ];
@@ -412,9 +415,9 @@ async function renderSquads(content) {
 
     content.appendChild(el('p', {
         style: 'color:var(--text-tertiary);margin-bottom:14px;font-size:0.9rem',
-        html: 'Every player is rated 0&ndash;100 against others in his position, from age-corrected '
-            + 'Transfermarkt values. Each team\u2019s four unit scores rank it against the other 47 squads. '
-            + 'Click a team for the full roster.',
+        html: 'Every player is rated against others in his position (50&ndash;100, average 75), from '
+            + 'age-corrected Transfermarkt values. Each team\u2019s four unit scores rank it against the other '
+            + '47 squads. Click a team for the full roster.',
     }));
 
     // Sort control
@@ -440,23 +443,42 @@ async function renderSquads(content) {
     content.appendChild(grid);
 }
 
-function scoreFill(value) {
-    // Blue tint matching the Overview index cells; 0-100 -> intensity.
-    const intensity = Math.max(0, Math.min(1, value / 100));
-    return `rgba(93, 143, 255, ${0.25 + intensity * 0.6})`;
+// Value-keyed color scale: red (low) -> amber (mid) -> green (high), echoing the
+// green-good / red-bad coding of the World Cup probability cells.
+const SCORE_STOPS = [
+    [0.0, [239, 68, 68]],   // red
+    [0.5, [245, 197, 66]],  // amber
+    [1.0, [6, 214, 160]],   // accent green
+];
+function scoreColor(value) {
+    const t = ratingFrac(value);
+    let lo = SCORE_STOPS[0], hi = SCORE_STOPS[SCORE_STOPS.length - 1];
+    for (let i = 0; i < SCORE_STOPS.length - 1; i++) {
+        if (t >= SCORE_STOPS[i][0] && t <= SCORE_STOPS[i + 1][0]) { lo = SCORE_STOPS[i]; hi = SCORE_STOPS[i + 1]; break; }
+    }
+    const f = (t - lo[0]) / ((hi[0] - lo[0]) || 1);
+    return lo[1].map((ch, k) => Math.round(ch + (hi[1][k] - ch) * f));
 }
+const rgba = (c, a) => `rgba(${c[0]},${c[1]},${c[2]},${a})`;
+// Dark numerals on bright (amber/green) fills, light on red, by luminance.
+const textOn = (c) => (0.299 * c[0] + 0.587 * c[1] + 0.114 * c[2] > 140 ? '#0b1220' : '#fff');
 
 function squadScoreBar(label, value) {
+    const c = scoreColor(value ?? RATING_FLOOR);
     const row = el('div', { class: 'squad-score-row' });
     row.appendChild(el('span', { class: 'squad-score-label', text: label }));
     const track = el('div', { class: 'squad-score-track' });
     const fill = el('div', {
         class: 'squad-score-fill',
-        style: `width:${value == null ? 0 : value}%;background:${scoreFill(value ?? 0)}`,
+        style: `width:${value == null ? 0 : (ratingFrac(value) * 100).toFixed(1)}%;background:${rgba(c, 0.9)}`,
     });
     track.appendChild(fill);
     row.appendChild(track);
-    row.appendChild(el('span', { class: 'squad-score-val', text: value == null ? '\u2013' : value.toFixed(0) }));
+    row.appendChild(el('span', {
+        class: 'squad-score-val',
+        text: value == null ? '\u2013' : value.toFixed(0),
+        style: value == null ? '' : `color:${rgba(c, 1)}`,
+    }));
     return row;
 }
 
@@ -468,7 +490,11 @@ function buildSquadCard(t) {
     if (flag) header.appendChild(flag);
     header.appendChild(el('span', { class: 'squad-card-name', text: t.name }));
     if (t.group) header.appendChild(el('span', { class: 'squad-card-group', text: `Grp ${t.group}` }));
-    if (t.scores?.overall != null) header.appendChild(el('span', { class: 'squad-card-overall', text: t.scores.overall.toFixed(0) }));
+    if (t.scores?.overall != null) header.appendChild(el('span', {
+        class: 'squad-card-overall',
+        text: t.scores.overall.toFixed(0),
+        style: `color:${rgba(scoreColor(t.scores.overall), 1)}`,
+    }));
     card.appendChild(header);
 
     const bars = el('div', { class: 'squad-bars' });
@@ -495,10 +521,11 @@ function buildPlayerRow(p) {
     if (p.value != null) meta.appendChild(el('span', { text: formatValue(p.value) }));
     row.appendChild(meta);
     const rating = p.rating == null ? '\u2013' : p.rating.toFixed(0);
+    const c = p.rating == null ? null : scoreColor(p.rating);
     row.appendChild(el('span', {
         class: 'squad-player-rating',
         text: rating,
-        style: p.rating == null ? '' : `background:${scoreFill(p.rating)}`,
+        style: c == null ? '' : `background:${rgba(c, 0.9)};color:${textOn(c)}`,
     }));
     return row;
 }

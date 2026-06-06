@@ -91,16 +91,21 @@ def load_tournament_squads(year: int) -> pd.DataFrame:
 # Same age-adjust + log methodology as the team squad index, but normalized
 # *within position group* so a goalkeeper is rated against other goalkeepers,
 # not against forwards (whose Transfermarkt values run systematically higher).
-# A z-score is mapped to a FIFA-like 0-100 scale: rating = clamp(50 + K*z).
+# A z-score is mapped to a FIFA-like band: rating = clamp(CENTER + SPREAD*z).
 # ---------------------------------------------------------------------------
 
 # Transfermarkt position_code -> display position group.
 POSITION_GROUPS = {"GK": "GK", "DF": "DEF", "MF": "MID", "FW": "FWD"}
 GROUP_ORDER = ["GK", "DEF", "MID", "FWD"]
 
-# Spread of the 0-100 scale: a +1 SD player scores 50 + K. ~18 keeps the bulk of
-# players in roughly 30-95 with the endpoints (0/100) reserved for true outliers.
-PLAYER_RATING_K = 18.0
+# Rating band. The position-group average sits at RATING_CENTER, each standard
+# deviation is worth RATING_SPREAD points, and the result is clamped to
+# [RATING_FLOOR, RATING_CEIL]. With center 75 and spread 10, ~2.5 SD reaches the
+# 50/100 edges, so the bulk of players land between 60 and 90.
+RATING_CENTER = 75.0
+RATING_SPREAD = 10.0
+RATING_FLOOR = 50.0
+RATING_CEIL = 100.0
 
 
 def position_group(position_code: object) -> str | None:
@@ -108,12 +113,15 @@ def position_group(position_code: object) -> str | None:
     return POSITION_GROUPS.get(str(position_code).strip().upper())
 
 
-def _clip(x: float, lo: float = 0.0, hi: float = 100.0) -> float:
+def _clip(x: float, lo: float = RATING_FLOOR, hi: float = RATING_CEIL) -> float:
     return max(lo, min(hi, x))
 
 
-def _rating_from_scores(scores: dict[object, float], k: float) -> dict[object, float]:
-    """z-normalize a {key: score} map and rescale to clamp(50 + k*z, 0, 100)."""
+def _rating_from_scores(
+    scores: dict[object, float],
+    center: float = RATING_CENTER, spread: float = RATING_SPREAD,
+) -> dict[object, float]:
+    """z-normalize a {key: score} map and rescale to clamp(center + spread*z)."""
     vals = [v for v in scores.values() if not math.isnan(v)]
     if not vals:
         return {}
@@ -123,20 +131,19 @@ def _rating_from_scores(scores: dict[object, float], k: float) -> dict[object, f
     for key, v in scores.items():
         if math.isnan(v):
             continue
-        z = 0.0 if sd == 0 else (v - mu) / sd
-        out[key] = round(_clip(50.0 + k * z), 1)
+        z = 0.0 if sd < 1e-9 else (v - mu) / sd  # tolerance: a uniform group is z=0
+        out[key] = round(_clip(center + spread * z), 1)
     return out
 
 
 def player_position_ratings(
     squad_df: pd.DataFrame, tm_curve: dict[int, float] | None = None,
-    k: float = PLAYER_RATING_K,
 ) -> pd.DataFrame:
-    """Add ``pgroup``, ``pscore`` and ``rating`` (0-100) columns to a squad frame.
+    """Add ``pgroup``, ``pscore`` and ``rating`` (50-100) columns to a squad frame.
 
     ``pscore`` is the log-transformed age-adjusted value (the same per-player
     score the team index aggregates). ``rating`` z-normalizes ``pscore`` within
-    each position group across all teams' players, then maps it to 0-100.
+    each position group across all teams' players, then maps it to the band.
     """
     df = squad_df.copy()
     df["pgroup"] = df["position_code"].map(position_group)
@@ -149,19 +156,19 @@ def player_position_ratings(
     for group in GROUP_ORDER:
         idx = df.index[df["pgroup"] == group]
         scores = {i: df.at[i, "pscore"] for i in idx}
-        for i, rating in _rating_from_scores(scores, k).items():
+        for i, rating in _rating_from_scores(scores).items():
             df.at[i, "rating"] = rating
     return df
 
 
 def team_position_scores(
-    rated_df: pd.DataFrame, k: float = PLAYER_RATING_K,
+    rated_df: pd.DataFrame,
 ) -> dict[str, dict[str, float]]:
-    """Per-team GK/DEF/MID/FWD scores (0-100), plus an ``overall`` average.
+    """Per-team GK/DEF/MID/FWD scores (50-100), plus an ``overall`` average.
 
     For each position group, a team's mean ``pscore`` is z-normalized across the
-    48 teams and mapped to 0-100 — i.e. how strong that team's unit is relative
-    to the other teams' units in the same position.
+    48 teams and mapped to the band — i.e. how strong that team's unit is
+    relative to the other teams' units in the same position.
     """
     out: dict[str, dict[str, float]] = {t: {} for t in rated_df["team"].unique()}
     for group in GROUP_ORDER:
@@ -171,7 +178,7 @@ def team_position_scores(
             vals = [v for v in rows["pscore"] if not (isinstance(v, float) and math.isnan(v))]
             if vals:
                 team_means[team] = sum(vals) / len(vals)
-        for team, rating in _rating_from_scores(team_means, k).items():
+        for team, rating in _rating_from_scores(team_means).items():
             out[team][group] = rating
     for team, scores in out.items():
         present = [scores[g] for g in GROUP_ORDER if g in scores]

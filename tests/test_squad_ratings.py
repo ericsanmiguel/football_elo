@@ -39,10 +39,16 @@ class TestPositionGroup:
 
 class TestPlayerRatings:
     def test_within_bounds(self):
-        # A wide value spread including an extreme outlier stays clamped to [0,100].
+        # A wide value spread including an extreme outlier stays clamped to [50,100].
         rows = [("A", "FW", 25, v) for v in (1e5, 1e6, 1e7, 5e7, 3e8)]
         df = player_position_ratings(_squad(rows))
-        assert df["rating"].between(0, 100).all()
+        assert df["rating"].between(50, 100).all()
+
+    def test_equal_values_map_to_center(self):
+        # No spread within a position -> everyone sits at the center (75).
+        rows = [("A", "MF", 26, 2e7), ("B", "MF", 26, 2e7), ("C", "MF", 26, 2e7)]
+        df = player_position_ratings(_squad(rows))
+        assert (df["rating"] == 75.0).all()
 
     def test_monotonic_within_position(self):
         # Same age, increasing value -> non-decreasing rating within a position.
@@ -77,7 +83,7 @@ class TestTeamPositionScores:
         scores = team_position_scores(player_position_ratings(_squad(rows)))
         for team in ("A", "B", "C"):
             for g in GROUP_ORDER:
-                assert 0 <= scores[team][g] <= 100
+                assert 50 <= scores[team][g] <= 100
             assert scores[team]["overall"] == pytest.approx(
                 sum(scores[team][g] for g in GROUP_ORDER) / 4, abs=0.1
             )

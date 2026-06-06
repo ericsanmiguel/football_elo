@@ -506,15 +506,15 @@ Mexico    & 1960 & 1963 & 2.2\%  & 1.6\%  \\
 
 The Squads tab re-uses the same per-player score $\tilde{s}(v,a)$ of Equation~\eqref{eq:log_transform}, but normalizes \emph{within position group} rather than across whole squads. This is a display feature only: it does not enter the composite rating or the Monte Carlo predictions. Players are grouped into goalkeepers, defenders, midfielders, and forwards (GK/DEF/MID/FWD) from their Transfermarkt position codes.
 
-\paragraph{Player rating.} Within each position group $g$, player scores are z-normalized across all participating players in that group and mapped to a $0$--$100$ scale,
+\paragraph{Player rating.} Within each position group $g$, player scores are z-normalized across all participating players in that group and mapped to a FIFA-like band centered at $C = 75$,
 \begin{equation}
-\rho_p = \operatorname{clip}\!\bigl(50 + K\,z_{p}^{(g)},\; 0,\; 100\bigr), \qquad
+\rho_p = \operatorname{clip}\!\bigl(C + S\,z_{p}^{(g)},\; 50,\; 100\bigr), \qquad
 z_{p}^{(g)} = \frac{\tilde{s}(v_p, a_p) - \bar{\tilde{s}}^{(g)}}{\sigma_{\tilde{s}}^{(g)}},
 \label{eq:player_rating}
 \end{equation}
-with $K = 18$. Normalizing within position keeps goalkeepers --- whose market values run systematically below outfield players --- on the same footing as forwards, so each player is judged against his peers.
+with center $C = 75$ and spread $S = 10$ points per standard deviation, so the group average scores 75 and roughly $\pm 2.5$ SD reaches the 50/100 edges. Normalizing within position keeps goalkeepers --- whose market values run systematically below outfield players --- on the same footing as forwards, so each player is judged against his peers.
 
-\paragraph{Team unit scores.} For each team and each group $g$, the team's mean within-group score $\bar{\tilde{s}}_T^{(g)}$ is z-normalized across the 48 teams and mapped to $0$--$100$ by the same transform, yielding a GK/DEF/MID/FWD rating that places each team's unit against the other 47. The four are averaged for a single summary figure. The computation is in \texttt{src/football\_elo/squad\_strength.py} (\texttt{player\_position\_ratings}, \texttt{team\_position\_scores}).
+\paragraph{Team unit scores.} For each team and each group $g$, the team's mean within-group score $\bar{\tilde{s}}_T^{(g)}$ is z-normalized across the 48 teams and mapped through the same band, yielding a GK/DEF/MID/FWD rating that places each team's unit against the other 47. The four are averaged for a single summary figure. The computation is in \texttt{src/football\_elo/squad\_strength.py} (\texttt{player\_position\_ratings}, \texttt{team\_position\_scores}); $C$ and $S$ are the \texttt{RATING\_CENTER}/\texttt{RATING\_SPREAD} constants.
 
 \subsection{Next Steps}
 
