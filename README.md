@@ -32,6 +32,7 @@ Elo ratings for men's and women's international football (soccer) teams, with an
 - Full tournament simulation (10,000 Monte Carlo iterations)
 - **Overview tab** — all 48 teams with Elo, Squad Index, Combined Index, and round-by-round advancement probabilities (R32 → Winner)
 - **Groups tab** — 12 groups with per-team standings probabilities (1st / 2nd / 3rd / 4th) and per-match W/D/L bars
+- **Squads tab** — official 26-man rosters with every player rated 0–100 within his position, plus GK / defense / midfield / attack unit scores for each team (display only — does not feed predictions)
 - **Build Your Bracket** — predict every group-stage score (auto-computes standings and 3rd-place qualification), pick knockout winners, or hit *Simulate Tournament* to fill from a Monte Carlo draw; state persists in `localStorage`
 
 ## Methodology
@@ -51,6 +52,8 @@ World Cup predictions use an **Elo-calibrated Poisson score model**: expected go
 
 For the 2026 simulation, base Elo is blended with a **squad-strength index** built from age-corrected Transfermarkt market values: `R_composite = R_Elo + β × z_squad × σ_Elo`, with `β = 0.25` calibrated on 2018+2022 men's World Cup hindcasts. Each Monte Carlo draw also samples team ratings from `N(μ, σ²)` with `σ = 120` Elo points to reflect rating uncertainty.
 
+The **Squads tab** reuses the same per-player score but normalizes it *within position* (`rating = clamp(50 + 18·z, 0, 100)`), so each player is rated against others in his position; team GK/DEF/MID/FWD scores normalize each unit across the 48 teams. These ratings are display-only and do not affect predictions.
+
 See the [full methodology](https://ericsanmiguel.github.io/football_elo/#/methodology) on the website, or the [LaTeX appendix](docs/methodology_appendix.tex) for formal documentation.
 
 ## Data Sources
@@ -60,7 +63,7 @@ Match data by Mart Jurisoo (CC0 public domain):
 - **Women's:** [martj42/womens-international-results](https://github.com/martj42/womens-international-results) — 11,000+ matches from 1956
 
 Squad data:
-- **Squads:** `data/squads/{2018,2022,2026}.csv` — Transfermarkt rosters and market values at each tournament's kickoff date
+- **Squads:** `data/squads/{2018,2022,2026}.csv` — Transfermarkt rosters and market values at each tournament's kickoff date. The 2026 file holds the official 26-man squads (with `position_code` and `club`), scraped from Transfermarkt via `python -m football_elo scrape-squads --year 2026`.
 
 ## Usage
 

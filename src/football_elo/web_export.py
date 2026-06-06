@@ -559,6 +559,59 @@ def export_tournaments_json(gender: str, output_dir: Path) -> None:
     )
 
 
+def export_squads_json(output_dir: Path, year: int = 2026) -> None:
+    """Export per-team position ratings and player lists for the Squads tab.
+
+    Each player is rated 0-100 within his position group; each team gets
+    GK/DEF/MID/FWD scores (relative to the other teams' units) plus an average.
+    Display-only: this does not feed the match predictions.
+    """
+    from .squad_strength import (
+        GROUP_ORDER,
+        load_tournament_squads,
+        player_position_ratings,
+        team_position_scores,
+    )
+    from .worldcup import GROUPS_2026
+
+    df = load_tournament_squads(year)
+    rated = player_position_ratings(df)
+    scores = team_position_scores(rated)
+    team_group = {t: g for g, teams in GROUPS_2026.items() for t in teams}
+    order = {g: i for i, g in enumerate(GROUP_ORDER)}
+
+    teams: dict[str, dict] = {}
+    for team, sub in rated.groupby("team"):
+        players = []
+        for _, r in sub.iterrows():
+            players.append({
+                "player": r["player"],
+                "pos": r["pgroup"],
+                "pos_code": r["position_code"],
+                "club": None if pd.isna(r.get("club")) else r["club"],
+                "age": None if pd.isna(r["age_at_kickoff"]) else round(float(r["age_at_kickoff"]), 1),
+                "value": None if pd.isna(r["value_at_kickoff"]) else int(r["value_at_kickoff"]),
+                "rating": None if pd.isna(r["rating"]) else r["rating"],
+            })
+        players.sort(key=lambda p: (order.get(p["pos"], 9), -(p["rating"] or 0)))
+        teams[team] = {
+            "slug": slugify(team),
+            "group": team_group.get(team),
+            "scores": scores.get(team, {}),
+            "players": players,
+        }
+
+    data = {
+        "tournament": "2026 FIFA World Cup",
+        "kickoff": "2026-06-11",
+        "position_groups": GROUP_ORDER,
+        "teams": teams,
+    }
+    (output_dir / "squads2026.json").write_text(
+        json.dumps(data, separators=(",", ":")), encoding="utf-8"
+    )
+
+
 def export_all(
     elo: EloSystem, gender: str = "women", base_dir: Path = DOCS_DIR
 ) -> None:
@@ -602,3 +655,5 @@ def export_all(
         print("    Computing World Cup 2026 predictions...")
         export_worldcup_json(elo, output_dir)
         print("    worldcup2026.json")
+        export_squads_json(output_dir)
+        print("    squads2026.json")

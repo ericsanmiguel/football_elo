@@ -1,1153 +1,1245 @@
-team,player,player_id,date_of_birth,age_at_kickoff,value_at_kickoff
-Mexico,Santiago Gimenez,552955,2001-04-18,25.15,20000000.0
-Mexico,Edson Álvarez,401356,1997-10-24,28.63,18000000.0
-Mexico,Armando González,837619,2003-04-20,23.14,15000000.0
-Mexico,Johan Vásquez,532937,1998-10-22,27.64,13000000.0
-Mexico,Julián Quiñones,416090,1997-03-24,29.22,12000000.0
-Mexico,Érik Lira,602324,2000-05-08,26.09,12000000.0
-Mexico,Álvaro Fidalgo,261503,1997-04-09,29.17,10000000.0
-Mexico,Gilberto Mora,1155723,2008-10-14,17.66,10000000.0
-Mexico,Marcel Ruiz,597728,2000-10-26,25.62,10000000.0
-Mexico,Julián Araujo,513970,2001-08-13,24.83,10000000.0
-Mexico,Alexis Vega,424689,1997-11-25,28.54,9000000.0
-Mexico,Germán Berterame,401572,1998-11-13,27.58,8500000.0
-Mexico,Hirving Lozano,316889,1995-07-30,30.87,8000000.0
-Mexico,Obed Vargas,889435,2005-08-05,20.85,8000000.0
-Mexico,Luis Chávez,331059,1996-01-15,30.4,7000000.0
-Mexico,Orbelín Pineda,334042,1996-03-24,30.21,7000000.0
-Mexico,César Montes,387687,1997-02-24,29.29,7000000.0
-Mexico,Luis Malagón,423619,1997-03-02,29.28,6500000.0
-Mexico,Diego Lainez,371174,2000-06-09,26.0,6500000.0
-Mexico,Érick Sánchez,370875,1999-09-27,26.7,6000000.0
-Mexico,Rodrigo Huescas,668529,2003-09-18,22.73,6000000.0
-Mexico,Efraín Álvarez,504113,2002-06-19,23.98,6000000.0
-Mexico,Jesús Orozco Chiquete,915155,2002-02-19,24.31,6000000.0
-Mexico,Raúl Rangel,802855,2000-02-25,26.29,6000000.0
-Mexico,Roberto Alvarado,353583,1998-09-07,27.76,6000000.0
-Mexico,Bryan González,704556,2003-04-10,23.17,6000000.0
-South Africa,Lyle Foster,467623,2000-09-03,25.77,10000000.0
-South Africa,Bongokuhle Hlongwane,669202,2000-06-20,25.97,3500000.0
-South Africa,Siyabonga Ngezana,445610,1997-07-15,28.91,2600000.0
-South Africa,Mbekezeli Mbokazi,1378320,2005-09-19,20.73,2500000.0
-South Africa,Olwethu Makhanya,1069801,2004-04-30,22.11,2000000.0
-South Africa,Samukele Kabini,1175086,2004-03-15,22.24,2000000.0
-South Africa,Gift Links,445616,1998-10-02,27.69,1500000.0
-South Africa,Lebo Mothiba,427161,1996-01-28,30.37,1500000.0
-South Africa,Percy Tau,312239,1994-05-13,32.08,1500000.0
-South Africa,Kobamelo Kodisang,390478,1999-08-28,26.79,1500000.0
-South Africa,Keagan Dolly,234006,1993-01-22,33.38,1400000.0
-South Africa,Shandre Campbell,1159786,2005-07-15,20.91,1000000.0
-South Africa,Mohau Nkota,1236525,2004-11-09,21.59,800000.0
-South Africa,Puso Dithejane,1151605,2004-07-24,21.88,800000.0
-South Africa,Elias Mokwana,968496,1999-09-08,26.76,700000.0
-South Africa,Ethan Brooks,829410,2001-11-22,24.55,700000.0
-South Africa,Yaya Sithole,401736,1999-03-03,27.27,600000.0
-South Africa,Antonio Van Wyk,898140,2002-03-30,24.2,600000.0
-South Africa,Yusuf Maart,494384,1995-07-17,30.9,600000.0
-South Africa,Luke Le Roux,467616,2000-03-10,26.25,600000.0
-South Africa,Thabo Cele,471286,1997-01-15,29.4,400000.0
-South Africa,Cafú Phete,388581,1994-04-04,32.19,350000.0
-South Africa,Shinga,467610,2000-03-30,26.2,300000.0
-South Africa,Aphelele Teto,990590,2003-06-13,23.0,300000.0
-South Africa,Lebogang Phiri,253316,1994-11-09,31.59,150000.0
-South Korea,Kang-in Lee,557149,2001-02-19,25.31,28000000.0
-South Korea,Min-jae Kim,503482,1996-11-15,29.57,25000000.0
-South Korea,Heung-min Son,91845,1992-07-08,33.92,17000000.0
-South Korea,Hyeon-gyu Oh,639246,2001-04-12,25.16,15000000.0
-South Korea,In-beom Hwang,365394,1996-09-20,29.72,8000000.0
-South Korea,Hee-chan Hwang,292246,1996-01-26,30.37,8000000.0
-South Korea,Jens Castrop,613192,2003-07-29,22.87,6000000.0
-South Korea,Young-woo Seol,639414,1998-12-05,27.52,5000000.0
-South Korea,Woo-yeong Jeong,297583,1999-09-20,26.72,3500000.0
-South Korea,Hyun-jun Yang,853110,2002-05-25,24.05,3000000.0
-South Korea,Gue-sung Cho,652537,1998-01-25,28.38,3000000.0
-South Korea,Hyun-seok Hong,562948,1999-06-16,26.99,3000000.0
-South Korea,Min-hyeok Yang,1004327,2006-04-16,20.15,3000000.0
-South Korea,Min-su Kim,1108203,2006-01-19,20.39,2000000.0
-South Korea,Jae-sung Lee,314398,1992-08-10,33.83,2000000.0
-South Korea,Han-beom Lee,706963,2002-06-17,23.98,1800000.0
-South Korea,Sang-bin Jeong,638571,2002-04-01,24.19,1800000.0
-South Korea,Dong-gyeong Lee,558086,1997-09-20,28.72,1600000.0
-South Korea,Hyun-ju Lee,709166,2003-02-07,23.34,1500000.0
-South Korea,Tae-seok Lee,639027,2002-07-28,23.87,1500000.0
-South Korea,Jin-gyu Kim,365377,1997-02-24,29.29,1200000.0
-South Korea,Seung-hyun Jung,379438,1994-04-03,32.19,1200000.0
-South Korea,Hyeok-kyu Kwon,550957,2001-03-13,25.25,1000000.0
-South Korea,Bum-keun Song,508237,1997-10-15,28.65,1000000.0
-South Korea,Bong-soo Kim,782763,1999-12-26,26.46,1000000.0
-South Korea,Min-kyu Song,581977,1999-09-12,26.75,900000.0
-Czech Republic,Ladislav Krejčí,345911,1999-04-20,27.14,22000000.0
-Czech Republic,Pavel Sulc,500053,2000-12-29,25.45,20000000.0
-Czech Republic,Patrik Schick,242086,1996-01-24,30.38,20000000.0
-Czech Republic,Lukas Hornicek,629773,2002-07-13,23.91,15000000.0
-Czech Republic,Antonín Kinský,725912,2003-03-13,23.25,13000000.0
-Czech Republic,Tomáš Souček,283628,1995-02-27,31.29,12000000.0
-Czech Republic,Adam Hlozek,552057,2002-07-25,23.88,12000000.0
-Czech Republic,Robin Hranac,620217,2000-01-29,26.37,10000000.0
-Czech Republic,Martin Vitík,652054,2003-01-21,23.39,10000000.0
-Czech Republic,Adam Karabec,652061,2003-07-02,22.94,8000000.0
-Czech Republic,Vaclav Cerny,242063,1997-10-17,28.65,8000000.0
-Czech Republic,Lukas Provod,292779,1996-10-23,29.63,8000000.0
-Czech Republic,Michal Sadílek,321204,1999-05-31,27.03,8000000.0
-Czech Republic,Stepan Chaloupek,944827,2003-03-08,23.26,8000000.0
-Czech Republic,David Zima,544149,2000-11-08,25.59,7000000.0
-Czech Republic,Matej Kovar,550829,2000-05-17,26.07,7000000.0
-Czech Republic,Patrik Vydra,655300,2003-06-20,22.98,7000000.0
-Czech Republic,Lukas Cerv,611049,2001-04-10,25.17,6000000.0
-Czech Republic,Vitezslav Jaros,486604,2001-07-23,24.88,5000000.0
-Czech Republic,David Jurásek,500054,2000-08-07,25.84,5000000.0
-Czech Republic,Matej Rynes,539197,2001-05-30,25.03,4500000.0
-Czech Republic,Tomas Vlcek,534568,2001-02-28,25.28,4500000.0
-Czech Republic,Adam Sevinsky,929887,2004-06-19,21.98,4500000.0
-Czech Republic,Antonín Barák,272261,1994-12-03,31.52,4500000.0
-Czech Republic,Vasil Kusej,396235,2000-05-24,26.05,4500000.0
-Czech Republic,Jan Koutny,935447,2004-10-14,21.66,4000000.0
-Canada,Alphonso Davies,424204,2000-11-02,25.6,45000000.0
-Canada,Jonathan David,533738,2000-01-14,26.41,35000000.0
-Canada,Ismaël Koné,921655,2002-06-16,23.99,20000000.0
-Canada,Promise David,888785,2001-07-03,24.94,17000000.0
-Canada,Tajon Buchanan,638793,1999-02-08,27.34,12000000.0
-Canada,Alistair Johnston,637446,1998-10-08,27.67,8000000.0
-Canada,Tani Oluwaseyi,972465,2000-05-15,26.07,8000000.0
-Canada,Moïse Bombito,1089202,2000-03-30,26.2,8000000.0
-Canada,Stephen Eustaquio,512913,1996-12-21,29.47,7000000.0
-Canada,Nathan-Dylan Saliba,842420,2004-02-07,22.34,6000000.0
-Canada,Jacob Shaffelburg,637632,1999-11-26,26.54,4000000.0
-Canada,Marcelo Flores,668495,2003-10-01,22.69,4000000.0
-Canada,Niko Sigur,1045375,2003-09-09,22.75,4000000.0
-Canada,Daniel Jebbison,746740,2003-08-13,22.83,4000000.0
-Canada,Jacen Russell-Rowe,683625,2002-09-13,23.74,3500000.0
-Canada,Cyle Larin,343463,1995-04-17,31.15,3500000.0
-Canada,Dayne St. Clair,439750,1997-05-09,29.09,3500000.0
-Canada,Derek Cornelius,328609,1997-11-25,28.54,3000000.0
-Canada,Kamal Miller,487504,1997-05-16,29.07,2500000.0
-Canada,Jayden Nelson,635445,2002-09-26,23.71,2500000.0
-Canada,Alfie Jones,340990,1997-10-07,28.68,2500000.0
-Canada,Joel Waterman,441738,1996-01-24,30.38,2500000.0
-Canada,Maxime Crépeau,189014,1994-05-11,32.08,2500000.0
-Canada,Theo Corbeanu,568535,2002-05-17,24.07,1800000.0
-Canada,Theo Bair,501709,1999-08-27,26.79,1800000.0
-Canada,Liam Millar,487417,1999-09-27,26.7,1700000.0
-Bosnia and Herzegovina,Ermedin Demirovic,335457,1998-03-25,28.21,22000000.0
-Bosnia and Herzegovina,Tarik Muharemović,679423,2003-02-28,23.28,20000000.0
-Bosnia and Herzegovina,Amar Dedić,519184,2002-08-18,23.81,15000000.0
-Bosnia and Herzegovina,Kerim Alajbegovic,929994,2007-09-21,18.72,15000000.0
-Bosnia and Herzegovina,Anel Ahmedhodzic,377468,1999-03-26,27.21,12000000.0
-Bosnia and Herzegovina,Sead Kolasinac,94005,1993-06-20,32.97,6000000.0
-Bosnia and Herzegovina,Esmir Bajraktarevic,925862,2005-03-10,21.25,5000000.0
-Bosnia and Herzegovina,Nikola Vasilj,248454,1995-12-02,30.52,4500000.0
-Bosnia and Herzegovina,Benjamin Tahirović,787907,2003-03-03,23.27,4500000.0
-Bosnia and Herzegovina,Amar Memić,638990,2001-01-20,25.39,4500000.0
-Bosnia and Herzegovina,Amir Hadziahmetovic,293213,1997-03-08,29.26,4200000.0
-Bosnia and Herzegovina,Nidal Celik,819566,2006-07-17,19.9,4000000.0
-Bosnia and Herzegovina,Adrian Leon Barisic,625206,2001-07-19,24.9,4000000.0
-Bosnia and Herzegovina,Rade Krunic,259953,1993-10-07,32.68,4000000.0
-Bosnia and Herzegovina,Dennis Hadzikadunic,322065,1998-07-09,27.92,3000000.0
-Bosnia and Herzegovina,Haris Tabakovic,203123,1994-06-20,31.98,3000000.0
-Bosnia and Herzegovina,Denis Huseinbasic,678479,2001-07-03,24.94,3000000.0
-Bosnia and Herzegovina,Stjepan Radeljic,384568,1997-09-05,28.76,2800000.0
-Bosnia and Herzegovina,Edin Dzeko,28396,1986-03-17,40.24,2700000.0
-Bosnia and Herzegovina,Ifet Djakovac,645880,1997-12-05,28.51,2500000.0
-Bosnia and Herzegovina,Jusuf Gazibegovic,393745,2000-03-11,26.25,2500000.0
-Bosnia and Herzegovina,Vladan Kovacevic,429070,1998-04-11,28.17,2500000.0
-Bosnia and Herzegovina,Armin Gigovic,651269,2002-04-06,24.18,2500000.0
-Bosnia and Herzegovina,Ajdin Hasic,522851,2001-10-07,24.68,2500000.0
-Bosnia and Herzegovina,Nail Omerovic,797824,2002-10-20,23.64,2500000.0
-Bosnia and Herzegovina,Martin Zlomislic,495320,1998-08-16,27.82,2000000.0
-Qatar,Akram Afif,336646,1996-11-18,29.56,4500000.0
-Qatar,Edmílson Junior,237846,1994-08-19,31.81,3000000.0
-Qatar,Guilherme,115382,1991-04-05,35.18,2000000.0
-Qatar,Abdelkarim Hassan,171412,1993-08-28,32.79,650000.0
-Qatar,Lucas Mendes,83983,1990-07-03,35.94,500000.0
-Qatar,Homam Al-Amin,556713,1999-08-25,26.8,500000.0
-Qatar,Youssef Ayman,561027,1999-03-21,27.23,375000.0
-Qatar,Assim Madibo,336667,1996-10-22,29.63,300000.0
-Switzerland,Gregor Kobel,257814,1997-12-06,28.51,40000000.0
-Switzerland,Dan Ndoye,365108,2000-10-25,25.63,35000000.0
-Switzerland,Johan Manzambi,927353,2005-10-14,20.66,35000000.0
-Switzerland,Ardon Jashari,608172,2002-07-30,23.87,30000000.0
-Switzerland,Denis Zakaria,334526,1996-11-20,29.56,25000000.0
-Switzerland,Manuel Akanji,284730,1995-07-19,30.9,18000000.0
-Switzerland,Noah Okafor,346890,2000-05-24,26.05,18000000.0
-Switzerland,Breel Embolo,237662,1997-02-14,29.32,12000000.0
-Switzerland,Rubén Vargas,345886,1998-08-05,27.85,12000000.0
-Switzerland,Bruno Ogbus,863759,2005-12-17,20.48,10000000.0
-Switzerland,Luca Jaquez,539798,2003-06-02,23.03,10000000.0
-Switzerland,Granit Xhaka,111455,1992-09-27,33.7,10000000.0
-Switzerland,Zachary Athekame,990637,2004-12-13,21.49,10000000.0
-Switzerland,Sascha Britschgi,932187,2006-08-27,19.79,10000000.0
-Switzerland,Alvyn Sanches,583058,2003-02-12,23.33,9000000.0
-Switzerland,Zeki Amdouni,548729,2000-12-04,25.52,9000000.0
-Switzerland,Nico Elvedi,192635,1996-09-30,29.69,8000000.0
-Switzerland,Aurèle Amenda,635645,2003-07-31,22.86,8000000.0
-Switzerland,Fabian Rieder,507341,2002-02-16,24.31,8000000.0
-Switzerland,Simon Sohm,507486,2001-04-11,25.17,8000000.0
-Switzerland,Djibril Sow,212723,1997-02-06,29.34,7500000.0
-Switzerland,Alessandro Vogt,987770,2005-02-03,21.35,7000000.0
-Switzerland,Marvin Keller,500763,2002-07-03,23.94,7000000.0
-Switzerland,Fabian Schär,135343,1991-12-20,34.48,6000000.0
-Switzerland,Filip Ugrinic,394236,1999-01-05,27.43,6000000.0
-Switzerland,Cheveyo Tsawa,794749,2006-12-09,19.5,5000000.0
-Brazil,Vinicius Junior,371998,2000-07-12,25.91,150000000.0
-Brazil,Raphinha,411295,1996-12-14,29.49,80000000.0
-Brazil,Estêvão,1056993,2007-04-24,19.13,80000000.0
-Brazil,João Pedro,626724,2001-09-26,24.71,75000000.0
-Brazil,Gabriel,435338,1997-12-19,28.48,75000000.0
-Brazil,Bruno Guimarães,520624,1997-11-16,28.57,75000000.0
-Brazil,Matheus Cunha,517894,1999-05-27,27.04,70000000.0
-Brazil,Murillo,1005649,2002-07-04,23.94,50000000.0
-Brazil,Igor Thiago,739443,2001-06-26,24.96,50000000.0
-Brazil,Rodrygo,412363,2001-01-09,25.42,50000000.0
-Brazil,Andrey Santos,743600,2004-05-03,22.11,45000000.0
-Brazil,Gabriel Martinelli,655488,2001-06-18,24.98,45000000.0
-Brazil,Antony,602105,2000-02-24,26.29,40000000.0
-Brazil,Wesley,964580,2003-09-06,22.76,40000000.0
-Brazil,Éderson,607854,1999-07-07,26.93,40000000.0
-Brazil,Savinho,743591,2004-04-10,22.17,40000000.0
-Brazil,Rayan,1012564,2006-08-03,19.85,40000000.0
-Brazil,Vitor Roque,943837,2005-02-28,21.28,38000000.0
-Brazil,Evanilson,711337,1999-10-06,26.68,35000000.0
-Brazil,João Gomes,735570,2001-02-12,25.33,35000000.0
-Brazil,Bremer,516716,1997-03-18,29.23,35000000.0
-Brazil,Lucas Paquetá,444523,1997-08-27,28.79,35000000.0
-Brazil,Igor Paixão,653610,2000-06-28,25.95,35000000.0
-Brazil,Endrick,971570,2006-07-21,19.89,35000000.0
-Brazil,Kevin,900195,2003-01-04,23.43,30000000.0
-Brazil,Marquinhos,181767,1994-05-14,32.08,30000000.0
-Morocco,Achraf Hakimi,398073,1998-11-04,27.6,80000000.0
-Morocco,Brahim Díaz,314678,1999-08-03,26.86,35000000.0
-Morocco,Bilal El Khannouss,654982,2004-05-10,22.09,32000000.0
-Morocco,Ismael Saibari,702869,2001-01-28,25.37,32000000.0
-Morocco,Abde Ezzalzouli,724520,2001-12-17,24.48,30000000.0
-Morocco,Chemsdine Talbi,743384,2005-05-09,21.09,25000000.0
-Morocco,Noussair Mazraoui,340456,1997-11-14,28.57,20000000.0
-Morocco,Youssef En-Nesyri,433049,1997-06-01,29.03,20000000.0
-Morocco,Nayef Aguerd,361914,1996-03-30,30.2,20000000.0
-Morocco,Eliesse Ben Seghir,810895,2005-02-16,21.31,20000000.0
-Morocco,Amine Adli,532776,2000-05-10,26.09,20000000.0
-Morocco,Neil El Aynaoui,901019,2001-07-02,24.94,20000000.0
-Morocco,Hamza Igamane,885445,2002-11-02,23.61,18000000.0
-Morocco,Samir El Mourabet,1130514,2005-10-06,20.68,18000000.0
-Morocco,Omar El Hilali,822331,2003-09-12,22.75,15000000.0
-Morocco,Souffian El Karouani,541134,2000-10-19,25.64,15000000.0
-Morocco,Zakaria El Ouahdi,820474,2001-12-31,24.44,15000000.0
-Morocco,Oussama Targhalline,667965,2002-05-20,24.06,12000000.0
-Morocco,Ilias Akhomach,709969,2004-04-16,22.15,12000000.0
-Morocco,Sofyan Amrabat,287579,1996-08-21,29.8,12000000.0
-Morocco,Anass Salah-Eddine,485584,2002-01-18,24.39,12000000.0
-Morocco,Chadi Riad,689637,2003-06-17,22.98,12000000.0
-Morocco,Sofiane Diop,569389,2000-06-09,26.0,12000000.0
-Morocco,Abdelhamid Ait Boudlal,1134251,2006-04-16,20.15,10000000.0
-Morocco,Gessime Yassine,1151929,2005-11-22,20.55,10000000.0
-Morocco,Azzedine Ounahi,593482,2000-04-19,26.14,10000000.0
-Haiti,Wilson Isidor,494237,2000-08-27,25.79,18000000.0
-Haiti,Jean-Ricner Bellegarde,450050,1998-06-27,27.96,16000000.0
-Haiti,Josué Casimir,763182,2001-09-24,24.71,3500000.0
-Haiti,Danley Jean Jacques,628834,2000-05-20,26.06,3000000.0
-Haiti,Frantzdy Pierrot,492955,1995-03-29,31.2,2500000.0
-Haiti,Hannes Delcroix,338635,1999-02-28,27.28,2000000.0
-Haiti,Jean-Kévin Duverne,344864,1997-07-12,28.91,2000000.0
-Haiti,Carlens Arcus,371686,1996-06-28,29.95,1800000.0
-Haiti,Duckens Nazon,345763,1994-04-07,32.18,1600000.0
-Haiti,Louicius Deedson,646108,2001-02-11,25.33,1200000.0
-Haiti,Derrick Etienne Jr.,354763,1996-11-25,29.54,800000.0
-Haiti,Wilguens Paugain,609691,2001-08-24,24.8,600000.0
-Haiti,Fafà Picault,216683,1991-02-23,35.3,300000.0
-Haiti,Woobens Pacius,919006,2001-05-11,25.08,300000.0
-Haiti,Ruben Providence,536520,2001-07-07,24.93,300000.0
-Haiti,Jeppe Simonsen,331975,1995-11-21,30.55,150000.0
-Haiti,Garissone Innocent,460626,2000-04-16,26.15,100000.0
-Haiti,Alexandre Pierre,838947,2001-02-25,25.29,100000.0
-Haiti,Ricky Louis,1492796,2004-10-04,21.68,75000.0
-Scotland,Scott McTominay,315969,1996-12-08,29.51,45000000.0
-Scotland,Billy Gilmour,423744,2001-06-11,25.0,20000000.0
-Scotland,Lewis Ferguson,428563,1999-08-24,26.8,18000000.0
-Scotland,Ben Gannon-Doak,719673,2005-11-11,20.58,16000000.0
-Scotland,Aaron Hickey,591949,2002-06-10,24.0,16000000.0
-Scotland,John McGinn,193116,1994-10-18,31.65,15000000.0
-Scotland,Andrew Robertson,234803,1994-03-11,32.25,10000000.0
-Scotland,Nathan Patterson,424015,2001-10-16,24.65,10000000.0
-Scotland,Lennon Miller,924857,2006-08-25,19.79,10000000.0
-Scotland,Ryan Christie,188077,1995-02-22,31.3,9000000.0
-Scotland,Ché Adams,346779,1996-07-13,29.91,8500000.0
-Scotland,Kieran Tierney,300716,1997-06-05,29.02,8000000.0
-Scotland,George Hirst,420808,1999-02-15,27.32,8000000.0
-Scotland,Kieron Bowie,647280,2002-09-21,23.72,6000000.0
-Scotland,Ryan Gauld,193081,1995-12-16,30.49,5000000.0
-Scotland,Josh Doig,567129,2002-05-18,24.07,5000000.0
-Scotland,Greg Taylor,362562,1997-11-05,28.6,5000000.0
-Scotland,Andrew Irving,430310,2000-05-13,26.08,5000000.0
-Scotland,Jordan Holsgrove,429309,1999-09-10,26.75,5000000.0
-Scotland,Oliver Burke,341317,1997-04-07,29.18,4000000.0
-Scotland,Scott McKenna,255906,1996-11-12,29.58,4000000.0
-Scotland,Jacob Brown,469958,1998-04-10,28.17,4000000.0
-Scotland,David Turnbull,345760,1999-07-10,26.92,3800000.0
-Scotland,Ryan Porteous,446093,1999-03-25,27.21,3000000.0
-Scotland,John Souttar,235767,1996-09-25,29.71,3000000.0
-Scotland,Callum McGregor,120977,1993-06-14,32.99,3000000.0
-United States,Christian Pulisic,315779,1998-09-18,27.73,50000000.0
-United States,Weston McKennie,332697,1998-08-28,27.79,30000000.0
-United States,Malik Tillman,467437,2002-05-28,24.04,30000000.0
-United States,Folarin Balogun,503770,2001-07-03,24.94,30000000.0
-United States,Tyler Adams,332705,1999-02-14,27.32,25000000.0
-United States,Antonee Robinson,349701,1997-08-08,28.84,25000000.0
-United States,Chris Richards,578539,2000-03-28,26.2,25000000.0
-United States,Ricardo Pepi,627207,2003-01-09,23.42,25000000.0
-United States,Johnny Cardoso,689505,2001-09-20,24.72,22000000.0
-United States,Noahkai Banks,923945,2006-12-01,19.53,22000000.0
-United States,Timothy Weah,370846,2000-02-22,26.3,20000000.0
-United States,Josh Sargent,393325,2000-02-20,26.31,20000000.0
-United States,Brenden Aaronson,393323,2000-10-22,25.63,18000000.0
-United States,Yunus Musah,503991,2002-11-29,23.53,18000000.0
-United States,Sergiño Dest,361104,2000-11-03,25.6,18000000.0
-United States,Cameron Carter-Vickers,341049,1997-12-31,28.44,10000000.0
-United States,Álex Zendejas,351505,1998-02-07,28.34,10000000.0
-United States,Tanner Tessmann,670096,2001-09-24,24.71,10000000.0
-United States,Caleb Wiley,746833,2004-12-22,21.47,8000000.0
-United States,Diego Luna,880626,2003-09-07,22.76,8000000.0
-United States,Haji Wright,315291,1998-03-27,28.21,7000000.0
-United States,Joe Scally,504153,2002-12-31,23.44,7000000.0
-United States,Paxten Aaronson,795738,2003-08-26,22.79,7000000.0
-United States,Djordje Mihailovic,484756,1998-11-10,27.58,6500000.0
-United States,Auston Trusty,389253,1998-08-12,27.83,6000000.0
-United States,Mark McKenzie,429259,1999-02-25,27.29,6000000.0
-Paraguay,Diego Gómez,996897,2003-03-27,23.21,25000000.0
-Paraguay,Julio Enciso,660867,2004-01-23,22.38,22000000.0
-Paraguay,Omar Alderete,353032,1996-12-26,29.46,15000000.0
-Paraguay,Mauricio,678439,2001-06-22,24.97,14000000.0
-Paraguay,Ramón Sosa,745191,1999-08-31,26.78,10000000.0
-Paraguay,Miguel Almirón,272999,1994-02-10,32.33,9000000.0
-Paraguay,Isidro Pitta,675178,1999-08-14,26.83,7500000.0
-Paraguay,Damián Bobadilla,861852,2001-07-11,24.92,5000000.0
-Paraguay,Orlando Gill,643259,2000-06-11,26.0,5000000.0
-Paraguay,Diego González,873981,2003-01-07,23.43,5000000.0
-Paraguay,Andrés Cubas,323872,1996-05-22,30.05,4000000.0
-Paraguay,Gustavo Gómez,215390,1993-05-06,33.1,4000000.0
-Paraguay,Diego León,1283997,2007-04-03,19.19,4000000.0
-Paraguay,Juan José Cáceres,756494,2000-06-01,26.03,4000000.0
-Paraguay,Mathías Villasanti,436385,1997-01-24,29.38,4000000.0
-Paraguay,Adam Bareiro,514120,1996-07-26,29.88,4000000.0
-Paraguay,Antonio Galeano,491599,2000-03-22,26.22,4000000.0
-Paraguay,Braian Ojeda,491596,2000-06-27,25.95,4000000.0
-Paraguay,Ronaldo Martínez,567736,1996-04-25,30.13,4000000.0
-Paraguay,Fernando Cardozo,491598,2001-02-08,25.34,3500000.0
-Paraguay,Robert Morales,832340,1999-03-17,27.24,3500000.0
-Paraguay,Enso González,1060740,2005-01-20,21.39,3000000.0
-Paraguay,Matías Galarza,661269,2002-02-11,24.33,3000000.0
-Paraguay,Matías Segovia,718307,2003-01-04,23.43,3000000.0
-Paraguay,Álex Arce,970518,1995-06-16,30.99,3000000.0
-Paraguay,Roberto Fernández,491589,2000-06-07,26.01,2800000.0
-Australia,Alessandro Circati,867137,2003-10-10,22.67,10000000.0
-Australia,Jordan Bos,855731,2002-10-29,23.62,8000000.0
-Australia,Nestory Irankunda,956920,2006-02-09,20.33,6000000.0
-Australia,Harry Souttar,298091,1998-10-22,27.64,6000000.0
-Australia,Riley McGree,428061,1998-11-02,27.61,4000000.0
-Australia,Patrick Yazbek,867762,2002-04-05,24.18,3500000.0
-Australia,Aiden O'Neill,385918,1998-07-04,27.94,3000000.0
-Australia,Mathew Ryan,128969,1992-04-08,34.17,2000000.0
-Australia,Connor Metcalfe,522223,1999-11-05,26.6,2000000.0
-Australia,Mohamed Touré,742770,2004-03-26,22.21,1700000.0
-Australia,Jackson Irvine,192557,1993-03-07,33.26,1500000.0
-Australia,Joe Gauci,591844,2000-07-04,25.94,1400000.0
-Australia,Kye Rowles,399990,1998-06-24,27.96,1200000.0
-Australia,Cammy Devlin,399162,1998-06-07,28.01,1200000.0
-Australia,Lewis Miller,603864,2000-08-24,25.8,1000000.0
-Australia,Kai Trewin,691326,2001-05-18,25.07,1000000.0
-Australia,Alex Bonetig,1013240,2002-08-20,23.81,1000000.0
-Australia,Max Balard,849428,2000-11-20,25.56,1000000.0
-Australia,Patrick Beach,983578,2003-08-06,22.85,900000.0
-Australia,Luka Jovanovic,1038441,2005-05-20,21.06,900000.0
-Australia,Brad Smith,175745,1994-04-09,32.17,850000.0
-Australia,Craig Goodwin,214798,1991-12-16,34.49,800000.0
-Australia,Jake Girdwood-Reich,867761,2004-05-26,22.04,800000.0
-Australia,Callum Elder,271997,1995-01-27,31.37,800000.0
-Australia,Marco Tilio,565531,2001-08-23,24.8,800000.0
-Australia,Gianni Stensness,627472,1999-02-07,27.34,800000.0
-Germany,Jamal Musiala,580195,2003-02-26,23.29,120000000.0
-Germany,Florian Wirtz,598577,2003-05-03,23.11,110000000.0
-Germany,Aleksandar Pavlovic,792380,2004-05-03,22.11,75000000.0
-Germany,Nick Woltemade,455661,2002-02-14,24.32,65000000.0
-Germany,Lennart Karl,1075147,2008-02-22,18.3,60000000.0
-Germany,Nico Schlotterbeck,388198,1999-12-01,26.53,55000000.0
-Germany,Karim Adeyemi,496094,2002-01-18,24.39,50000000.0
-Germany,Kai Havertz,309400,1999-06-11,27.0,50000000.0
-Germany,Felix Nmecha,406640,2000-10-10,25.67,50000000.0
-Germany,Angelo Stiller,443710,2001-04-04,25.19,45000000.0
-Germany,Malick Thiaw,521964,2001-08-08,24.84,45000000.0
-Germany,Maximilian Beier,578392,2002-10-17,23.65,40000000.0
-Germany,Yann Bisseck,441986,2000-11-29,25.53,40000000.0
-Germany,Jamie Leweling,518505,2001-02-26,25.29,40000000.0
-Germany,Joshua Kimmich,161056,1995-02-08,31.34,40000000.0
-Germany,Tom Bischof,822959,2005-06-28,20.95,40000000.0
-Germany,Jonathan Burkardt,333647,2000-07-11,25.92,35000000.0
-Germany,Nathaniel Brown,691892,2003-06-16,22.99,35000000.0
-Germany,Kevin Schade,473050,2001-11-27,24.54,35000000.0
-Germany,Said El Mala,1168219,2006-08-26,19.79,35000000.0
-Germany,Finn Jeltsch,924117,2006-07-17,19.9,30000000.0
-Germany,Jonathan Tah,196357,1996-02-11,30.33,30000000.0
-Germany,Brajan Gruda,700106,2004-05-31,22.03,28000000.0
-Germany,Assan Ouédraogo,897424,2006-05-09,20.09,28000000.0
-Germany,Anton Stach,344069,1998-11-15,27.57,25000000.0
-Germany,Deniz Undav,339314,1996-07-19,29.89,22000000.0
-Curacao,Armando Obispo,339337,1999-03-05,27.27,4000000.0
-Curacao,Sontje Hansen,485582,2002-05-18,24.07,3000000.0
-Curacao,Juninho Bacuna,348863,1997-08-07,28.84,2200000.0
-Curacao,Riechedly Bazoer,216443,1996-10-12,29.66,2200000.0
-Curacao,Tommy St. Jago,458734,2000-01-03,26.44,1700000.0
-Curacao,Shurandy Sambo,412937,2001-08-19,24.81,1500000.0
-Curacao,Ar'jany Martha,572519,2003-09-04,22.77,1200000.0
-Curacao,Joshua Brenet,207006,1994-03-20,32.23,1200000.0
-Curacao,Deveron Fonville,708989,2003-05-16,23.07,1000000.0
-Curacao,Nigel Robertha,315280,1998-02-13,28.32,1000000.0
-Curacao,Leandro Bacuna,126014,1991-08-21,34.81,900000.0
-Curacao,Xander Severina,778540,2001-04-12,25.16,800000.0
-Curacao,Jeremy Antonisse,594273,2002-03-29,24.2,800000.0
-Curacao,Sherel Floranus,315211,1998-08-23,27.8,800000.0
-Curacao,Tyrese Noslin,708005,2002-09-11,23.75,750000.0
-Curacao,Livano Comenencia,626764,2004-02-03,22.35,700000.0
-Curacao,Cherrion Valerius,936581,2005-09-22,20.72,700000.0
-Curacao,Tyrique Mercera,913289,2003-12-19,22.48,600000.0
-Curacao,Jordi Paulina,1045762,2004-09-23,21.71,500000.0
-Curacao,Juriën Gaari,328455,1993-12-23,32.47,450000.0
-Curacao,Nazjir Held,940072,2005-02-09,21.33,400000.0
-Curacao,Daijiro Chirino,611816,2002-01-24,24.38,400000.0
-Curacao,Godfried Roemeratoe,393241,1999-08-19,26.81,400000.0
-Curacao,Roshon van Eijma,401029,1998-06-09,28.01,375000.0
-Curacao,Kevin Felida,433933,1999-11-11,26.58,350000.0
-Curacao,Joshua Zimmerman,458418,2001-05-23,25.05,325000.0
-Ivory Coast,Yan Diomande,1390649,2006-11-14,19.57,75000000.0
-Ivory Coast,Amad Diallo,536835,2002-07-11,23.92,50000000.0
-Ivory Coast,Ousmane Diomande,974982,2003-12-04,22.52,45000000.0
-Ivory Coast,Ange-Yoan Bonny,827734,2003-10-25,22.63,35000000.0
-Ivory Coast,Evan Ndicka,371149,1999-08-20,26.81,35000000.0
-Ivory Coast,Bazoumana Touré,1067904,2006-03-02,20.28,35000000.0
-Ivory Coast,Evann Guessand,500689,2001-07-01,24.94,28000000.0
-Ivory Coast,Wilfried Singo,648779,2000-12-25,25.46,25000000.0
-Ivory Coast,Simon Adingra,658536,2002-01-01,24.44,25000000.0
-Ivory Coast,Ibrahim Sangaré,375885,1997-12-02,28.52,22000000.0
-Ivory Coast,Kader Meïté,1141560,2007-10-11,18.67,18000000.0
-Ivory Coast,Martial Godo,992686,2003-03-14,23.24,18000000.0
-Ivory Coast,Emmanuel Agbadou,683895,1997-06-17,28.98,18000000.0
-Ivory Coast,Guéla Doué,711980,2002-10-17,23.65,18000000.0
-Ivory Coast,Odilon Kossounou,644771,2001-01-04,25.43,18000000.0
-Ivory Coast,Christ Inao Oulaï,1279526,2006-04-06,20.18,17000000.0
-Ivory Coast,Hamed Traoré,391065,2000-02-16,26.32,15000000.0
-Ivory Coast,Emmanuel Latte Lath,392964,1999-01-01,27.44,15000000.0
-Ivory Coast,Abdoul Ouattara,991487,2005-10-22,20.64,15000000.0
-Ivory Coast,Malick Yalcouyé,1178758,2005-11-18,20.56,14000000.0
-Ivory Coast,Elye Wahi,659542,2003-01-02,23.44,12000000.0
-Ivory Coast,Karim Konaté,847278,2004-03-21,22.22,12000000.0
-Ivory Coast,Franck Kessié,294808,1996-12-19,29.48,12000000.0
-Ivory Coast,Mario Dorgeles,1045972,2004-08-07,21.84,10000000.0
-Ivory Coast,Clément Akpa,806793,2001-11-24,24.54,9000000.0
-Ivory Coast,Seko Fofana,182893,1995-05-07,31.1,8000000.0
-Ecuador,Moisés Caicedo,687626,2001-11-02,24.61,110000000.0
-Ecuador,Willian Pacho,661171,2001-10-16,24.65,70000000.0
-Ecuador,Piero Hincapié,659813,2002-01-09,24.42,50000000.0
-Ecuador,Joel Ordóñez,893661,2004-04-21,22.14,33000000.0
-Ecuador,Nilson Angulo,903611,2003-06-19,22.98,17000000.0
-Ecuador,Pervis Estupiñán,349599,1998-01-21,28.39,14000000.0
-Ecuador,Kendry Páez,1052439,2007-05-04,19.1,9000000.0
-Ecuador,Keny Arroyo,1074584,2006-02-14,20.32,9000000.0
-Ecuador,Gonzalo Plata,592735,2000-11-01,25.61,8000000.0
-Ecuador,Jeremy Arévalo,971663,2005-03-19,21.23,7000000.0
-Ecuador,Denil Castillo,941418,2004-03-24,22.21,5500000.0
-Ecuador,Pedro Vite,659806,2002-03-09,24.26,5500000.0
-Ecuador,Jeremy Sarmiento,568005,2002-06-16,23.99,5000000.0
-Ecuador,Kevin Rodríguez,684159,2000-03-04,26.27,5000000.0
-Ecuador,José Cifuentes,450211,1999-03-12,27.25,4500000.0
-Ecuador,Alan Franco,400960,1998-08-21,27.81,4500000.0
-Ecuador,Yaimar Medina,893659,2004-11-05,21.6,4000000.0
-Ecuador,Léo Realpe,656409,2001-02-26,25.29,4000000.0
-Ecuador,Diego Palacios,425567,1999-07-12,26.92,4000000.0
-Ecuador,John Mercado,659804,2002-06-03,24.02,4000000.0
-Ecuador,Angelo Preciado,450241,1998-02-18,28.31,3800000.0
-Ecuador,Anderson Julio,310640,1996-05-31,30.03,3000000.0
-Ecuador,Bryan Ramírez,989271,2000-08-11,25.83,3000000.0
-Ecuador,José Andrés Hurtado,680506,2001-12-23,24.47,3000000.0
-Ecuador,Alan Minda,897051,2003-05-14,23.08,3000000.0
-Ecuador,Patrickson Delgado,659802,2003-10-17,22.65,3000000.0
-Netherlands,Ryan Gravenberch,478573,2002-05-16,24.07,90000000.0
-Netherlands,Jurriën Timber,420243,2001-06-17,24.98,70000000.0
-Netherlands,Micky van de Ven,557459,2001-04-19,25.14,65000000.0
-Netherlands,Cody Gakpo,434675,1999-05-07,27.1,65000000.0
-Netherlands,Tijjani Reijnders,460939,1998-07-29,27.87,60000000.0
-Netherlands,Xavi Simons,566931,2003-04-21,23.14,50000000.0
-Netherlands,Frenkie de Jong,326330,1997-05-12,29.08,45000000.0
-Netherlands,Bart Verbruggen,565093,2002-08-18,23.81,40000000.0
-Netherlands,Matthijs de Ligt,326031,1999-08-12,26.83,40000000.0
-Netherlands,Jorrel Hato,904802,2006-03-07,20.26,35000000.0
-Netherlands,Jeremie Frimpong,484547,2000-12-10,25.5,35000000.0
-Netherlands,Sven Botman,361093,2000-01-12,26.41,35000000.0
-Netherlands,Donyell Malen,326029,1999-01-19,27.39,35000000.0
-Netherlands,Jan Paul van Hecke,576314,2000-06-08,26.01,35000000.0
-Netherlands,Sepp van den Berg,541231,2001-12-20,24.47,32000000.0
-Netherlands,Ian Maatsen,485585,2002-03-10,24.25,30000000.0
-Netherlands,Crysencio Summerville,474701,2001-10-30,24.61,30000000.0
-Netherlands,Justin Kluivert,330659,1999-05-05,27.1,30000000.0
-Netherlands,Emmanuel Emegha,559328,2003-02-03,23.35,28000000.0
-Netherlands,Joey Veerman,408574,1998-11-19,27.56,27000000.0
-Netherlands,Robin Roefs,646991,2003-01-17,23.4,25000000.0
-Netherlands,Givairo Read,997903,2006-06-02,20.02,25000000.0
-Netherlands,Kees Smit,859035,2006-01-20,20.39,25000000.0
-Netherlands,Ernest Poku,718303,2004-01-28,22.37,25000000.0
-Netherlands,Mats Wieffer,415381,1999-11-16,26.57,25000000.0
-Netherlands,Perr Schuurs,418543,1999-11-26,26.54,25000000.0
-Japan,Takefusa Kubo,405398,2001-06-04,25.02,30000000.0
-Japan,Kaishu Sano,643574,2000-12-30,25.45,25000000.0
-Japan,Kaoru Mitoma,504849,1997-05-20,29.06,25000000.0
-Japan,Zion Suzuki,432298,2002-08-21,23.81,20000000.0
-Japan,Ritsu Doan,358504,1998-06-16,27.99,20000000.0
-Japan,Hiroki Ito,353892,1999-05-12,27.08,18000000.0
-Japan,Yuito Suzuki,668606,2001-10-25,24.63,18000000.0
-Japan,Ayase Ueda,589128,1998-08-28,27.79,15000000.0
-Japan,Takumi Minamino,165793,1995-01-16,31.4,12000000.0
-Japan,Kodai Sano,957544,2003-09-25,22.71,12000000.0
-Japan,Daichi Kamada,356141,1996-08-05,29.85,12000000.0
-Japan,Daizen Maeda,420931,1997-10-20,28.64,12000000.0
-Japan,Ko Itakura,355816,1997-01-27,29.37,10000000.0
-Japan,Ao Tanaka,489359,1998-09-10,27.75,10000000.0
-Japan,Joel Chima Fujita,697277,2002-02-16,24.31,10000000.0
-Japan,Tsuyoshi Watanabe,598791,1997-02-05,29.34,10000000.0
-Japan,Reo Hatate,496656,1997-11-21,28.55,10000000.0
-Japan,Hidemasa Morita,524315,1995-05-10,31.09,9000000.0
-Japan,Keito Nakamura,405397,2000-07-28,25.87,8000000.0
-Japan,Takehiro Tomiyasu,331560,1998-11-05,27.6,8000000.0
-Japan,Kento Shiogai,1144627,2005-03-26,21.21,8000000.0
-Japan,Keisuke Goto,916623,2005-06-03,21.02,8000000.0
-Japan,Yukinari Sugawara,405385,2000-06-28,25.95,7500000.0
-Japan,Koki Machida,415035,1997-08-25,28.79,7000000.0
-Japan,Keita Kosugi,1146988,2006-03-18,20.23,6000000.0
-Japan,Kyogo Furuhashi,489463,1995-01-20,31.39,6000000.0
-Sweden,Alexander Isak,349066,1999-09-21,26.72,100000000.0
-Sweden,Viktor Gyökeres,325443,1998-06-04,28.02,65000000.0
-Sweden,Lucas Bergvall,866246,2006-02-02,20.35,40000000.0
-Sweden,Anthony Elanga,583189,2002-04-27,24.12,40000000.0
-Sweden,Dejan Kulusevski,431755,2000-04-25,26.13,35000000.0
-Sweden,Hugo Larsson,931838,2004-06-27,21.95,32000000.0
-Sweden,Yasin Ayari,667287,2003-10-06,22.68,30000000.0
-Sweden,Daniel Svensson,579287,2002-02-12,24.33,22000000.0
-Sweden,Isak Hien,503075,1999-01-13,27.41,22000000.0
-Sweden,Gabriel Gudmundsson,362108,1999-04-29,27.12,20000000.0
-Sweden,Roony Bardghji,792331,2005-11-15,20.57,15000000.0
-Sweden,Williot Swedberg,764859,2004-02-01,22.36,15000000.0
-Sweden,Emil Holm,496745,2000-05-13,26.08,13000000.0
-Sweden,Sebastian Nanasi,579928,2002-05-16,24.07,12000000.0
-Sweden,Samuel Dahl,605396,2003-03-04,23.27,12000000.0
-Sweden,Benjamin Nygren,475949,2001-07-08,24.93,10000000.0
-Sweden,Adrian Lahdo,1231993,2007-12-26,18.46,10000000.0
-Sweden,Mattias Svanberg,342405,1999-01-05,27.43,9000000.0
-Sweden,Jens Cajuste,468066,1999-08-10,26.84,8000000.0
-Sweden,Jacob Ondrejka,663237,2002-09-02,23.77,6500000.0
-Sweden,Hjalmar Ekdal,392179,1998-10-21,27.64,6000000.0
-Sweden,Hugo Bolin,667251,2003-07-24,22.88,6000000.0
-Sweden,Victor Lindelöf,184573,1994-07-17,31.9,6000000.0
-Sweden,Gustaf Lagerbielke,485395,2000-04-10,26.17,5000000.0
-Sweden,Isak Jansson,535820,2002-01-31,24.36,5000000.0
-Sweden,Carl Starfelt,258987,1995-06-01,31.03,5000000.0
-Tunisia,Hannibal,607224,2003-01-21,23.39,16000000.0
-Tunisia,Montassar Talbi,496706,1998-05-26,28.04,7000000.0
-Tunisia,Ellyes Skhiri,290587,1995-05-10,31.09,6000000.0
-Tunisia,Sebastian Tounekti,539677,2002-07-13,23.91,6000000.0
-Tunisia,Aïssa Laïdouni,233782,1996-12-13,29.49,6000000.0
-Tunisia,Ismaël Gharbi,810096,2004-04-10,22.17,5000000.0
-Tunisia,Naïm Sliti,184491,1992-07-27,33.87,4500000.0
-Tunisia,Elias Achouri,645589,1999-02-10,27.33,3500000.0
-Tunisia,Anis Ben Slimane,546712,2001-03-16,25.24,2500000.0
-Tunisia,Mohamed Belhadj Mahmoud,673513,2000-04-24,26.13,2500000.0
-Tunisia,Ali Abdi,211474,1993-12-20,32.47,2500000.0
-Tunisia,Amin Cherni,782935,2001-07-07,24.93,2500000.0
-Tunisia,Rani Khedira,124410,1994-01-27,32.37,2000000.0
-Tunisia,Saîf-Eddine Khaoui,270411,1995-04-27,31.12,2000000.0
-Tunisia,Yassine Meriah,306330,1993-07-02,32.94,2000000.0
-Tunisia,Hamza Rafia,418571,1999-04-02,27.19,1700000.0
-Tunisia,Ferjani Sassi,191903,1992-03-18,34.23,1500000.0
-Tunisia,Mortadha Ben Ouanes,230921,1994-07-02,31.94,1500000.0
-Tunisia,Yan Valery,406008,1999-02-22,27.3,1300000.0
-Tunisia,Sayfallah Ltaief,388220,2000-04-22,26.14,1300000.0
-Tunisia,Alaa Ghram,657796,2001-07-24,24.88,1200000.0
-Tunisia,Adem Arous,1071742,2004-07-17,21.9,1000000.0
-Tunisia,Nader Ghandri,275956,1995-02-18,31.31,900000.0
-Tunisia,Louay Ben Hassine,583754,2000-04-02,26.19,800000.0
-Tunisia,Anas Haj Mohamed,883122,2005-03-26,21.21,800000.0
-Tunisia,Dylan Bronn,450417,1995-06-19,30.98,800000.0
-Belgium,Jérémy Doku,486049,2002-05-27,24.04,65000000.0
-Belgium,Amadou Onana,485706,2001-08-16,24.82,45000000.0
-Belgium,Youri Tielemans,249565,1997-05-07,29.1,35000000.0
-Belgium,Charles De Ketelaere,435772,2001-03-10,25.25,35000000.0
-Belgium,Loïs Openda,368887,2000-02-16,26.32,32000000.0
-Belgium,Zeno Debast,548193,2003-10-24,22.63,30000000.0
-Belgium,Senne Lammens,503883,2002-07-07,23.93,30000000.0
-Belgium,Malick Fofana,743386,2005-03-31,21.2,30000000.0
-Belgium,Nathan De Cat,1105541,2008-07-19,17.89,25000000.0
-Belgium,Mika Godts,748804,2005-06-07,21.01,25000000.0
-Belgium,Roméo Lavia,628451,2004-01-06,22.43,25000000.0
-Belgium,Alexis Saelemaekers,381950,1999-06-27,26.96,25000000.0
-Belgium,Diego Moreira,655006,2004-08-06,21.85,25000000.0
-Belgium,Koni De Winter,490384,2002-06-12,24.0,23000000.0
-Belgium,Johan Bakayoko,565424,2003-04-20,23.14,22000000.0
-Belgium,Mike Penders,834397,2005-07-31,20.86,22000000.0
-Belgium,Arthur Vermeeren,926694,2005-02-07,21.34,22000000.0
-Belgium,Maxim De Cuyper,429915,2000-12-22,25.47,22000000.0
-Belgium,Leandro Trossard,144028,1994-12-04,31.52,20000000.0
-Belgium,Nathan Ngoy,548254,2003-06-10,23.0,20000000.0
-Belgium,Dodi Lukébakio,303259,1997-09-24,28.71,20000000.0
-Belgium,Arthur Theate,368891,2000-05-25,26.05,20000000.0
-Belgium,Mandela Keita,707844,2002-05-10,24.09,18000000.0
-Belgium,Arne Engels,565435,2003-09-08,22.76,18000000.0
-Belgium,Thibaut Courtois,108390,1992-05-11,34.08,18000000.0
-Belgium,Joaquin Seys,981196,2005-03-28,21.2,17000000.0
-Egypt,Omar Marmoush,445939,1999-02-07,27.34,60000000.0
-Egypt,Mohamed Salah,148455,1992-06-15,33.99,30000000.0
-Egypt,Zizo,320722,1996-01-10,30.42,5000000.0
-Egypt,Trezeguet,234189,1994-10-01,31.69,4500000.0
-Egypt,Mostafa Mohamed,462348,1997-11-28,28.53,4000000.0
-Egypt,Mohamed Elneny,160438,1992-07-11,33.92,3500000.0
-Egypt,Ibrahim Adel,677278,2001-04-23,25.13,3200000.0
-Egypt,Mohamed Abdelmonem,566025,1999-02-01,27.36,3000000.0
-Egypt,Emam Ashour,604008,1998-02-20,28.3,2000000.0
-Egypt,Nabil Dunga,479683,1996-04-06,30.18,1200000.0
-Egypt,Omar Fayed,1036405,2003-07-04,22.94,1000000.0
-Egypt,Ahmed Hegazy,111524,1991-01-25,35.38,1000000.0
-Egypt,Ahmed Hassan,184816,1993-03-05,33.27,700000.0
-Egypt,Amr Warda,237641,1993-09-17,32.73,700000.0
-Egypt,Mohamed Yasser,975321,2001-05-05,25.1,450000.0
-Egypt,Sam Morsy,123551,1991-09-10,34.75,400000.0
-Egypt,Ramy Rabia,172623,1993-05-20,33.06,400000.0
-Egypt,Eyad El Askalany,1036407,2004-12-24,21.46,400000.0
-Egypt,Bilal Mazhar,808907,2003-11-21,22.55,250000.0
-Egypt,Omar Megeed,910582,2005-08-19,20.81,150000.0
-Egypt,Alexander Jakobsen,255172,1994-03-18,32.23,50000.0
-Egypt,Karim Hamed,1238127,2005-09-17,20.73,50000.0
-Iran,Sardar Azmoun,180337,1995-01-01,31.44,8000000.0
-Iran,Allahyar Sayyadmanesh,480975,2001-06-29,24.95,3000000.0
-Iran,Mohammad Mohebi,603149,1998-12-20,27.47,2800000.0
-Iran,Mehdi Taremi,307058,1992-07-18,33.9,2500000.0
-Iran,Dennis Eckert Ayensa,249303,1997-01-09,29.42,2000000.0
-Iran,Saman Ghoddos,204294,1993-09-06,32.76,2000000.0
-Iran,Ali Gholizadeh,294772,1996-03-10,30.25,2000000.0
-Iran,Mohammadjavad Hosseinnejad,1030739,2003-06-26,22.96,1500000.0
-Iran,Milad Mohammadi,333355,1993-09-29,32.7,1300000.0
-Iran,Alireza Beiranvand,229081,1992-09-21,33.72,1200000.0
-Iran,Ali Alipour,249360,1995-11-11,30.58,1000000.0
-Iran,Omid Noorafkan,332274,1997-04-09,29.17,1000000.0
-Iran,Shahriar Moghanlou,357125,1994-12-21,31.47,900000.0
-Iran,Saeed Ezatolahi,249271,1996-10-01,29.69,900000.0
-Iran,Mohammadmehdi Zare,1107993,2003-01-25,23.38,900000.0
-Iran,Mohammad Ghorbani,856087,2001-05-21,25.06,800000.0
-Iran,Ali Karimi,269393,1994-02-11,32.33,800000.0
-Iran,Majid Hosseini,294767,1996-06-20,29.97,800000.0
-Iran,Payam Niazmand,343044,1995-04-06,31.18,750000.0
-Iran,Morteza Pouraliganji,132563,1992-04-19,34.14,700000.0
-Iran,Amirhossein Hosseinzadeh,542380,2000-10-30,25.61,700000.0
-Iran,Alireza Jahanbakhsh,213268,1993-08-11,32.83,600000.0
-Iran,Kasra Taheri,1051589,2006-08-06,19.85,500000.0
-Iran,Shahab Zahedi,350828,1995-08-18,30.81,500000.0
-Iran,Karim Ansarifard,133838,1990-04-03,36.19,450000.0
-Iran,Ramin Rezaeian,188312,1990-03-21,36.22,450000.0
-New Zealand,Chris Wood,108725,1991-12-07,34.51,6000000.0
-New Zealand,Liberato Cacace,469211,2000-09-27,25.7,3000000.0
-New Zealand,Joe Bell,345700,1999-04-27,27.12,3000000.0
-New Zealand,Marko Stamenić,617018,2002-02-19,24.31,3000000.0
-New Zealand,Callum McCowatt,400797,1999-04-30,27.12,2000000.0
-New Zealand,Elijah Just,485672,2000-05-01,26.11,1500000.0
-New Zealand,Finn Surman,724809,2003-09-23,22.72,1500000.0
-New Zealand,Tyler Bindon,1007720,2005-01-27,21.37,1500000.0
-New Zealand,Alex Paulsen,617009,2002-07-04,23.94,750000.0
-New Zealand,Ryan Thomas,203357,1994-12-20,31.47,700000.0
-New Zealand,Francis de Vries,207061,1994-11-28,31.53,600000.0
-New Zealand,Jesse Randall,677509,2002-08-19,23.81,600000.0
-New Zealand,Ben Old,617021,2002-08-13,23.83,600000.0
-New Zealand,Alex Rufer,256019,1996-06-12,30.0,600000.0
-New Zealand,Matt Dibley-Dias,817611,2003-10-29,22.62,500000.0
-New Zealand,Lukas Kelly-Heald,877290,2005-03-18,21.23,500000.0
-New Zealand,Matthew Garbett,617019,2002-04-13,24.16,500000.0
-New Zealand,Marco Rojas,114940,1991-11-05,34.6,500000.0
-New Zealand,Sarpreet Singh,350357,1999-02-20,27.3,500000.0
-New Zealand,Matthew Sheridan,877294,2004-05-09,22.09,450000.0
-New Zealand,Isaac Hughes,953953,2004-03-25,22.21,450000.0
-New Zealand,Owen Parker-Price,400799,1998-12-10,27.5,450000.0
-New Zealand,Nando Pijnaker,455425,1999-02-25,27.29,400000.0
-New Zealand,Bill Tuiloma,172333,1995-03-27,31.21,400000.0
-New Zealand,Tim Payne,149901,1994-01-10,32.42,400000.0
-New Zealand,Logan Rogerson,312317,1998-05-28,28.04,400000.0
-Spain,Lamine Yamal,937958,2007-07-13,18.91,200000000.0
-Spain,Pedri,683840,2002-11-25,23.54,150000000.0
-Spain,Fermín López,636703,2003-05-11,23.09,100000000.0
-Spain,Martín Zubimendi,423440,1999-02-02,27.35,80000000.0
-Spain,Pau Cubarsí,962110,2007-01-22,19.38,80000000.0
-Spain,Dean Huijsen,890290,2005-04-14,21.16,65000000.0
-Spain,Rodri,357565,1996-06-22,29.97,65000000.0
-Spain,Pablo Barrios,775605,2003-06-15,22.99,60000000.0
-Spain,Dani Olmo,293385,1998-05-07,28.1,60000000.0
-Spain,Álvaro Carreras,811778,2003-03-23,23.22,60000000.0
-Spain,Alejandro Balde,636688,2003-10-18,22.65,55000000.0
-Spain,Ferran Torres,398184,2000-02-29,26.28,50000000.0
-Spain,Marc Cucurella,284857,1998-07-22,27.89,50000000.0
-Spain,Nico Williams,709187,2002-07-12,23.92,50000000.0
-Spain,Álex Baena,548111,2001-07-20,24.89,45000000.0
-Spain,Samu Aghehowa,991268,2004-05-05,22.1,45000000.0
-Spain,Nico González,466805,2002-01-03,24.44,45000000.0
-Spain,Joan García,561613,2001-05-04,25.1,40000000.0
-Spain,Pedro Porro,553875,1999-09-13,26.74,40000000.0
-Spain,Fabián Ruiz,350219,1996-04-03,30.19,40000000.0
-Spain,Alberto Moleiro,733576,2003-09-30,22.7,40000000.0
-Spain,Eric García,466794,2001-01-09,25.42,35000000.0
-Spain,Oihan Sancet,571020,2000-04-25,26.13,35000000.0
-Spain,Cristhian Mosquera,646750,2004-06-27,21.95,35000000.0
-Spain,Yéremy Pino,568157,2002-10-20,23.64,35000000.0
-Spain,Mikel Jauregizar,938729,2003-11-13,22.58,35000000.0
-Cape Verde,Logan Costa,484988,2001-04-01,25.19,18000000.0
-Cape Verde,Wagner Pina,1072017,2002-11-03,23.6,8000000.0
-Cape Verde,David Da Costa,719442,2001-01-05,25.43,6000000.0
-Cape Verde,Sidny Lopes Cabral,611855,2002-09-18,23.73,5000000.0
-Cape Verde,Kevin Lenini,544586,1997-01-27,29.37,4500000.0
-Cape Verde,Djaniny,197170,1991-03-21,35.23,4000000.0
-Cape Verde,Telmo Arcanjo,791528,2001-06-21,24.97,3000000.0
-Cape Verde,Serginho,697716,2001-01-29,25.36,3000000.0
-Cape Verde,Duk,535959,2000-02-16,26.32,2500000.0
-Cape Verde,Bruno Varela,182722,1994-11-04,31.6,2000000.0
-Cape Verde,Sidnei Tavares,511813,2001-09-29,24.7,2000000.0
-Cape Verde,CJ dos Santos,532096,2000-08-24,25.8,1500000.0
-Cape Verde,Steven Moreira,203517,1994-08-13,31.83,1500000.0
-Cape Verde,Ayoni Santos,1064184,2005-07-18,20.9,1300000.0
-Cape Verde,Hélio Varela,840836,2002-05-03,24.11,1200000.0
-Cape Verde,Iuri Tavares,549016,2001-03-08,25.26,1200000.0
-Cape Verde,Laros Duarte,258513,1997-02-28,29.28,1000000.0
-Cape Verde,Deroy Duarte,432852,1999-07-04,26.94,1000000.0
-Cape Verde,Benchimol,820252,2001-12-29,24.45,900000.0
-Cape Verde,David Moreira,1044831,2004-04-18,22.15,800000.0
-Cape Verde,Dailon Livramento,676411,2001-05-04,25.1,800000.0
-Cape Verde,Jovane Cabral,448466,1998-06-14,27.99,800000.0
-Cape Verde,Jamiro Monteiro,272930,1993-11-23,32.55,750000.0
-Cape Verde,João Paulo,623965,1998-05-26,28.04,700000.0
-Cape Verde,Ryan Mendes,111627,1990-01-08,36.42,700000.0
-Cape Verde,Bebé,153427,1990-07-12,35.92,600000.0
-Saudi Arabia,Saud Abdulhamid,631927,1999-07-18,26.9,5000000.0
-Saudi Arabia,Musab Al-Juwayr,901181,2003-06-20,22.98,4500000.0
-Saudi Arabia,Firas Al-Buraikan,631922,2000-05-14,26.08,4000000.0
-Saudi Arabia,Sultan Al-Ghannam,435045,1994-05-06,32.1,1800000.0
-Saudi Arabia,Hassan Tambakti,509897,1999-02-09,27.33,1800000.0
-Saudi Arabia,Murad Al-Hawsawi,1161121,2001-06-03,25.02,1500000.0
-Saudi Arabia,Waleed Al-Ahmad,380205,1999-05-03,27.11,1400000.0
-Saudi Arabia,Ayman Yahya,735815,2001-05-14,25.08,1400000.0
-Saudi Arabia,Nawaf Boushal,821377,1999-09-16,26.74,1400000.0
-Saudi Arabia,Mohammed Abu Al-Shamat,1181852,2002-08-11,23.83,1400000.0
-Saudi Arabia,Faisal Al-Ghamdi,901082,2001-08-13,24.83,1300000.0
-Saudi Arabia,Salem Al-Dawsari,195332,1991-08-19,34.81,1300000.0
-Saudi Arabia,Ali Majrashi,672391,1999-10-01,26.69,1200000.0
-Saudi Arabia,Moteb Al-Harbi,869509,2000-02-19,26.31,1200000.0
-Saudi Arabia,Saad Al-Mousa,928499,2002-12-10,23.5,1200000.0
-Saudi Arabia,Abdulrahman Ghareeb,164593,1997-03-31,29.2,1200000.0
-Saudi Arabia,Sabri Dahal,1238031,2008-02-29,18.28,1000000.0
-Saudi Arabia,Muhannad Shanqeeti,229879,1999-03-12,27.25,1000000.0
-Saudi Arabia,Zakaria Hawsawi,1057849,2001-01-12,25.41,1000000.0
-Saudi Arabia,Abdulelah Al-Amri,509894,1997-01-15,29.4,1000000.0
-Saudi Arabia,Marwan Al-Sahafi,1057857,2004-02-17,22.31,1000000.0
-Saudi Arabia,Turki Al-Ammar,31671,1999-09-24,26.71,900000.0
-Saudi Arabia,Mohamed Kanno,308120,1994-09-22,31.72,900000.0
-Saudi Arabia,Talal Haji,1145312,2007-09-16,18.74,900000.0
-Saudi Arabia,Abdulmalik Al-Jaber,1020852,2004-01-07,22.43,900000.0
-Saudi Arabia,Jehad Thakri,901334,2001-07-21,24.89,900000.0
-Uruguay,Federico Valverde,369081,1998-07-22,27.89,120000000.0
-Uruguay,Manuel Ugarte,476701,2001-04-11,25.17,30000000.0
-Uruguay,Darwin Núñez,546543,1999-06-24,26.97,25000000.0
-Uruguay,Maxi Araújo,572675,2000-02-15,26.32,25000000.0
-Uruguay,Rodrigo Zalazar,606752,1999-08-12,26.83,22000000.0
-Uruguay,Rodrigo Bentancur,354362,1997-06-25,28.96,22000000.0
-Uruguay,Ronald Araujo,480267,1999-03-07,27.26,20000000.0
-Uruguay,Mathías Olivera,376514,1997-10-31,28.61,15000000.0
-Uruguay,Giorgian de Arrascaeta,248410,1994-06-01,32.03,15000000.0
-Uruguay,Facundo Torres,465822,2000-04-13,26.16,13000000.0
-Uruguay,Joaquín Piquerez,496268,1998-08-24,27.8,12000000.0
-Uruguay,José María Giménez,250845,1995-01-20,31.39,12000000.0
-Uruguay,Lucas Torreira,318077,1996-02-11,30.33,12000000.0
-Uruguay,Santiago Bueno,438001,1998-11-09,27.59,10000000.0
-Uruguay,Luciano Rodríguez,856143,2003-07-16,22.9,10000000.0
-Uruguay,Santiago Mouriño,953901,2002-02-13,24.32,10000000.0
-Uruguay,Mauro Arambarri,290249,1995-09-30,30.7,10000000.0
-Uruguay,Nicolás de la Cruz,397458,1997-06-01,29.03,9000000.0
-Uruguay,Diego Rossi,317454,1998-03-05,28.27,8500000.0
-Uruguay,Emiliano Martínez,707447,1999-08-17,26.82,8000000.0
-Uruguay,Gastón Álvarez,577486,2000-03-24,26.21,8000000.0
-Uruguay,Matías Arezo,611426,2002-11-21,23.55,7000000.0
-Uruguay,Federico Pereira,671479,2000-02-24,26.29,6500000.0
-Uruguay,Brian Rodríguez,465818,2000-05-20,26.06,6500000.0
-Uruguay,Martín Satriano,640109,2001-02-20,25.3,6000000.0
-Uruguay,Agustín Canobbio,457533,1998-10-01,27.69,6000000.0
-France,Kylian Mbappé,342229,1998-12-20,27.47,200000000.0
-France,Michael Olise,566723,2001-12-12,24.5,140000000.0
-France,Ousmane Dembélé,288230,1997-05-15,29.07,100000000.0
-France,Hugo Ekitiké,709726,2002-06-20,23.98,90000000.0
-France,William Saliba,495666,2001-03-24,25.22,90000000.0
-France,Désiré Doué,914562,2005-06-03,21.02,90000000.0
-France,Aurélien Tchouaméni,413112,2000-01-27,26.37,75000000.0
-France,Bradley Barcola,708265,2002-09-02,23.77,70000000.0
-France,Dayot Upamecano,344695,1998-10-27,27.62,70000000.0
-France,Jules Koundé,411975,1998-11-12,27.58,65000000.0
-France,Rayan Cherki,607223,2003-08-17,22.82,65000000.0
-France,Warren Zaïre-Emery,810092,2006-03-08,20.26,60000000.0
-France,Jérémy Jacquet,1004301,2005-07-13,20.91,55000000.0
-France,Leny Yoro,923831,2005-11-13,20.57,50000000.0
-France,Maghnes Akliouche,745200,2002-02-25,24.29,50000000.0
-France,Manu Koné,624690,2001-05-17,25.07,50000000.0
-France,Ayyoub Bouaddi,1097139,2007-10-02,18.69,50000000.0
-France,Marcus Thuram,318528,1997-08-06,28.85,50000000.0
-France,Ibrahima Konaté,357119,1999-05-25,27.05,50000000.0
-France,Eduardo Camavinga,640428,2002-11-10,23.58,50000000.0
-France,Castello Lukeba,618472,2002-12-17,23.48,45000000.0
-France,Maxence Lacroix,434224,2000-04-06,26.18,40000000.0
-France,Khéphren Thuram,463618,2001-03-26,25.21,40000000.0
-France,Boubacar Kamara,394327,1999-11-23,26.55,40000000.0
-France,Junior Kroupi,955357,2006-06-23,19.97,40000000.0
-France,Senny Mayulu,903693,2006-05-17,20.07,40000000.0
-Senegal,Iliman Ndiaye,623570,2000-03-06,26.26,50000000.0
-Senegal,Pape Gueye,485963,1999-01-24,27.38,40000000.0
-Senegal,Nicolas Jackson,776890,2001-06-20,24.97,40000000.0
-Senegal,Ismaïla Sarr,410225,1998-02-25,28.29,35000000.0
-Senegal,Lamine Camara,918969,2004-01-01,22.44,35000000.0
-Senegal,Pape Matar Sarr,568693,2002-09-14,23.74,32000000.0
-Senegal,Habib Diarra,876631,2004-01-03,22.44,32000000.0
-Senegal,Assane Diao,1061282,2005-09-07,20.76,30000000.0
-Senegal,Ibrahim Mbaye,1185888,2008-01-24,18.38,30000000.0
-Senegal,El Hadji Malick Diouf,1111589,2004-12-28,21.45,28000000.0
-Senegal,Mamadou Sarr,910905,2005-08-29,20.78,25000000.0
-Senegal,Moussa Niakhaté,291200,1996-03-08,30.26,18000000.0
-Senegal,Dion Lopy,649033,2002-02-02,24.35,10000000.0
-Senegal,Mamadou Diakhon,1054839,2005-09-22,20.72,9000000.0
-Senegal,Abdou Diallo,229005,1996-05-04,30.1,9000000.0
-Senegal,Arouna Sangante,768380,2002-04-12,24.16,8000000.0
-Senegal,Ousmane Diao,1099668,2004-06-08,22.01,8000000.0
-Senegal,Ismail Jakobs,375137,1999-08-17,26.82,8000000.0
-Senegal,Pape Demba Diop,949113,2003-09-04,22.77,8000000.0
-Senegal,Ousseynou Niang,509463,2001-10-12,24.66,7500000.0
-Senegal,Boulaye Dia,626913,1996-11-16,29.57,7000000.0
-Senegal,Issa Soumaré,568698,2000-10-10,25.67,7000000.0
-Senegal,Sadio Mané,200512,1992-04-10,34.17,7000000.0
-Senegal,Yehvann Diouf,448632,1999-11-16,26.57,7000000.0
-Senegal,Rassoul Ndiaye,662242,2001-12-11,24.5,7000000.0
-Senegal,Abdoulaye Ndiaye,673514,2002-04-10,24.17,6500000.0
-Iraq,Montader Madjed,850132,2005-04-24,21.13,3000000.0
-Iraq,Ali Al-Hamadi,610581,2002-03-01,24.28,2000000.0
-Iraq,Zidane Iqbal,686845,2003-04-27,23.12,1500000.0
-Iraq,Aimar Sher,579294,2002-12-20,23.47,1300000.0
-Iraq,Merchas Doski,530527,1999-12-07,26.51,1000000.0
-Iraq,Amir Al-Ammari,303766,1997-07-27,28.87,850000.0
-Iraq,Danilo Al-Saed,866082,1999-02-24,27.29,700000.0
-Iraq,Kevin Yakob,413268,2000-10-10,25.67,600000.0
-Iraq,Ali Jasim,877672,2004-01-20,22.39,550000.0
-Iraq,Frans Putros,166460,1993-07-14,32.91,400000.0
-Iraq,Jussef Nasrawe,1086701,2007-03-22,19.22,400000.0
-Iraq,Mohanad Ali,589646,2000-06-20,25.97,350000.0
-Iraq,Charbel Shamoon,1112869,2004-02-10,22.33,350000.0
-Iraq,Haydeer Abdulkareem,1032334,2004-08-07,21.84,300000.0
-Iraq,Ali Faez,298417,1994-09-09,31.75,300000.0
-Iraq,Hussein Ali,585325,2002-03-01,24.28,300000.0
-Iraq,Peter Gwargis,430824,2000-09-04,25.77,250000.0
-Iraq,Amin Al-Hamawi,1016375,2003-12-17,22.48,250000.0
-Iraq,Osama Rashid,95429,1992-01-13,34.41,200000.0
-Norway,Erling Haaland,418560,2000-07-21,25.89,200000000.0
-Norway,Martin Ødegaard,316264,1998-12-17,27.48,65000000.0
-Norway,Jørgen Strand Larsen,429983,2000-02-06,26.34,45000000.0
-Norway,Antonio Nusa,894914,2005-04-17,21.15,32000000.0
-Norway,Oscar Bobb,661207,2003-07-12,22.92,30000000.0
-Norway,Sander Berge,333014,1998-02-14,28.32,25000000.0
-Norway,Julian Ryerson,370789,1997-11-17,28.56,25000000.0
-Norway,Andreas Schjelderup,670103,2004-06-01,22.03,20000000.0
-Norway,Alexander Sørloth,238407,1995-12-05,30.52,20000000.0
-Norway,Kristoffer Ajer,328658,1998-04-17,28.15,18000000.0
-Norway,Fredrik Aursnes,223367,1995-12-10,30.5,17000000.0
-Norway,Sverre Nypan,911736,2006-12-19,19.48,15000000.0
-Norway,Torbjørn Heggem,464469,1999-01-12,27.41,14000000.0
-Norway,Jens Petter Hauge,422355,1999-10-12,26.66,12000000.0
-Norway,Fredrik Sjøvold,912959,2003-08-17,22.82,10000000.0
-Norway,David Møller Wolfe,661427,2002-04-23,24.13,10000000.0
-Norway,Kristian Thorstvedt,564785,1999-03-13,27.25,10000000.0
-Norway,Leo Østigård,367284,1999-11-28,26.54,10000000.0
-Norway,Patrick Berg,308439,1997-11-24,28.54,8000000.0
-Norway,Eivind Helland,1129198,2005-04-25,21.13,7000000.0
-Norway,Jens Hjertø-Dahl,923535,2005-10-31,20.61,7000000.0
-Norway,Edvin Austbø,980787,2005-05-01,21.11,7000000.0
-Norway,Sondre Ørjasæter,1002305,2003-11-28,22.54,6000000.0
-Norway,Jonatan Braut Brunes,435587,2000-08-07,25.84,6000000.0
-Norway,Marius Broholm,903359,2004-12-26,21.46,6000000.0
-Norway,Sebastian Sebulonsen,592387,2000-01-27,26.37,5500000.0
-Argentina,Julián Alvarez,576024,2000-01-31,26.36,90000000.0
-Argentina,Enzo Fernández,648195,2001-01-17,25.4,90000000.0
-Argentina,Lautaro Martínez,406625,1997-08-22,28.8,85000000.0
-Argentina,Alexis Mac Allister,534033,1998-12-24,27.46,80000000.0
-Argentina,Nico Paz,948294,2004-09-08,21.75,65000000.0
-Argentina,Cristian Romero,355915,1998-04-27,28.12,50000000.0
-Argentina,Franco Mastantuono,1057316,2007-08-14,18.83,45000000.0
-Argentina,Alejandro Garnacho,811779,2004-07-01,21.94,40000000.0
-Argentina,Giuliano Simeone,742201,2002-12-18,23.48,40000000.0
-Argentina,Lisandro Martínez,480762,1998-01-18,28.39,40000000.0
-Argentina,Santiago Castro,849520,2004-09-18,21.73,35000000.0
-Argentina,Valentín Barco,849410,2004-07-23,21.88,35000000.0
-Argentina,Matías Soulé,668951,2003-04-15,23.16,35000000.0
-Argentina,Joaquín Panichelli,1064871,2002-10-07,23.68,35000000.0
-Argentina,Alan Varela,756990,2001-07-04,24.94,32000000.0
-Argentina,Máximo Perrone,668547,2003-01-07,23.43,30000000.0
-Argentina,Exequiel Palacios,401578,1998-10-05,27.68,30000000.0
-Argentina,Taty Castellanos,522784,1998-10-03,27.69,28000000.0
-Argentina,Nico González,486031,1998-04-06,28.18,24000000.0
-Argentina,Marcos Senesi,469781,1997-05-10,29.09,22000000.0
-Argentina,José Manuel López,844797,2000-12-06,25.51,22000000.0
-Argentina,Equi Fernández,664708,2002-07-25,23.88,22000000.0
-Argentina,Thiago Almada,576028,2001-04-26,25.13,20000000.0
-Argentina,Leonardo Balerdi,575998,1999-01-26,27.37,18000000.0
-Argentina,Facundo Medina,474800,1999-05-28,27.04,18000000.0
-Argentina,Emiliano Buendía,321247,1996-12-25,29.46,18000000.0
-Algeria,Ibrahim Maza,905011,2005-11-24,20.54,40000000.0
-Algeria,Rayan Aït-Nouri,578391,2001-06-06,25.01,40000000.0
-Algeria,Amine Gouiri,418659,2000-02-16,26.32,28000000.0
-Algeria,Mohamed Amoura,746910,2000-05-09,26.09,27000000.0
-Algeria,Anis Hadj Moussa,917911,2002-02-11,24.33,20000000.0
-Algeria,Farès Chaïbi,855015,2002-11-28,23.53,15000000.0
-Algeria,Ilan Kebbal,739769,1998-07-10,27.92,12000000.0
-Algeria,Hicham Boudaoui,560593,1999-09-23,26.72,12000000.0
-Algeria,Badredine Bouanani,707242,2004-12-08,21.51,12000000.0
-Algeria,Adem Zorgane,592403,2000-01-06,26.43,10000000.0
-Algeria,Saïd Benrahma,290532,1995-08-10,30.84,9000000.0
-Algeria,Ismaël Bennacer,351816,1997-12-01,28.53,9000000.0
-Algeria,Jaouen Hadjam,750903,2003-03-26,23.21,8000000.0
-Algeria,Houssem Aouar,395693,1998-06-30,27.95,8000000.0
-Algeria,Yassine Titraoui,748445,2003-07-26,22.88,7000000.0
-Algeria,Himad Abdelli,592979,1999-11-17,26.57,7000000.0
-Algeria,Rafik Belghali,864306,2002-06-07,24.01,7000000.0
-Algeria,Riyad Mahrez,171424,1991-02-21,35.3,7000000.0
-Algeria,Ramy Bensebaini,284732,1995-04-16,31.15,7000000.0
-Algeria,Ramiz Zerrouki,416660,1998-05-26,28.04,6000000.0
-Algeria,Rafik Guitane,394328,1999-05-26,27.04,5000000.0
-Algeria,Nabil Bentaleb,245537,1994-11-24,31.55,5000000.0
-Algeria,Youcef Atal,416108,1996-05-17,30.07,4300000.0
-Algeria,Adam Ounas,400485,1996-11-11,29.58,4000000.0
-Algeria,Mohamed Belloumi,857079,2002-06-01,24.03,4000000.0
-Algeria,Amin Chiakha,1017261,2006-03-12,20.25,3000000.0
-Austria,Konrad Laimer,223967,1997-05-27,29.04,32000000.0
-Austria,Christoph Baumgartner,324278,1999-08-01,26.86,30000000.0
-Austria,Samson Baidoo,655217,2004-03-31,22.2,25000000.0
-Austria,Nicolas Seiwald,404950,2001-05-04,25.1,22000000.0
-Austria,Carney Chukwuemeka,659459,2003-10-20,22.64,20000000.0
-Austria,Kevin Danso,263236,1998-09-19,27.73,20000000.0
-Austria,Leopold Querfeld,597432,2003-12-20,22.48,18000000.0
-Austria,Paul Wanner,900909,2005-12-23,20.47,18000000.0
-Austria,Patrick Wimmer,533295,2001-05-30,25.03,15000000.0
-Austria,Romano Schmid,346853,2000-01-27,26.37,15000000.0
-Austria,Marco Friedl,156990,1998-03-16,28.24,12000000.0
-Austria,Philipp Lienhart,225657,1996-07-11,29.92,12000000.0
-Austria,Xaver Schlager,223979,1997-09-28,28.7,10000000.0
-Austria,David Affengruber,452483,2001-03-19,25.23,9000000.0
-Austria,Alexander Prass,434116,2001-05-26,25.04,7000000.0
-Austria,Marcel Sabitzer,106987,1994-03-17,32.24,7000000.0
-Austria,Raul Florucz,449444,2001-06-10,25.0,6000000.0
-Austria,Marco Grüll,391766,1998-07-06,27.93,6000000.0
-Austria,Stefan Posch,223974,1997-05-14,29.08,5500000.0
-Austria,Dejan Ljubicic,287188,1997-10-08,28.67,5000000.0
-Austria,Hannes Wolf,321070,1999-04-16,27.15,5000000.0
-Austria,Nikolaus Wurmbrand,803052,2006-01-05,20.43,5000000.0
-Austria,Muhammed Cham,422281,2000-09-26,25.71,4000000.0
-Austria,Junior Adamu,452477,2001-06-06,25.01,4000000.0
-Austria,Felix Bacher,394134,2000-10-25,25.63,4000000.0
-Austria,Valentino Lazaro,186368,1996-03-24,30.21,4000000.0
-Jordan,Mousa Tamari,551505,1997-06-10,29.0,8000000.0
-Jordan,Yazan Al-Arab,539961,1996-01-31,30.36,900000.0
-Jordan,Ibrahim Sabra,1142382,2006-02-01,20.36,400000.0
-Jordan,Tammer Bany,801989,2003-10-19,22.64,250000.0
-Jordan,Ali Azaizeh,1059056,2004-04-13,22.16,200000.0
-Portugal,João Neves,670681,2004-09-27,21.7,110000000.0
-Portugal,Vitinha,487469,2000-02-13,26.32,110000000.0
-Portugal,Nuno Mendes,616341,2002-06-19,23.98,75000000.0
-Portugal,Rafael Leão,357164,1999-06-10,27.0,65000000.0
-Portugal,Rúben Dias,258004,1997-05-14,29.08,60000000.0
-Portugal,Pedro Neto,487465,2000-03-09,26.26,60000000.0
-Portugal,Matheus Nunes,601883,1998-08-27,27.79,45000000.0
-Portugal,Geovany Quenda,1138758,2007-04-30,19.12,42000000.0
-Portugal,Diogo Jota,340950,1996-12-04,29.52,40000000.0
-Portugal,Gonçalo Inácio,549006,2001-08-25,24.79,40000000.0
-Portugal,Diogo Costa,357153,1999-09-19,26.73,40000000.0
-Portugal,Bruno Fernandes,240306,1994-09-08,31.76,40000000.0
-Portugal,Rodrigo Mora,957653,2007-05-05,19.1,38000000.0
-Portugal,Mateus Fernandes,880245,2004-07-10,21.92,35000000.0
-Portugal,Gonçalo Ramos,550550,2001-06-20,24.97,35000000.0
-Portugal,Francisco Trincão,412669,1999-12-29,26.45,35000000.0
-Portugal,Francisco Conceição,487474,2002-12-14,23.49,30000000.0
-Portugal,Diogo Dalot,357147,1999-03-18,27.23,30000000.0
-Portugal,António Silva,650568,2003-10-30,22.61,28000000.0
-Portugal,Fábio Silva,505653,2002-07-19,23.9,28000000.0
-Portugal,Tomás Araújo,504087,2002-05-16,24.07,28000000.0
-Portugal,Pedro Gonçalves,426620,1998-06-28,27.95,28000000.0
-Portugal,Bernardo Silva,241641,1994-08-10,31.84,27000000.0
-Portugal,Rúben Neves,225161,1997-03-13,29.25,25000000.0
-Portugal,Renato Veiga,805714,2003-07-29,22.87,25000000.0
-Portugal,João Félix,462250,1999-11-10,26.58,25000000.0
-DR Congo,Noah Sadiki,727089,2004-12-17,21.48,30000000.0
-DR Congo,Yoane Wissa,388165,1996-09-03,29.77,30000000.0
-DR Congo,Aaron Wan-Bissaka,477758,1997-11-26,28.54,22000000.0
-DR Congo,Ezechiel Banzuzi,865682,2005-02-16,21.31,18000000.0
-DR Congo,Ngal'ayel Mukau,1016015,2004-11-03,21.6,12000000.0
-DR Congo,Simon Banza,344869,1996-08-13,29.83,11000000.0
-DR Congo,Metinho,859396,2003-04-23,23.13,6000000.0
-DR Congo,Mario Stroeykens,588866,2004-09-29,21.7,6000000.0
-DR Congo,Axel Tuanzebe,342046,1997-11-14,28.57,5000000.0
-DR Congo,Matthieu Epolo,680218,2005-01-15,21.4,5000000.0
-DR Congo,Michel-Ange Balikwisha,502239,2001-05-10,25.09,4000000.0
-DR Congo,Afimico Pululu,410649,1999-03-23,27.22,4000000.0
-DR Congo,Théo Bongonda,280701,1995-11-20,30.56,4000000.0
-DR Congo,Gédéon Kalulu,395685,1997-08-29,28.78,3500000.0
-DR Congo,Samuel Essende,395522,1998-01-23,28.38,3000000.0
-DR Congo,Nathan Mbala,1307004,2008-02-19,18.31,3000000.0
-DR Congo,Silas,612826,1998-10-06,27.68,3000000.0
-DR Congo,Jackson Muleka,549966,1999-10-04,26.69,2500000.0
-DR Congo,Merveille Bokadi,368612,1996-05-21,30.06,2500000.0
-DR Congo,Joris Kayembe,129586,1994-08-08,31.84,2500000.0
-DR Congo,Arthur Masuaku,181380,1993-11-07,32.59,2500000.0
-DR Congo,Charles Pickel,243879,1997-05-15,29.07,2500000.0
-DR Congo,Grady Diangana,342048,1998-04-19,28.15,2500000.0
-DR Congo,Chancel Mbemba,203348,1994-08-08,31.84,2500000.0
-DR Congo,Steve Kapuadi,679709,1998-04-30,28.11,2500000.0
-DR Congo,Oscar Kabwit,1087164,2005-05-05,21.1,2000000.0
-Uzbekistan,Abdukodir Khusanov,763079,2004-02-29,22.28,35000000.0
-Uzbekistan,Abbosbek Fayzullaev,754037,2003-10-03,22.69,7000000.0
-Uzbekistan,Eldor Shomurodov,358166,1995-06-29,30.95,7000000.0
-Uzbekistan,Jaloliddin Masharipov,274536,1993-09-01,32.77,1700000.0
-Uzbekistan,Otabek Shukurov,294525,1996-06-22,29.97,1600000.0
-Uzbekistan,Khusniddin Alikulov,581429,1999-04-04,27.19,1500000.0
-Uzbekistan,Oston Urunov,492556,2000-12-19,25.48,1000000.0
-Uzbekistan,Bobur Abdikholikov,431912,1997-04-23,29.13,900000.0
-Uzbekistan,Rustam Ashurmatov,288883,1996-07-07,29.93,800000.0
-Uzbekistan,Ibrokhimkhalil Yuldoshev,704545,2001-02-14,25.32,800000.0
-Uzbekistan,Dostonbek Khamdamov,294502,1996-07-24,29.88,750000.0
-Uzbekistan,Azizbek Turgunboev,493593,1994-10-01,31.69,700000.0
-Uzbekistan,Alisher Odilov,630017,2001-07-15,24.91,700000.0
-Uzbekistan,Khozhimat Erkinov,630015,2001-05-29,25.03,600000.0
-Uzbekistan,Umarali Rakhmonaliev,837432,2003-08-18,22.81,600000.0
-Uzbekistan,Mukhammadali Urinboev,763090,2005-04-24,21.13,450000.0
-Uzbekistan,Ruslanbek Jiyanov,754040,2001-06-05,25.02,400000.0
-Colombia,Luis Díaz,480692,1997-01-13,29.41,70000000.0
-Colombia,Luis Suárez,424784,1997-12-02,28.52,28000000.0
-Colombia,Daniel Muñoz,493003,1996-05-26,30.04,27000000.0
-Colombia,Jhon Durán,649317,2003-12-13,22.49,25000000.0
-Colombia,Jhon Lucumí,413565,1998-06-26,27.96,25000000.0
-Colombia,Richard Ríos,735573,2000-06-02,26.02,22000000.0
-Colombia,Cucho Hernández,459463,1999-04-20,27.14,18000000.0
-Colombia,Davinson Sánchez,341429,1996-06-12,30.0,18000000.0
-Colombia,Jhon Arias,588989,1997-09-21,28.72,15000000.0
-Colombia,Yáser Asprilla,857818,2003-11-19,22.56,14000000.0
-Colombia,Yerson Mosquera,716276,2001-05-02,25.11,12000000.0
-Colombia,Luis Sinisterra,512385,1999-06-17,26.98,11000000.0
-Colombia,Jorge Carrascal,354145,1998-05-25,28.05,11000000.0
-Colombia,Jhon Córdoba,185245,1993-05-11,33.08,10000000.0
-Colombia,Juan Cabal,686965,2001-01-08,25.42,9000000.0
-Colombia,Nelson Deossa,907559,2000-02-06,26.34,9000000.0
-Colombia,Mateo Cassierra,362667,1997-04-13,29.16,9000000.0
-Colombia,Jefferson Lerma,262980,1994-10-25,31.63,8000000.0
-Colombia,Andrés Gómez,957461,2002-09-12,23.75,8000000.0
-Colombia,Wilmar Barrios,257668,1993-10-16,32.65,7000000.0
-Colombia,Carlos Cuesta,474589,1999-03-09,27.26,7000000.0
-Colombia,Kevin Mier,491542,2000-05-18,26.06,6500000.0
-Colombia,Kevin Castaño,857948,2000-09-29,25.7,6500000.0
-Colombia,Sebastián Villa,493000,1996-05-19,30.06,6000000.0
-Colombia,Jhohan Romaña,741963,1998-09-13,27.74,6000000.0
-Colombia,Jáminton Campaz,491553,2000-05-24,26.05,5500000.0
-England,Jude Bellingham,581678,2003-06-29,22.95,140000000.0
-England,Declan Rice,357662,1999-01-14,27.41,120000000.0
-England,Bukayo Saka,433177,2001-09-05,24.76,120000000.0
-England,Cole Palmer,568177,2002-05-06,24.1,110000000.0
-England,Phil Foden,406635,2000-05-28,26.04,80000000.0
-England,Morgan Rogers,503743,2002-07-26,23.88,80000000.0
-England,Trent Alexander-Arnold,314353,1998-10-07,27.68,65000000.0
-England,Marc Guéhi,392757,2000-07-13,25.91,65000000.0
-England,Harry Kane,132098,1993-07-28,32.87,65000000.0
-England,Adam Wharton,744149,2004-02-06,22.34,60000000.0
-England,Eberechi Eze,479999,1998-06-29,27.95,60000000.0
-England,Anthony Gordon,503733,2001-02-24,25.29,60000000.0
-England,Morgan Gibbs-White,429014,2000-01-27,26.37,60000000.0
-England,Elliot Anderson,567576,2002-11-06,23.59,60000000.0
-England,Reece James,472423,1999-12-08,26.51,60000000.0
-England,Mason Greenwood,532826,2001-10-01,24.69,55000000.0
-England,Levi Colwill,614258,2003-02-26,23.29,50000000.0
-England,Noni Madueke,503987,2002-03-10,24.25,50000000.0
-England,Kobbie Mainoo,820374,2005-04-19,21.14,50000000.0
-England,Nico O'Reilly,743413,2005-03-21,21.22,50000000.0
-England,Jarell Quansah,632349,2003-01-29,23.36,45000000.0
-England,Jarrad Branthwaite,661053,2002-06-27,23.96,45000000.0
-England,Ethan Nwaneri,890719,2007-03-21,19.23,40000000.0
-England,Alex Scott,855256,2003-08-21,22.81,40000000.0
-England,Tino Livramento,503981,2002-11-12,23.58,40000000.0
-England,Marcus Rashford,258923,1997-10-31,28.61,40000000.0
-Croatia,Josko Gvardiol,475959,2002-01-23,24.38,70000000.0
-Croatia,Luka Vuskovic,892160,2007-02-24,19.29,60000000.0
-Croatia,Josip Stanisic,483046,2000-04-02,26.19,35000000.0
-Croatia,Petar Sučić,668207,2003-10-25,22.63,30000000.0
-Croatia,Martin Baturina,580451,2003-02-16,23.32,24000000.0
-Croatia,Franjo Ivanović,548028,2003-10-01,22.69,18000000.0
-Croatia,Josip Sutalo,371001,2000-02-28,26.28,15000000.0
-Croatia,Mateo Kovacic,51471,1994-05-06,32.1,12000000.0
-Croatia,Luka Sucic,502722,2002-09-08,23.76,10000000.0
-Croatia,Lovro Majer,387106,1998-01-17,28.4,10000000.0
-Croatia,Igor Matanovic,605268,2003-03-31,23.2,10000000.0
-Croatia,Toni Fruk,432758,2001-03-09,25.26,9000000.0
-Croatia,Marcelo Brozović,156617,1992-11-16,33.57,9000000.0
-Croatia,Nikola Vlašić,293200,1997-10-04,28.68,9000000.0
-Croatia,Marin Pongracic,282144,1997-09-11,28.75,7500000.0
-Croatia,Matija Frigan,840149,2003-02-11,23.33,7500000.0
-Croatia,Mario Pašalić,205938,1995-02-09,31.33,7000000.0
-Croatia,Petar Musa,387110,1998-03-04,28.27,7000000.0
-Croatia,Nikola Moro,316934,1998-03-12,28.25,6500000.0
-Croatia,Marco Pašalić,395928,2000-09-14,25.74,6500000.0
-Croatia,Kristijan Jakic,374954,1997-05-14,29.08,6000000.0
-Croatia,Dominik Kotarski,370997,2000-02-10,26.33,6000000.0
-Croatia,Adriano Jagusic,1024285,2005-09-06,20.76,5000000.0
-Croatia,Dominik Prpić,921533,2004-05-19,22.06,5000000.0
-Croatia,Luka Modrić,27992,1985-09-09,40.75,4000000.0
-Croatia,Branimir Mlacic,1300966,2007-03-12,19.25,4000000.0
-Ghana,Antoine Semenyo,583255,2000-01-07,26.43,75000000.0
-Ghana,Mohammed Kudus,543499,2000-08-02,25.86,55000000.0
-Ghana,Abdul Fatawu,864121,2004-03-08,22.26,20000000.0
-Ghana,Kamaldeen Sulemana,746695,2002-02-15,24.32,18000000.0
-Ghana,Ibrahim Osman,1110406,2004-11-29,21.53,12000000.0
-Ghana,Ernest Nuamah,955070,2003-11-01,22.61,12000000.0
-Ghana,Christopher Bonsu Baah,1119447,2004-12-14,21.49,12000000.0
-Ghana,Iñaki Williams,255508,1994-06-15,31.99,10000000.0
-Ghana,Mohammed Salisu,563963,1999-04-17,27.15,10000000.0
-Ghana,Kojo Peprah Oppong,1113451,2004-06-04,22.02,10000000.0
-Ghana,Edmund Baidoo,1236853,2006-01-30,20.36,8000000.0
-Ghana,Jonas Adjetey,734676,2003-12-13,22.49,7000000.0
-Ghana,Ibrahim Sulemana,982267,2003-05-22,23.06,6000000.0
-Ghana,Joseph Paintsil,534435,1998-02-01,28.36,6000000.0
-Ghana,Alidu Seidu,798404,2000-06-04,26.02,6000000.0
-Ghana,Caleb Yirenkyi,1240763,2006-01-15,20.4,6000000.0
-Ghana,Tariq Lamptey,504148,2000-09-30,25.69,5000000.0
-Ghana,Daniel Amartey,214056,1994-12-21,31.47,5000000.0
-Ghana,Jerome Opoku,408563,1998-10-14,27.66,5000000.0
-Ghana,Prince Amoako Junior,1380311,2007-02-19,19.31,5000000.0
-Ghana,Salis Abdul Samed,688707,2000-03-26,26.21,4500000.0
-Ghana,Felix Afena-Gyan,872380,2003-01-19,23.39,4200000.0
-Ghana,Alexander Djiku,250844,1994-08-09,31.84,4000000.0
-Ghana,Alfred Duncan,184894,1993-03-10,33.25,4000000.0
-Ghana,Abdul Mumin,451801,1998-06-06,28.01,4000000.0
-Ghana,Derrick Köhn,391780,1999-02-04,27.35,4000000.0
-Panama,Amir Murillo,354482,1996-02-11,30.33,8000000.0
-Panama,Adalberto Carrasquilla,375300,1998-11-28,27.53,4000000.0
-Panama,Eduardo Guerrero,502842,2000-02-21,26.3,3000000.0
-Panama,José Luis Rodríguez,425028,1998-06-19,27.98,2500000.0
-Panama,Andrés Andrade,403808,1998-10-16,27.65,2000000.0
-Panama,Ismael Díaz,243298,1997-05-12,29.08,1800000.0
-Panama,Omar Valencia,1002223,2004-06-08,22.01,1200000.0
-Panama,Kadir Barría,1464878,2007-07-18,18.9,1000000.0
-Panama,Edgardo Fariña,923177,2001-10-19,24.64,1000000.0
-Panama,Yoel Bárcenas,283473,1993-10-23,32.63,700000.0
-Panama,Orlando Mosquera,402979,1994-12-25,31.46,650000.0
-Panama,Carlos Harvey,628806,2000-02-03,26.35,600000.0
-Panama,Joseph Jones,1053568,2005-07-30,20.87,600000.0
-Panama,Eduardo Anderson,742858,2001-01-31,25.36,350000.0
-Panama,Alfredo Stephens,189539,1994-12-25,31.46,300000.0
-Panama,Giovany Herbert,1101761,2005-03-12,21.25,300000.0
-Panama,Rafael Mosquera,892175,2005-05-24,21.05,250000.0
-Panama,Reynaldiño Verley,942475,2002-09-19,23.73,200000.0
-Panama,Aníbal Godoy,161671,1990-02-10,36.33,100000.0
-Panama,Didier Dawson,892174,2005-10-10,20.67,100000.0
-Panama,José Bernal,954515,2002-08-20,23.81,100000.0
-Panama,Anel Ryce,1105073,2006-07-06,19.93,100000.0
-Panama,JD Gunn,1232953,2000-01-21,26.39,75000.0
+team,player,position_code,club,shirt_number,player_id,date_of_birth,age_at_kickoff,value_at_kickoff
+Algeria,Luca Zidane,GK,Granada CF,23,283489,1998-05-13,28.08,1500000.0
+Algeria,Oussama Benbout,GK,USM Alger,16,437982,1994-10-11,31.67,700000.0
+Algeria,Melvin Mastil,GK,Stade Nyonnais,1,534398,2000-02-19,26.31,250000.0
+Algeria,Rayan Aït-Nouri,DF,Manchester City,15,578391,2001-06-06,25.01,35000000.0
+Algeria,Jaouen Hadjam,DF,BSC Young Boys,13,750903,2003-03-26,23.21,4000000.0
+Algeria,Rafik Belghali,DF,Hellas Verona,17,864306,2002-06-07,24.01,800000.0
+Algeria,Ramy Bensebaini,DF,Borussia Dortmund,21,284732,1995-04-16,31.15,7000000.0
+Algeria,Samir Chergui,DF,Paris FC,26,668167,1999-02-06,27.34,800000.0
+Algeria,Zineddine Belaid,DF,JS Kabylie,5,625142,1999-03-20,27.23,1400000.0
+Algeria,Mohamed Amine Tougai,DF,Esperance Tunis,4,592396,2000-01-22,26.38,1500000.0
+Algeria,Aïssa Mandi,DF,LOSC Lille,2,80293,1991-10-22,34.64,1500000.0
+Algeria,Achref Abada,DF,USM Alger,3,949929,1999-06-15,26.99,300000.0
+Algeria,Ibrahim Maza,MF,Bayer 04 Leverkusen,22,905011,2005-11-24,20.54,12000000.0
+Algeria,Farès Chaïbi,MF,Eintracht Frankfurt,10,855015,2002-11-28,23.53,14000000.0
+Algeria,Hicham Boudaoui,MF,OGC Nice,14,560593,1999-09-23,26.72,10000000.0
+Algeria,Houssem Aouar,MF,Al-Ittihad Club,8,395693,1998-06-30,27.95,9000000.0
+Algeria,Yassine Titraoui,MF,Royal Charleroi SC,24,748445,2003-07-26,22.88,2000000.0
+Algeria,Ramiz Zerrouki,MF,FC Twente Enschede,6,416660,1998-05-26,28.04,6500000.0
+Algeria,Nabil Bentaleb,MF,LOSC Lille,19,245537,1994-11-24,31.55,8000000.0
+Algeria,Amine Gouiri,FW,Olympique Marseille,9,418659,2000-02-16,26.32,20000000.0
+Algeria,Anis Hadj Moussa,FW,Feyenoord Rotterdam,11,917911,2002-02-11,24.33,12000000.0
+Algeria,Mohamed Amoura,FW,VfL Wolfsburg,18,746910,2000-05-09,26.09,22000000.0
+Algeria,Farès Ghedjemis,FW,Frosinone,25,888738,2002-09-06,23.76,7500000.0
+Algeria,Riyad Mahrez,FW,Al-Ahli SFC,7,171424,1991-02-21,35.3,9000000.0
+Algeria,Adil Boulbina,FW,Al-Duhail SC,20,748443,2003-05-02,23.11,900000.0
+Algeria,Nadhir Benbouali,FW,ETO FC,12,840254,2000-04-17,26.15,1200000.0
+Argentina,Emiliano Martínez,GK,Aston Villa,23,111873,1992-09-02,33.77,25000000.0
+Argentina,Gerónimo Rulli,GK,Olympique Marseille,12,229604,1992-05-20,34.06,5000000.0
+Argentina,Juan Musso,GK,Atlético,1,242359,1994-05-06,32.1,3000000.0
+Argentina,Cristian Romero,DF,Tottenham Hotspur,13,355915,1998-04-27,28.12,65000000.0
+Argentina,Lisandro Martínez,DF,Man Utd,6,480762,1998-01-18,28.39,40000000.0
+Argentina,Facundo Medina,DF,Olympique Marseille,25,474800,1999-05-28,27.04,25000000.0
+Argentina,Nahuel Molina,DF,Atlético de Madrid,26,424042,1998-04-06,28.18,25000000.0
+Argentina,Gonzalo Montiel,DF,CA River Plate,4,402733,1997-01-01,29.44,5000000.0
+Argentina,Nicolás Tagliafico,DF,Olympique Lyon,3,131225,1992-08-31,33.78,7000000.0
+Argentina,Nicolás Otamendi,DF,SL Benfica,19,54781,1988-02-12,38.33,1000000.0
+Argentina,Enzo Fernández,MF,Chelsea FC,24,648195,2001-01-17,25.4,75000000.0
+Argentina,Nico Paz,MF,Como 1907,18,948294,2004-09-08,21.75,20000000.0
+Argentina,Alexis Mac Allister,MF,Liverpool FC,20,534033,1998-12-24,27.46,80000000.0
+Argentina,Valentín Barco,MF,RC Strasbourg Alsace,8,849410,2004-07-23,21.88,6000000.0
+Argentina,Exequiel Palacios,MF,Bayer 04 Leverkusen,14,401578,1998-10-05,27.68,40000000.0
+Argentina,Rodrigo De Paul,MF,Inter Miami CF,7,255901,1994-05-24,32.05,25000000.0
+Argentina,Giovani Lo Celso,MF,Real Betis Balompié,11,348795,1996-04-09,30.17,20000000.0
+Argentina,Leandro Paredes,MF,CA Boca Juniors,5,166237,1994-06-29,31.95,5000000.0
+Argentina,Julián Álvarez,FW,Atlético de Madrid,9,576024,2000-01-31,26.36,80000000.0
+Argentina,Lautaro Martínez,FW,Inter Milan,22,406625,1997-08-22,28.8,100000000.0
+Argentina,Giuliano Simeone,FW,Atlético de Madrid,17,742201,2002-12-18,23.48,12000000.0
+Argentina,José Manuel López,FW,Sociedade Esportiva Palmeiras,21,844797,2000-12-06,25.51,9000000.0
+Argentina,Nico González,FW,Atlético de Madrid,15,486031,1998-04-06,28.18,35000000.0
+Argentina,Lionel Messi,FW,Inter Miami CF,10,28003,1987-06-24,38.97,20000000.0
+Argentina,Thiago Almada,FW,Atlético de Madrid,16,576028,2001-04-26,25.13,27000000.0
+Australia,Mathew Ryan,GK,Levante UD,1,128969,1992-04-08,34.17,2500000.0
+Australia,Patrick Beach,GK,Melbourne City FC,18,983578,2003-08-06,22.85,100000.0
+Australia,Paul Izzo,GK,Randers FC,12,181921,1995-01-06,31.43,500000.0
+Australia,Alessandro Circati,DF,Parma Calcio 1913,3,867137,2003-10-10,22.67,8500000.0
+Australia,Jordan Bos,DF,Feyenoord Rotterdam,5,855731,2002-10-29,23.62,2000000.0
+Australia,Lucas Herrington,DF,Colorado,25,1279984,2007-09-05,18.77,4500000.0
+Australia,Harry Souttar,DF,Leicester,19,298091,1998-10-22,27.64,3500000.0
+Australia,Cameron Burgess,DF,Swansea City,21,255788,1995-10-21,30.64,2500000.0
+Australia,Jacob Italiano,DF,Grazer AK 1902,4,545810,2001-07-30,24.87,250000.0
+Australia,Milos Degenek,DF,APOEL Nicosia,2,187353,1994-04-28,32.12,400000.0
+Australia,Jason Geria,DF,Albirex Niigata,6,185175,1993-05-10,33.09,500000.0
+Australia,Aziz Behich,DF,Melbourne City FC,16,136834,1990-12-16,35.49,400000.0
+Australia,Cristian Volpato,MF,Sassuolo,20,746891,2003-11-15,22.57,10000000.0
+Australia,Aiden O'Neill,MF,New York City FC,13,385918,1998-07-04,27.94,3000000.0
+Australia,Cammy Devlin,MF,Heart of Midlothian FC,14,399162,1998-06-07,28.01,1000000.0
+Australia,Kai Trewin,MF,New York City FC,15,691326,2001-05-18,25.07,400000.0
+Australia,Connor Metcalfe,MF,FC St. Pauli,8,522223,1999-11-05,26.6,2500000.0
+Australia,Paul Okon-Engstler,MF,Sydney FC,24,1064377,2005-01-24,21.38,200000.0
+Australia,Jackson Irvine,MF,FC St. Pauli,22,192557,1993-03-07,33.26,2000000.0
+Australia,Ajdin Hrustic,MF,Heracles Almelo,10,265625,1996-07-05,29.93,400000.0
+Australia,Mohamed Touré,FW,Norwich City,9,742770,2004-03-26,22.21,700000.0
+Australia,Nestory Irankunda,FW,Watford FC,17,956920,2006-02-09,20.33,3000000.0
+Australia,Nishan Velupillay,FW,Melbourne Victory,23,888140,2001-05-07,25.1,350000.0
+Australia,Awer Mabil,FW,Castellón,11,255729,1995-09-15,30.74,500000.0
+Australia,Tete Yengi,FW,Machida Zelvia,26,849429,2000-11-28,25.53,450000.0
+Australia,Mathew Leckie,FW,Melbourne City,7,126214,1991-02-04,35.35,300000.0
+Austria,Florian Wiegele,GK,Viktoria Plzeň,12,393999,2001-03-21,25.22,2200000.0
+Austria,Patrick Pentz,GK,Bröndby IF,13,223972,1997-01-02,29.44,3000000.0
+Austria,Alexander Schlager,GK,Red Bull Salzburg,1,186374,1996-02-01,30.36,2500000.0
+Austria,Konrad Laimer,DF,Bayern Munich,20,223967,1997-05-27,29.04,25000000.0
+Austria,David Affengruber,DF,Elche CF,2,452483,2001-03-19,25.23,20000000.0
+Austria,Kevin Danso,DF,Tottenham Hotspur,3,263236,1998-09-19,27.73,25000000.0
+Austria,Philipp Lienhart,DF,SC Freiburg,15,225657,1996-07-11,29.92,15000000.0
+Austria,Marco Friedl,DF,SV Werder Bremen,23,156990,1998-03-16,28.24,10000000.0
+Austria,Stefan Posch,DF,1.FSV Mainz 05,5,223974,1997-05-14,29.08,10000000.0
+Austria,Michael Svoboda,DF,Venezia,25,438961,1998-10-15,27.66,3500000.0
+Austria,David Alaba,DF,Real Madrid,8,59016,1992-06-24,33.96,10000000.0
+Austria,Phillipp Mwene,DF,1.FSV Mainz 05,16,127573,1994-01-29,32.36,1800000.0
+Austria,Nicolas Seiwald,MF,RB Leipzig,6,404950,2001-05-04,25.1,16000000.0
+Austria,Paul Wanner,MF,PSV,24,900909,2005-12-23,20.47,22000000.0
+Austria,Carney Chukwuemeka,MF,Dortmund,17,659459,2003-10-20,22.64,20000000.0
+Austria,Romano Schmid,MF,SV Werder Bremen,18,346853,2000-01-27,26.37,15000000.0
+Austria,Xaver Schlager,MF,RB Leipzig,4,223979,1997-09-28,28.7,28000000.0
+Austria,Alexander Prass,MF,TSG 1899 Hoffenheim,22,434116,2001-05-26,25.04,9000000.0
+Austria,Marcel Sabitzer,MF,Borussia Dortmund,9,106987,1994-03-17,32.24,15000000.0
+Austria,Florian Grillitsch,MF,SC Braga,10,195736,1995-08-07,30.84,3500000.0
+Austria,Alessandro Schöpf,MF,Wolfsberger AC,26,118397,1994-02-07,32.34,800000.0
+Austria,Patrick Wimmer,FW,VfL Wolfsburg,21,533295,2001-05-30,25.03,12000000.0
+Austria,Sasa Kalajdzic,FW,LASK,14,369567,1997-07-07,28.93,4000000.0
+Austria,Marko Arnautovic,FW,Red Star Belgrade,7,41384,1989-04-19,37.14,3500000.0
+Austria,Michael Gregoritsch,FW,FC Augsburg,11,120205,1994-04-18,32.15,6000000.0
+Belgium,Senne Lammens,GK,Manchester United,12,503883,2002-07-07,23.93,4500000.0
+Belgium,Mike Penders,GK,RC Strasbourg Alsace,13,834397,2005-07-31,20.86,5000000.0
+Belgium,Thibaut Courtois,GK,Real Madrid,1,108390,1992-05-11,34.08,25000000.0
+Belgium,Zeno Debast,DF,Sporting CP,2,548193,2003-10-24,22.63,24000000.0
+Belgium,Nathan Ngoy,DF,Lille,25,548254,2003-06-10,23.0,25000000.0
+Belgium,Koni De Winter,DF,AC Milan,16,490384,2002-06-12,24.0,12000000.0
+Belgium,Maxim De Cuyper,DF,Brighton & Hove Albion,5,429915,2000-12-22,25.47,12000000.0
+Belgium,Joaquin Seys,DF,Club Brugge KV,18,981196,2005-03-28,21.2,7000000.0
+Belgium,Arthur Theate,DF,Eintracht Frankfurt,3,368891,2000-05-25,26.05,20000000.0
+Belgium,Timothy Castagne,DF,Fulham FC,21,262226,1995-12-05,30.52,15000000.0
+Belgium,Brandon Mechele,DF,Club Brugge KV,4,236168,1993-01-28,33.37,3000000.0
+Belgium,Thomas Meunier,DF,LOSC Lille,15,100986,1991-09-12,34.75,2000000.0
+Belgium,Amadou Onana,MF,Aston Villa,24,485706,2001-08-16,24.82,55000000.0
+Belgium,Youri Tielemans,MF,Aston Villa,8,249565,1997-05-07,29.1,30000000.0
+Belgium,Charles De Ketelaere,MF,Atalanta BC,17,435772,2001-03-10,25.25,38000000.0
+Belgium,Diego Moreira,MF,RC Strasbourg Alsace,19,655006,2004-08-06,21.85,6000000.0
+Belgium,Alexis Saelemaekers,MF,AC Milan,22,381950,1999-06-27,26.96,12000000.0
+Belgium,Nicolas Raskin,MF,Rangers FC,23,422763,2001-02-23,25.3,6500000.0
+Belgium,Kevin De Bruyne,MF,SSC Napoli,7,88755,1991-06-28,34.95,35000000.0
+Belgium,Hans Vanaken,MF,Club Brugge KV,20,137576,1992-08-24,33.8,6000000.0
+Belgium,Axel Witsel,MF,Girona FC,6,35047,1989-01-12,37.41,2500000.0
+Belgium,Jérémy Doku,FW,Manchester City,11,486049,2002-05-27,24.04,60000000.0
+Belgium,Matias Fernandez-Pardo,FW,Lille,26,724129,2005-02-03,21.35,35000000.0
+Belgium,Leandro Trossard,FW,Arsenal FC,10,144028,1994-12-04,31.52,30000000.0
+Belgium,Dodi Lukébakio,FW,SL Benfica,14,303259,1997-09-24,28.71,20000000.0
+Belgium,Romelu Lukaku,FW,SSC Napoli,9,96341,1993-05-13,33.08,25000000.0
+Bosnia and Herzegovina,Nikola Vasilj,GK,FC St. Pauli,1,248454,1995-12-02,30.52,3000000.0
+Bosnia and Herzegovina,Martin Zlomislic,GK,HNK Rijeka,22,495320,1998-08-16,27.82,1000000.0
+Bosnia and Herzegovina,Mladen Jurkas,GK,B. Banja Luka,12,952692,2007-10-07,18.68,700000.0
+Bosnia and Herzegovina,Tarik Muharemović,DF,US Sassuolo,4,679423,2003-02-28,23.28,3500000.0
+Bosnia and Herzegovina,Amar Dedić,DF,SL Benfica,7,519184,2002-08-18,23.81,15000000.0
+Bosnia and Herzegovina,Nidal Celik,DF,Lens,24,819566,2006-07-17,19.9,7000000.0
+Bosnia and Herzegovina,Sead Kolasinac,DF,Atalanta BC,5,94005,1993-06-20,32.97,10000000.0
+Bosnia and Herzegovina,Stjepan Radeljic,DF,HNK Rijeka,21,384568,1997-09-05,28.76,2000000.0
+Bosnia and Herzegovina,Nikola Katic,DF,FC Schalke 04,18,422051,1996-10-10,29.67,1500000.0
+Bosnia and Herzegovina,Nihad Mujakic,DF,Gaziantep FK,2,380919,1998-04-15,28.16,1000000.0
+Bosnia and Herzegovina,Dennis Hadzikadunic,DF,UC Sampdoria,3,322065,1998-07-09,27.92,1700000.0
+Bosnia and Herzegovina,Ermin Mahmic,MF,Slovan Liberec,26,803049,2005-03-14,21.24,5000000.0
+Bosnia and Herzegovina,Benjamin Tahirović,MF,Bröndby IF,6,787907,2003-03-03,23.27,3500000.0
+Bosnia and Herzegovina,Amar Memić,MF,FC Viktoria Plzen,15,638990,2001-01-20,25.39,600000.0
+Bosnia and Herzegovina,Amir Hadziahmetovic,MF,Hull City,16,293213,1997-03-08,29.26,5500000.0
+Bosnia and Herzegovina,Armin Gigovic,MF,BSC Young Boys,8,651269,2002-04-06,24.18,3000000.0
+Bosnia and Herzegovina,Ivan Šunjić,MF,Pafos FC,14,226097,1996-10-09,29.67,1300000.0
+Bosnia and Herzegovina,Ivan Basic,MF,FC Astana,13,620560,2002-04-30,24.11,1200000.0
+Bosnia and Herzegovina,Dzenis Burnic,MF,Karlsruher SC,17,251295,1998-05-22,28.05,1200000.0
+Bosnia and Herzegovina,Ermedin Demirovic,FW,VfB Stuttgart,10,335457,1998-03-25,28.21,28000000.0
+Bosnia and Herzegovina,Kerim Alajbegovic,FW,Red Bull Salzburg,19,929994,2007-09-21,18.72,22000000.0
+Bosnia and Herzegovina,Esmir Bajraktarevic,FW,PSV Eindhoven,20,925862,2005-03-10,21.25,3500000.0
+Bosnia and Herzegovina,Haris Tabakovic,FW,Borussia Mönchengladbach,23,203123,1994-06-20,31.98,3000000.0
+Bosnia and Herzegovina,Jovo Lukić,FW,U Cluj,25,457738,1998-11-28,27.53,2200000.0
+Bosnia and Herzegovina,Samed Bazdar,FW,Jagiellonia Bialystok,9,710969,2004-01-31,22.36,4000000.0
+Bosnia and Herzegovina,Edin Dzeko,FW,FC Schalke 04,11,28396,1986-03-17,40.24,2200000.0
+Brazil,Alisson,GK,Liverpool FC,1,105470,1992-10-02,33.69,25000000.0
+Brazil,Ederson,GK,Fenerbahce,23,238223,1993-08-17,32.82,30000000.0
+Brazil,Weverton,GK,Grêmio Foot-Ball Porto Alegrense,12,69400,1987-12-13,38.49,1800000.0
+Brazil,Gabriel,DF,Arsenal FC,3,435338,1997-12-19,28.48,75000000.0
+Brazil,Wesley,DF,AS Roma,2,964580,2003-09-06,22.76,9000000.0
+Brazil,Bremer,DF,Juventus,14,516716,1997-03-18,29.23,35000000.0
+Brazil,Marquinhos,DF,Paris Saint-Germain,4,181767,1994-05-14,32.08,40000000.0
+Brazil,Roger Ibañez,DF,Al-Ahli,24,524481,1998-11-23,27.55,18000000.0
+Brazil,Léo Pereira,DF,Flamengo,15,288431,1996-01-31,30.36,12000000.0
+Brazil,Douglas Santos,DF,Zenit St. Petersburg,16,220793,1994-03-22,32.22,10000000.0
+Brazil,Danilo,DF,CR Flamengo,13,145707,1991-07-15,34.91,4000000.0
+Brazil,Alex Sandro,DF,CR Flamengo,6,79960,1991-01-26,35.37,1800000.0
+Brazil,Bruno Guimarães,MF,Newcastle United,8,520624,1997-11-16,28.57,80000000.0
+Brazil,Danilo,MF,Botafogo,18,808509,2001-04-29,25.12,32000000.0
+Brazil,Lucas Paquetá,MF,CR Flamengo,20,444523,1997-08-27,28.79,40000000.0
+Brazil,Fabinho,MF,Al-Ittihad Club,17,225693,1993-10-23,32.63,18000000.0
+Brazil,Neymar,MF,Santos,10,68290,1992-02-05,34.35,8000000.0
+Brazil,Casemiro,MF,Manchester United,5,16306,1992-02-23,34.3,12000000.0
+Brazil,Vinicius Junior,FW,Real Madrid,7,371998,2000-07-12,25.91,200000000.0
+Brazil,Matheus Cunha,FW,Manchester United,9,517894,1999-05-27,27.04,50000000.0
+Brazil,Raphinha,FW,FC Barcelona,11,411295,1996-12-14,29.49,80000000.0
+Brazil,Igor Thiago,FW,Brentford,25,739443,2001-06-26,24.96,65000000.0
+Brazil,Rayan,FW,Bournemouth,26,1012564,2006-08-03,19.85,60000000.0
+Brazil,Gabriel Martinelli,FW,Arsenal FC,22,655488,2001-06-18,24.98,55000000.0
+Brazil,Endrick,FW,Olympique Lyon,19,971570,2006-07-21,19.89,40000000.0
+Brazil,Luiz Henrique,FW,Zenit St. Petersburg,21,800175,2001-01-02,25.44,22000000.0
+Canada,Dayne St. Clair,GK,Inter Miami CF,1,439750,1997-05-09,29.09,2000000.0
+Canada,Maxime Crépeau,GK,Orlando City SC,16,189014,1994-05-11,32.08,3500000.0
+Canada,Owen Goodman,GK,Barnsley FC,18,814848,2003-11-27,22.54,500000.0
+Canada,Alphonso Davies,DF,Bayern Munich,19,424204,2000-11-02,25.6,50000000.0
+Canada,Alistair Johnston,DF,Celtic FC,2,637446,1998-10-08,27.67,9000000.0
+Canada,Moïse Bombito,DF,OGC Nice,15,1089202,2000-03-30,26.2,7000000.0
+Canada,Alfie Jones,DF,Middlesbrough FC,3,340990,1997-10-07,28.68,4000000.0
+Canada,Derek Cornelius,DF,Olympique Marseille,13,328609,1997-11-25,28.54,4000000.0
+Canada,Joel Waterman,DF,Chicago Fire FC,5,441738,1996-01-24,30.38,2500000.0
+Canada,Luc De Fougerolles,DF,FCV Dender EH,4,921995,2005-10-12,20.66,250000.0
+Canada,Richie Laryea,DF,Toronto FC,22,417348,1995-01-07,31.43,1200000.0
+Canada,Ismaël Koné,MF,US Sassuolo,8,921655,2002-06-16,23.99,12000000.0
+Canada,Nathan-Dylan Saliba,MF,RSC Anderlecht,25,842420,2004-02-07,22.34,2000000.0
+Canada,Stephen Eustaquio,MF,Los Angeles FC,7,512913,1996-12-21,29.47,11000000.0
+Canada,Ali Ahmed,MF,Norwich City,20,995642,2000-10-10,25.67,3000000.0
+Canada,Niko Sigur,MF,HNK Hajduk Split,23,1045375,2003-09-09,22.75,4000000.0
+Canada,Jonathan Osorio,MF,Toronto FC,21,260807,1992-06-12,34.0,2000000.0
+Canada,Mathieu Choinière,MF,Los Angeles FC,6,589006,1999-02-07,27.34,2000000.0
+Canada,Jonathan David,FW,Juventus FC,10,533738,2000-01-14,26.41,45000000.0
+Canada,Promise David,FW,Union Saint-Gilloise,24,888785,2001-07-03,24.94,1500000.0
+Canada,Tajon Buchanan,FW,Villarreal CF,17,638793,1999-02-08,27.34,8000000.0
+Canada,Tani Oluwaseyi,FW,Villarreal CF,12,972465,2000-05-15,26.07,3000000.0
+Canada,Liam Millar,FW,Hull City,11,487417,1999-09-27,26.7,3500000.0
+Canada,Cyle Larin,FW,Southampton FC,9,343463,1995-04-17,31.15,3500000.0
+Canada,Jacob Shaffelburg,FW,Los Angeles FC,14,637632,1999-11-26,26.54,5000000.0
+Cape Verde,CJ dos Santos,GK,San Diego,23,532096,2000-08-24,25.8,1000000.0
+Cape Verde,Márcio Rosa,GK,Montana,12,398048,1997-02-23,29.3,100000.0
+Cape Verde,Vozinha,GK,GD Chaves,1,242277,1986-06-03,40.02,50000.0
+Cape Verde,Logan Costa,DF,Villarreal CF,5,484988,2001-04-01,25.19,15000000.0
+Cape Verde,Wagner Pina,DF,Trabzonspor,24,1072017,2002-11-03,23.6,3000000.0
+Cape Verde,Sidny Lopes Cabral,DF,SL Benfica,13,611855,2002-09-18,23.73,325000.0
+Cape Verde,Steven Moreira,DF,Columbus Crew,22,203517,1994-08-13,31.83,1800000.0
+Cape Verde,Diney Borges,DF,Al-Bataeh CSC,3,349570,1995-01-17,31.4,1000000.0
+Cape Verde,Kelvin Pires,DF,SJK Seinäjoki,25,662119,2000-06-05,26.02,300000.0
+Cape Verde,Roberto Lopes,DF,Shamrock Rovers,4,166158,1992-06-17,33.98,250000.0
+Cape Verde,Stopira,DF,SC União Torreense,2,80486,1988-05-20,38.06,50000.0
+Cape Verde,Kevin Lenini,MF,FC Krasnodar,6,544586,1997-01-27,29.37,3500000.0
+Cape Verde,Deroy Duarte,MF,Ludogorets Razgrad,14,432852,1999-07-04,26.94,1000000.0
+Cape Verde,Laros Duarte,MF,Puskás Akadémia FC,15,258513,1997-02-28,29.28,900000.0
+Cape Verde,João Paulo,MF,FCSB,8,623965,1998-05-26,28.04,500000.0
+Cape Verde,Jamiro Monteiro,MF,PEC Zwolle,10,272930,1993-11-23,32.55,1500000.0
+Cape Verde,Yannick Semedo,MF,SC Farense,16,620307,1995-12-29,30.45,400000.0
+Cape Verde,Telmo Arcanjo,FW,Vitória Guimarães SC,18,791528,2001-06-21,24.97,800000.0
+Cape Verde,Hélio Varela,FW,Maccabi Tel Aviv,26,840836,2002-05-03,24.11,2000000.0
+Cape Verde,Benchimol,FW,Akron Tolyatti,9,820252,2001-12-29,24.45,700000.0
+Cape Verde,Jovane Cabral,FW,CF Estrela Amadora,7,448466,1998-06-14,27.99,1500000.0
+Cape Verde,Willy Semedo,FW,Omonia Nicosia,17,531450,1994-04-27,32.12,1200000.0
+Cape Verde,Dailon Livramento,FW,Casa Pia AC,19,676411,2001-05-04,25.1,800000.0
+Cape Verde,Nuno Da Costa,FW,Basaksehir FK,21,306166,1991-02-10,35.33,650000.0
+Cape Verde,Garry Rodrigues,FW,Apollon Limassol,11,170895,1990-11-27,35.54,900000.0
+Cape Verde,Ryan Mendes,FW,Igdir FK,20,111627,1990-01-08,36.42,700000.0
+Colombia,Álvaro Montero,GK,CA Vélez Sarsfield,24,292985,1995-03-29,31.2,1500000.0
+Colombia,Camilo Vargas,GK,Atlas Guadalajara,12,74113,1989-03-09,37.26,1000000.0
+Colombia,David Ospina,GK,Atlético Nacional,1,73396,1988-08-31,37.78,600000.0
+Colombia,Daniel Muñoz,DF,Crystal Palace,2,493003,1996-05-26,30.04,25000000.0
+Colombia,Jhon Lucumí,DF,Bologna FC 1909,3,413565,1998-06-26,27.96,18000000.0
+Colombia,Davinson Sánchez,DF,Galatasaray,23,341429,1996-06-12,30.0,19000000.0
+Colombia,Willer Ditta,DF,CD Cruz Azul,18,609255,1998-01-23,28.38,6000000.0
+Colombia,Yerry Mina,DF,Cagliari Calcio,13,289446,1994-09-23,31.72,3000000.0
+Colombia,Deiver Machado,DF,FC Nantes,22,332560,1993-09-02,32.77,3500000.0
+Colombia,Johan Mojica,DF,RCD Mallorca,17,262939,1992-08-21,33.8,2200000.0
+Colombia,Santiago Arias,DF,CA Independiente,4,120443,1992-01-13,34.41,2200000.0
+Colombia,Richard Ríos,MF,SL Benfica,6,735573,2000-06-02,26.02,14000000.0
+Colombia,Jorge Carrascal,MF,CR Flamengo,8,354145,1998-05-25,28.05,7000000.0
+Colombia,Gustavo Puerta,MF,Racing Santander,14,936981,2003-07-23,22.89,3500000.0
+Colombia,Jefferson Lerma,MF,Crystal Palace,16,262980,1994-10-25,31.63,14000000.0
+Colombia,Kevin Castaño,MF,CA River Plate,5,857948,2000-09-29,25.7,6000000.0
+Colombia,Juan Portilla,MF,Club Athletico Paranaense,15,585747,1998-09-12,27.75,3500000.0
+Colombia,Juan Fernando Quintero,MF,CA River Plate,20,122582,1993-01-18,33.39,2500000.0
+Colombia,James Rodríguez,MF,Minnesota United FC,10,88103,1991-07-12,34.92,2500000.0
+Colombia,Luis Díaz,FW,Bayern Munich,7,480692,1997-01-13,29.41,85000000.0
+Colombia,Luis Suárez,FW,Sporting CP,25,424784,1997-12-02,28.52,5000000.0
+Colombia,Cucho Hernández,FW,Real Betis Balompié,19,459463,1999-04-20,27.14,18000000.0
+Colombia,Jhon Arias,FW,Sociedade Esportiva Palmeiras,11,588989,1997-09-21,28.72,16000000.0
+Colombia,Andrés Gómez,FW,Clube de Regatas Vasco da Gama,26,957461,2002-09-12,23.75,5000000.0
+Colombia,Jhon Córdoba,FW,FC Krasnodar,9,185245,1993-05-11,33.08,14000000.0
+Colombia,Jáminton Campaz,FW,CA Rosario Central,21,491553,2000-05-24,26.05,6000000.0
+Croatia,Dominik Kotarski,GK,FC Copenhagen,23,370997,2000-02-10,26.33,8000000.0
+Croatia,Ivor Pandur,GK,Hull City,12,371013,2000-03-25,26.21,2000000.0
+Croatia,Dominik Livakovic,GK,GNK Dinamo Zagreb,1,205927,1995-01-09,31.42,11000000.0
+Croatia,Josko Gvardiol,DF,Manchester City,4,475959,2002-01-23,24.38,75000000.0
+Croatia,Luka Vuskovic,DF,Hamburger SV,22,892160,2007-02-24,19.29,10000000.0
+Croatia,Josip Stanisic,DF,Bayern Munich,2,483046,2000-04-02,26.19,28000000.0
+Croatia,Josip Sutalo,DF,Ajax Amsterdam,6,371001,2000-02-28,26.28,18000000.0
+Croatia,Marin Pongracic,DF,ACF Fiorentina,3,282144,1997-09-11,28.75,10000000.0
+Croatia,Martin Erlić,DF,FC Midtjylland,25,357003,1998-01-24,28.38,5000000.0
+Croatia,Duje Caleta-Car,DF,Real Sociedad,5,238266,1996-09-17,29.73,8000000.0
+Croatia,Petar Sučić,MF,Inter Milan,17,668207,2003-10-25,22.63,12000000.0
+Croatia,Martin Baturina,MF,Como 1907,16,580451,2003-02-16,23.32,20000000.0
+Croatia,Mateo Kovacic,MF,Manchester City,8,51471,1994-05-06,32.1,28000000.0
+Croatia,Nikola Vlašić,MF,Torino FC,13,293200,1997-10-04,28.68,7000000.0
+Croatia,Luka Sucic,MF,Real Sociedad,21,502722,2002-09-08,23.76,18000000.0
+Croatia,Toni Fruk,MF,HNK Rijeka,19,432758,2001-03-09,25.26,5000000.0
+Croatia,Nikola Moro,MF,Bologna FC 1909,7,316934,1998-03-12,28.25,5000000.0
+Croatia,Mario Pašalić,MF,Atalanta BC,15,205938,1995-02-09,31.33,13000000.0
+Croatia,Kristijan Jakic,MF,FC Augsburg,18,374954,1997-05-14,29.08,6500000.0
+Croatia,Luka Modrić,MF,AC Milan,10,27992,1985-09-09,40.75,5000000.0
+Croatia,Andrej Kramaric,MF,TSG 1899 Hoffenheim,9,46580,1991-06-19,34.98,4000000.0
+Croatia,Igor Matanovic,FW,SC Freiburg,20,605268,2003-03-31,23.2,8000000.0
+Croatia,Petar Musa,FW,FC Dallas,26,387110,1998-03-04,28.27,7000000.0
+Croatia,Marco Pašalić,FW,Orlando City SC,24,395928,2000-09-14,25.74,4000000.0
+Croatia,Ante Budimir,FW,CA Osasuna,11,46413,1991-07-22,34.89,5000000.0
+Croatia,Ivan Perišić,FW,PSV Eindhoven,14,42460,1989-02-02,37.35,1500000.0
+Curacao,Eloy Room,GK,Miami FC,1,79294,1989-02-06,37.34,250000.0
+Curacao,Trevor Doornbusch,GK,VVV-Venlo,26,390814,1999-07-06,26.93,100000.0
+Curacao,Tyrick Bodak,GK,SC Telstar,25,663961,2002-05-15,24.07,25000.0
+Curacao,Armando Obispo,DF,PSV Eindhoven,18,339337,1999-03-05,27.27,3500000.0
+Curacao,Riechedly Bazoer,DF,Konyaspor,23,216443,1996-10-12,29.66,3500000.0
+Curacao,Deveron Fonville,DF,NEC Nijmegen,24,708989,2003-05-16,23.07,1500000.0
+Curacao,Shurandy Sambo,DF,Sparta Rotterdam,2,412937,2001-08-19,24.81,2000000.0
+Curacao,Joshua Brenet,DF,Kayserispor,20,207006,1994-03-20,32.23,3000000.0
+Curacao,Sherel Floranus,DF,PEC Zwolle,5,315211,1998-08-23,27.8,750000.0
+Curacao,Livano Comenencia,DF,FC Zürich,8,626764,2004-02-03,22.35,800000.0
+Curacao,Roshon van Eijma,DF,RKC Waalwijk,4,401029,1998-06-09,28.01,500000.0
+Curacao,Juriën Gaari,DF,Abha Club,3,328455,1993-12-23,32.47,450000.0
+Curacao,Tahith Chong,MF,Sheffield United,21,344830,1999-12-04,26.52,6000000.0
+Curacao,Juninho Bacuna,MF,FC Volendam,7,348863,1997-08-07,28.84,3200000.0
+Curacao,Tyrese Noslin,MF,SC Telstar,13,708005,2002-09-11,23.75,200000.0
+Curacao,Kevin Felida,MF,FC Den Bosch,22,433933,1999-11-11,26.58,200000.0
+Curacao,Godfried Roemeratoe,MF,RKC Waalwijk,6,393241,1999-08-19,26.81,600000.0
+Curacao,Leandro Bacuna,MF,Igdir FK,10,126014,1991-08-21,34.81,350000.0
+Curacao,Sontje Hansen,FW,Middlesbrough FC,12,485582,2002-05-18,24.07,3500000.0
+Curacao,Jearl Margaritha,FW,SK Beveren,16,538958,2000-04-10,26.17,400000.0
+Curacao,Jeremy Antonisse,FW,AE Kifisia,11,594273,2002-03-29,24.2,700000.0
+Curacao,Ar'jany Martha,FW,Rotherham United,15,572519,2003-09-04,22.77,900000.0
+Curacao,Kenji Gorré,FW,Maccabi Haifa,14,374889,1994-09-29,31.7,850000.0
+Curacao,Brandley Kuwas,FW,FC Volendam,17,232219,1992-09-19,33.72,350000.0
+Curacao,Gervane Kastaneer,FW,Terengganu FC,19,240752,1996-06-09,30.0,200000.0
+Curacao,Jürgen Locadia,FW,Miami FC,9,166240,1993-11-07,32.59,300000.0
+Czech Republic,Lukas Hornicek,GK,SC Braga,23,629773,2002-07-13,23.91,2000000.0
+Czech Republic,Matej Kovar,GK,PSV Eindhoven,1,550829,2000-05-17,26.07,7000000.0
+Czech Republic,Jindrich Stanek,GK,SK Slavia Prague,16,242089,1996-04-27,30.12,2200000.0
+Czech Republic,Ladislav Krejčí,DF,Wolverhampton Wanderers,7,345911,1999-04-20,27.14,12000000.0
+Czech Republic,Robin Hranac,DF,TSG 1899 Hoffenheim,4,620217,2000-01-29,26.37,5500000.0
+Czech Republic,Stepan Chaloupek,DF,SK Slavia Prague,6,944827,2003-03-08,23.26,2000000.0
+Czech Republic,David Zima,DF,SK Slavia Prague,2,544149,2000-11-08,25.59,4500000.0
+Czech Republic,David Jurásek,DF,SK Slavia Prague,14,500054,2000-08-07,25.84,7000000.0
+Czech Republic,Vladimír Coufal,DF,TSG 1899 Hoffenheim,5,157672,1992-08-22,33.8,7000000.0
+Czech Republic,Tomas Holes,DF,SK Slavia Prague,3,216278,1993-03-31,33.2,2200000.0
+Czech Republic,Jaroslav Zelený,DF,AC Sparta Prague,20,142219,1992-08-20,33.81,1000000.0
+Czech Republic,Pavel Sulc,MF,Olympique Lyon,15,500053,2000-12-29,25.45,10000000.0
+Czech Republic,Tomáš Souček,MF,West Ham United,22,283628,1995-02-27,31.29,24000000.0
+Czech Republic,Michal Sadílek,MF,SK Slavia Prague,18,321204,1999-05-31,27.03,7000000.0
+Czech Republic,Lukas Cerv,MF,FC Viktoria Plzen,12,611049,2001-04-10,25.17,4000000.0
+Czech Republic,David Doudera,MF,SK Slavia Prague,21,493758,1998-05-31,28.03,3000000.0
+Czech Republic,Hugo Sochurek,MF,Sparta Prague,25,1206877,2008-06-07,18.01,3500000.0
+Czech Republic,Denis Visinsky,MF,Viktoria Plzeň,26,652060,2003-03-21,23.23,3000000.0
+Czech Republic,Alexandr Sojka,MF,Viktoria Plzeň,24,826103,2003-04-02,23.19,2300000.0
+Czech Republic,Vladimír Darida,MF,Hradec Kralove,8,179643,1990-08-08,35.84,375000.0
+Czech Republic,Patrik Schick,FW,Bayer 04 Leverkusen,10,242086,1996-01-24,30.38,22000000.0
+Czech Republic,Adam Hlozek,FW,TSG 1899 Hoffenheim,9,552057,2002-07-25,23.88,18000000.0
+Czech Republic,Lukas Provod,FW,SK Slavia Prague,17,292779,1996-10-23,29.63,7000000.0
+Czech Republic,Mojmír Chytil,FW,SK Slavia Prague,13,405855,1999-04-29,27.12,6000000.0
+Czech Republic,Jan Kuchta,FW,AC Sparta Prague,11,334802,1997-01-08,29.42,4000000.0
+Czech Republic,Tomas Chory,FW,SK Slavia Prague,19,198614,1995-01-26,31.37,3500000.0
+DR Congo,Matthieu Epolo,GK,Standard Liège,21,680218,2005-01-15,21.4,3000000.0
+DR Congo,Timothy Fayulu,GK,FC Noah Yerevan,16,541420,1999-07-24,26.88,1400000.0
+DR Congo,Lionel Mpasi-Nzau,GK,Le Havre AC,1,164915,1994-08-01,31.86,600000.0
+DR Congo,Aaron Wan-Bissaka,DF,West Ham United,2,477758,1997-11-26,28.54,22000000.0
+DR Congo,Axel Tuanzebe,DF,Burnley FC,4,342046,1997-11-14,28.57,5000000.0
+DR Congo,Steve Kapuadi,DF,Widzew Lodz,3,679709,1998-04-30,28.11,2500000.0
+DR Congo,Joris Kayembe,DF,KRC Genk,12,129586,1994-08-08,31.84,2500000.0
+DR Congo,Chancel Mbemba,DF,LOSC Lille,22,203348,1994-08-08,31.84,5000000.0
+DR Congo,Arthur Masuaku,DF,RC Lens,26,181380,1993-11-07,32.59,3500000.0
+DR Congo,Gédéon Kalulu,DF,Aris Limassol,24,395685,1997-08-29,28.78,2500000.0
+DR Congo,Dylan Batubinsika,DF,AE Larisa,5,289432,1996-02-15,30.32,2500000.0
+DR Congo,Noah Sadiki,MF,Sunderland AFC,14,727089,2004-12-17,21.48,8000000.0
+DR Congo,Ngal'ayel Mukau,MF,LOSC Lille,6,1016015,2004-11-03,21.6,10000000.0
+DR Congo,Edo Kayembe,MF,Watford FC,25,486477,1998-06-03,28.02,3000000.0
+DR Congo,Charles Pickel,MF,RCD Espanyol Barcelona,18,243879,1997-05-15,29.07,2400000.0
+DR Congo,Meschack Elia,MF,Alanyaspor,13,423678,1997-08-06,28.85,5000000.0
+DR Congo,Samuel Moutoussamy,MF,Atromitos Athens,8,353403,1996-08-12,29.83,2200000.0
+DR Congo,Gaël Kakuta,MF,AE Larisa,11,74297,1991-06-21,34.97,1000000.0
+DR Congo,Aaron Tshibola,MF,Kilmarnock FC,15,243633,1995-01-02,31.44,400000.0
+DR Congo,Yoane Wissa,FW,Newcastle United,20,388165,1996-09-03,29.77,28000000.0
+DR Congo,Simon Banza,FW,Al-Jazira Club,23,344869,1996-08-13,29.83,15000000.0
+DR Congo,Théo Bongonda,FW,Spartak Moscow,10,280701,1995-11-20,30.56,6000000.0
+DR Congo,Nathanaël Mbuku,FW,Montpellier HSC,7,557614,2002-03-16,24.24,2000000.0
+DR Congo,Brian Cipenga,FW,CD Castellón,9,700565,1998-03-11,28.25,500000.0
+DR Congo,Fiston Mayele,FW,Pyramids FC,19,727157,1994-06-24,31.96,1200000.0
+DR Congo,Cédric Bakambu,FW,Real Betis Balompié,17,127048,1991-04-11,35.17,1800000.0
+Ecuador,Gonzalo Valle,GK,LDU Quito,22,351941,1996-02-28,30.28,350000.0
+Ecuador,Moisés Ramírez,GK,AE Kifisia,12,450233,2000-09-09,25.75,1200000.0
+Ecuador,Hernán Galíndez,GK,CA Huracán,1,77127,1987-03-30,39.2,350000.0
+Ecuador,Willian Pacho,DF,Paris Saint-Germain,6,661171,2001-10-16,24.65,40000000.0
+Ecuador,Piero Hincapié,DF,Arsenal FC,3,659813,2002-01-09,24.42,40000000.0
+Ecuador,Joel Ordóñez,DF,Club Brugge KV,4,893661,2004-04-21,22.14,18000000.0
+Ecuador,Pervis Estupiñán,DF,AC Milan,7,349599,1998-01-21,28.39,30000000.0
+Ecuador,Yaimar Medina,DF,KRC Genk,26,893659,2004-11-05,21.6,3500000.0
+Ecuador,Angelo Preciado,DF,Clube Atlético Mineiro,17,450241,1998-02-18,28.31,4500000.0
+Ecuador,Jackson Porozo,DF,Club Tijuana,25,491616,2000-08-04,25.85,2500000.0
+Ecuador,Félix Torres,DF,Sport Club Internacional,2,468174,1997-01-11,29.41,4000000.0
+Ecuador,Moisés Caicedo,MF,Chelsea FC,23,687626,2001-11-02,24.61,80000000.0
+Ecuador,Kendry Páez,MF,CA River Plate,10,1052439,2007-05-04,19.1,12000000.0
+Ecuador,Denil Castillo,MF,FC Midtjylland,18,941418,2004-03-24,22.21,2500000.0
+Ecuador,Pedro Vite,MF,UNAM Pumas,15,659806,2002-03-09,24.26,3000000.0
+Ecuador,Alan Franco,MF,Clube Atlético Mineiro,21,400960,1998-08-21,27.81,3500000.0
+Ecuador,Jordy Alcívar,MF,Independiente del Valle,5,598145,1999-08-05,26.85,1000000.0
+Ecuador,Nilson Angulo,FW,Sunderland AFC,20,903611,2003-06-19,22.98,1500000.0
+Ecuador,Gonzalo Plata,FW,CR Flamengo,19,592735,2000-11-01,25.61,6000000.0
+Ecuador,Jeremy Arévalo,FW,VfB Stuttgart,24,971663,2005-03-19,21.23,200000.0
+Ecuador,Kevin Rodríguez,FW,Union Saint-Gilloise,11,684159,2000-03-04,26.27,2500000.0
+Ecuador,John Yeboah,FW,Venezia FC,9,439914,2000-06-23,25.97,2500000.0
+Ecuador,Alan Minda,FW,Clube Atlético Mineiro,14,897051,2003-05-14,23.08,6000000.0
+Ecuador,Jordy Caicedo,FW,Huracán,16,360412,1997-11-18,28.56,2000000.0
+Ecuador,Anthony Valencia,FW,Royal Antwerp,8,974374,2003-07-21,22.89,1800000.0
+Ecuador,Enner Valencia,FW,CF Pachuca,13,139503,1989-11-04,36.6,2000000.0
+Egypt,Oufa Shobeir,GK,Al Ahly FC,23,661455,2000-05-15,26.07,600000.0
+Egypt,Mohamed Alaa,GK,El Gouna,26,1307898,1999-01-01,27.44,1200000.0
+Egypt,Mohamed El Shenawy,GK,Al Ahly FC,1,134573,1988-12-18,37.48,1800000.0
+Egypt,El Mahdi Soliman,GK,Zamalek,16,104951,1987-06-08,39.01,150000.0
+Egypt,Mohamed Abdelmonem,DF,OGC Nice,6,566025,1999-02-01,27.36,4000000.0
+Egypt,Hossam Abdelmaguid,DF,Zamalek SC,4,737524,2001-04-30,25.11,350000.0
+Egypt,Mohamed Hany,DF,Al Ahly FC,3,343974,1996-02-02,30.35,1500000.0
+Egypt,Ahmed Fatouh,DF,Zamalek SC,13,465966,1998-03-22,28.22,600000.0
+Egypt,Karim Hafez,DF,Pyramids FC,15,333004,1996-03-12,30.25,700000.0
+Egypt,Ramy Rabia,DF,Al-Ain FC,5,172623,1993-05-20,33.06,800000.0
+Egypt,Yasser Ibrahim,DF,Al Ahly FC,2,237425,1993-02-10,33.33,600000.0
+Egypt,Tarek Alaa,DF,Zed FC,24,1087789,2002-01-05,24.43,250000.0
+Egypt,Emam Ashour,MF,Al Ahly FC,8,604008,1998-02-20,28.3,3000000.0
+Egypt,Marwan Ateya,MF,Al Ahly FC,19,734542,1998-08-01,27.86,2200000.0
+Egypt,Mohanad Lasheen,MF,Pyramids FC,17,479682,1996-05-29,30.03,1300000.0
+Egypt,Hamdy Fathy,MF,Al-Wakrah SC,14,340303,1994-09-29,31.7,2200000.0
+Egypt,Mahmoud Saber,MF,Zed FC,21,729390,2001-07-30,24.87,400000.0
+Egypt,Nabil Dunga,MF,Al-Najma SC,18,479683,1996-04-06,30.18,1200000.0
+Egypt,Omar Marmoush,FW,Manchester City,22,445939,1999-02-07,27.34,60000000.0
+Egypt,Mohamed Salah,FW,Liverpool FC,10,148455,1992-06-15,33.99,55000000.0
+Egypt,Trezeguet,FW,Al Ahly FC,7,234189,1994-10-01,31.69,7500000.0
+Egypt,Haissem Hassan,FW,Real Oviedo,12,620164,2002-02-08,24.34,3500000.0
+Egypt,Zizo,FW,Al Ahly FC,25,320722,1996-01-10,30.42,4000000.0
+Egypt,Ibrahim Adel,FW,FC Nordsjaelland,20,677278,2001-04-23,25.13,2000000.0
+Egypt,Mostafa Ziko,FW,Pyramids FC,11,896616,1997-04-27,29.12,1800000.0
+Egypt,Hamza Abdelkarim,FW,Barça U19,9,1259085,2008-01-01,18.44,1500000.0
+England,Dean Henderson,GK,Crystal Palace,13,258919,1997-03-12,29.25,15000000.0
+England,James Trafford,GK,Manchester City,23,566799,2002-10-10,23.67,18000000.0
+England,Jordan Pickford,GK,Everton FC,1,130164,1994-03-07,32.26,20000000.0
+England,Nico O'Reilly,DF,Manchester City,3,743413,2005-03-21,21.22,70000000.0
+England,Marc Guéhi,DF,Manchester City,6,392757,2000-07-13,25.91,45000000.0
+England,Reece James,DF,Chelsea FC,24,472423,1999-12-08,26.51,30000000.0
+England,Tino Livramento,DF,Newcastle United,12,503981,2002-11-12,23.58,35000000.0
+England,Jarell Quansah,DF,Bayer 04 Leverkusen,26,632349,2003-01-29,23.36,22000000.0
+England,Ezri Konsa,DF,Aston Villa,2,413403,1997-10-23,28.63,35000000.0
+England,Djed Spence,DF,Tottenham Hotspur,25,483348,2000-08-09,25.84,8000000.0
+England,John Stones,DF,Manchester City,5,186590,1994-05-28,32.04,32000000.0
+England,Dan Burn,DF,Newcastle United,15,134270,1992-05-09,34.09,7000000.0
+England,Jude Bellingham,MF,Real Madrid,10,581678,2003-06-29,22.95,180000000.0
+England,Declan Rice,MF,Arsenal FC,4,357662,1999-01-14,27.41,110000000.0
+England,Morgan Rogers,MF,Aston Villa,17,503743,2002-07-26,23.88,40000000.0
+England,Elliot Anderson,MF,Nottingham Forest,8,567576,2002-11-06,23.59,24000000.0
+England,Kobbie Mainoo,MF,Man Utd,16,820374,2005-04-19,21.14,70000000.0
+England,Eberechi Eze,MF,Arsenal FC,21,479999,1998-06-29,27.95,55000000.0
+England,Jordan Henderson,MF,Brentford FC,14,61651,1990-06-17,35.98,3500000.0
+England,Bukayo Saka,FW,Arsenal FC,7,433177,2001-09-05,24.76,150000000.0
+England,Anthony Gordon,FW,Newcastle United,18,503733,2001-02-24,25.29,60000000.0
+England,Harry Kane,FW,Bayern Munich,9,132098,1993-07-28,32.87,90000000.0
+England,Noni Madueke,FW,Arsenal FC,20,503987,2002-03-10,24.25,40000000.0
+England,Marcus Rashford,FW,FC Barcelona,11,258923,1997-10-31,28.61,55000000.0
+England,Ollie Watkins,FW,Aston Villa,19,324358,1995-12-30,30.45,55000000.0
+England,Ivan Toney,FW,Al-Ahli SFC,22,251664,1996-03-16,30.24,28000000.0
+France,Robin Risser,GK,Lens,23,743515,2004-12-02,21.52,30000000.0
+France,Mike Maignan,GK,AC Milan,16,182906,1995-07-03,30.94,35000000.0
+France,Brice Samba,GK,Stade Rennais FC,1,191056,1994-04-25,32.13,15000000.0
+France,William Saliba,DF,Arsenal FC,17,495666,2001-03-24,25.22,80000000.0
+France,Dayot Upamecano,DF,Bayern Munich,4,344695,1998-10-27,27.62,50000000.0
+France,Jules Koundé,DF,FC Barcelona,5,411975,1998-11-12,27.58,60000000.0
+France,Maxence Lacroix,DF,Crystal Palace,26,434224,2000-04-06,26.18,50000000.0
+France,Ibrahima Konaté,DF,Liverpool FC,15,357119,1999-05-25,27.05,50000000.0
+France,Malo Gusto,DF,Chelsea FC,2,620322,2003-05-19,23.06,35000000.0
+France,Theo Hernández,DF,Al-Hilal SFC,19,339808,1997-10-06,28.68,50000000.0
+France,Lucas Hernández,DF,Paris Saint-Germain,21,281963,1996-02-14,30.32,32000000.0
+France,Lucas Digne,DF,Aston Villa,3,126664,1993-07-20,32.89,12000000.0
+France,Rayan Cherki,MF,Manchester City,24,607223,2003-08-17,22.82,30000000.0
+France,Warren Zaïre-Emery,MF,Paris Saint-Germain,18,810092,2006-03-08,20.26,60000000.0
+France,Aurélien Tchouaméni,MF,Real Madrid,8,413112,2000-01-27,26.37,80000000.0
+France,Manu Koné,MF,AS Roma,6,624690,2001-05-17,25.07,26000000.0
+France,Adrien Rabiot,MF,AC Milan,14,182913,1995-04-03,31.19,25000000.0
+France,N'Golo Kanté,MF,Fenerbahce,13,225083,1991-03-29,35.2,7000000.0
+France,Kylian Mbappé,FW,Real Madrid,10,342229,1998-12-20,27.47,160000000.0
+France,Michael Olise,FW,Bayern Munich,11,566723,2001-12-12,24.5,65000000.0
+France,Désiré Doué,FW,Paris Saint-Germain,20,914562,2005-06-03,21.02,40000000.0
+France,Ousmane Dembélé,FW,Paris Saint-Germain,7,288230,1997-05-15,29.07,55000000.0
+France,Bradley Barcola,FW,Paris Saint-Germain,12,708265,2002-09-02,23.77,65000000.0
+France,Marcus Thuram,FW,Inter Milan,9,318528,1997-08-06,28.85,75000000.0
+France,Maghnes Akliouche,FW,AS Monaco,25,745200,2002-02-25,24.29,40000000.0
+France,Jean-Philippe Mateta,FW,Crystal Palace,22,420002,1997-06-28,28.95,20000000.0
+Germany,Alexander Nübel,GK,VfB Stuttgart,21,195778,1996-09-30,29.69,12000000.0
+Germany,Manuel Neuer,GK,Bayern Munich,1,17259,1986-03-27,40.21,4000000.0
+Germany,Oliver Baumann,GK,TSG 1899 Hoffenheim,12,55089,1990-06-02,36.02,3000000.0
+Germany,Nico Schlotterbeck,DF,Borussia Dortmund,15,388198,1999-12-01,26.53,40000000.0
+Germany,Malick Thiaw,DF,Newcastle United,24,521964,2001-08-08,24.84,20000000.0
+Germany,Nathaniel Brown,DF,Eintracht Frankfurt,18,691892,2003-06-16,22.99,8000000.0
+Germany,Jonathan Tah,DF,Bayern Munich,4,196357,1996-02-11,30.33,30000000.0
+Germany,David Raum,DF,RB Leipzig,22,318204,1998-04-22,28.14,25000000.0
+Germany,Waldemar Anton,DF,Borussia Dortmund,3,193004,1996-07-20,29.89,24000000.0
+Germany,Antonio Rüdiger,DF,Real Madrid,2,86202,1993-03-03,33.27,24000000.0
+Germany,Jamal Musiala,MF,Bayern Munich,10,580195,2003-02-26,23.29,140000000.0
+Germany,Florian Wirtz,MF,Liverpool FC,17,598577,2003-05-03,23.11,140000000.0
+Germany,Aleksandar Pavlovic,MF,Bayern Munich,5,792380,2004-05-03,22.11,50000000.0
+Germany,Felix Nmecha,MF,Borussia Dortmund,23,406640,2000-10-10,25.67,28000000.0
+Germany,Angelo Stiller,MF,VfB Stuttgart,16,443710,2001-04-04,25.19,32000000.0
+Germany,Joshua Kimmich,MF,Bayern Munich,6,161056,1995-02-08,31.34,50000000.0
+Germany,Assan Ouédraogo,MF,RB Leipzig,25,897424,2006-05-09,20.09,10000000.0
+Germany,Nadiem Amiri,MF,1.FSV Mainz 05,20,232454,1996-10-27,29.62,11000000.0
+Germany,Leon Goretzka,MF,Bayern Munich,8,153084,1995-02-06,31.34,22000000.0
+Germany,Pascal Groß,MF,Brighton & Hove Albion,13,82873,1991-06-15,34.99,7000000.0
+Germany,Kai Havertz,FW,Arsenal,7,309400,1999-06-11,27.0,55000000.0
+Germany,Nick Woltemade,FW,Newcastle United,11,455661,2002-02-14,24.32,7500000.0
+Germany,Jamie Leweling,FW,VfB Stuttgart,9,518505,2001-02-26,25.29,20000000.0
+Germany,Maximilian Beier,FW,Borussia Dortmund,14,578392,2002-10-17,23.65,30000000.0
+Germany,Deniz Undav,FW,VfB Stuttgart,26,339314,1996-07-19,29.89,28000000.0
+Germany,Leroy Sané,FW,Galatasaray,19,192565,1996-01-11,30.41,45000000.0
+Ghana,Lawrence Ati Zigi,GK,FC St. Gallen 1879,1,254285,1996-11-29,29.53,1800000.0
+Ghana,Joseph Anang,GK,St. Patrick's Athletic,12,576099,2000-06-08,26.01,300000.0
+Ghana,Benjamin Asare,GK,Hearts of Oak,16,837368,1992-07-13,33.91,75000.0
+Ghana,Kojo Peprah Oppong,DF,OGC Nice,21,1113451,2004-06-04,22.02,300000.0
+Ghana,Alidu Seidu,DF,Stade Rennais FC,2,798404,2000-06-04,26.02,9000000.0
+Ghana,Jonas Adjetey,DF,VfL Wolfsburg,4,734676,2003-12-13,22.49,4000000.0
+Ghana,Jerome Opoku,DF,Basaksehir FK,18,408563,1998-10-14,27.66,2900000.0
+Ghana,Gideon Mensah,DF,AJ Auxerre,14,397171,1998-07-18,27.9,3500000.0
+Ghana,Abdul Mumin,DF,Rayo Vallecano,6,451801,1998-06-06,28.01,3000000.0
+Ghana,Marvin Senaya,DF,AJ Auxerre,26,830890,2001-01-28,25.37,3000000.0
+Ghana,Abdul Rahman Baba,DF,PAOK,17,224884,1994-07-02,31.94,2000000.0
+Ghana,Derrick Luckassen,DF,Pafos,23,241457,1995-07-03,30.94,1000000.0
+Ghana,Caleb Yirenkyi,MF,FC Nordsjaelland,3,1240763,2006-01-15,20.4,50000.0
+Ghana,Augustine Boakye,MF,Saint-Étienne,20,579263,2000-11-03,25.6,6000000.0
+Ghana,Elisha Owusu,MF,AJ Auxerre,15,395695,1997-11-07,28.59,3000000.0
+Ghana,Thomas Partey,MF,Villarreal CF,5,230784,1993-06-13,32.99,15000000.0
+Ghana,Kwasi Sibo,MF,Real Oviedo,8,538006,1998-06-24,27.96,800000.0
+Ghana,Antoine Semenyo,FW,Manchester City,11,583255,2000-01-07,26.43,28000000.0
+Ghana,Abdul Fatawu,FW,Leicester City,7,864121,2004-03-08,22.26,13000000.0
+Ghana,Kamaldeen Sulemana,FW,Atalanta BC,22,746695,2002-02-15,24.32,13000000.0
+Ghana,Brandon Thomas-Asante,FW,Coventry City,10,451747,1998-12-29,27.45,3000000.0
+Ghana,Christopher Bonsu Baah,FW,Al-Qadsiah FC,13,1119447,2004-12-14,21.49,6000000.0
+Ghana,Ernest Nuamah,FW,Olympique Lyon,24,955070,2003-11-01,22.61,15000000.0
+Ghana,Iñaki Williams,FW,Athletic Bilbao,19,255508,1994-06-15,31.99,20000000.0
+Ghana,Prince Adu,FW,FC Viktoria Plzen,25,734799,2003-09-23,22.72,2500000.0
+Ghana,Jordan Ayew,FW,Leicester City,9,108354,1991-09-11,34.75,3500000.0
+Haiti,Alexandre Pierre,GK,FC Sochaux-Montbéliard,12,838947,2001-02-25,25.29,50000.0
+Haiti,Johny Placide,GK,SC Bastia,1,51035,1988-01-29,38.37,200000.0
+Haiti,Josué Duverger,GK,FC Cosmos Koblenz,23,490369,2000-04-27,26.12,50000.0
+Haiti,Hannes Delcroix,DF,FC Lugano,5,338635,1999-02-28,27.28,4000000.0
+Haiti,Jean-Kévin Duverne,DF,KAA Gent,22,344864,1997-07-12,28.91,3000000.0
+Haiti,Carlens Arcus,DF,Angers SCO,2,371686,1996-06-28,29.95,1500000.0
+Haiti,Wilguens Paugain,DF,Zulte Waregem,24,609691,2001-08-24,24.8,200000.0
+Haiti,Martin Expérience,DF,AS Nancy-Lorraine,8,804885,1999-03-09,27.26,300000.0
+Haiti,Ricardo Adé,DF,LDU Quito,4,278145,1990-05-21,36.06,350000.0
+Haiti,Duke Lacroix,DF,Colorado Springs Switchbacks FC,13,375472,1993-10-14,32.66,200000.0
+Haiti,Keeto Thermoncy,DF,BSC Young Boys U21,3,1061046,2006-03-29,20.2,25000.0
+Haiti,Jean-Ricner Bellegarde,MF,Wolverhampton Wanderers,10,450050,1998-06-27,27.96,18000000.0
+Haiti,Danley Jean Jacques,MF,Philadelphia Union,17,628834,2000-05-20,26.06,1200000.0
+Haiti,Leverton Pierre,MF,FC Vizela,14,552467,1998-03-09,28.26,250000.0
+Haiti,Dominique Simon,MF,Tatran Presov,25,988188,2000-07-29,25.87,200000.0
+Haiti,Carl Sainté,MF,El Paso Locomotive FC,6,718244,2002-08-09,23.84,100000.0
+Haiti,Woodensky Pierre,MF,Violette AC,26,1017735,2004-12-30,21.45,100000.0
+Haiti,Wilson Isidor,FW,Sunderland,18,494237,2000-08-27,25.79,18000000.0
+Haiti,Josué Casimir,FW,AJ Auxerre,21,763182,2001-09-24,24.71,3500000.0
+Haiti,Lenny Joseph,FW,Ferencváros,16,815359,2000-10-12,25.66,2000000.0
+Haiti,Frantzdy Pierrot,FW,Caykur Rizespor,20,492955,1995-03-29,31.2,3500000.0
+Haiti,Louicius Deedson,FW,FC Dallas,11,646108,2001-02-11,25.33,1700000.0
+Haiti,Derrick Etienne Jr.,FW,Toronto FC,7,354763,1996-11-25,29.54,1200000.0
+Haiti,Duckens Nazon,FW,Esteghlal FC,9,345763,1994-04-07,32.18,1300000.0
+Haiti,Ruben Providence,FW,Almere City FC,15,536520,2001-07-07,24.93,450000.0
+Haiti,Yassin Fortuné,FW,FC Vizela,19,342878,1999-01-30,27.36,300000.0
+Iran,Payam Niazmand,GK,Persepolis FC,12,343044,1995-04-06,31.18,600000.0
+Iran,Alireza Beiranvand,GK,Tractor FC,1,229081,1992-09-21,33.72,1000000.0
+Iran,Seyed Hossein Hosseini,GK,Sepahan FC,22,132561,1992-06-30,33.95,600000.0
+Iran,Hossein Kanaani,DF,Persepolis FC,13,249400,1994-03-23,32.22,2000000.0
+Iran,Arya Yousefi,DF,Sepahan FC,17,932724,2002-04-22,24.14,700000.0
+Iran,Danial Eiri,DF,Malavan,25,1080301,2003-10-26,22.63,1000000.0
+Iran,Milad Mohammadi,DF,Persepolis FC,5,333355,1993-09-29,32.7,1200000.0
+Iran,Saleh Hardani,DF,Esteghlal FC,2,697155,1998-12-26,27.46,550000.0
+Iran,Ali Nemati,DF,Foolad FC,19,527092,1996-02-07,30.34,600000.0
+Iran,Ehsan Hajsafi,DF,Sepahan,3,77547,1990-02-25,36.29,250000.0
+Iran,Ramin Rezaeian,DF,Foolad FC,23,188312,1990-03-21,36.22,375000.0
+Iran,Shoja Khalilzadeh,DF,Tractor FC,4,213715,1989-05-14,37.08,150000.0
+Iran,Saeed Ezatolahi,MF,Shabab Al-Ahli Club,6,249271,1996-10-01,29.69,1000000.0
+Iran,Saman Ghoddos,MF,Kalba FC,14,204294,1993-09-06,32.76,1800000.0
+Iran,Mohammad Ghorbani,MF,Al-Wahda FC,21,856087,2001-05-21,25.06,1000000.0
+Iran,Amirmohammad Razzaghinia,MF,Esteghlal FC,26,1051591,2006-04-11,20.17,350000.0
+Iran,Roozbeh Cheshmi,MF,Esteghlal FC,15,273879,1993-07-24,32.88,650000.0
+Iran,Mehdi Ghayedi,FW,Al-Nasr SC (UAE),10,478192,1998-12-05,27.52,4000000.0
+Iran,Mohammad Mohebi,FW,FC Rostov,8,603149,1998-12-20,27.47,3500000.0
+Iran,Amirhossein Hosseinzadeh,FW,Tractor FC,18,542380,2000-10-30,25.61,1000000.0
+Iran,Mehdi Taremi,FW,Olympiacos Piraeus,9,307058,1992-07-18,33.9,8000000.0
+Iran,Dennis Eckert Ayensa,FW,Standard Liège,24,249303,1997-01-09,29.42,2000000.0
+Iran,Ali Alipour,FW,Persepolis FC,11,249360,1995-11-11,30.58,850000.0
+Iran,Mehdi Torabi,FW,Tractor,16,283833,1994-09-10,31.75,1200000.0
+Iran,Shahriar Moghanlou,FW,Kalba FC,20,357125,1994-12-21,31.47,1500000.0
+Iran,Alireza Jahanbakhsh,FW,FCV Dender EH,7,213268,1993-08-11,32.83,2300000.0
+Iraq,Ahmed Basil Fadhil,GK,Al-Shorta SC,22,560952,1996-08-19,29.81,300000.0
+Iraq,Fahad Talib,GK,Al-Talaba SC,1,377268,1994-10-21,31.64,400000.0
+Iraq,Jalal Hassan,GK,Al-Zawraa SC,12,206782,1991-05-18,35.07,350000.0
+Iraq,Merchas Doski,DF,FC Viktoria Plzen,23,530527,1999-12-07,26.51,550000.0
+Iraq,Akam Hashem,DF,Al-Zawraa SC,5,933541,1998-08-16,27.82,250000.0
+Iraq,Zaid Tahseen,DF,Pakhtakor Tashkent,4,931147,2001-01-29,25.36,450000.0
+Iraq,Ahmed Yahya,DF,Al-Shorta SC,15,949320,1995-07-01,30.95,350000.0
+Iraq,Aimar Sher,MF,Sarpsborg 08 FF,20,579294,2002-12-20,23.47,1200000.0
+Iraq,Hussein Ali,DF,Pogon Szczecin,3,585325,2002-03-01,24.28,300000.0
+Iraq,Mustafa Saadoon,DF,Al-Shorta SC,25,952341,2001-05-25,25.05,400000.0
+Iraq,Frans Dhia Putros,DF,PERSIB Bandung,26,166460,1993-07-14,32.91,400000.0
+Iraq,Manaf Younis,DF,Al-Shorta SC,6,945266,1996-11-16,29.57,400000.0
+Iraq,Rebin Sulaka,DF,Port FC,2,217073,1992-04-12,34.16,100000.0
+Iraq,Zidane Iqbal,MF,FC Utrecht U21,14,686845,2003-04-27,23.12,1000000.0
+Iraq,Amir Al-Ammari,MF,Cracovia,16,303766,1997-07-27,28.87,600000.0
+Iraq,Kevin Yakob,MF,Aarhus GF,19,413268,2000-10-10,25.67,700000.0
+Iraq,Ibrahim Bayesh,MF,Al-Dhafra FC,8,560957,2000-05-01,26.11,650000.0
+Iraq,Zaid Ismail,MF,Al-Talaba SC,24,1132850,2002-01-03,24.44,175000.0
+Iraq,Ahmed Qasem,FW,Nashville,11,833817,2003-07-12,22.92,3500000.0
+Iraq,Marko Farji,FW,Venezia FC,21,663153,2004-03-16,22.24,800000.0
+Iraq,Ali Al-Hamadi,FW,Luton Town,9,610581,2002-03-01,24.28,2500000.0
+Iraq,Mohanad Ali,FW,Dibba SCC,10,589646,2000-06-20,25.97,600000.0
+Iraq,Youssef Amyn,FW,AEK Larnaca,7,684307,2003-08-21,22.81,500000.0
+Iraq,Ali Jasim,FW,Al-Najma SC,17,877672,2004-01-20,22.39,450000.0
+Iraq,Aymen Hussein,FW,Al-Karma,18,401054,1996-03-22,30.22,650000.0
+Iraq,Ali Yousif,FW,Al-Talaba SC,13,576265,1996-01-19,30.39,250000.0
+Ivory Coast,Yahia Fofana,GK,Caykur Rizespor,1,418651,2000-08-21,25.8,4500000.0
+Ivory Coast,Alban Lafont,GK,Panathinaikos,23,357117,1999-01-23,27.38,7000000.0
+Ivory Coast,Mohamed Koné,GK,Royal Charleroi SC,16,911985,2002-03-07,24.26,1700000.0
+Ivory Coast,Ousmane Diomande,DF,Sporting CP,2,974982,2003-12-04,22.52,40000000.0
+Ivory Coast,Evan Ndicka,DF,AS Roma,21,371149,1999-08-20,26.81,25000000.0
+Ivory Coast,Wilfried Singo,DF,Galatasaray,5,648779,2000-12-25,25.46,25000000.0
+Ivory Coast,Guéla Doué,DF,RC Strasbourg Alsace,17,711980,2002-10-17,23.65,8000000.0
+Ivory Coast,Emmanuel Agbadou,DF,Besiktas JK,20,683895,1997-06-17,28.98,10000000.0
+Ivory Coast,Odilon Kossounou,DF,Atalanta BC,7,644771,2001-01-04,25.43,30000000.0
+Ivory Coast,Christopher Operi,DF,Basaksehir FK,13,469976,1997-04-29,29.12,4000000.0
+Ivory Coast,Ghislain Konan,DF,Gil Vicente FC,3,422850,1995-12-27,30.46,5000000.0
+Ivory Coast,Christ Inao Oulaï,MF,Trabzonspor,26,1279526,2006-04-06,20.18,23000000.0
+Ivory Coast,Ibrahim Sangaré,MF,Nottingham Forest,18,375885,1997-12-02,28.52,28000000.0
+Ivory Coast,Franck Kessié,MF,Al-Ahli SFC,8,294808,1996-12-19,29.48,15000000.0
+Ivory Coast,Seko Fofana,MF,FC Porto,6,182893,1995-05-07,31.1,12000000.0
+Ivory Coast,Jean Michaël Seri,MF,NK Maribor,4,178614,1991-07-19,34.9,750000.0
+Ivory Coast,Yan Diomande,FW,RB Leipzig,11,1390649,2006-11-14,19.57,90000000.0
+Ivory Coast,Amad Diallo,FW,Manchester United,15,536835,2002-07-11,23.92,25000000.0
+Ivory Coast,Bazoumana Touré,FW,TSG 1899 Hoffenheim,24,1067904,2006-03-02,20.28,9000000.0
+Ivory Coast,Ange-Yoan Bonny,FW,Inter,9,827734,2003-10-25,22.63,35000000.0
+Ivory Coast,Evann Guessand,FW,Crystal Palace,22,500689,2001-07-01,24.94,20000000.0
+Ivory Coast,Simon Adingra,FW,AS Monaco,10,658536,2002-01-01,24.44,30000000.0
+Ivory Coast,Elye Wahi,FW,Nice,12,659542,2003-01-02,23.44,18000000.0
+Ivory Coast,Nicolas Pépé,FW,Villarreal CF,19,343052,1995-05-29,31.04,7500000.0
+Ivory Coast,Oumar Diakité,FW,Cercle Brugge ,14,847279,2003-12-20,22.48,9000000.0
+Ivory Coast,Parfait Guiagon,FW,Royal Charleroi SC,25,624913,2001-02-22,25.3,2000000.0
+Japan,Zion Suzuki,GK,Parma Calcio 1913,1,432298,2002-08-21,23.81,9000000.0
+Japan,Keisuke Osako,GK,Sanfrecce Hiroshima,12,415521,1999-07-28,26.87,1700000.0
+Japan,Tomoki Hayakawa,GK,Kashima Antlers,23,683271,1999-03-03,27.27,850000.0
+Japan,Hiroki Ito,DF,Bayern Munich,21,353892,1999-05-12,27.08,30000000.0
+Japan,Tsuyoshi Watanabe,DF,Feyenoord Rotterdam,16,598791,1997-02-05,29.34,9000000.0
+Japan,Ko Itakura,DF,Ajax Amsterdam,4,355816,1997-01-27,29.37,15000000.0
+Japan,Yukinari Sugawara,DF,SV Werder Bremen,2,405385,2000-06-28,25.95,12000000.0
+Japan,Ayumu Seko,DF,Le Havre AC,20,405389,2000-06-07,26.01,1000000.0
+Japan,Takehiro Tomiyasu,DF,Ajax,22,331560,1998-11-05,27.6,5000000.0
+Japan,Junnosuke Suzuki,DF,FC Copenhagen,25,848856,2003-07-12,22.92,350000.0
+Japan,Shogo Taniguchi,DF,Sint-Truidense VV,3,307870,1991-07-15,34.91,1200000.0
+Japan,Yuto Nagatomo,DF,FC Tokyo,5,79522,1986-09-12,39.75,150000.0
+Japan,Kaishu Sano,MF,1.FSV Mainz 05,24,643574,2000-12-30,25.45,7000000.0
+Japan,Ao Tanaka,MF,Leeds United,7,489359,1998-09-10,27.75,4000000.0
+Japan,Daichi Kamada,MF,Crystal Palace,15,356141,1996-08-05,29.85,15000000.0
+Japan,Wataru Endo,MF,Liverpool FC,6,146310,1993-02-09,33.33,12000000.0
+Japan,Yuito Suzuki,FW,SC Freiburg,17,668606,2001-10-25,24.63,7000000.0
+Japan,Takefusa Kubo,FW,Real Sociedad,8,405398,2001-06-04,25.02,40000000.0
+Japan,Ritsu Doan,FW,Eintracht Frankfurt,10,358504,1998-06-16,27.99,22000000.0
+Japan,Ayase Ueda,FW,Feyenoord Rotterdam,18,589128,1998-08-28,27.79,8000000.0
+Japan,Daizen Maeda,FW,Celtic FC,11,420931,1997-10-20,28.64,8000000.0
+Japan,Keisuke Goto,FW,Sint-Truidense VV,9,916623,2005-06-03,21.02,900000.0
+Japan,Keito Nakamura,FW,Stade Reims,13,405397,2000-07-28,25.87,12000000.0
+Japan,Kento Shiogai,FW,Wolfsburg,26,1144627,2005-03-26,21.21,8000000.0
+Japan,Junya Ito,FW,KRC Genk,14,348791,1993-03-09,33.26,8000000.0
+Japan,Koki Ogawa,FW,NEC Nijmegen,19,351567,1997-08-08,28.84,3000000.0
+Jordan,Yazeed Abulaila,GK,Al-Hussein SC (Irbid),1,261850,1993-01-08,33.42,325000.0
+Jordan,Noor Bane Ataya,GK,Al-Faisaly SC,12,261837,1993-01-25,33.37,200000.0
+Jordan,Abdallah Al-Fakhouri,GK,Al-Wehdat SC,22,658805,2000-01-22,26.38,300000.0
+Jordan,Yazan Al-Arab,DF,FC Seoul,5,539961,1996-01-31,30.36,700000.0
+Jordan,Mohannad Abu Taha,DF,Al-Quwa Al-Jawiya,20,883111,2003-02-02,23.35,400000.0
+Jordan,Saed Al-Rousan,DF,Al-Hussein SC (Irbid),19,561481,1997-02-01,29.36,150000.0
+Jordan,Mohammad Abu Hasheesh,DF,Al-Karma,2,895249,1995-05-09,31.09,300000.0
+Jordan,Abdallah Nasib,DF,Al-Zawraa SC,3,882197,1994-02-25,32.29,450000.0
+Jordan,Husam Abu Dahab,DF,Al-Faisaly SC,4,895291,2000-05-13,26.08,150000.0
+Jordan,Mohammad Abualnadi,DF,Selangor FC,16,658052,2001-02-08,25.34,200000.0
+Jordan,Ehsan Haddad,DF,Al-Hussein SC (Irbid),23,310943,1994-02-05,32.34,400000.0
+Jordan,Anas Badawi,DF,Al-Faisaly,26,1378902,1997-09-13,28.74,200000.0
+Jordan,Saleem Obaid,DF,Al-Hussein SC (Irbid),17,658807,1992-01-17,34.4,100000.0
+Jordan,Nizar Al-Rashdan,MF,Qatar SC,21,734751,1999-03-23,27.22,500000.0
+Jordan,Amer Jamous,MF,Al-Zawraa SC,6,744040,2002-07-03,23.94,500000.0
+Jordan,Noor Al-Rawabdeh,MF,Selangor FC,8,561485,1997-02-24,29.29,500000.0
+Jordan,Ibrahim Saadeh,MF,Al-Karma,15,709974,2000-04-27,26.12,350000.0
+Jordan,Rajaei Ayed,MF,Al-Hussein SC (Irbid),14,261842,1993-07-25,32.88,350000.0
+Jordan,Mohammad Al-Dawoud,MF,Al-Wehdat SC,25,310801,1992-12-04,33.52,150000.0
+Jordan,Mousa Tamari,FW,Stade Rennais FC,10,551505,1997-06-10,29.0,6000000.0
+Jordan,Ali Olwan,FW,Al-Sailiya SC,9,664057,2000-03-26,26.21,500000.0
+Jordan,Shararh,FW,Raja Club Athletic,7,677986,1997-12-30,28.45,400000.0
+Jordan,Odeh Fakhoury,FW,Pyramids FC,11,1252820,2005-11-20,20.56,350000.0
+Jordan,Mahmoud Al-Mardi,FW,Al-Hussein SC (Irbid),13,401086,1993-10-06,32.68,450000.0
+Jordan,Ali Azaizeh,FW,Al-Shabab FC,24,1059056,2004-04-13,22.16,325000.0
+Mexico,Raúl Rangel,GK,Deportivo Guadalajara,1,802855,2000-02-25,26.29,4000000.0
+Mexico,Carlos Acevedo,GK,Santos Laguna,12,356042,1996-04-19,30.14,3800000.0
+Mexico,Guillermo Ochoa,GK,AEL Limassol,13,29559,1985-07-13,40.91,800000.0
+Mexico,Johan Vásquez,DF,Genoa CFC,5,532937,1998-10-22,27.64,10000000.0
+Mexico,César Montes,DF,Lokomotiv Moscow,3,387687,1997-02-24,29.29,5000000.0
+Mexico,Israel Reyes,DF,CF América,15,687558,2000-05-23,26.05,4000000.0
+Mexico,Mateo Chávez,DF,AZ Alkmaar,20,1066953,2004-05-12,22.08,2000000.0
+Mexico,Luis Romo,DF,Deportivo Guadalajara,7,532938,1995-06-05,31.02,5500000.0
+Mexico,Jesús Gallardo,DF,Deportivo Toluca,23,344854,1994-08-15,31.82,3800000.0
+Mexico,Jorge Sánchez,DF,PAOK Thessaloniki,2,356044,1997-12-10,28.5,2800000.0
+Mexico,Edson Álvarez,MF,Fenerbahce,4,401356,1997-10-24,28.63,30000000.0
+Mexico,Érik Lira,MF,CD Cruz Azul,6,602324,2000-05-08,26.09,7500000.0
+Mexico,Obed Vargas,MF,Atlético de Madrid,18,889435,2005-08-05,20.85,3500000.0
+Mexico,Gilberto Mora,MF,Club Tijuana,19,1155723,2008-10-14,17.66,2000000.0
+Mexico,Brian Gutiérrez,MF,Chivas,26,724443,2003-06-17,22.98,8000000.0
+Mexico,Orbelín Pineda,MF,AEK Athens,17,334042,1996-03-24,30.21,7000000.0
+Mexico,Álvaro Fidalgo,MF,Real Betis,8,261503,1997-04-09,29.17,6000000.0
+Mexico,Luis Chávez,MF,Dynamo Moscow,24,331059,1996-01-15,30.4,9000000.0
+Mexico,Santiago Gimenez,FW,AC Milan,11,552955,2001-04-18,25.15,37000000.0
+Mexico,Armando González,FW,Deportivo Guadalajara,14,837619,2003-04-20,23.14,1500000.0
+Mexico,Julián Quiñones,FW,Al-Qadsiah FC,16,416090,1997-03-24,29.22,9000000.0
+Mexico,Alexis Vega,FW,Deportivo Toluca,10,424689,1997-11-25,28.54,5500000.0
+Mexico,Roberto Alvarado,FW,Deportivo Guadalajara,25,353583,1998-09-07,27.76,7500000.0
+Mexico,César Huerta,FW,RSC Anderlecht,21,540315,2000-12-03,25.52,6000000.0
+Mexico,Raúl Jiménez,FW,Fulham FC,9,206040,1991-05-05,35.1,5000000.0
+Mexico,Guillermo Martínez,FW,UNAM Pumas,22,347932,1995-03-15,31.24,1500000.0
+Morocco,Yassine Bounou,GK,Al-Hilal SFC,1,207834,1991-04-05,35.18,7000000.0
+Morocco,Ahmed Reda Tagnaouti,GK,AS FAR Rabat,22,238997,1996-04-05,30.18,1000000.0
+Morocco,Munir El Kajoui,GK,Renaissance de Berkane,12,97925,1989-05-10,37.09,850000.0
+Morocco,Achraf Hakimi,DF,Paris Saint-Germain,2,398073,1998-11-04,27.6,60000000.0
+Morocco,Noussair Mazraoui,DF,Manchester United,3,340456,1997-11-14,28.57,32000000.0
+Morocco,Zakaria El Ouahdi,DF,KRC Genk,13,820474,2001-12-31,24.44,10000000.0
+Morocco,Nayef Aguerd,DF,Olympique Marseille,5,361914,1996-03-30,30.2,35000000.0
+Morocco,Chadi Riad,DF,Crystal Palace,18,689637,2003-06-17,22.98,15000000.0
+Morocco,Anass Salah-Eddine,DF,PSV Eindhoven,26,485584,2002-01-18,24.39,5000000.0
+Morocco,Issa Diop,DF,Fulham,14,272622,1997-01-09,29.42,8000000.0
+Morocco,Redouane Halhal,DF,KV Mechelen,25,913660,2003-03-05,23.27,5000000.0
+Morocco,Youssef Belammari,DF,Al Ahly FC,19,518804,1998-09-20,27.72,1700000.0
+Morocco,Ayyoub Bouaddi,MF,Lille,6,1097139,2007-10-02,18.69,50000000.0
+Morocco,Ismael Saibari,MF,PSV Eindhoven,11,702869,2001-01-28,25.37,23000000.0
+Morocco,Bilal El Khannouss,MF,VfB Stuttgart,23,654982,2004-05-10,22.09,30000000.0
+Morocco,Neil El Aynaoui,MF,AS Roma,24,901019,2001-07-02,24.94,8000000.0
+Morocco,Samir El Mourabet,MF,R. Strasbourg,15,1130514,2005-10-06,20.68,22000000.0
+Morocco,Sofyan Amrabat,MF,Real Betis Balompié,4,287579,1996-08-21,29.8,22000000.0
+Morocco,Azzedine Ounahi,MF,Girona FC,8,593482,2000-04-19,26.14,10000000.0
+Morocco,Abde Ezzalzouli,FW,Real Betis Balompié,17,724520,2001-12-17,24.48,15000000.0
+Morocco,Brahim Díaz,FW,Real Madrid,10,314678,1999-08-03,26.86,35000000.0
+Morocco,Chemsdine Talbi,FW,Sunderland AFC,7,743384,2005-05-09,21.09,3000000.0
+Morocco,Gessime Yassine,FW,R. Strasbourg,16,1151929,2005-11-22,20.55,12000000.0
+Morocco,Ayoube Amaimouni-Echghouyab,FW,Frankfurt,21,799993,2004-11-30,21.53,10000000.0
+Morocco,Soufiane Rahimi,FW,Al-Ain FC,9,598506,1996-06-02,30.02,7500000.0
+Morocco,Ayoub El Kaabi,FW,Olympiacos Piraeus,20,521127,1993-06-25,32.96,5000000.0
+Netherlands,Bart Verbruggen,GK,Brighton & Hove Albion,1,565093,2002-08-18,23.81,25000000.0
+Netherlands,Robin Roefs,GK,Sunderland AFC,13,646991,2003-01-17,23.4,1500000.0
+Netherlands,Mark Flekken,GK,Bayer 04 Leverkusen,23,125714,1993-06-13,32.99,10000000.0
+Netherlands,Jurriën Timber,DF,Arsenal FC,2,420243,2001-06-17,24.98,45000000.0
+Netherlands,Micky van de Ven,DF,Tottenham Hotspur,15,557459,2001-04-19,25.14,55000000.0
+Netherlands,Jan Paul van Hecke,DF,Brighton & Hove Albion,6,576314,2000-06-08,26.01,32000000.0
+Netherlands,Jorrel Hato,DF,Chelsea FC,25,904802,2006-03-07,20.26,30000000.0
+Netherlands,Mats Wieffer,DF,Brighton & Hove Albion,12,415381,1999-11-16,26.57,30000000.0
+Netherlands,Denzel Dumfries,DF,Inter Milan,22,321528,1996-04-18,30.15,20000000.0
+Netherlands,Virgil van Dijk,DF,Liverpool FC,4,139208,1991-07-08,34.93,28000000.0
+Netherlands,Nathan Aké,DF,Manchester City,5,177476,1995-02-18,31.31,35000000.0
+Netherlands,Ryan Gravenberch,MF,Liverpool FC,8,478573,2002-05-16,24.07,55000000.0
+Netherlands,Tijjani Reijnders,MF,Manchester City,14,460939,1998-07-29,27.87,50000000.0
+Netherlands,Frenkie de Jong,MF,FC Barcelona,21,326330,1997-05-12,29.08,45000000.0
+Netherlands,Justin Kluivert,MF,AFC Bournemouth,7,330659,1999-05-05,27.1,22000000.0
+Netherlands,Quinten Timber,MF,Olympique Marseille,26,420213,2001-06-17,24.98,32000000.0
+Netherlands,Guus Til,MF,PSV,16,372267,1997-12-22,28.47,15000000.0
+Netherlands,Teun Koopmeiners,MF,Juventus FC,20,360518,1998-02-28,28.28,50000000.0
+Netherlands,Marten de Roon,MF,Atalanta,3,133179,1991-03-29,35.2,3200000.0
+Netherlands,Cody Gakpo,FW,Liverpool FC,11,434675,1999-05-07,27.1,60000000.0
+Netherlands,Donyell Malen,FW,AS Roma,18,326029,1999-01-19,27.39,28000000.0
+Netherlands,Crysencio Summerville,FW,West Ham,24,474701,2001-10-30,24.61,35000000.0
+Netherlands,Brian Brobbey,FW,Sunderland AFC,19,473169,2002-02-01,24.36,30000000.0
+Netherlands,Noa Lang,FW,Galatasaray,17,339332,1999-06-17,26.98,20000000.0
+Netherlands,Memphis Depay,FW,Sport Club Corinthians Paulista,10,167850,1994-02-13,32.32,10000000.0
+Netherlands,Wout Weghorst,FW,Ajax Amsterdam,9,228645,1992-08-07,33.84,5000000.0
+New Zealand,Max Crocombe,GK,Millwall,1,207843,1993-08-12,32.83,1000000.0
+New Zealand,Alex Paulsen,GK,Lechia Gdansk,12,617009,2002-07-04,23.94,500000.0
+New Zealand,Michael Woud,GK,Auckland FC,22,350347,1999-01-16,27.4,400000.0
+New Zealand,Tyler Bindon,DF,Sheff Utd,4,1007720,2005-01-27,21.37,3500000.0
+New Zealand,Liberato Cacace,DF,Wrexham,13,469211,2000-09-27,25.7,2500000.0
+New Zealand,Finn Surman,DF,Portland,16,724809,2003-09-23,22.72,1800000.0
+New Zealand,Ben Old,DF,Saint-Étienne,19,617021,2002-08-13,23.83,1800000.0
+New Zealand,Francis de Vries,DF,Auckland FC,3,207061,1994-11-28,31.53,600000.0
+New Zealand,Callan Elliot,DF,Auckland FC,24,482204,1999-07-07,26.93,450000.0
+New Zealand,Nando Pijnaker,DF,Auckland FC,15,455425,1999-02-25,27.29,400000.0
+New Zealand,Tim Payne,DF,Wellington,2,149901,1994-01-10,32.42,350000.0
+New Zealand,Michael Boxall,DF,Minnesota,5,81723,1988-08-18,37.81,150000.0
+New Zealand,Tommy Smith,DF,Braintree,26,54381,1990-03-31,36.2,50000.0
+New Zealand,Joe Bell,MF,Viking FK,6,345700,1999-04-27,27.12,3500000.0
+New Zealand,Marko Stamenić,MF,Swansea,8,617018,2002-02-19,24.31,3000000.0
+New Zealand,Callum McCowatt,MF,Silkeborg IF,20,400797,1999-04-30,27.12,2500000.0
+New Zealand,Ryan Thomas,MF,PEC Zwolle,23,203357,1994-12-20,31.47,650000.0
+New Zealand,Alex Rufer,MF,Wellington,14,256019,1996-06-12,30.0,600000.0
+New Zealand,Lachlan Bayliss,MF,Newcastle,25,1109358,2002-07-24,23.88,550000.0
+New Zealand,Sarpreet Singh,MF,Wellington,10,350357,1999-02-20,27.3,500000.0
+New Zealand,Matthew Garbett,MF,Peterborough,7,617019,2002-04-13,24.16,450000.0
+New Zealand,Chris Wood,FW,Nott'm Forest,9,108725,1991-12-07,34.51,5000000.0
+New Zealand,Elijah Just,FW,Motherwell FC,11,485672,2000-05-01,26.11,2500000.0
+New Zealand,Jesse Randall,FW,Auckland FC,21,677509,2002-08-19,23.81,900000.0
+New Zealand,Ben Waine,FW,Port Vale,18,539502,2001-06-11,25.0,400000.0
+New Zealand,Kosta Barbarouses,FW,Western Sydney,17,50200,1990-02-19,36.31,300000.0
+Norway,Sander Tangvik,GK,Hamburger SV,12,549378,2002-11-29,23.53,1700000.0
+Norway,Egil Selvik,GK,Watford FC,13,380744,1997-07-30,28.87,1700000.0
+Norway,Ørjan Nyland,GK,Sevilla FC,1,73517,1990-09-10,35.75,1000000.0
+Norway,Julian Ryerson,DF,Borussia Dortmund,26,370789,1997-11-17,28.56,20000000.0
+Norway,Kristoffer Ajer,DF,Brentford FC,3,328658,1998-04-17,28.15,18000000.0
+Norway,Leo Østigård,DF,Genoa CFC,4,367284,1999-11-28,26.54,7000000.0
+Norway,Torbjørn Heggem,DF,Bologna FC 1909,17,464469,1999-01-12,27.41,1000000.0
+Norway,David Møller Wolfe,DF,Wolverhampton Wanderers,5,661427,2002-04-23,24.13,4500000.0
+Norway,Henrik Falchener,DF,Viking FK,25,743088,2003-05-08,23.09,6000000.0
+Norway,Sondre Langås,DF,Derby County,24,737837,2001-02-02,25.35,2300000.0
+Norway,Fredrik Bjørkan,DF,FK Bodø/Glimt,15,364938,1998-08-21,27.81,2500000.0
+Norway,Marcus Pedersen,DF,Torino FC,16,583404,2000-07-16,25.9,4500000.0
+Norway,Martin Ødegaard,MF,Arsenal FC,10,316264,1998-12-17,27.48,110000000.0
+Norway,Sander Berge,MF,Fulham FC,8,333014,1998-02-14,28.32,20000000.0
+Norway,Fredrik Aursnes,MF,Benfica,14,223367,1995-12-10,30.5,15000000.0
+Norway,Kristian Thorstvedt,MF,US Sassuolo,18,564785,1999-03-13,27.25,9000000.0
+Norway,Patrick Berg,MF,FK Bodø/Glimt,6,308439,1997-11-24,28.54,5000000.0
+Norway,Morten Thorsby,MF,US Cremonese,2,226524,1996-05-05,30.1,3000000.0
+Norway,Thelo Aasgaard,MF,Rangers FC,19,647384,2002-05-02,24.11,1000000.0
+Norway,Erling Haaland,FW,Manchester City,9,418560,2000-07-21,25.89,200000000.0
+Norway,Jørgen Strand Larsen,FW,Crystal Palace,11,429983,2000-02-06,26.34,27000000.0
+Norway,Antonio Nusa,FW,RB Leipzig,20,894914,2005-04-17,21.15,28000000.0
+Norway,Andreas Schjelderup,FW,SL Benfica,21,670103,2004-06-01,22.03,10000000.0
+Norway,Oscar Bobb,FW,Fulham FC,22,661207,2003-07-12,22.92,25000000.0
+Norway,Alexander Sørloth,FW,Atlético de Madrid,7,238407,1995-12-05,30.52,25000000.0
+Norway,Jens Petter Hauge,FW,FK Bodø/Glimt,23,422355,1999-10-12,26.66,4500000.0
+Panama,Orlando Mosquera,GK,Al-Fayha FC,22,402979,1994-12-25,31.46,350000.0
+Panama,César Samudio,GK,CD Marathón,12,865550,1994-02-23,32.3,300000.0
+Panama,Luis Mejía,GK,Club Nacional,1,76715,1991-03-16,35.24,400000.0
+Panama,Amir Murillo,DF,Besiktas JK,23,354482,1996-02-11,30.33,7000000.0
+Panama,José Córdoba,DF,Norwich City,3,698415,2001-06-03,25.02,4800000.0
+Panama,César Blackman,DF,Slovan Bratislava,2,440383,1998-04-02,28.19,2000000.0
+Panama,Andrés Andrade,DF,LASK,16,403808,1998-10-16,27.65,2000000.0
+Panama,Edgardo Fariña,DF,FC Pari Nizhniy Novgorod,5,923177,2001-10-19,24.64,1000000.0
+Panama,Jorge Gutiérrez,DF,Deportivo La Guaira,26,443379,1998-09-01,27.78,325000.0
+Panama,Jiovany Ramos,DF,Academia Puerto Cabello,13,403809,1997-01-26,29.37,300000.0
+Panama,Fidel Escobar,DF,Deportivo Saprissa,4,345716,1995-01-09,31.42,350000.0
+Panama,Roderick Miller,DF,Turan Tovuz,25,157154,1992-04-03,34.19,175000.0
+Panama,Éric Davis,DF,CD Plaza Amador,15,121791,1991-03-31,35.2,100000.0
+Panama,Adalberto Carrasquilla,MF,UNAM Pumas,8,375300,1998-11-28,27.53,4500000.0
+Panama,Cristian Martínez,MF,Ironi Kiryat Shmona,6,419247,1997-02-06,29.34,700000.0
+Panama,Carlos Harvey,MF,Minnesota United FC,14,628806,2000-02-03,26.35,400000.0
+Panama,Aníbal Godoy,MF,San Diego FC,20,161671,1990-02-10,36.33,200000.0
+Panama,José Luis Rodríguez,FW,FC Juárez,7,425028,1998-06-19,27.98,1800000.0
+Panama,Ismael Díaz,FW,Club León FC,10,243298,1997-05-12,29.08,1200000.0
+Panama,Tomás Rodríguez,FW,Deportivo Saprissa,9,569205,1999-03-09,27.26,500000.0
+Panama,Azarías Londoño,FW,CD Universidad Católica,24,860998,2001-06-21,24.97,175000.0
+Panama,Yoel Bárcenas,FW,Mazatlán FC,11,283473,1993-10-23,32.63,1000000.0
+Panama,José Fajardo,FW,CD Universidad Católica,17,546803,1993-08-18,32.81,1200000.0
+Panama,César Yanis,FW,CD Cobresal,21,741098,1996-01-28,30.37,250000.0
+Panama,Cecilio Waterman,FW,Universidad de Concepción,18,177064,1991-04-13,35.16,400000.0
+Panama,Alberto Quintero,FW,CD Plaza Amador,19,126019,1987-12-18,38.48,100000.0
+Paraguay,Orlando Gill,GK,CA San Lorenzo de Almagro,12,643259,2000-06-11,26.0,6000000.0
+Paraguay,Gastón Olveira,GK,Olimpia,22,301722,1993-04-21,33.14,500000.0
+Paraguay,Roberto Fernández,GK,Club Cerro Porteño,1,107318,1988-03-29,38.2,250000.0
+Paraguay,Omar Alderete,DF,Sunderland AFC,3,353032,1996-12-26,29.46,5000000.0
+Paraguay,Juan José Cáceres,DF,Dynamo Moscow,4,756494,2000-06-01,26.03,1000000.0
+Paraguay,Gustavo Gómez,DF,Sociedade Esportiva Palmeiras,15,215390,1993-05-06,33.1,6000000.0
+Paraguay,Alexandro Maidana,DF,CA Talleres,26,1371519,2005-07-26,20.88,2500000.0
+Paraguay,José Canale,DF,Lanús,13,402627,1996-07-20,29.89,2200000.0
+Paraguay,Júnior Alonso,DF,Clube Atlético Mineiro,6,273000,1993-02-09,33.33,6000000.0
+Paraguay,Fabián Balbuena,DF,Grêmio Foot-Ball Porto Alegrense,5,285548,1991-08-23,34.8,2800000.0
+Paraguay,Gustavo Velázquez,DF,Club Cerro Porteño,2,389399,1991-04-17,35.15,1300000.0
+Paraguay,Diego Gómez,MF,Brighton & Hove Albion,8,996897,2003-03-27,23.21,12000000.0
+Paraguay,Julio Enciso,MF,RC Strasbourg Alsace,19,660867,2004-01-23,22.38,22000000.0
+Paraguay,Mauricio,MF,Palmeiras,11,678439,2001-06-22,24.97,15000000.0
+Paraguay,Damián Bobadilla,MF,São Paulo Futebol Clube,16,861852,2001-07-11,24.92,2500000.0
+Paraguay,Andrés Cubas,MF,Vancouver Whitecaps FC,14,323872,1996-05-22,30.05,4000000.0
+Paraguay,Kaku,MF,Al-Ain FC,17,355817,1995-01-11,31.41,5000000.0
+Paraguay,Braian Ojeda,MF,Orlando City SC,20,491596,2000-06-27,25.95,4000000.0
+Paraguay,Matías Galarza,MF,Atlanta United FC,23,661269,2002-02-11,24.33,2500000.0
+Paraguay,Ramón Sosa,FW,Sociedade Esportiva Palmeiras,7,745191,1999-08-31,26.78,13000000.0
+Paraguay,Isidro Pitta,FW,Red Bull Bragantino,25,675178,1999-08-14,26.83,5500000.0
+Paraguay,Miguel Almirón,FW,Atlanta United FC,10,272999,1994-02-10,32.33,16000000.0
+Paraguay,Álex Arce,FW,CS Independiente Rivadavia,18,970518,1995-06-16,30.99,5000000.0
+Paraguay,Antonio Sanabria,FW,US Cremonese,9,234523,1996-03-04,30.27,6000000.0
+Paraguay,Gustavo Caballero,FW,Portsmouth,24,891672,2001-09-21,24.72,1000000.0
+Paraguay,Gabriel Ávalos,FW,CA Independiente,21,358418,1990-10-12,35.66,1200000.0
+Portugal,Diogo Costa,GK,FC Porto,1,357153,1999-09-19,26.73,40000000.0
+Portugal,Rui Silva,GK,Sporting CP,22,234811,1994-02-07,32.34,5000000.0
+Portugal,José Sá,GK,Wolverhampton Wanderers,12,249994,1993-01-17,33.4,8000000.0
+Portugal,Nuno Mendes,DF,Paris Saint-Germain,25,616341,2002-06-19,23.98,55000000.0
+Portugal,Rúben Dias,DF,Manchester City,3,258004,1997-05-14,29.08,75000000.0
+Portugal,Matheus Nunes,DF,Manchester City,6,601883,1998-08-27,27.79,40000000.0
+Portugal,Gonçalo Inácio,DF,Sporting CP,14,549006,2001-08-25,24.79,45000000.0
+Portugal,Tomás Araújo,DF,Benfica,4,504087,2002-05-16,24.07,30000000.0
+Portugal,Diogo Dalot,DF,Manchester United,5,357147,1999-03-18,27.23,40000000.0
+Portugal,Renato Veiga,DF,Villarreal CF,13,805714,2003-07-29,22.87,10000000.0
+Portugal,João Cancelo,DF,FC Barcelona,20,182712,1994-05-27,32.04,18000000.0
+Portugal,Nélson Semedo,DF,Fenerbahce,2,231572,1993-11-16,32.57,10000000.0
+Portugal,João Neves,MF,Paris Saint-Germain,15,670681,2004-09-27,21.7,60000000.0
+Portugal,Vitinha,MF,Paris Saint-Germain,23,487469,2000-02-13,26.32,55000000.0
+Portugal,Francisco Trincão,MF,Sporting CP,16,412669,1999-12-29,26.45,27000000.0
+Portugal,Bruno Fernandes,MF,Manchester United,8,240306,1994-09-08,31.76,55000000.0
+Portugal,Rúben Neves,MF,Al-Hilal SFC,21,225161,1997-03-13,29.25,28000000.0
+Portugal,Bernardo Silva,MF,Manchester City,10,241641,1994-08-10,31.84,60000000.0
+Portugal,Samú Costa,MF,RCD Mallorca,24,657430,2000-11-27,25.54,15000000.0
+Portugal,Pedro Neto,FW,Chelsea FC,18,487465,2000-03-09,26.26,55000000.0
+Portugal,Rafael Leão,FW,AC Milan,17,357164,1999-06-10,27.0,75000000.0
+Portugal,Gonçalo Ramos,FW,Paris Saint-Germain,9,550550,2001-06-20,24.97,50000000.0
+Portugal,Francisco Conceição,FW,Juventus FC,26,487474,2002-12-14,23.49,36000000.0
+Portugal,João Félix,FW,Al-Nassr FC,11,462250,1999-11-10,26.58,30000000.0
+Portugal,Cristiano Ronaldo,FW,Al-Nassr FC,7,8198,1985-02-05,41.34,12000000.0
+Portugal,Gonçalo Guedes,FW,Real Sociedad,19,225122,1996-11-29,29.53,6000000.0
+Qatar,Meshaal Barsham,GK,Al-Sadd SC,22,560423,1998-02-14,28.32,850000.0
+Qatar,Mahmoud Abunada,GK,Al-Rayyan SC,1,669629,2000-02-05,26.35,225000.0
+Qatar,Salah Zakaria,GK,Al-Duhail SC,21,632912,1999-04-24,27.13,450000.0
+Qatar,Homam Al-Amin,DF,Cultural Leonesa,14,556713,1999-08-25,26.8,450000.0
+Qatar,Ayoub Al-Oui,DF,Al-Gharafa SC,13,1054631,2005-03-11,21.25,100000.0
+Qatar,Lucas Mendes,DF,Al-Wakrah SC,3,83983,1990-07-03,35.94,450000.0
+Qatar,Sultan Al-Brake,DF,Al-Duhail SC,18,336665,1996-04-07,30.18,350000.0
+Qatar,Al-Hashmi Al-Hussain,DF,Al-Arabi SC,25,943150,2003-08-15,22.82,100000.0
+Qatar,Issa Laye,DF,Al-Arabi SC,4,1264176,1997-12-22,28.47,100000.0
+Qatar,Boualem Khoukhi,DF,Al-Sadd SC,16,222669,1990-07-09,35.92,275000.0
+Qatar,Pedro Miguel,DF,Al-Sadd SC,2,228727,1990-08-06,35.85,200000.0
+Qatar,Jassem Gaber,MF,Al-Rayyan SC,5,735813,2002-02-20,24.3,750000.0
+Qatar,Mohamed Al-Mannai,MF,Al-Shamal SC,26,822935,2003-10-30,22.61,150000.0
+Qatar,Assim Madibo,MF,Al-Wakrah SC,23,336667,1996-10-22,29.63,300000.0
+Qatar,Hasan Al-Haydos,MF,Al-Sadd SC,10,86286,1990-12-11,35.5,500000.0
+Qatar,Abdulaziz Hatim,MF,Al-Rayyan SC,6,113915,1990-10-28,35.62,325000.0
+Qatar,Ahmed Fathi,MF,Al-Arabi SC,20,251183,1993-01-25,33.37,325000.0
+Qatar,Karim Boudiaf,MF,Al-Duhail SC,12,222385,1990-09-16,35.73,300000.0
+Qatar,Akram Afif,FW,Al-Sadd SC,11,336646,1996-11-18,29.56,7500000.0
+Qatar,Almoez Ali,FW,Al-Duhail SC,19,345095,1996-08-19,29.81,3500000.0
+Qatar,Edmílson Junior,FW,Al-Duhail SC,8,237846,1994-08-19,31.81,2500000.0
+Qatar,Ahmed Al-Ganehi,FW,Al-Gharafa SC,17,670659,2000-09-22,25.72,450000.0
+Qatar,Ahmed Alaaeldin,FW,Al-Rayyan SC,7,187987,1993-01-31,33.36,450000.0
+Qatar,Yusuf Abdurisag,FW,Al-Wakrah SC,15,589099,1999-08-06,26.85,325000.0
+Qatar,Mohammed Muntari,FW,Al-Gharafa SC,9,266935,1993-12-20,32.47,275000.0
+Qatar,Tahsin Mohammed Jamshid,FW,Al-Duhail SC,24,1143849,2006-06-16,19.99,50000.0
+Saudi Arabia,Nawaf Al-Aqidi,GK,Al-Nassr FC,1,886183,2000-05-10,26.09,550000.0
+Saudi Arabia,Mohammed Al-Owais,GK,Al-Ula,21,262845,1991-10-10,34.67,275000.0
+Saudi Arabia,Ahmed Al-Kassar,GK,Al-Qadsiah FC,22,177956,1991-05-08,35.09,250000.0
+Saudi Arabia,Saud Abdulhamid,DF,RC Lens,12,631927,1999-07-18,26.9,4000000.0
+Saudi Arabia,Hassan Tambakti,DF,Al-Hilal SFC,5,509897,1999-02-09,27.33,1700000.0
+Saudi Arabia,Mohammed Abu Al-Shamat,DF,Al-Qadsiah FC,26,1181852,2002-08-11,23.83,550000.0
+Saudi Arabia,Ali Majrashi,DF,Al-Ahli SFC,2,672391,1999-10-01,26.69,550000.0
+Saudi Arabia,Abdulelah Al-Amri,DF,Al-Nassr FC,4,509894,1997-01-15,29.4,1200000.0
+Saudi Arabia,Nawaf Boushal,DF,Al-Nassr FC,13,821377,1999-09-16,26.74,550000.0
+Saudi Arabia,Moteb Al-Harbi,DF,Al-Hilal SFC,24,869509,2000-02-19,26.31,800000.0
+Saudi Arabia,Ayman Yahya,DF,Al-Nassr FC,8,735815,2001-05-14,25.08,1000000.0
+Saudi Arabia,Jehad Thakri,DF,Al-Qadsiah FC,25,901334,2001-07-21,24.89,450000.0
+Saudi Arabia,Ali Lajami,DF,Al-Hilal SFC,3,264909,1996-04-24,30.13,750000.0
+Saudi Arabia,Hassan Kadesh,DF,Al-Ittihad Club,14,260859,1992-09-26,33.71,375000.0
+Saudi Arabia,Musab Al-Juwayr,MF,Al-Qadsiah FC,7,901181,2003-06-20,22.98,2000000.0
+Saudi Arabia,Nasser Al-Dawsari,MF,Al-Hilal SFC,6,509911,1998-12-19,27.48,700000.0
+Saudi Arabia,Ziyad Al-Johani,MF,Al-Ahli SFC,16,901079,2001-11-11,24.58,550000.0
+Saudi Arabia,Mohamed Kanno,MF,Al-Hilal SFC,23,308120,1994-09-22,31.72,900000.0
+Saudi Arabia,Abdullah Al-Khaibari,MF,Al-Nassr FC,15,437903,1996-08-16,29.82,900000.0
+Saudi Arabia,Alaa Hejji,MF,NEOM SC,18,443937,1995-12-03,30.52,300000.0
+Saudi Arabia,Firas Al-Buraikan,FW,Al-Ahli SFC,9,631922,2000-05-14,26.08,5000000.0
+Saudi Arabia,Khalid Al-Ghannam,FW,Al-Ettifaq,17,631923,2000-11-07,25.59,2500000.0
+Saudi Arabia,Salem Al-Dawsari,FW,Al-Hilal SFC,10,195332,1991-08-19,34.81,1800000.0
+Saudi Arabia,Saleh Al-Shehri,FW,Al-Ittihad Club,11,242267,1993-11-01,32.61,650000.0
+Saudi Arabia,Abdullah Al-Hamdan,FW,Al-Nassr FC,19,68626,1999-09-12,26.75,225000.0
+Saudi Arabia,Sultan Mandash,FW,Al-Hilal SFC,20,210349,1994-10-17,31.65,400000.0
+Scotland,Angus Gunn,GK,Nottingham Forest,1,201574,1996-01-22,30.38,2500000.0
+Scotland,Liam Kelly,GK,Rangers FC,12,208772,1996-01-23,30.38,800000.0
+Scotland,Craig Gordon,GK,Heart of Midlothian FC,21,12589,1982-12-31,43.44,100000.0
+Scotland,Aaron Hickey,DF,Brentford FC,2,591949,2002-06-10,24.0,22000000.0
+Scotland,Nathan Patterson,DF,Everton FC,22,424015,2001-10-16,24.65,15000000.0
+Scotland,Kieran Tierney,DF,Celtic FC,6,300716,1997-06-05,29.02,10000000.0
+Scotland,Andrew Robertson,DF,Liverpool FC,3,234803,1994-03-11,32.25,25000000.0
+Scotland,Scott McKenna,DF,GNK Dinamo Zagreb,26,255906,1996-11-12,29.58,6000000.0
+Scotland,Jack Hendry,DF,Al-Ettifaq FC,13,363223,1995-05-07,31.1,2500000.0
+Scotland,John Souttar,DF,Rangers FC,15,235767,1996-09-25,29.71,4500000.0
+Scotland,Dominic Hyam,DF,Wrexham,16,263268,1995-12-20,30.48,2000000.0
+Scotland,Anthony Ralston,DF,Celtic FC,24,388171,1998-11-16,27.57,2000000.0
+Scotland,Grant Hanley,DF,Hibernian FC,5,121385,1991-11-20,34.56,700000.0
+Scotland,Scott McTominay,MF,SSC Napoli,4,315969,1996-12-08,29.51,40000000.0
+Scotland,Lewis Ferguson,MF,Bologna FC 1909,19,428563,1999-08-24,26.8,22000000.0
+Scotland,John McGinn,MF,Aston Villa,7,193116,1994-10-18,31.65,23000000.0
+Scotland,Ryan Christie,MF,AFC Bournemouth,11,188077,1995-02-22,31.3,12000000.0
+Scotland,Tyler Fletcher,MF,Man Utd U21,8,1049911,2007-03-19,19.23,1500000.0
+Scotland,Kenny McLean,MF,Norwich City,23,126600,1992-01-08,34.42,800000.0
+Scotland,Ben Gannon-Doak,FW,AFC Bournemouth,17,719673,2005-11-11,20.58,10000000.0
+Scotland,George Hirst,FW,Ipswich Town,18,420808,1999-02-15,27.32,5000000.0
+Scotland,Ché Adams,FW,Torino FC,10,346779,1996-07-13,29.91,15000000.0
+Scotland,Lawrence Shankland,FW,Heart of Midlothian FC,20,225744,1995-08-10,30.84,3000000.0
+Scotland,Ross Stewart,FW,Southampton,14,447995,1996-07-11,29.92,2500000.0
+Scotland,Findlay Curtis,FW,Rangers,25,1082993,2006-10-01,19.69,2000000.0
+Scotland,Lyndon Dykes,FW,Charlton Athletic,9,347138,1995-10-07,30.68,1500000.0
+Senegal,Yehvann Diouf,GK,OGC Nice,1,448632,1999-11-16,26.57,9000000.0
+Senegal,Edouard Mendy,GK,Al-Ahli SFC,16,442531,1992-03-01,34.28,6000000.0
+Senegal,Mory Diaw,GK,Le Havre AC,23,164904,1993-06-22,32.97,1000000.0
+Senegal,El Hadji Malick Diouf,DF,West Ham United,25,1111589,2004-12-28,21.45,16000000.0
+Senegal,Mamadou Sarr,DF,Chelsea FC,2,910905,2005-08-29,20.78,8000000.0
+Senegal,Moussa Niakhaté,DF,Olympique Lyon,19,291200,1996-03-08,30.26,15000000.0
+Senegal,Antoine Mendy,DF,OGC Nice,24,891998,2004-05-27,22.04,3000000.0
+Senegal,Ismail Jakobs,DF,Galatasaray,14,375137,1999-08-17,26.82,8000000.0
+Senegal,Kalidou Koulibaly,DF,Al-Hilal SFC,3,93128,1991-06-20,34.98,8000000.0
+Senegal,Abdoulaye Seck,DF,Maccabi Haifa,4,265383,1992-06-04,34.02,700000.0
+Senegal,Lamine Camara,MF,AS Monaco,8,918969,2004-01-01,22.44,20000000.0
+Senegal,Pape Gueye,MF,Villarreal CF,26,485963,1999-01-24,27.38,8000000.0
+Senegal,Habib Diarra,MF,Sunderland AFC,21,876631,2004-01-03,22.44,20000000.0
+Senegal,Pape Matar Sarr,MF,Tottenham Hotspur,17,568693,2002-09-14,23.74,45000000.0
+Senegal,Krépin Diatta,MF,AS Monaco,15,490426,1999-02-25,27.29,10000000.0
+Senegal,Bara Sapoko Ndiaye,MF,Bayern Munich,22,1497653,2007-12-31,18.44,4000000.0
+Senegal,Pathé Ciss,MF,Rayo Vallecano,6,525578,1994-03-16,32.24,2000000.0
+Senegal,Idrissa Gueye,MF,Everton FC,5,126665,1989-09-26,36.71,2000000.0
+Senegal,Iliman Ndiaye,FW,Everton FC,13,623570,2000-03-06,26.26,18000000.0
+Senegal,Nicolas Jackson,FW,Bayern Munich,11,776890,2001-06-20,24.97,55000000.0
+Senegal,Ismaïla Sarr,FW,Crystal Palace,18,410225,1998-02-25,28.29,20000000.0
+Senegal,Assane Diao,FW,Como 1907,7,1061282,2005-09-07,20.76,9000000.0
+Senegal,Ibrahim Mbaye,FW,Paris Saint-Germain,20,1185888,2008-01-24,18.38,2000000.0
+Senegal,Bamba Dieng,FW,FC Lorient,9,822458,2000-03-23,26.22,15000000.0
+Senegal,Sadio Mané,FW,Al-Nassr FC,10,200512,1992-04-10,34.17,9000000.0
+Senegal,Cherif Ndiaye,FW,Samsunspor,12,480705,1996-01-23,30.38,4000000.0
+South Africa,Sipho Chaine,GK,Orlando Pirates,16,453370,1996-12-14,29.49,700000.0
+South Africa,Ronwen Williams,GK,Mamelodi Sundowns FC,1,175577,1992-01-21,34.39,1000000.0
+South Africa,Ricardo Goss,GK,Siwelele Football Club ,22,258304,1994-04-02,32.19,700000.0
+South Africa,Mbekezeli Mbokazi,DF,Chicago Fire FC,14,1378320,2005-09-19,20.73,3500000.0
+South Africa,Samukele Kabini,DF,Molde FK,18,1175086,2004-03-15,22.24,200000.0
+South Africa,Ime Okon,DF,Hannover 96,21,1107265,2004-02-20,22.31,2000000.0
+South Africa,Olwethu Makhanya,DF,Philadelphia,24,1069801,2004-04-30,22.11,2000000.0
+South Africa,Aubrey Modiba,DF,Mamelodi Sundowns FC,6,353432,1995-07-22,30.89,1600000.0
+South Africa,Nkosinathi Sibisi,DF,Orlando Pirates,19,399068,1995-09-22,30.72,1400000.0
+South Africa,Thabang Matuludi,DF,Polokwane City FC,2,1109254,1999-01-14,27.41,400000.0
+South Africa,Khulumani Ndamane,DF,Mamelodi Sundowns FC,3,1283140,2004-02-05,22.35,1200000.0
+South Africa,Khuliso Mudau,DF,Mamelodi Sundowns FC,20,450806,1995-04-26,31.13,1400000.0
+South Africa,Kamogelo Sebelebele,DF,Orlando Pirates,25,994370,2002-07-21,23.89,550000.0
+South Africa,Bradley Cross,DF,Kaizer Chiefs,26,555209,2001-01-30,25.36,1000000.0
+South Africa,Teboho Mokoena,MF,Mamelodi Sundowns FC,4,436372,1997-01-24,29.38,2400000.0
+South Africa,Thalente Mbatha,MF,Orlando Pirates,5,735697,2000-03-06,26.26,350000.0
+South Africa,Jayden Adams,MF,Mamelodi Sundowns FC,23,804472,2001-05-05,25.1,1000000.0
+South Africa,Yaya Sithole,MF,CD Tondela,13,401736,1999-03-03,27.27,275000.0
+South Africa,Themba Zwane,MF,Sundowns,11,176578,1989-08-03,36.85,250000.0
+South Africa,Lyle Foster,FW,Burnley FC,9,467623,2000-09-03,25.77,9000000.0
+South Africa,Relebohile Mofokeng,FW,Orlando Pirates,10,1125037,2004-10-23,21.63,800000.0
+South Africa,Iqraam Rayners,FW,Mamelodi Sundowns FC,15,337884,1995-12-19,30.48,1800000.0
+South Africa,Oswin Appollis,FW,Orlando Pirates,7,673381,2001-08-25,24.79,600000.0
+South Africa,Tshepang Moremi,FW,Orlando Pirates,8,844485,2000-10-02,25.69,350000.0
+South Africa,Evidence Makgopa,FW,Orlando Pirates,17,746781,2000-06-05,26.02,650000.0
+South Africa,Thapelo Maseko,FW,AEL Limassol,12,983330,2003-11-11,22.58,750000.0
+South Korea,Bum-keun Song,GK,Jeonbuk Hyundai Motors,12,508237,1997-10-15,28.65,850000.0
+South Korea,Hyeon-woo Jo,GK,Ulsan HD FC,21,260171,1991-09-25,34.71,850000.0
+South Korea,Seung-gyu Kim,GK,FC Tokyo,1,92076,1990-09-30,35.7,700000.0
+South Korea,Min-jae Kim,DF,Bayern Munich,4,503482,1996-11-15,29.57,45000000.0
+South Korea,Young-woo Seol,DF,Red Star Belgrade,22,639414,1998-12-05,27.52,2000000.0
+South Korea,Han-beom Lee,DF,FC Midtjylland,2,706963,2002-06-17,23.98,1000000.0
+South Korea,Tae-seok Lee,DF,Austria Vienna,13,639027,2002-07-28,23.87,650000.0
+South Korea,Tae-hyeon Kim,DF,Kashima Antlers,5,645847,2000-09-17,25.73,600000.0
+South Korea,Gi-hyuk Lee,DF,Gangwon FC,3,763349,2000-07-07,25.93,800000.0
+South Korea,Moon-hwan Kim,DF,Daejeon Hana Citizen,15,524592,1995-08-01,30.86,850000.0
+South Korea,Wi-je Cho,DF,Jeonbuk Hyundai,14,550978,2001-08-25,24.79,550000.0
+South Korea,Kang-in Lee,MF,Paris Saint-Germain,19,557149,2001-02-19,25.31,30000000.0
+South Korea,Jens Castrop,MF,Borussia Mönchengladbach,23,613192,2003-07-29,22.87,3000000.0
+South Korea,In-beom Hwang,MF,Feyenoord Rotterdam,6,365394,1996-09-20,29.72,12000000.0
+South Korea,Jun-ho Bae,MF,Stoke City,17,912081,2003-08-21,22.81,1500000.0
+South Korea,Seung-ho Paik,MF,Birmingham City,8,282689,1997-03-17,29.23,1200000.0
+South Korea,Jae-sung Lee,MF,1.FSV Mainz 05,10,314398,1992-08-10,33.83,2500000.0
+South Korea,Dong-gyeong Lee,MF,Ulsan HD FC,26,558086,1997-09-20,28.72,1200000.0
+South Korea,Jin-gyu Kim,MF,Jeonbuk Hyundai Motors,24,365377,1997-02-24,29.29,800000.0
+South Korea,Jin-seob Park,MF,Zhejiang FC,16,557469,1995-10-23,30.63,650000.0
+South Korea,Heung-min Son,FW,Los Angeles FC,7,91845,1992-07-08,33.92,38000000.0
+South Korea,Hyeon-gyu Oh,FW,Besiktas JK,18,639246,2001-04-12,25.16,3000000.0
+South Korea,Hee-chan Hwang,FW,Wolverhampton Wanderers,11,292246,1996-01-26,30.37,22000000.0
+South Korea,Hyun-jun Yang,FW,Celtic FC,20,853110,2002-05-25,24.05,2000000.0
+South Korea,Gue-sung Cho,FW,FC Midtjylland,9,652537,1998-01-25,28.38,4500000.0
+South Korea,Ji-sung Eom,FW,Swansea City,25,706968,2002-05-09,24.09,1200000.0
+Spain,Joan García,GK,Barcelona,13,561613,2001-05-04,25.1,45000000.0
+Spain,David Raya,GK,Arsenal FC,1,262749,1995-09-15,30.74,40000000.0
+Spain,Unai Simón,GK,Athletic Bilbao,23,262396,1997-06-11,29.0,28000000.0
+Spain,Pau Cubarsí,DF,FC Barcelona,22,962110,2007-01-22,19.38,70000000.0
+Spain,Marc Cucurella,DF,Chelsea FC,24,284857,1998-07-22,27.89,30000000.0
+Spain,Eric García,DF,Barcelona,4,466794,2001-01-09,25.42,40000000.0
+Spain,Marc Pubill,DF,Atlético,2,844637,2003-06-20,22.98,35000000.0
+Spain,Pedro Porro,DF,Tottenham Hotspur,12,553875,1999-09-13,26.74,45000000.0
+Spain,Alejandro Grimaldo,DF,Bayer 04 Leverkusen,3,193082,1995-09-20,30.72,40000000.0
+Spain,Marcos Llorente,DF,Atlético de Madrid,5,282411,1995-01-30,31.36,28000000.0
+Spain,Aymeric Laporte,DF,Athletic Bilbao,14,176553,1994-05-27,32.04,18000000.0
+Spain,Pedri,MF,FC Barcelona,20,683840,2002-11-25,23.54,100000000.0
+Spain,Martín Zubimendi,MF,Arsenal FC,18,423440,1999-02-02,27.35,60000000.0
+Spain,Dani Olmo,MF,FC Barcelona,10,293385,1998-05-07,28.1,60000000.0
+Spain,Rodri,MF,Manchester City,16,357565,1996-06-22,29.97,130000000.0
+Spain,Fabián Ruiz,MF,Paris Saint-Germain,8,350219,1996-04-03,30.19,35000000.0
+Spain,Gavi,MF,FC Barcelona,9,646740,2004-08-05,21.85,80000000.0
+Spain,Mikel Merino,MF,Arsenal FC,6,338424,1996-06-22,29.97,45000000.0
+Spain,Lamine Yamal,FW,FC Barcelona,19,937958,2007-07-13,18.91,180000000.0
+Spain,Ferran Torres,FW,FC Barcelona,7,398184,2000-02-29,26.28,28000000.0
+Spain,Álex Baena,FW,Atlético de Madrid,15,548111,2001-07-20,24.89,50000000.0
+Spain,Nico Williams,FW,Athletic Bilbao,17,709187,2002-07-12,23.92,70000000.0
+Spain,Yéremy Pino,FW,Crystal Palace,11,568157,2002-10-20,23.64,30000000.0
+Spain,Víctor Muñoz,FW,CA Osasuna,25,935231,2003-07-13,22.91,30000000.0
+Spain,Mikel Oyarzabal,FW,Real Sociedad,21,351478,1997-04-21,29.14,35000000.0
+Spain,Borja Iglesias,FW,Celta de Vigo,26,278359,1993-01-17,33.4,4000000.0
+Sweden,Viktor Johansson,GK,Stoke City,12,273742,1998-09-14,27.74,5000000.0
+Sweden,Jacob Widell Zetterström,GK,Derby County,1,549440,1998-07-11,27.92,2500000.0
+Sweden,Kristoffer Nordfeldt,GK,AIK,23,75890,1989-06-23,36.97,200000.0
+Sweden,Isak Hien,DF,Atalanta BC,4,503075,1999-01-13,27.41,30000000.0
+Sweden,Daniel Svensson,DF,Borussia Dortmund,8,579287,2002-02-12,24.33,5500000.0
+Sweden,Gabriel Gudmundsson,DF,Leeds United,5,362108,1999-04-29,27.12,7000000.0
+Sweden,Gustaf Lagerbielke,DF,SC Braga,2,485395,2000-04-10,26.17,2000000.0
+Sweden,Victor Lindelöf,DF,Aston Villa,3,184573,1994-07-17,31.9,10000000.0
+Sweden,Hjalmar Ekdal,DF,Burnley FC,14,392179,1998-10-21,27.64,6500000.0
+Sweden,Eric Smith,DF,St. Pauli,20,292534,1997-01-08,29.42,5000000.0
+Sweden,Carl Starfelt,DF,Celta de Vigo,15,258987,1995-06-01,31.03,6000000.0
+Sweden,Ken Sema,DF,Pafos FC,13,252345,1993-09-30,32.7,1500000.0
+Sweden,Lucas Bergvall,MF,Tottenham Hotspur,7,866246,2006-02-02,20.35,12000000.0
+Sweden,Yasin Ayari,MF,Brighton & Hove Albion,18,667287,2003-10-06,22.68,12000000.0
+Sweden,Benjamin Nygren,MF,Celtic FC,10,475949,2001-07-08,24.93,3000000.0
+Sweden,Mattias Svanberg,MF,VfL Wolfsburg,19,342405,1999-01-05,27.43,12000000.0
+Sweden,Besfort Zeneli,MF,Union Saint-Gilloise,22,715653,2002-11-21,23.55,2500000.0
+Sweden,Elliot Stroud,MF,Mjällby AIF,24,687622,2002-06-22,23.97,5000000.0
+Sweden,Jesper Karlström,MF,Udinese Calcio,16,222855,1995-06-21,30.97,2500000.0
+Sweden,Herman Johansson,MF,FC Dallas,6,744853,1997-10-16,28.65,900000.0
+Sweden,Alexander Isak,FW,Liverpool FC,9,349066,1999-09-21,26.72,75000000.0
+Sweden,Viktor Gyökeres,FW,Arsenal FC,17,325443,1998-06-04,28.02,75000000.0
+Sweden,Anthony Elanga,FW,Newcastle United,11,583189,2002-04-27,24.12,25000000.0
+Sweden,Alexander Bernhardsson,FW,Holstein Kiel,21,633454,1998-09-08,27.76,1500000.0
+Sweden,Gustaf Nilsson,FW,Club Brugge KV,25,320440,1997-05-23,29.05,7000000.0
+Sweden,Taha Ali,FW,Malmö,26,731771,1998-07-01,27.95,1500000.0
+Switzerland,Gregor Kobel,GK,Borussia Dortmund,1,257814,1997-12-06,28.51,40000000.0
+Switzerland,Marvin Keller,GK,BSC Young Boys,21,500763,2002-07-03,23.94,3500000.0
+Switzerland,Yvon Mvogo,GK,FC Lorient,12,147051,1994-06-06,32.01,3000000.0
+Switzerland,Manuel Akanji,DF,Inter Milan,5,284730,1995-07-19,30.9,40000000.0
+Switzerland,Aurèle Amenda,DF,Eintracht Frankfurt,24,635645,2003-07-31,22.86,9500000.0
+Switzerland,Luca Jaquez,DF,VfB Stuttgart,25,539798,2003-06-02,23.03,4500000.0
+Switzerland,Nico Elvedi,DF,Borussia Mönchengladbach,4,192635,1996-09-30,29.69,8000000.0
+Switzerland,Miro Muheim,DF,Hamburger SV,2,298603,1998-03-24,28.22,2700000.0
+Switzerland,Eray Cömert,DF,Valencia CF,18,298583,1998-02-04,28.35,3000000.0
+Switzerland,Ricardo Rodríguez,DF,Real Betis Balompié,13,86784,1992-08-25,33.79,2500000.0
+Switzerland,Silvan Widmer,DF,1.FSV Mainz 05,3,168989,1993-03-05,33.27,1500000.0
+Switzerland,Johan Manzambi,MF,SC Freiburg,9,927353,2005-10-14,20.66,750000.0
+Switzerland,Denis Zakaria,MF,AS Monaco,6,334526,1996-11-20,29.56,30000000.0
+Switzerland,Ardon Jashari,MF,AC Milan,14,608172,2002-07-30,23.87,11000000.0
+Switzerland,Fabian Rieder,MF,FC Augsburg,22,507341,2002-02-16,24.31,10000000.0
+Switzerland,Granit Xhaka,MF,Sunderland AFC,10,111455,1992-09-27,33.7,17000000.0
+Switzerland,Djibril Sow,MF,Sevilla FC,15,212723,1997-02-06,29.34,7500000.0
+Switzerland,Michel Aebischer,MF,Pisa Sporting Club,20,237658,1997-01-06,29.43,10000000.0
+Switzerland,Remo Freuler,MF,Bologna FC 1909,8,148252,1992-04-15,34.15,6500000.0
+Switzerland,Christian Fassnacht,MF,BSC Young Boys,16,250490,1993-11-11,32.58,2000000.0
+Switzerland,Dan Ndoye,FW,Nottingham Forest,11,365108,2000-10-25,25.63,25000000.0
+Switzerland,Noah Okafor,FW,Leeds,19,346890,2000-05-24,26.05,25000000.0
+Switzerland,Breel Embolo,FW,Stade Rennais FC,7,237662,1997-02-14,29.32,12000000.0
+Switzerland,Rubén Vargas,FW,Sevilla FC,17,345886,1998-08-05,27.85,7000000.0
+Switzerland,Zeki Amdouni,FW,Burnley FC,23,548729,2000-12-04,25.52,15000000.0
+Switzerland,Cedric Itten,FW,Fortuna Düsseldorf,26,243856,1996-12-27,29.45,2000000.0
+Tunisia,Abdelmouhib Chamakh,GK,Club Africain,1,584250,2001-08-25,24.79,800000.0
+Tunisia,Aymen Dahmen,GK,CS Sfaxien,16,569433,1997-01-28,29.37,650000.0
+Tunisia,Sabri Ben Hessen,GK,Etoile Sportive du Sahel,22,295381,1996-06-13,29.99,300000.0
+Tunisia,Montassar Talbi,DF,FC Lorient,3,496706,1998-05-26,28.04,5000000.0
+Tunisia,Adem Arous,DF,Kasimpasa,5,1071742,2004-07-17,21.9,200000.0
+Tunisia,Ali Abdi,DF,OGC Nice,2,211474,1993-12-20,32.47,3000000.0
+Tunisia,Yan Valery,DF,BSC Young Boys,20,406008,1999-02-22,27.3,1000000.0
+Tunisia,Moutaz Neffati,DF,IFK Norrköping,23,1034598,2004-09-04,21.77,800000.0
+Tunisia,Mohamed Amine Ben Hamida,DF,Esperance Tunis,21,454495,1995-12-15,30.49,650000.0
+Tunisia,Dylan Bronn,DF,Servette FC,6,450417,1995-06-19,30.98,1300000.0
+Tunisia,Raed Chikhaoui,DF,US Monastir,24,1075790,2004-06-09,22.0,600000.0
+Tunisia,Omar Rekik,DF,NK Maribor,4,578292,2001-12-20,24.47,500000.0
+Tunisia,Hannibal,MF,Burnley FC,10,607224,2003-01-21,23.39,9000000.0
+Tunisia,Ellyes Skhiri,MF,Eintracht Frankfurt,17,290587,1995-05-10,31.09,9000000.0
+Tunisia,Anis Ben Slimane,MF,Norwich City,25,546712,2001-03-16,25.24,2500000.0
+Tunisia,Rani Khedira,MF,Union Berlin,13,124410,1994-01-27,32.37,2000000.0
+Tunisia,Mohamed Belhadj Mahmoud,MF,FC Lugano,15,673513,2000-04-24,26.13,3000000.0
+Tunisia,Ismaël Gharbi,FW,FC Augsburg,11,810096,2004-04-10,22.17,7500000.0
+Tunisia,Sebastian Tounekti,FW,Celtic FC,26,539677,2002-07-13,23.91,1000000.0
+Tunisia,Elias Achouri,FW,FC Copenhagen,7,645589,1999-02-10,27.33,3500000.0
+Tunisia,Elias Saad,FW,Hannover 96,8,526466,1999-12-27,26.46,4000000.0
+Tunisia,Mortadha Ben Ouanes,FW,Kasimpasa,12,230921,1994-07-02,31.94,1500000.0
+Tunisia,Firas Chaouat,FW,Club Africain,19,402087,1996-05-08,30.09,500000.0
+Tunisia,Khalil Ayari,FW,Paris Saint-Germain Espoirs,14,1198342,2005-02-02,21.35,100000.0
+Tunisia,Hazem Mastouri,FW,Dinamo Makhachkala,9,953150,1997-06-18,28.98,400000.0
+Tunisia,Rayan Elloumi,FW,Vancouver,18,1273985,2007-09-17,18.73,800000.0
+Turkey,Uğurcan Çakır,GK,Galatasaray,23,292199,1996-04-05,30.18,8000000.0
+Turkey,Altay Bayındır,GK,Manchester United,12,336077,1998-04-14,28.16,10000000.0
+Turkey,Mert Günok,GK,Fenerbahce,1,51894,1989-03-01,37.28,1200000.0
+Turkey,Ferdi Kadıoğlu,DF,Brighton & Hove Albion,20,369316,1999-10-07,26.68,30000000.0
+Turkey,Ozan Kabak,DF,Hoffenheim,15,361260,2000-03-25,26.21,15000000.0
+Turkey,Zeki Çelik,DF,AS Roma,2,251075,1997-02-17,29.31,5000000.0
+Turkey,Merih Demiral,DF,Al-Ahli SFC,3,340879,1998-03-05,28.27,14000000.0
+Turkey,Mert Müldür,DF,Fenerbahce,18,353922,1999-04-03,27.19,6500000.0
+Turkey,Abdülkerim Bardakcı,DF,Galatasaray,14,199316,1994-09-07,31.76,7500000.0
+Turkey,Eren Elmalı,DF,Galatasaray,13,616894,2000-07-07,25.93,4000000.0
+Turkey,Çağlar Söyüncü,DF,Fenerbahce,4,320141,1996-05-23,30.05,8500000.0
+Turkey,Samet Akaydin,DF,Caykur Rizespor,25,295024,1994-03-13,32.25,2000000.0
+Turkey,Arda Güler,MF,Real Madrid,8,861410,2005-02-25,21.29,45000000.0
+Turkey,Can Uzun,MF,Eintracht Frankfurt,26,816585,2005-11-11,20.58,12000000.0
+Turkey,Orkun Kökçü,MF,Besiktas JK,6,454567,2000-12-29,25.45,28000000.0
+Turkey,Hakan Çalhanoğlu,MF,Inter Milan,10,126414,1994-02-08,32.34,40000000.0
+Turkey,İsmail Yüksek,MF,Fenerbahce,16,613725,1999-01-26,27.37,14000000.0
+Turkey,Salih Özcan,MF,Borussia Dortmund,5,244940,1998-01-11,28.41,7000000.0
+Turkey,Kaan Ayhan,MF,Galatasaray,22,119031,1994-11-10,31.58,4600000.0
+Turkey,Kenan Yıldız,FW,Juventus FC,11,845654,2005-05-04,21.1,45000000.0
+Turkey,Barış Alper Yılmaz,FW,Galatasaray,21,541537,2000-05-23,26.05,20000000.0
+Turkey,Kerem Aktürkoğlu,FW,Fenerbahce,7,382528,1998-10-21,27.64,25000000.0
+Turkey,Yunus Akgün,FW,Galatasaray,19,396908,2000-07-07,25.93,11000000.0
+Turkey,Oğuz Aydın,FW,Fenerbahce,24,563749,2000-10-27,25.62,6000000.0
+Turkey,Deniz Gül,FW,FC Porto,9,1063292,2004-07-02,21.94,4500000.0
+Turkey,İrfan Can Kahveci,FW,Kasimpasa,17,216603,1995-07-15,30.91,9500000.0
+United States,Matt Turner,GK,New England Revolution,1,425306,1994-06-24,31.96,4000000.0
+United States,Chris Brady,GK,Chicago Fire FC,25,765504,2004-03-03,22.27,2500000.0
+United States,Matt Freese,GK,New York City FC,24,500309,1998-09-02,27.77,600000.0
+United States,Chris Richards,DF,Crystal Palace,3,578539,2000-03-28,26.2,12000000.0
+United States,Antonee Robinson,DF,Fulham,5,349701,1997-08-08,28.84,22000000.0
+United States,Sergiño Dest,DF,PSV Eindhoven,2,361104,2000-11-03,25.6,22000000.0
+United States,Mark McKenzie,DF,FC Toulouse,22,429259,1999-02-25,27.29,6000000.0
+United States,Joe Scally,DF,Borussia Mönchengladbach,23,504153,2002-12-31,23.44,10000000.0
+United States,Auston Trusty,DF,Celtic FC,6,389253,1998-08-12,27.83,8000000.0
+United States,Miles Robinson,DF,FC Cincinnati,12,468022,1997-03-14,29.24,5000000.0
+United States,Alex Freeman,DF,Villarreal CF,16,985806,2004-08-09,21.84,150000.0
+United States,Tim Ream,DF,Charlotte FC,13,145466,1987-10-05,38.68,400000.0
+United States,Weston McKennie,MF,Juventus FC,8,332697,1998-08-28,27.79,24000000.0
+United States,Malik Tillman,MF,Bayer 04 Leverkusen,17,467437,2002-05-28,24.04,30000000.0
+United States,Tyler Adams,MF,AFC Bournemouth,4,332705,1999-02-14,27.32,15000000.0
+United States,Brenden Aaronson,MF,Leeds United,11,393323,2000-10-22,25.63,12000000.0
+United States,Timothy Weah,MF,Olympique Marseille,21,370846,2000-02-22,26.3,17000000.0
+United States,Sebastian Berhalter,MF,Vancouver Whitecaps FC,14,734761,2001-05-10,25.09,1000000.0
+United States,Giovanni Reyna,MF,Borussia Mönchengladbach,7,504215,2002-11-13,23.58,12000000.0
+United States,Cristian Roldán,MF,Seattle Sounders FC,15,354792,1995-06-03,31.02,4000000.0
+United States,Christian Pulisic,FW,AC Milan,10,315779,1998-09-18,27.73,50000000.0
+United States,Folarin Balogun,FW,AS Monaco,20,503770,2001-07-03,24.94,25000000.0
+United States,Ricardo Pepi,FW,PSV Eindhoven,9,627207,2003-01-09,23.42,18000000.0
+United States,Haji Wright,FW,Coventry City,19,315291,1998-03-27,28.21,8500000.0
+United States,Álex Zendejas,FW,CF América,26,351505,1998-02-07,28.34,5000000.0
+United States,Max Arfsten,FW,Columbus Crew,18,993063,2001-04-19,25.14,1200000.0
+Uruguay,Santiago Mele,GK,CF Monterrey,12,320739,1997-09-06,28.76,2500000.0
+Uruguay,Sergio Rochet,GK,Sport Club Internacional,1,264014,1993-03-23,33.22,4000000.0
+Uruguay,Fernando Muslera,GK,Estudiantes LP,23,58088,1986-06-16,39.99,700000.0
+Uruguay,Maxi Araújo,DF,Sporting CP,20,572675,2000-02-15,26.32,14000000.0
+Uruguay,Ronald Araujo,DF,FC Barcelona,4,480267,1999-03-07,27.26,55000000.0
+Uruguay,Mathías Olivera,DF,SSC Napoli,16,376514,1997-10-31,28.61,18000000.0
+Uruguay,Joaquín Piquerez,DF,Sociedade Esportiva Palmeiras,22,496268,1998-08-24,27.8,12000000.0
+Uruguay,Santiago Bueno,DF,Wolverhampton Wanderers,24,438001,1998-11-09,27.59,8000000.0
+Uruguay,José María Giménez,DF,Atlético de Madrid,2,250845,1995-01-20,31.39,20000000.0
+Uruguay,Sebastián Cáceres,DF,CF América,3,532389,1999-08-18,26.81,6500000.0
+Uruguay,Juan Manuel Sanabria,DF,Real Salt Lake City,25,446106,2000-03-29,26.2,8000000.0
+Uruguay,Matías Viña,DF,CA River Plate,17,439072,1997-11-09,28.59,10000000.0
+Uruguay,Guillermo Varela,DF,CR Flamengo,13,188862,1993-03-24,33.22,1500000.0
+Uruguay,Federico Valverde,MF,Real Madrid,8,369081,1998-07-22,27.89,130000000.0
+Uruguay,Rodrigo Zalazar,MF,SC Braga,26,606752,1999-08-12,26.83,16000000.0
+Uruguay,Manuel Ugarte,MF,Manchester United,5,476701,2001-04-11,25.17,50000000.0
+Uruguay,Rodrigo Bentancur,MF,Tottenham Hotspur,6,354362,1997-06-25,28.96,35000000.0
+Uruguay,Giorgian de Arrascaeta,MF,CR Flamengo,10,248410,1994-06-01,32.03,14000000.0
+Uruguay,Nicolás de la Cruz,MF,CR Flamengo,7,397458,1997-06-01,29.03,18000000.0
+Uruguay,Emiliano Martínez,MF,Sociedade Esportiva Palmeiras,15,707447,1999-08-17,26.82,4500000.0
+Uruguay,Darwin Núñez,FW,Al-Hilal SFC,9,546543,1999-06-24,26.97,65000000.0
+Uruguay,Agustín Canobbio,FW,Fluminense,14,457533,1998-10-01,27.69,8000000.0
+Uruguay,Brian Rodríguez,FW,CF América,18,465818,2000-05-20,26.06,6000000.0
+Uruguay,Facundo Pellistri,FW,Panathinaikos,11,676318,2001-12-20,24.47,10000000.0
+Uruguay,Federico Viñas,FW,Real Oviedo,21,578419,1998-06-30,27.95,4000000.0
+Uruguay,Rodrigo Aguirre,FW,Tigres UANL,19,189410,1994-10-01,31.69,3000000.0
+Uzbekistan,Abduvokhid Nematov,GK,Nasaf Qarshi,12,527866,2001-03-20,25.23,1500000.0
+Uzbekistan,Utkir Yusupov,GK,Navbahor Namangan,1,311958,1991-01-04,35.43,600000.0
+Uzbekistan,Botirali Ergashev,GK,Neftchi Fergana,16,312690,1995-06-23,30.97,350000.0
+Uzbekistan,Abdukodir Khusanov,DF,Manchester City,2,763079,2004-02-29,22.28,12000000.0
+Uzbekistan,Khozhiakbar Alizhonov,DF,Pakhtakor Tashkent,3,492558,1997-04-19,29.14,800000.0
+Uzbekistan,Sherzod Nasrullaev,DF,Pakhtakor Tashkent,13,608537,1998-07-23,27.89,1200000.0
+Uzbekistan,Rustam Ashurmatov,DF,Esteghlal FC,5,288883,1996-07-07,29.93,700000.0
+Uzbekistan,Jakhongir Urozov,DF,Dinamo Samarqand,26,989069,2004-01-18,22.4,400000.0
+Uzbekistan,Avazbek Ulmasaliev,DF,FC OKMK Olmaliq,25,538764,2000-03-27,26.21,350000.0
+Uzbekistan,Umar Eshmurodov,DF,Nasaf Qarshi,15,493725,1992-11-30,33.53,650000.0
+Uzbekistan,Bekhruz Karimov,DF,Surkhon,24,1106187,2007-08-07,18.84,350000.0
+Uzbekistan,Farrukh Sayfiev,DF,Neftchi Fergana,4,212499,1991-01-17,35.4,350000.0
+Uzbekistan,Aziz Ganiev,MF,Al-Bataeh CSC,19,431911,1998-02-22,28.3,2800000.0
+Uzbekistan,Otabek Shukurov,MF,FC Baniyas,7,294525,1996-06-22,29.97,1800000.0
+Uzbekistan,Akmal Mozgovoy,MF,Pakhtakor Tashkent,6,562022,1999-04-02,27.19,1300000.0
+Uzbekistan,Jamshid Iskanderov,MF,Neftchi Fergana,8,260857,1993-10-16,32.65,900000.0
+Uzbekistan,Odildzhon Khamrobekov,MF,Tractor FC,9,288915,1996-02-13,30.32,1200000.0
+Uzbekistan,Abdulla Abdullaev,MF,Dibba SCC,18,570272,1997-09-01,28.77,750000.0
+Uzbekistan,Sherzod Esanov,MF,FC Buxoro,23,989068,2003-02-01,23.36,450000.0
+Uzbekistan,Eldor Shomurodov,FW,Basaksehir FK,14,358166,1995-06-29,30.95,4000000.0
+Uzbekistan,Abbosbek Fayzullaev,FW,Basaksehir FK,22,754037,2003-10-03,22.69,8000000.0
+Uzbekistan,Oston Urunov,FW,Persepolis FC,11,492556,2000-12-19,25.48,2500000.0
+Uzbekistan,Igor Sergeev,FW,Persepolis FC,21,185372,1993-04-30,33.11,800000.0
+Uzbekistan,Jaloliddin Masharipov,FW,Esteghlal FC,10,274536,1993-09-01,32.77,1800000.0
+Uzbekistan,Dostonbek Khamdamov,FW,Pakhtakor Tashkent,17,294502,1996-07-24,29.88,750000.0
+Uzbekistan,Azizbek Amanov,FW,Dinamo,20,517918,1997-10-30,28.61,500000.0

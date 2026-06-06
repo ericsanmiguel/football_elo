@@ -52,6 +52,16 @@ def build_parser() -> argparse.ArgumentParser:
         help="Which dataset to export (default: all)",
     )
 
+    # scrape-squads
+    ss_p = sub.add_parser(
+        "scrape-squads", help="Scrape official World Cup squads from Transfermarkt"
+    )
+    ss_p.add_argument("--year", type=int, default=2026)
+    ss_p.add_argument(
+        "--delay", type=float, default=1.2,
+        help="Seconds between Transfermarkt requests (default: 1.2)",
+    )
+
     return parser
 
 
@@ -133,6 +143,8 @@ def main() -> None:
         cmd_audit(args)
     elif args.command == "export-web":
         cmd_export_web(args)
+    elif args.command == "scrape-squads":
+        cmd_scrape_squads(args)
 
 
 def _export_gender(gender: str) -> None:
@@ -155,6 +167,12 @@ def cmd_export_web(args: argparse.Namespace) -> None:
     for g in genders:
         _export_gender(g)
     print("\nDone.")
+
+
+def cmd_scrape_squads(args: argparse.Namespace) -> None:
+    from .squad_scrape import write_squads
+    print(f"Scraping {args.year} World Cup squads from Transfermarkt...")
+    write_squads(year=args.year, delay=args.delay)
 
 
 if __name__ == "__main__":

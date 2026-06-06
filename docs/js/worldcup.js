@@ -14,6 +14,9 @@ let cachedFlags = null;
 let currentTab = 'overview';
 // Rankings-table sort state. 'default' = p_winner with a full tiebreaker cascade.
 let rankingsSort = { key: 'default', asc: false };
+// Squads tab state.
+let cachedSquads = null;
+let squadsSort = 'overall';
 
 export async function render(container) {
     container.innerHTML = '<div class="loading">Loading World Cup data...</div>';
@@ -36,7 +39,7 @@ export async function render(container) {
 
     // Tab bar
     const tabs = el('div', { class: 'wc-tabs' });
-    for (const [id, label] of [['overview', 'Overview'], ['groups', 'Groups'], ['bracket', 'Build Your Bracket']]) {
+    for (const [id, label] of [['overview', 'Overview'], ['groups', 'Groups'], ['squads', 'Squads'], ['bracket', 'Build Your Bracket']]) {
         tabs.appendChild(el('button', {
             class: `wc-tab ${id === currentTab ? 'active' : ''}`,
             text: label,
@@ -77,6 +80,8 @@ function renderTabContent(tab) {
             grid.appendChild(buildGroupCard(groupName, cachedWcData.groups[groupName], cachedFlags));
         }
         content.appendChild(grid);
+    } else if (tab === 'squads') {
+        renderSquads(content);
     } else if (tab === 'bracket') {
         renderBracketBuilder(content, cachedWcData, cachedFlags);
     }
@@ -380,4 +385,135 @@ function slugify(name) {
     return name.normalize('NFKD').replace(/[\u0300-\u036f]/g, '')
         .toLowerCase().trim().replace(/[^\w\s-]/g, '')
         .replace(/[\s_]+/g, '-').replace(/-+/g, '-');
+}
+
+// ---------------------------------------------------------------------------
+// Squads tab: per-team GK/DEF/MID/FWD scores + per-player 0-100 ratings.
+// ---------------------------------------------------------------------------
+
+const POS_GROUPS = ['GK', 'DEF', 'MID', 'FWD'];
+const POS_LABELS = { GK: 'Goalkeepers', DEF: 'Defenders', MID: 'Midfielders', FWD: 'Forwards' };
+const SQUAD_SORT_KEYS = [
+    ['overall', 'Average'], ['GK', 'GK'], ['DEF', 'Defense'], ['MID', 'Midfield'], ['FWD', 'Attack'],
+];
+
+async function renderSquads(content) {
+    if (!cachedSquads) {
+        content.appendChild(el('div', { class: 'loading', text: 'Loading squads...' }));
+        try {
+            cachedSquads = await fetch(`${BASE}data/men/squads2026.json`).then(r => r.json());
+        } catch (e) {
+            content.innerHTML = '';
+            content.appendChild(el('p', { text: 'Squad data is not available yet.', style: 'color:var(--text-tertiary)' }));
+            return;
+        }
+    }
+    content.innerHTML = '';
+
+    content.appendChild(el('p', {
+        style: 'color:var(--text-tertiary);margin-bottom:14px;font-size:0.9rem',
+        html: 'Every player is rated 0&ndash;100 against others in his position, from age-corrected '
+            + 'Transfermarkt values. Each team\u2019s four unit scores rank it against the other 47 squads. '
+            + 'Click a team for the full roster.',
+    }));
+
+    // Sort control
+    const controls = el('div', { class: 'squads-controls' });
+    controls.appendChild(el('span', { class: 'squads-sort-label', text: 'Sort by' }));
+    for (const [key, label] of SQUAD_SORT_KEYS) {
+        controls.appendChild(el('button', {
+            class: `squads-sort-btn ${key === squadsSort ? 'active' : ''}`,
+            text: label,
+            onclick: () => { squadsSort = key; renderSquads(content); },
+        }));
+    }
+    content.appendChild(controls);
+
+    const teams = Object.entries(cachedSquads.teams).map(([name, t]) => ({ name, ...t }));
+    teams.sort((a, b) =>
+        (b.scores?.[squadsSort] ?? -1) - (a.scores?.[squadsSort] ?? -1)
+        || (b.scores?.overall ?? 0) - (a.scores?.overall ?? 0)
+    );
+
+    const grid = el('div', { class: 'squads-grid' });
+    for (const t of teams) grid.appendChild(buildSquadCard(t));
+    content.appendChild(grid);
+}
+
+function scoreFill(value) {
+    // Blue tint matching the Overview index cells; 0-100 -> intensity.
+    const intensity = Math.max(0, Math.min(1, value / 100));
+    return `rgba(93, 143, 255, ${0.25 + intensity * 0.6})`;
+}
+
+function squadScoreBar(label, value) {
+    const row = el('div', { class: 'squad-score-row' });
+    row.appendChild(el('span', { class: 'squad-score-label', text: label }));
+    const track = el('div', { class: 'squad-score-track' });
+    const fill = el('div', {
+        class: 'squad-score-fill',
+        style: `width:${value == null ? 0 : value}%;background:${scoreFill(value ?? 0)}`,
+    });
+    track.appendChild(fill);
+    row.appendChild(track);
+    row.appendChild(el('span', { class: 'squad-score-val', text: value == null ? '\u2013' : value.toFixed(0) }));
+    return row;
+}
+
+function buildSquadCard(t) {
+    const card = el('div', { class: 'squad-card', id: `squad-${t.slug}` });
+
+    const header = el('div', { class: 'squad-card-header', style: 'cursor:pointer', onclick: () => toggleSquad(t.slug) });
+    const flag = flagImg(cachedFlags[t.slug], t.name, 'sm');
+    if (flag) header.appendChild(flag);
+    header.appendChild(el('span', { class: 'squad-card-name', text: t.name }));
+    if (t.group) header.appendChild(el('span', { class: 'squad-card-group', text: `Grp ${t.group}` }));
+    if (t.scores?.overall != null) header.appendChild(el('span', { class: 'squad-card-overall', text: t.scores.overall.toFixed(0) }));
+    card.appendChild(header);
+
+    const bars = el('div', { class: 'squad-bars' });
+    for (const g of POS_GROUPS) bars.appendChild(squadScoreBar(g, t.scores?.[g] ?? null));
+    card.appendChild(bars);
+
+    const detail = el('div', { class: 'squad-detail', id: `squad-detail-${t.slug}`, style: 'display:none' });
+    for (const g of POS_GROUPS) {
+        const players = (t.players || []).filter(p => p.pos === g);
+        if (!players.length) continue;
+        detail.appendChild(el('div', { class: 'squad-pos-title', text: POS_LABELS[g] }));
+        for (const p of players) detail.appendChild(buildPlayerRow(p));
+    }
+    card.appendChild(detail);
+    return card;
+}
+
+function buildPlayerRow(p) {
+    const row = el('div', { class: 'squad-player-row' });
+    row.appendChild(el('span', { class: 'squad-player-name', text: p.player }));
+    row.appendChild(el('span', { class: 'squad-player-club', text: p.club || '' }));
+    const meta = el('span', { class: 'squad-player-meta' });
+    if (p.age != null) meta.appendChild(el('span', { text: `${p.age.toFixed(0)}y` }));
+    if (p.value != null) meta.appendChild(el('span', { text: formatValue(p.value) }));
+    row.appendChild(meta);
+    const rating = p.rating == null ? '\u2013' : p.rating.toFixed(0);
+    row.appendChild(el('span', {
+        class: 'squad-player-rating',
+        text: rating,
+        style: p.rating == null ? '' : `background:${scoreFill(p.rating)}`,
+    }));
+    return row;
+}
+
+function formatValue(v) {
+    if (v >= 1e6) return `\u20ac${(v / 1e6).toFixed(v >= 1e7 ? 0 : 1)}m`;
+    if (v >= 1e3) return `\u20ac${Math.round(v / 1e3)}k`;
+    return `\u20ac${v}`;
+}
+
+function toggleSquad(slug) {
+    const detail = document.getElementById(`squad-detail-${slug}`);
+    const card = document.getElementById(`squad-${slug}`);
+    if (!detail) return;
+    const isOpen = detail.style.display !== 'none';
+    detail.style.display = isOpen ? 'none' : 'block';
+    card?.classList.toggle('squad-expanded', !isOpen);
 }

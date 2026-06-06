@@ -587,6 +587,153 @@ a:hover { color: var(--accent-hover); }
     color: var(--accent);
 }
 
+/* ===== Squads tab ===== */
+.squads-controls {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 18px;
+}
+.squads-sort-label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-tertiary);
+    margin-right: 4px;
+}
+.squads-sort-btn {
+    font-size: 0.8rem;
+    padding: 6px 14px;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    background: transparent;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.15s;
+}
+.squads-sort-btn:hover { border-color: var(--accent); color: var(--text-primary); }
+.squads-sort-btn.active {
+    background: var(--accent-muted);
+    border-color: var(--accent);
+    color: var(--accent);
+    font-weight: 600;
+}
+.squads-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 16px;
+    align-items: start;
+}
+.squad-card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+}
+.squad-card-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 14px;
+    background: var(--bg-tertiary);
+    transition: background 0.2s;
+}
+.squad-card-header:hover { background: var(--border-hover); }
+.squad-card-name {
+    font-family: var(--font-display);
+    font-weight: 700;
+    color: var(--text-primary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.squad-card-group {
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-tertiary);
+}
+.squad-card-overall {
+    margin-left: auto;
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 1.15rem;
+    color: var(--accent);
+}
+.squad-bars { padding: 12px 14px; display: flex; flex-direction: column; gap: 7px; }
+.squad-score-row { display: flex; align-items: center; gap: 8px; }
+.squad-score-label {
+    width: 34px;
+    font-size: 0.66rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: var(--text-tertiary);
+}
+.squad-score-track {
+    flex: 1;
+    height: 8px;
+    background: var(--bg-tertiary);
+    border-radius: 4px;
+    overflow: hidden;
+}
+.squad-score-fill { height: 100%; border-radius: 4px; transition: width 0.3s; }
+.squad-score-val {
+    width: 24px;
+    text-align: right;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+}
+.squad-card.squad-expanded { grid-column: 1 / -1; }
+.squad-detail { padding: 4px 14px 14px; border-top: 1px solid var(--border); }
+.squad-pos-title {
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--accent);
+    font-weight: 700;
+    margin: 14px 0 6px;
+}
+.squad-player-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.84rem;
+}
+.squad-player-row:last-child { border-bottom: none; }
+.squad-player-name { color: var(--text-primary); font-weight: 500; white-space: nowrap; }
+.squad-player-club {
+    flex: 1;
+    color: var(--text-tertiary);
+    font-size: 0.76rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: right;
+}
+.squad-player-meta {
+    display: flex;
+    gap: 8px;
+    color: var(--text-tertiary);
+    font-size: 0.72rem;
+    min-width: 78px;
+    justify-content: flex-end;
+}
+.squad-player-rating {
+    width: 30px;
+    text-align: center;
+    padding: 2px 0;
+    border-radius: 4px;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.8rem;
+    color: var(--text-primary);
+}
+
 /* ===== World Cup CTA Button ===== */
 .wc-cta-btn {
     display: inline-block;

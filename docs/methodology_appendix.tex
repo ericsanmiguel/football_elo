@@ -477,7 +477,7 @@ Univariate sweeps identify optima near $\beta \approx 0.2$ and $\sigma \approx 1
 
 \subsection{Deployed 2026 Output}
 
-The deployed model applies $\beta = 0.25$ and $\sigma = 120$ to the current tournament. Current TM squads are constructed from players active in the 2023/24 season or later, ranked by market value and truncated at the top 26 per team. Table~\ref{tab:composite2026} contrasts pure Elo (what was shipping before) with the deployed composite + uncertainty model for the top contenders.
+The deployed model applies $\beta = 0.25$ and $\sigma = 120$ to the current tournament. For 2026 the squads are the official 26-man rosters announced ahead of the tournament, scraped from each nation's Transfermarkt tournament page (\texttt{src/football\_elo/squad\_scrape.py}); each player carries his position, club, age, and market value at kickoff. Table~\ref{tab:composite2026} contrasts pure Elo (what was shipping before) with the deployed composite + uncertainty model for the top contenders.
 
 \begin{table}[h]
 \centering
@@ -500,6 +500,21 @@ Mexico    & 1960 & 1963 & 2.2\%  & 1.6\%  \\
 \caption{2026 WC win probabilities: pure Elo (pre-deployment) versus the deployed composite + uncertainty model ($\beta = 0.25$, $\sigma = 120$, log-transformed squad values). Top-3 combined share drops from 65.2\% to 55.2\%, in line with published consensus models.}
 \label{tab:composite2026}
 \end{table}
+
+\subsection{Position-by-Position Ratings (Squads Tab)}
+\label{sec:positionratings}
+
+The Squads tab re-uses the same per-player score $\tilde{s}(v,a)$ of Equation~\eqref{eq:log_transform}, but normalizes \emph{within position group} rather than across whole squads. This is a display feature only: it does not enter the composite rating or the Monte Carlo predictions. Players are grouped into goalkeepers, defenders, midfielders, and forwards (GK/DEF/MID/FWD) from their Transfermarkt position codes.
+
+\paragraph{Player rating.} Within each position group $g$, player scores are z-normalized across all participating players in that group and mapped to a $0$--$100$ scale,
+\begin{equation}
+\rho_p = \operatorname{clip}\!\bigl(50 + K\,z_{p}^{(g)},\; 0,\; 100\bigr), \qquad
+z_{p}^{(g)} = \frac{\tilde{s}(v_p, a_p) - \bar{\tilde{s}}^{(g)}}{\sigma_{\tilde{s}}^{(g)}},
+\label{eq:player_rating}
+\end{equation}
+with $K = 18$. Normalizing within position keeps goalkeepers --- whose market values run systematically below outfield players --- on the same footing as forwards, so each player is judged against his peers.
+
+\paragraph{Team unit scores.} For each team and each group $g$, the team's mean within-group score $\bar{\tilde{s}}_T^{(g)}$ is z-normalized across the 48 teams and mapped to $0$--$100$ by the same transform, yielding a GK/DEF/MID/FWD rating that places each team's unit against the other 47. The four are averaged for a single summary figure. The computation is in \texttt{src/football\_elo/squad\_strength.py} (\texttt{player\_position\_ratings}, \texttt{team\_position\_scores}).
 
 \subsection{Next Steps}
 
