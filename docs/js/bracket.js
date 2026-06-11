@@ -57,6 +57,17 @@ let flags = {};
 let containerRef = null;
 let teamRatings = {};  // team name -> Elo rating from JSON
 let cachedWcData = null;  // preserve across re-renders
+// Real results from the JSON export — taken as given and locked in the UI.
+let actualScores = {};    // "G-hi-ai" -> {home, away} in schedule orientation
+let actualKnockout = {};  // pairKey(a, b) -> {winner, score, pens}
+
+function pairKey(a, b) {
+    return [a, b].sort().join('|');
+}
+
+function lockedWinner(teamA, teamB) {
+    return actualKnockout[pairKey(teamA, teamB)]?.winner ?? null;
+}
 
 // ===== Slugify =====
 
@@ -143,33 +154,43 @@ function simulateFullTournament() {
     }
     const r = (team) => simRatings[team] ?? (1500 + RATING_SIGMA * gaussianSample());
 
-    // 2. Simulate all group matches using Poisson scores
+    // 2. Simulate the remaining group matches using Poisson scores.
+    //    Matches already played keep their real result.
     state.scores = {};
     state.knockoutPicks = { r32: [], r16: [], qf: [], sf: [], final: [] };
 
     for (const g of Object.keys(GROUPS)) {
         const teams = GROUPS[g];
         for (const [hi, ai] of SCHEDULE[g]) {
+            const key = `${g}-${hi}-${ai}`;
+            if (actualScores[key]) {
+                state.scores[key] = { ...actualScores[key] };
+                continue;
+            }
             const home = teams[hi], away = teams[ai];
             // Host nations get home advantage
             const isHost = (home === 'United States' || home === 'Mexico' || home === 'Canada');
             const ha = isHost ? HOME_ADV : 0;
             const [hg, ag] = simScore(r(home), r(away), ha);
-            state.scores[`${g}-${hi}-${ai}`] = { home: hg, away: ag };
+            state.scores[key] = { home: hg, away: ag };
         }
     }
 
-    // 3. Build R32 matchups and simulate knockout with Poisson
+    // 3. Build R32 matchups and simulate knockout with Poisson.
+    //    Knockout matches already decided keep their real winner.
+    const pickOrSim = (m) => lockedWinner(m.teamA, m.teamB)
+        ?? simKnockout(r(m.teamA), r(m.teamB), m.teamA, m.teamB);
+
     const r32 = buildR32Matchups();
     r32.forEach((m, i) => {
-        state.knockoutPicks.r32[i] = simKnockout(r(m.teamA), r(m.teamB), m.teamA, m.teamB);
+        state.knockoutPicks.r32[i] = pickOrSim(m);
     });
 
     // R16 through Final
     for (const round of ['r16', 'qf', 'sf', 'final']) {
         const matchups = getKnockoutMatchups(round);
         matchups.forEach((m, i) => {
-            state.knockoutPicks[round][i] = simKnockout(r(m.teamA), r(m.teamB), m.teamA, m.teamB);
+            state.knockoutPicks[round][i] = pickOrSim(m);
         });
     }
 
@@ -351,15 +372,38 @@ export function renderBracketBuilder(container, wcData, flagsData) {
     containerRef = container;
     loadState();
 
-    // Extract ratings from wcData
+    // Extract ratings and played results from wcData
     if (wcData) {
         cachedWcData = wcData;
         teamRatings = {};
-        for (const group of Object.values(wcData.groups)) {
+        actualScores = {};
+        actualKnockout = {};
+        for (const [g, group] of Object.entries(wcData.groups)) {
             for (const t of group.teams) {
                 teamRatings[t.team] = t.rating;
             }
+            const teams = GROUPS[g];
+            for (const m of group.matches || []) {
+                if (!m.played || !Array.isArray(m.score)) continue;
+                // JSON home/away may be host-swapped vs the schedule order
+                const hi = teams.indexOf(m.home), ai = teams.indexOf(m.away);
+                if (hi < 0 || ai < 0) continue;
+                const entry = SCHEDULE[g].find(([a, b]) => (a === hi && b === ai) || (a === ai && b === hi));
+                if (!entry) continue;
+                const [si, sj] = entry;
+                actualScores[`${g}-${si}-${sj}`] = si === hi
+                    ? { home: m.score[0], away: m.score[1] }
+                    : { home: m.score[1], away: m.score[0] };
+            }
         }
+        for (const r of wcData.knockout_results || []) {
+            actualKnockout[pairKey(r.team_a, r.team_b)] = r;
+        }
+    }
+
+    // Real results always take precedence over user predictions
+    for (const [key, s] of Object.entries(actualScores)) {
+        state.scores[key] = { ...s };
     }
 
     const section = el('div', { class: 'bracket-builder' });
@@ -368,7 +412,9 @@ export function renderBracketBuilder(container, wcData, flagsData) {
     section.appendChild(el('div', { class: 'bracket-section-title', text: 'Build Your Bracket' }));
     section.appendChild(el('p', {
         style: 'text-align:center;color:var(--text-tertiary);margin-bottom:24px;font-size:0.9rem',
-        text: 'Predict every match and build your path to the final.',
+        text: Object.keys(actualScores).length > 0 || Object.keys(actualKnockout).length > 0
+            ? 'Matches already played are locked to their real results — predict the rest.'
+            : 'Predict every match and build your path to the final.',
     }));
 
     // Action buttons
@@ -455,9 +501,12 @@ function renderGroupPanel(group) {
     for (const [hi, ai, date, venue] of SCHEDULE[group]) {
         const home = teams[hi], away = teams[ai];
         const key = `${group}-${hi}-${ai}`;
-        const s = state.scores[key] || {};
+        const locked = actualScores[key] != null;
+        const s = (locked ? actualScores[key] : state.scores[key]) || {};
 
-        detail.appendChild(el('div', { class: 'wc-match-date', text: `${date} \u2014 ${venue}` }));
+        const dateRow = el('div', { class: 'wc-match-date', text: `${date} \u2014 ${venue}` });
+        if (locked) dateRow.appendChild(el('span', { class: 'bracket-locked-badge', text: 'FT' }));
+        detail.appendChild(dateRow);
 
         const row = el('div', { class: 'bracket-match-input' });
 
@@ -468,7 +517,7 @@ function renderGroupPanel(group) {
         homeDiv.appendChild(document.createTextNode(` ${home}`));
         row.appendChild(homeDiv);
 
-        // Score inputs
+        // Score inputs (real results are shown locked)
         const homeInput = el('input', {
             class: 'bracket-score-input', type: 'number', min: '0', max: '20',
             value: s.home != null ? s.home.toString() : '',
@@ -477,6 +526,12 @@ function renderGroupPanel(group) {
             class: 'bracket-score-input', type: 'number', min: '0', max: '20',
             value: s.away != null ? s.away.toString() : '',
         });
+        if (locked) {
+            homeInput.disabled = true;
+            awayInput.disabled = true;
+            homeInput.title = 'Final score';
+            awayInput.title = 'Final score';
+        }
 
         const onScoreChange = () => {
             const hv = homeInput.value !== '' ? parseInt(homeInput.value) : null;
@@ -490,8 +545,10 @@ function renderGroupPanel(group) {
             // Update header checkmark
             renderKnockoutRounds();
         };
-        homeInput.addEventListener('change', onScoreChange);
-        awayInput.addEventListener('change', onScoreChange);
+        if (!locked) {
+            homeInput.addEventListener('change', onScoreChange);
+            awayInput.addEventListener('change', onScoreChange);
+        }
 
         row.appendChild(homeInput);
         row.appendChild(el('span', { style: 'color:var(--text-tertiary);font-size:0.8rem;font-weight:700', text: '\u2013' }));
@@ -554,12 +611,35 @@ function renderMiniStandings(group) {
     return div;
 }
 
+// Force real knockout winners into the picks (round by round, so later
+// rounds' matchups resolve from the locked earlier rounds).
+function applyActualKnockout() {
+    if (Object.keys(actualKnockout).length === 0) return;
+    let changed = false;
+    for (const round of ROUND_ORDER) {
+        const matchups = getKnockoutMatchups(round);
+        if (!state.knockoutPicks[round]) state.knockoutPicks[round] = [];
+        matchups.forEach((m, i) => {
+            const w = lockedWinner(m.teamA, m.teamB);
+            if (w && state.knockoutPicks[round][i] !== w) {
+                const prev = state.knockoutPicks[round][i];
+                state.knockoutPicks[round][i] = w;
+                if (prev && prev !== w) clearDownstream(round, i);
+                changed = true;
+            }
+        });
+    }
+    if (changed) saveState();
+}
+
 function renderKnockoutRounds() {
     const container = document.getElementById('bracket-knockout');
     if (!container) return;
     container.innerHTML = '';
 
     if (!allGroupsComplete()) return;
+
+    applyActualKnockout();
 
     // R32 as sequential card
     const r32Matchups = getKnockoutMatchups('r32');
@@ -572,9 +652,17 @@ function renderKnockoutRounds() {
         r32Matchups.forEach((m, i) => {
             const matchup = el('div', { class: 'bracket-matchup' });
             const picked = picks[i];
-            matchup.appendChild(teamButton(m.teamA, picked === m.teamA, picked === m.teamB, () => pickWinner('r32', i, m.teamA)));
-            matchup.appendChild(el('span', { class: 'bracket-vs', text: 'vs' }));
-            matchup.appendChild(teamButton(m.teamB, picked === m.teamB, picked === m.teamA, () => pickWinner('r32', i, m.teamB)));
+            const result = actualKnockout[pairKey(m.teamA, m.teamB)];
+            const locked = result != null;
+            matchup.appendChild(teamButton(m.teamA, picked === m.teamA, picked === m.teamB, locked ? null : () => pickWinner('r32', i, m.teamA)));
+            if (locked) {
+                const scoreA = result.team_a === m.teamA ? result.score[0] : result.score[1];
+                const scoreB = result.team_a === m.teamA ? result.score[1] : result.score[0];
+                matchup.appendChild(el('span', { class: 'bracket-vs', text: `${scoreA}–${scoreB}${result.pens ? ' p' : ''}` }));
+            } else {
+                matchup.appendChild(el('span', { class: 'bracket-vs', text: 'vs' }));
+            }
+            matchup.appendChild(teamButton(m.teamB, picked === m.teamB, picked === m.teamA, locked ? null : () => pickWinner('r32', i, m.teamB)));
             grid.appendChild(matchup);
         });
 
@@ -677,25 +765,35 @@ function renderBracketColumn(round, matchups, allPicks, startIdx, label) {
 
 function renderBracketMatchup(round, m, allPicks, idx) {
     const picked = allPicks[idx];
+    const result = actualKnockout[pairKey(m.teamA, m.teamB)];
+    const locked = result != null;
     const matchup = el('div', { class: 'vb-matchup' });
 
     const btnA = el('div', {
-        class: `vb-team-slot${picked === m.teamA ? ' vb-winner' : ''}${picked === m.teamB ? ' vb-loser' : ''}`,
-        onclick: () => pickWinner(round, idx, m.teamA),
+        class: `vb-team-slot${picked === m.teamA ? ' vb-winner' : ''}${picked === m.teamB ? ' vb-loser' : ''}${locked ? ' vb-locked' : ''}`,
     });
+    if (!locked) btnA.addEventListener('click', () => pickWinner(round, idx, m.teamA));
     const fA = flagImg(flags[slugify(m.teamA)], m.teamA, 'sm');
     if (fA) btnA.appendChild(fA);
     btnA.appendChild(document.createTextNode(` ${m.teamA}`));
 
     const btnB = el('div', {
-        class: `vb-team-slot${picked === m.teamB ? ' vb-winner' : ''}${picked === m.teamA ? ' vb-loser' : ''}`,
-        onclick: () => pickWinner(round, idx, m.teamB),
+        class: `vb-team-slot${picked === m.teamB ? ' vb-winner' : ''}${picked === m.teamA ? ' vb-loser' : ''}${locked ? ' vb-locked' : ''}`,
     });
+    if (!locked) btnB.addEventListener('click', () => pickWinner(round, idx, m.teamB));
     const fB = flagImg(flags[slugify(m.teamB)], m.teamB, 'sm');
     if (fB) btnB.appendChild(fB);
     btnB.appendChild(document.createTextNode(` ${m.teamB}`));
 
     matchup.appendChild(btnA);
+    if (locked) {
+        const scoreA = result.team_a === m.teamA ? result.score[0] : result.score[1];
+        const scoreB = result.team_a === m.teamA ? result.score[1] : result.score[0];
+        matchup.appendChild(el('div', {
+            class: 'vb-score-note',
+            text: `FT ${scoreA}–${scoreB}${result.pens ? ' (pens)' : ''}`,
+        }));
+    }
     matchup.appendChild(btnB);
     return matchup;
 }
@@ -719,8 +817,10 @@ function resetButton() {
 }
 
 function teamButton(team, isSelected, isEliminated, onClick) {
-    const cls = `bracket-team${isSelected ? ' bracket-team-selected' : ''}${isEliminated ? ' bracket-team-eliminated' : ''}`;
-    const btn = el('button', { class: cls, onclick: onClick });
+    const cls = `bracket-team${isSelected ? ' bracket-team-selected' : ''}${isEliminated ? ' bracket-team-eliminated' : ''}${onClick ? '' : ' bracket-team-locked'}`;
+    const attrs = { class: cls };
+    if (onClick) attrs.onclick = onClick;
+    const btn = el('button', attrs);
     const f = flagImg(flags[slugify(team)], team, 'sm');
     if (f) btn.appendChild(f);
     btn.appendChild(document.createTextNode(` ${team}`));

@@ -2,8 +2,10 @@ name: Update Elo Ratings
 
 on:
   schedule:
-    # Daily at 6:00 AM UTC (frequent updates through the 2026 World Cup)
-    - cron: '0 6 * * *'
+    # Every 6 hours through the 2026 World Cup, so the predictions and the
+    # archive snapshots pick up new results shortly after the source data
+    # updates. Matches in North America finish by ~05:00 UTC.
+    - cron: '0 0,6,12,18 * * *'
   workflow_dispatch:  # Allow manual trigger from GitHub UI
 
 jobs:

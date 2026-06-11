@@ -168,6 +168,69 @@ THIRD_PLACE_SLOTS = [1, 4, 6, 7, 8, 9, 12, 14]
 # The group winners at those slots
 THIRD_PLACE_OPPONENTS = ["E", "I", "A", "L", "D", "G", "B", "K"]
 
+# Tournament calendar boundaries used to classify played results.
+# Group stage runs Jun 11-27; the Round of 32 starts Jun 28.
+GROUP_STAGE_START = "2026-06-09"
+KNOCKOUT_START = "2026-06-28"
+
+
+def collect_results(elo: EloSystem):
+    """Extract played 2026 World Cup results from the Elo match history.
+
+    Returns (group_results, knockout_results, results_through):
+      group_results: {group: {(i, j): (goals_i, goals_j)}} with i < j
+        indexing into GROUPS_2026[group].
+      knockout_results: [{"team_a", "team_b", "score": [a, b], "winner",
+        "pens": bool, "date"}, ...] in chronological order.
+      results_through: ISO date of the latest played match, or None.
+    """
+    team_to_group = {t: g for g, teams in GROUPS_2026.items() for t in teams}
+    group_results: dict[str, dict] = {}
+    knockout_results: list[dict] = []
+    results_through = None
+
+    for rec in elo.history:
+        if not rec.get("is_home") or rec["tournament"] != "FIFA World Cup":
+            continue
+        date = str(rec["date"])[:10]
+        if date < GROUP_STAGE_START:
+            continue
+        home, away = rec["team"], rec["opponent"]
+        if team_to_group.get(home) is None or team_to_group.get(away) is None:
+            continue
+        hs, as_ = int(rec["team_score"]), int(rec["opponent_score"])
+
+        if date < KNOCKOUT_START:
+            g = team_to_group[home]
+            if team_to_group[away] != g:
+                continue
+            teams = GROUPS_2026[g]
+            hi, ai = teams.index(home), teams.index(away)
+            key = (min(hi, ai), max(hi, ai))
+            goals = (hs, as_) if hi < ai else (as_, hs)
+            group_results.setdefault(g, {})[key] = goals
+        else:
+            shootout = rec.get("shootout_winner")
+            if hs > as_:
+                winner = home
+            elif as_ > hs:
+                winner = away
+            else:
+                # Level after extra time — decided on penalties
+                winner = shootout if shootout in (home, away) else home
+            knockout_results.append({
+                "team_a": home, "team_b": away,
+                "score": [hs, as_],
+                "winner": winner,
+                "pens": hs == as_,
+                "date": date,
+            })
+
+        if results_through is None or date > results_through:
+            results_through = date
+
+    return group_results, knockout_results, results_through
+
 
 # Poisson score model parameters. Calibrated by
 # src/football_elo/calibrate_poisson.py against 64,202 team-match rows
@@ -273,9 +336,13 @@ def _poisson_sample(lam: float) -> int:
 
 
 def simulate_group_once(
-    teams: list[str], match_params: dict
+    teams: list[str], match_params: dict,
+    fixed_results: dict | None = None,
 ) -> list[tuple[str, int, float]]:
     """Simulate one group once using Poisson scores.
+
+    fixed_results maps (i, j) with i < j to actual (goals_i, goals_j) for
+    matches already played — those are taken as given instead of simulated.
 
     Returns [(team, points, gd), ...] sorted by standing.
     """
@@ -285,8 +352,11 @@ def simulate_group_once(
     gf = [0] * n
 
     for i, j in combinations(range(n), 2):
-        ra, rb, ha = match_params[(i, j)]
-        goals_a, goals_b = simulate_group_match(ra, rb, ha)
+        if fixed_results and (i, j) in fixed_results:
+            goals_a, goals_b = fixed_results[(i, j)]
+        else:
+            ra, rb, ha = match_params[(i, j)]
+            goals_a, goals_b = simulate_group_match(ra, rb, ha)
 
         gf[i] += goals_a
         gf[j] += goals_b
@@ -371,12 +441,18 @@ def allocate_third_place(
 def simulate_tournament(
     ratings: dict[str, float], n_sims: int = 50000,
     rating_sigma: float = 0.0,
+    group_results: dict | None = None,
+    knockout_winners: dict | None = None,
 ) -> dict[str, dict]:
     """Run full tournament Monte Carlo simulation.
 
     rating_sigma > 0 samples each team's rating from N(mu, sigma) once per
     simulation — captures uncertainty in the point-estimate Elo. Default 0
     preserves the pre-existing deterministic behavior.
+
+    group_results ({group: {(i, j): (goals_i, goals_j)}}) and
+    knockout_winners ({frozenset({team_a, team_b}): winner}) hold matches
+    already played; the simulation conditions on them instead of sampling.
 
     Returns per-team dict with counts for each round reached.
     """
@@ -415,10 +491,11 @@ def simulate_tournament(
             sim_ratings = ratings
             sim_group_params = group_params
 
-        # 1. Simulate all groups
+        # 1. Simulate all groups (conditioning on played results)
         standings = {}  # group -> [(team, pts, gd), ...]
         for g, teams in GROUPS_2026.items():
-            standings[g] = simulate_group_once(teams, sim_group_params[g])
+            fixed = group_results.get(g) if group_results else None
+            standings[g] = simulate_group_once(teams, sim_group_params[g], fixed)
 
         # Record group positions
         for g, standing in standings.items():
@@ -482,10 +559,14 @@ def simulate_tournament(
         for round_name in round_names:
             winners = []
             for team_a, team_b in current_round:
-                w = simulate_knockout_match(
-                    sim_ratings.get(team_a, 1500), sim_ratings.get(team_b, 1500),
-                    team_a, team_b,
-                )
+                w = None
+                if knockout_winners:
+                    w = knockout_winners.get(frozenset((team_a, team_b)))
+                if w is None:
+                    w = simulate_knockout_match(
+                        sim_ratings.get(team_a, 1500), sim_ratings.get(team_b, 1500),
+                        team_a, team_b,
+                    )
                 winners.append(w)
                 counts[w][round_name] += 1
 
@@ -580,14 +661,98 @@ def _marginal_match_probs(
     return pw / n_samples, pd_ / n_samples, pl / n_samples
 
 
+def _stage_label(group_results: dict, knockout_results: list) -> str:
+    """Human-readable tournament stage implied by the played results."""
+    n_group = sum(len(v) for v in group_results.values())
+    n_ko = len(knockout_results)
+    if n_group == 0 and n_ko == 0:
+        return "Pre-tournament"
+    if n_group < 72:
+        md_played = [0, 0, 0]
+        for g, schedule in MATCH_SCHEDULE.items():
+            fixed = group_results.get(g, {})
+            for k, (i, j, _date, _venue) in enumerate(schedule):
+                if (min(i, j), max(i, j)) in fixed:
+                    md_played[k // 2] += 1
+        for md in range(3):
+            if md_played[md] < 24:
+                return f"Matchday {md + 1} ({md_played[md]}/24 played)"
+        return "Group stage"
+    if n_ko == 0:
+        return "Group stage complete"
+    done = 0
+    for name, size in [("Round of 32", 16), ("Round of 16", 8),
+                       ("Quarterfinals", 4), ("Semifinals", 2)]:
+        if n_ko < done + size:
+            return f"{name} ({n_ko - done}/{size} played)"
+        done += size
+    # 30 = semis done; 31 adds the third-place match; 32 adds the final
+    if n_ko <= 31:
+        return "Semifinals complete"
+    return "Tournament complete"
+
+
+def _write_archive(data: dict, output_dir: Path) -> None:
+    """Snapshot the predictions JSON as the tournament progresses.
+
+    While no 2026 matches have been played, maintains pre-tournament.json
+    (overwritten each run so it reflects the final pre-kickoff state). Once
+    results are in, writes one snapshot per results-date; runs that produce
+    identical content to the latest snapshot are skipped. An index.json
+    lists all snapshots for the frontend's archive selector.
+    """
+    archive_dir = output_dir / "worldcup_archive"
+    archive_dir.mkdir(parents=True, exist_ok=True)
+    index_path = archive_dir / "index.json"
+    index = []
+    if index_path.exists():
+        index = json.loads(index_path.read_text(encoding="utf-8"))
+
+    payload = json.dumps(data, separators=(",", ":"))
+    completed = data.get("completed", 0)
+    if completed == 0:
+        fname = "pre-tournament.json"
+        label = "Pre-tournament"
+    else:
+        through = data.get("results_through")
+        if not through:
+            return
+        fname = f"{through}.json"
+        label = data.get("stage", through)
+        dated = [e for e in index if e["file"] != "pre-tournament.json"]
+        if dated:
+            latest = archive_dir / dated[-1]["file"]
+            if latest.exists() and latest.read_text(encoding="utf-8") == payload:
+                return
+
+    (archive_dir / fname).write_text(payload, encoding="utf-8")
+    entry = {
+        "file": fname, "label": label, "completed": completed,
+        "through": data.get("results_through"),
+    }
+    index = [e for e in index if e["file"] != fname] + [entry]
+    index.sort(key=lambda e: (e["file"] != "pre-tournament.json", e["file"]))
+    index_path.write_text(json.dumps(index, separators=(",", ":")), encoding="utf-8")
+
+
 def export_worldcup_json(elo: EloSystem, output_dir: Path) -> None:
     """Export World Cup 2026 predictions as JSON.
 
     Uses composite ratings (Elo + beta * squad_z * sigma_Elo) and rating
     uncertainty in the Monte Carlo, with parameters calibrated on 2018+2022.
-    If squad data is unavailable, falls back to pure Elo.
+    If squad data is unavailable, falls back to pure Elo. Once the
+    tournament is underway, played matches are taken as given: actual
+    scores are exported alongside the fixtures and the Monte Carlo
+    conditions on them.
     """
     random.seed(2026)
+
+    # Played results so far (empty before kickoff)
+    group_results, knockout_results, results_through = collect_results(elo)
+    knockout_winners = {
+        frozenset((r["team_a"], r["team_b"])): r["winner"]
+        for r in knockout_results
+    }
 
     # Base Elo per team
     base_ratings: dict[str, float] = {}
@@ -602,9 +767,10 @@ def export_worldcup_json(elo: EloSystem, output_dir: Path) -> None:
     squad_index = _to_index(squad_z) if squad_z else {}
     combined_index = _to_index(all_ratings)
 
-    # Tournament simulation with rating uncertainty
+    # Tournament simulation with rating uncertainty, conditioned on results
     sim_results = simulate_tournament(
         all_ratings, n_sims=10000, rating_sigma=RATING_SIGMA,
+        group_results=group_results, knockout_winners=knockout_winners,
     )
 
     # Match-level probabilities shown on the Groups tab also marginalize over sigma
@@ -613,6 +779,17 @@ def export_worldcup_json(elo: EloSystem, output_dir: Path) -> None:
     groups = {}
     for group_name, teams in GROUPS_2026.items():
         team_ratings = {t: all_ratings[t] for t in teams}
+        fixed = group_results.get(group_name, {})
+
+        # Actual standings from played matches
+        table = {t: {"mp": 0, "pts": 0, "gd": 0, "gf": 0} for t in teams}
+        for (i, j), (gi, gj) in fixed.items():
+            for idx, gf_, ga_ in ((i, gi, gj), (j, gj, gi)):
+                row = table[teams[idx]]
+                row["mp"] += 1
+                row["gf"] += gf_
+                row["gd"] += gf_ - ga_
+                row["pts"] += 3 if gf_ > ga_ else (1 if gf_ == ga_ else 0)
 
         matches = []
         schedule = MATCH_SCHEDULE.get(group_name, [])
@@ -622,32 +799,33 @@ def export_worldcup_json(elo: EloSystem, output_dir: Path) -> None:
             home = team_a if team_a in HOST_NATIONS else (
                 team_b if team_b in HOST_NATIONS else ""
             )
-            if home == team_b:
-                pa, pd, pb = _marginal_match_probs(
-                    team_ratings[team_b], team_ratings[team_a],
-                    home=team_b, neutral=False,
-                    sigma=RATING_SIGMA, n_samples=400, rng=rng,
-                )
+            # Listed order follows the schedule, except a host plays "home"
+            swap = home == team_b
+            m_home, m_away = (team_b, team_a) if swap else (team_a, team_b)
+
+            key = (min(i, j), max(i, j))
+            if key in fixed:
+                gi, gj = fixed[key]
+                goals_a, goals_b = (gi, gj) if i < j else (gj, gi)
+                score = [goals_b, goals_a] if swap else [goals_a, goals_b]
                 matches.append({
-                    "home": team_b, "away": team_a,
-                    "p_home": round(pa * 100, 1),
-                    "p_draw": round(pd * 100, 1),
-                    "p_away": round(pb * 100, 1),
-                    "is_neutral": False,
+                    "home": m_home, "away": m_away,
+                    "score": score, "played": True,
+                    "is_neutral": is_neutral if not swap else False,
                     "date": date, "venue": venue,
                 })
             else:
                 pa, pd, pb = _marginal_match_probs(
-                    team_ratings[team_a], team_ratings[team_b],
-                    home=home, neutral=is_neutral,
+                    team_ratings[m_home], team_ratings[m_away],
+                    home=home, neutral=is_neutral and not swap,
                     sigma=RATING_SIGMA, n_samples=400, rng=rng,
                 )
                 matches.append({
-                    "home": team_a, "away": team_b,
+                    "home": m_home, "away": m_away,
                     "p_home": round(pa * 100, 1),
                     "p_draw": round(pd * 100, 1),
                     "p_away": round(pb * 100, 1),
-                    "is_neutral": is_neutral,
+                    "is_neutral": is_neutral if not swap else False,
                     "date": date, "venue": venue,
                 })
 
@@ -660,13 +838,23 @@ def export_worldcup_json(elo: EloSystem, output_dir: Path) -> None:
                 "elo_base": round(base_ratings[t], 0),
                 "squad_index": round(squad_index.get(t, 75.0), 1) if squad_index else None,
                 "combined_index": round(combined_index.get(t, 75.0), 1),
+                **table[t],
                 **sim_results[t],
             })
-        team_list.sort(key=lambda x: x["p_1st"], reverse=True)
+        team_list.sort(key=lambda x: (x["pts"], x["gd"], x["gf"], x["p_1st"]), reverse=True)
 
         groups[group_name] = {"teams": team_list, "matches": matches}
 
-    data = {"tournament": "2026 FIFA World Cup", "groups": groups}
+    n_completed = sum(len(v) for v in group_results.values()) + len(knockout_results)
+    data = {
+        "tournament": "2026 FIFA World Cup",
+        "stage": _stage_label(group_results, knockout_results),
+        "completed": n_completed,
+        "results_through": results_through,
+        "knockout_results": knockout_results,
+        "groups": groups,
+    }
     (output_dir / "worldcup2026.json").write_text(
         json.dumps(data, separators=(",", ":")), encoding="utf-8"
     )
+    _write_archive(data, output_dir)

@@ -1623,3 +1623,85 @@ a:hover { color: var(--accent-hover); }
     vertical-align: middle;
     line-height: 1.2;
 }
+
+/* ===== World Cup live results & archive ===== */
+.wc-match-score {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-width: 100px;
+}
+.wc-match-score-num {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: 0.04em;
+}
+.wc-match-ft {
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--bg-primary);
+    background: var(--accent);
+    border-radius: 4px;
+    padding: 2px 5px;
+}
+.wc-match-winner { color: var(--accent); font-weight: 700; }
+.wc-snapshot-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin: -10px 0 18px;
+}
+.wc-snapshot-label {
+    font-size: 0.82rem;
+    color: var(--text-tertiary);
+}
+.wc-snapshot-select {
+    background: var(--bg-surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: var(--text-primary);
+    padding: 6px 10px;
+    font-size: 0.85rem;
+    cursor: pointer;
+}
+.wc-snapshot-select:focus { border-color: var(--accent); outline: none; }
+.wc-snapshot-banner {
+    text-align: center;
+    font-size: 0.82rem;
+    color: var(--accent-secondary);
+    border: 1px solid var(--accent-secondary);
+    border-radius: 8px;
+    padding: 8px 14px;
+    margin: 0 auto 20px;
+    max-width: 560px;
+}
+.bracket-score-input:disabled {
+    opacity: 0.85;
+    border-color: var(--accent);
+    color: var(--accent);
+    font-weight: 700;
+    cursor: not-allowed;
+}
+.bracket-locked-badge {
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--bg-primary);
+    background: var(--accent);
+    border-radius: 4px;
+    padding: 2px 5px;
+    margin-left: 6px;
+}
+.vb-team-slot.vb-locked, .bracket-team.bracket-team-locked { cursor: default; }
+.vb-score-note {
+    text-align: center;
+    font-size: 0.72rem;
+    color: var(--text-tertiary);
+    padding: 2px 0;
+}

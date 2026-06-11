@@ -76,6 +76,7 @@ class EloSystem:
         self.history.append({
             "date": date, "team": home, "opponent": away,
             "team_score": home_score, "opponent_score": away_score,
+            "shootout_winner": shootout_winner,
             "tournament": tournament, "k_factor": k,
             "rating_before": round(r_home, 2),
             "rating_after": round(new_home, 2),

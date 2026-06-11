@@ -9,10 +9,12 @@ import requests
 from .config import DATA_DIR, DATA_SOURCES
 
 # Normalize team names for successor states (treat as continuous teams)
+# and ASCII spelling used throughout this codebase (squads, WC groups).
 TEAM_NAME_MAP = {
     "Macedonia": "North Macedonia",
     "FR Yugoslavia": "Serbia",
     "Serbia and Montenegro": "Serbia",
+    "Curaçao": "Curacao",
 }
 
 

@@ -17,29 +17,103 @@ let rankingsSort = { key: 'default', asc: false };
 // Squads tab state.
 let cachedSquads = null;
 let squadsSort = 'overall';
+// Archive state: 'live' or a snapshot filename from worldcup_archive/index.json.
+let liveWcData = null;
+let archiveIndex = [];
+let currentSnapshot = 'live';
 
 export async function render(container) {
     container.innerHTML = '<div class="loading">Loading World Cup data...</div>';
 
-    const [wcData, flags] = await Promise.all([
+    const [wcData, flags, archIdx] = await Promise.all([
         fetch(`${BASE}data/men/worldcup2026.json`).then(r => r.json()),
         getTeamFlags(),
+        fetch(`${BASE}data/men/worldcup_archive/index.json`)
+            .then(r => (r.ok ? r.json() : []))
+            .catch(() => []),
     ]);
+    liveWcData = wcData;
     cachedWcData = wcData;
     cachedFlags = flags;
+    archiveIndex = Array.isArray(archIdx) ? archIdx : [];
+    currentSnapshot = 'live';
 
+    renderView(container);
+}
+
+function fmtSnapDate(iso) {
+    if (!iso) return '';
+    const [y, m, d] = iso.split('-').map(Number);
+    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    return `${months[m - 1]} ${d}`;
+}
+
+function snapshotLabel(entry) {
+    if (entry.file === 'pre-tournament.json') return 'Pre-tournament';
+    const date = fmtSnapDate(entry.through);
+    return entry.label && entry.label !== date ? `${date} \u2014 ${entry.label}` : date;
+}
+
+async function selectSnapshot(value, container) {
+    if (value === 'live') {
+        cachedWcData = liveWcData;
+        currentSnapshot = 'live';
+    } else {
+        try {
+            cachedWcData = await fetch(`${BASE}data/men/worldcup_archive/${value}`).then(r => r.json());
+            currentSnapshot = value;
+        } catch (e) {
+            return;
+        }
+    }
+    renderView(container);
+}
+
+function renderView(container) {
     container.innerHTML = '';
+    const d = cachedWcData;
+    const isLive = currentSnapshot === 'live';
 
     // Header
+    let subtitle = 'Based on current Elo ratings \u00b7 10,000 simulations';
+    if (d.completed > 0 && d.stage) {
+        subtitle = `${d.stage} \u00b7 Results through ${fmtSnapDate(d.results_through)} \u00b7 10,000 simulations`;
+    }
     const hero = el('div', { class: 'hero' }, [
         el('h1', { text: '2026 World Cup Predictions' }),
-        el('p', { class: 'hero-subtitle', text: 'Based on current Elo ratings \u00b7 10,000 simulations' }),
+        el('p', { class: 'hero-subtitle', text: subtitle }),
     ]);
     container.appendChild(hero);
 
-    // Tab bar
+    // Archive selector (only once snapshots exist)
+    if (archiveIndex.length > 0) {
+        const select = el('select', { class: 'wc-snapshot-select' });
+        select.appendChild(el('option', { value: 'live', text: 'Live (latest)' }));
+        for (const entry of [...archiveIndex].reverse()) {
+            select.appendChild(el('option', { value: entry.file, text: snapshotLabel(entry) }));
+        }
+        select.value = currentSnapshot;
+        select.addEventListener('change', () => selectSnapshot(select.value, container));
+        const bar = el('div', { class: 'wc-snapshot-bar' }, [
+            el('span', { class: 'wc-snapshot-label', text: 'Predictions as of' }),
+            select,
+        ]);
+        container.appendChild(bar);
+        if (!isLive) {
+            container.appendChild(el('div', {
+                class: 'wc-snapshot-banner',
+                text: 'Viewing an archived snapshot \u2014 probabilities reflect results known at that point.',
+            }));
+        }
+    }
+
+    // The interactive bracket only makes sense against live data
+    if (!isLive && currentTab === 'bracket') currentTab = 'overview';
+    const tabDefs = [['overview', 'Overview'], ['groups', 'Groups'], ['squads', 'Squads']];
+    if (isLive) tabDefs.push(['bracket', 'Build Your Bracket']);
+
     const tabs = el('div', { class: 'wc-tabs' });
-    for (const [id, label] of [['overview', 'Overview'], ['groups', 'Groups'], ['squads', 'Squads'], ['bracket', 'Build Your Bracket']]) {
+    for (const [id, label] of tabDefs) {
         tabs.appendChild(el('button', {
             class: `wc-tab ${id === currentTab ? 'active' : ''}`,
             text: label,
@@ -263,10 +337,15 @@ function buildGroupCard(groupName, group, flags) {
 
     const detail = el('div', { class: 'wc-group-detail', id: `detail-${groupName}`, style: 'display:none' });
 
+    const started = (cachedWcData?.completed ?? 0) > 0;
+
     const table = el('table', { class: 'wc-group-table' });
     const thead = el('thead');
     const headerRow = el('tr');
-    for (const h of ['', 'Team', 'Elo', '1st', '2nd', '3rd', '4th', 'R32', 'R16', 'QF']) {
+    const headers = ['', 'Team', 'Elo'];
+    if (started) headers.push('MP', 'Pts');
+    headers.push('1st', '2nd', '3rd', '4th', 'R32', 'R16', 'QF');
+    for (const h of headers) {
         headerRow.appendChild(el('th', { text: h }));
     }
     thead.appendChild(headerRow);
@@ -284,6 +363,10 @@ function buildGroupCard(groupName, group, flags) {
         tr.appendChild(flagTd);
         tr.appendChild(el('td', { class: 'wc-team-name', text: t.team }));
         tr.appendChild(el('td', { class: 'wc-rating', text: Math.round(t.rating).toString() }));
+        if (started) {
+            tr.appendChild(el('td', { text: (t.mp ?? 0).toString(), style: 'color:var(--text-tertiary)' }));
+            tr.appendChild(el('td', { text: (t.pts ?? 0).toString(), style: 'font-weight:700' }));
+        }
         tr.appendChild(probCell(t.p_1st));
         tr.appendChild(probCell(t.p_2nd));
         tr.appendChild(probCell(t.p_3rd));
@@ -296,7 +379,11 @@ function buildGroupCard(groupName, group, flags) {
     table.appendChild(tbody);
     detail.appendChild(table);
 
-    detail.appendChild(el('div', { class: 'wc-matches-title', text: 'Match Predictions', style: 'margin-top:16px' }));
+    detail.appendChild(el('div', {
+        class: 'wc-matches-title',
+        text: started ? 'Matches' : 'Match Predictions',
+        style: 'margin-top:16px',
+    }));
 
     for (const m of group.matches) {
         if (m.date) {
@@ -305,24 +392,35 @@ function buildGroupCard(groupName, group, flags) {
                 text: `${m.date}${m.venue ? ' \u2014 ' + m.venue : ''}`,
             }));
         }
+        const played = m.played && Array.isArray(m.score);
+        const homeWon = played && m.score[0] > m.score[1];
+        const awayWon = played && m.score[1] > m.score[0];
+
         const matchRow = el('div', { class: 'wc-match-row' });
-        const homeDiv = el('div', { class: 'wc-match-team wc-match-home' });
+        const homeDiv = el('div', { class: `wc-match-team wc-match-home${homeWon ? ' wc-match-winner' : ''}` });
         const homeFlag = flagImg(flags[slugify(m.home)], m.home, 'sm');
         if (homeFlag) homeDiv.appendChild(homeFlag);
         homeDiv.appendChild(document.createTextNode(` ${m.home}`));
         if (!m.is_neutral) homeDiv.appendChild(el('span', { class: 'wc-home-badge', text: 'H' }));
         matchRow.appendChild(homeDiv);
 
-        const barContainer = el('div', { class: 'wc-prob-bar' });
-        if (m.p_home >= 8) barContainer.appendChild(el('div', { class: 'wc-prob-segment wc-prob-home', style: `width:${m.p_home}%`, text: `${m.p_home}%` }));
-        else barContainer.appendChild(el('div', { class: 'wc-prob-segment wc-prob-home', style: `width:${m.p_home}%` }));
-        if (m.p_draw >= 8) barContainer.appendChild(el('div', { class: 'wc-prob-segment wc-prob-draw', style: `width:${m.p_draw}%`, text: `${m.p_draw}%` }));
-        else barContainer.appendChild(el('div', { class: 'wc-prob-segment wc-prob-draw', style: `width:${m.p_draw}%` }));
-        if (m.p_away >= 8) barContainer.appendChild(el('div', { class: 'wc-prob-segment wc-prob-away', style: `width:${m.p_away}%`, text: `${m.p_away}%` }));
-        else barContainer.appendChild(el('div', { class: 'wc-prob-segment wc-prob-away', style: `width:${m.p_away}%` }));
-        matchRow.appendChild(barContainer);
+        if (played) {
+            matchRow.appendChild(el('div', { class: 'wc-match-score' }, [
+                el('span', { class: 'wc-match-score-num', text: `${m.score[0]} \u2013 ${m.score[1]}` }),
+                el('span', { class: 'wc-match-ft', text: 'FT' }),
+            ]));
+        } else {
+            const barContainer = el('div', { class: 'wc-prob-bar' });
+            if (m.p_home >= 8) barContainer.appendChild(el('div', { class: 'wc-prob-segment wc-prob-home', style: `width:${m.p_home}%`, text: `${m.p_home}%` }));
+            else barContainer.appendChild(el('div', { class: 'wc-prob-segment wc-prob-home', style: `width:${m.p_home}%` }));
+            if (m.p_draw >= 8) barContainer.appendChild(el('div', { class: 'wc-prob-segment wc-prob-draw', style: `width:${m.p_draw}%`, text: `${m.p_draw}%` }));
+            else barContainer.appendChild(el('div', { class: 'wc-prob-segment wc-prob-draw', style: `width:${m.p_draw}%` }));
+            if (m.p_away >= 8) barContainer.appendChild(el('div', { class: 'wc-prob-segment wc-prob-away', style: `width:${m.p_away}%`, text: `${m.p_away}%` }));
+            else barContainer.appendChild(el('div', { class: 'wc-prob-segment wc-prob-away', style: `width:${m.p_away}%` }));
+            matchRow.appendChild(barContainer);
+        }
 
-        const awayDiv = el('div', { class: 'wc-match-team wc-match-away' });
+        const awayDiv = el('div', { class: `wc-match-team wc-match-away${awayWon ? ' wc-match-winner' : ''}` });
         awayDiv.appendChild(document.createTextNode(`${m.away} `));
         const awayFlag = flagImg(flags[slugify(m.away)], m.away, 'sm');
         if (awayFlag) awayDiv.appendChild(awayFlag);
