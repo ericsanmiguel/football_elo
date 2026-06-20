@@ -230,12 +230,71 @@ function delay(ms) {
 
 // ===== Computation =====
 
+// 2026 World Cup group tie-breaking. Teams level on points are separated by
+// head-to-head record (points, goal difference, goals scored among the tied
+// teams), re-applied to any still-level subset, then overall goal difference
+// and goals scored. Mirrors _rank_group in src/football_elo/worldcup.py.
+function rankTiedBlock(block, stats, played) {
+    if (block.length === 1) return block;
+    const inBlock = new Set(block);
+    const h = {};
+    block.forEach(t => { h[t] = { pts: 0, gd: 0, gf: 0 }; });
+    for (const m of played) {
+        if (inBlock.has(m.a) && inBlock.has(m.b)) {
+            h[m.a].gf += m.ga; h[m.b].gf += m.gb;
+            h[m.a].gd += m.ga - m.gb; h[m.b].gd += m.gb - m.ga;
+            if (m.ga > m.gb) h[m.a].pts += 3;
+            else if (m.gb > m.ga) h[m.b].pts += 3;
+            else { h[m.a].pts += 1; h[m.b].pts += 1; }
+        }
+    }
+    const ordered = block.slice().sort((a, b) =>
+        (h[b].pts - h[a].pts) || (h[b].gd - h[a].gd) || (h[b].gf - h[a].gf)
+    );
+    // Partition into runs still level on all three head-to-head criteria.
+    const runs = [];
+    let k = 0;
+    while (k < ordered.length) {
+        let m = k + 1;
+        while (m < ordered.length &&
+               h[ordered[m]].pts === h[ordered[k]].pts &&
+               h[ordered[m]].gd === h[ordered[k]].gd &&
+               h[ordered[m]].gf === h[ordered[k]].gf) m++;
+        runs.push(ordered.slice(k, m));
+        k = m;
+    }
+    if (runs.length === 1) {
+        // Head-to-head separated no one: fall through to overall criteria.
+        return block.slice().sort((a, b) =>
+            (stats[b].gd - stats[a].gd) || (stats[b].gf - stats[a].gf) || a.localeCompare(b)
+        );
+    }
+    // Head-to-head split the block; re-apply it within each still-level run.
+    const result = [];
+    for (const run of runs) result.push(...rankTiedBlock(run, stats, played));
+    return result;
+}
+
+function rankGroupStandings(teams, stats, played) {
+    const byPoints = teams.slice().sort((a, b) => stats[b].pts - stats[a].pts);
+    const order = [];
+    let k = 0;
+    while (k < byPoints.length) {
+        let m = k + 1;
+        while (m < byPoints.length && stats[byPoints[m]].pts === stats[byPoints[k]].pts) m++;
+        order.push(...rankTiedBlock(byPoints.slice(k, m), stats, played));
+        k = m;
+    }
+    return order;
+}
+
 function computeGroupStandings(group) {
     const teams = GROUPS[group];
     const schedule = SCHEDULE[group];
     const stats = {};
     teams.forEach(t => { stats[t] = { pts: 0, gd: 0, gf: 0, ga: 0 }; });
 
+    const played = [];  // {a, b, ga, gb} per played match, for head-to-head
     let complete = true;
     for (const [hi, ai] of schedule) {
         const key = `${group}-${hi}-${ai}`;
@@ -248,11 +307,10 @@ function computeGroupStandings(group) {
         if (hg > ag) stats[home].pts += 3;
         else if (hg < ag) stats[away].pts += 3;
         else { stats[home].pts += 1; stats[away].pts += 1; }
+        played.push({ a: home, b: away, ga: hg, gb: ag });
     }
 
-    const sorted = teams.slice().sort((a, b) =>
-        (stats[b].pts - stats[a].pts) || (stats[b].gd - stats[a].gd) || (stats[b].gf - stats[a].gf) || a.localeCompare(b)
-    );
+    const sorted = rankGroupStandings(teams, stats, played);
     return { standings: sorted.map((t, i) => ({ team: t, pos: i + 1, ...stats[t] })), complete };
 }
 
