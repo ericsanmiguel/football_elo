@@ -335,21 +335,111 @@ def _poisson_sample(lam: float) -> int:
             return k - 1
 
 
+def _rank_tied_block(block, played, gd, gf, rand_keys):
+    """Order a set of teams level on points by the 2026 head-to-head rules.
+
+    ``block`` is a list of team indices known to be level on competition
+    points (or, in a recursive call, on a higher head-to-head criterion).
+    ``played`` maps (i, j) with i < j to (goals_i, goals_j) for every group
+    match. ``gd``/``gf`` are overall (all-matches) totals and ``rand_keys``
+    gives a stable per-team value for the final, unmodelled break.
+
+    Criteria, in FIFA 2026 order: head-to-head points, head-to-head goal
+    difference, head-to-head goals scored — re-applied to any still-level
+    subset — then overall goal difference, overall goals scored, and a
+    random draw standing in for fair-play points / the FIFA World Ranking.
+    """
+    if len(block) == 1:
+        return list(block)
+
+    bset = set(block)
+    h2h_pts = {x: 0 for x in block}
+    h2h_gd = {x: 0 for x in block}
+    h2h_gf = {x: 0 for x in block}
+    for (i, j), (gi, gj) in played.items():
+        if i in bset and j in bset:
+            h2h_gf[i] += gi
+            h2h_gf[j] += gj
+            h2h_gd[i] += gi - gj
+            h2h_gd[j] += gj - gi
+            if gi > gj:
+                h2h_pts[i] += 3
+            elif gj > gi:
+                h2h_pts[j] += 3
+            else:
+                h2h_pts[i] += 1
+                h2h_pts[j] += 1
+
+    ordered = sorted(
+        block, key=lambda x: (h2h_pts[x], h2h_gd[x], h2h_gf[x]), reverse=True
+    )
+
+    # Partition the head-to-head ordering into runs still level on all three
+    # head-to-head criteria.
+    runs = []
+    k = 0
+    while k < len(ordered):
+        m = k + 1
+        while m < len(ordered) and (
+            h2h_pts[ordered[m]] == h2h_pts[ordered[k]]
+            and h2h_gd[ordered[m]] == h2h_gd[ordered[k]]
+            and h2h_gf[ordered[m]] == h2h_gf[ordered[k]]
+        ):
+            m += 1
+        runs.append(ordered[k:m])
+        k = m
+
+    if len(runs) == 1:
+        # Head-to-head separated no one: fall through to overall criteria.
+        return sorted(
+            block, key=lambda x: (gd[x], gf[x], rand_keys[x]), reverse=True
+        )
+
+    # Head-to-head split the block; re-apply it within each still-level run.
+    result = []
+    for run in runs:
+        result.extend(_rank_tied_block(run, played, gd, gf, rand_keys))
+    return result
+
+
+def _rank_group(n, points, gd, gf, played, rand_keys):
+    """Order teams 0..n-1 under the 2026 World Cup group tie-breaking rules.
+
+    Teams are first split by competition points; each block level on points
+    is then resolved by _rank_tied_block. Returns team indices, best first.
+    """
+    by_points = sorted(range(n), key=lambda x: points[x], reverse=True)
+    order = []
+    k = 0
+    while k < len(by_points):
+        m = k + 1
+        while m < len(by_points) and points[by_points[m]] == points[by_points[k]]:
+            m += 1
+        order.extend(_rank_tied_block(by_points[k:m], played, gd, gf, rand_keys))
+        k = m
+    return order
+
+
 def simulate_group_once(
     teams: list[str], match_params: dict,
     fixed_results: dict | None = None,
-) -> list[tuple[str, int, float]]:
+) -> list[tuple[str, int, int, int]]:
     """Simulate one group once using Poisson scores.
 
     fixed_results maps (i, j) with i < j to actual (goals_i, goals_j) for
     matches already played — those are taken as given instead of simulated.
 
-    Returns [(team, points, gd), ...] sorted by standing.
+    Teams are ranked by the 2026 World Cup tie-breaking rules: points, then
+    head-to-head record among level teams (points, goal difference, goals
+    scored), then overall goal difference and goals scored (see _rank_group).
+
+    Returns [(team, points, gd, gf), ...] sorted by standing.
     """
     n = len(teams)
     points = [0] * n
-    gd = [0.0] * n
+    gd = [0] * n
     gf = [0] * n
+    played: dict[tuple[int, int], tuple[int, int]] = {}
 
     for i, j in combinations(range(n), 2):
         if fixed_results and (i, j) in fixed_results:
@@ -358,6 +448,7 @@ def simulate_group_once(
             ra, rb, ha = match_params[(i, j)]
             goals_a, goals_b = simulate_group_match(ra, rb, ha)
 
+        played[(i, j)] = (goals_a, goals_b)
         gf[i] += goals_a
         gf[j] += goals_b
         gd[i] += goals_a - goals_b
@@ -371,12 +462,9 @@ def simulate_group_once(
             points[i] += 1
             points[j] += 1
 
-    order = sorted(
-        range(n),
-        key=lambda x: (points[x], gd[x], gf[x], random.random()),
-        reverse=True,
-    )
-    return [(teams[idx], points[idx], gd[idx]) for idx in order]
+    rand_keys = [random.random() for _ in range(n)]
+    order = _rank_group(n, points, gd, gf, played, rand_keys)
+    return [(teams[idx], points[idx], gd[idx], gf[idx]) for idx in order]
 
 
 def _precompute_group_params(
@@ -406,15 +494,15 @@ def _precompute_group_params(
 
 
 def allocate_third_place(
-    qualifying_thirds: list[tuple[str, str, int, float]],
+    qualifying_thirds: list[tuple[str, str, int, int, int]],
 ) -> dict[int, str]:
     """Assign 8 qualifying 3rd-place teams to bracket slots.
 
-    qualifying_thirds: [(team_name, group_letter, points, gd), ...]
+    qualifying_thirds: [(team_name, group_letter, points, gd, gf), ...]
     Returns: {slot_index: team_name} for the 8 THIRD_PLACE_SLOTS.
     """
     # Sort by group letter for consistent allocation
-    by_group = {g: team for team, g, _, _ in qualifying_thirds}
+    by_group = {g: team for team, g, *_ in qualifying_thirds}
     available_groups = sorted(by_group.keys())
 
     assignment = {}
@@ -499,7 +587,7 @@ def simulate_tournament(
 
         # Record group positions
         for g, standing in standings.items():
-            for pos, (team, pts, gd) in enumerate(standing):
+            for pos, (team, _pts, _gd, _gf) in enumerate(standing):
                 pos_counts[team][pos] += 1
 
         # 2. Determine R32 qualifiers
@@ -510,9 +598,12 @@ def simulate_tournament(
         # 3rd place: rank all 12, take best 8
         thirds = []
         for g, s in standings.items():
-            team, pts, gd = s[2]
-            thirds.append((team, g, pts, gd))
-        thirds.sort(key=lambda x: (x[2], x[3], random.random()), reverse=True)
+            team, pts, gd, gf = s[2]
+            thirds.append((team, g, pts, gd, gf))
+        # Third-placed teams come from different groups and never meet, so
+        # head-to-head cannot apply: rank by points, goal difference, goals
+        # scored (then fair play / FIFA ranking, here a random draw).
+        thirds.sort(key=lambda x: (x[2], x[3], x[4], random.random()), reverse=True)
         qualifying_thirds = thirds[:8]
 
         # All R32 qualifiers advance
@@ -521,7 +612,7 @@ def simulate_tournament(
             r32_teams.add(t)
         for t in group_2nd.values():
             r32_teams.add(t)
-        for t, _, _, _ in qualifying_thirds:
+        for t, *_ in qualifying_thirds:
             r32_teams.add(t)
 
         for t in r32_teams:
@@ -841,7 +932,17 @@ def export_worldcup_json(elo: EloSystem, output_dir: Path) -> None:
                 **table[t],
                 **sim_results[t],
             })
-        team_list.sort(key=lambda x: (x["pts"], x["gd"], x["gf"], x["p_1st"]), reverse=True)
+        # Order the displayed table by the 2026 tie-breaking rules. Played
+        # results (fixed) drive head-to-head; p_1st — itself head-to-head-aware
+        # via the simulation — is the deterministic final break in place of a
+        # random draw, so the table never contradicts the qualification odds.
+        pts_arr = [table[t]["pts"] for t in teams]
+        gd_arr = [table[t]["gd"] for t in teams]
+        gf_arr = [table[t]["gf"] for t in teams]
+        p1st_arr = [sim_results[t]["p_1st"] for t in teams]
+        order = _rank_group(len(teams), pts_arr, gd_arr, gf_arr, fixed, p1st_arr)
+        rank_of = {teams[idx]: pos for pos, idx in enumerate(order)}
+        team_list.sort(key=lambda x: rank_of[x["team"]])
 
         groups[group_name] = {"teams": team_list, "matches": matches}
 
