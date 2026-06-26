@@ -155,6 +155,10 @@ def _export_gender(gender: str) -> None:
     print("Loading matches...")
     matches = load_all(gender=gender)
     print(f"  {len(matches)} matches loaded")
+    if gender == "men":
+        # Fill the gap between live World Cup finals and martj42's daily update.
+        from .espn_override import apply_espn_overrides
+        matches = apply_espn_overrides(matches)
     print("Computing Elo ratings...")
     elo = EloSystem()
     elo.process_all(matches)
