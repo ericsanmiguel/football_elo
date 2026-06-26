@@ -3,6 +3,7 @@
  */
 
 import { el, flagImg } from './utils.js';
+import { assignThirdPlaces } from './third_place_allocation.js';
 
 // ===== Constants (ported from worldcup.py) =====
 
@@ -44,7 +45,8 @@ const R32_BRACKET = [
 ];
 
 const THIRD_PLACE_SLOTS = [1, 4, 6, 7, 8, 9, 12, 14];
-const THIRD_PLACE_OPPONENTS = ["E", "I", "A", "L", "D", "G", "B", "K"];
+// The group winner occupying each third-place slot, in slot order.
+const THIRD_PLACE_SLOT_WINNERS = ["E", "I", "A", "L", "D", "G", "B", "K"];
 
 const ROUND_NAMES = { r32: "Round of 32", r16: "Round of 16", qf: "Quarterfinals", sf: "Semifinals", final: "Final" };
 const ROUND_ORDER = ["r32", "r16", "qf", "sf", "final"];
@@ -342,29 +344,18 @@ function rankThirdPlaceTeams() {
 }
 
 function allocateThirdPlace(qualifying) {
+    // FIFA's fixed table needs the full set of eight advancing third-place
+    // groups; until every group is decided the matchups are genuinely unknown,
+    // so leave them "TBD" rather than guessing.
     const byGroup = {};
     qualifying.forEach(t => { byGroup[t.group] = t.team; });
-    const available = Object.keys(byGroup).sort();
-    const assignment = {};
-    const used = new Set();
+    const mapping = assignThirdPlaces(Object.keys(byGroup));
+    if (!mapping) return {};
 
+    const assignment = {};
     for (let i = 0; i < THIRD_PLACE_SLOTS.length; i++) {
-        const slot = THIRD_PLACE_SLOTS[i];
-        const oppGroup = THIRD_PLACE_OPPONENTS[i];
-        let assigned = false;
-        for (const g of available) {
-            if (!used.has(g) && g !== oppGroup) {
-                assignment[slot] = byGroup[g];
-                used.add(g);
-                assigned = true;
-                break;
-            }
-        }
-        if (!assigned) {
-            for (const g of available) {
-                if (!used.has(g)) { assignment[slot] = byGroup[g]; used.add(g); break; }
-            }
-        }
+        const winnerGroup = THIRD_PLACE_SLOT_WINNERS[i];
+        assignment[THIRD_PLACE_SLOTS[i]] = byGroup[mapping[winnerGroup]];
     }
     return assignment;
 }

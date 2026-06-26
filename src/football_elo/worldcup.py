@@ -11,6 +11,7 @@ from pathlib import Path
 from .elo import expected_result
 from .config import HOME_ADVANTAGE
 from .pipeline import EloSystem
+from .third_place_allocation import assign_third_places
 
 
 def slugify(name: str) -> str:
@@ -163,10 +164,11 @@ R32_BRACKET = [
     ("2D", "2G"),    # M88
 ]
 
-# Which group winners face 3rd-place teams (indices into R32_BRACKET)
+# R32 slots (indices into R32_BRACKET) where a group winner faces a 3rd-place
+# team, paired with the winner's group at that slot. Order matters: it lines up
+# each slot with the winner whose FIFA-assigned third-place opponent we look up.
 THIRD_PLACE_SLOTS = [1, 4, 6, 7, 8, 9, 12, 14]
-# The group winners at those slots
-THIRD_PLACE_OPPONENTS = ["E", "I", "A", "L", "D", "G", "B", "K"]
+THIRD_PLACE_SLOT_WINNERS = ["E", "I", "A", "L", "D", "G", "B", "K"]
 
 # Tournament calendar boundaries used to classify played results.
 # Group stage runs Jun 11-27; the Round of 32 starts Jun 28.
@@ -496,34 +498,21 @@ def _precompute_group_params(
 def allocate_third_place(
     qualifying_thirds: list[tuple[str, str, int, int, int]],
 ) -> dict[int, str]:
-    """Assign 8 qualifying 3rd-place teams to bracket slots.
+    """Assign the 8 qualifying 3rd-place teams to their bracket slots.
 
     qualifying_thirds: [(team_name, group_letter, points, gd, gf), ...]
     Returns: {slot_index: team_name} for the 8 THIRD_PLACE_SLOTS.
+
+    The pairing is FIFA's fixed pre-tournament table (see
+    third_place_allocation): the set of groups whose thirds advance determines,
+    for each group winner, exactly which third-placed group it faces.
     """
-    # Sort by group letter for consistent allocation
-    by_group = {g: team for team, g, *_ in qualifying_thirds}
-    available_groups = sorted(by_group.keys())
-
-    assignment = {}
-    used_groups = set()
-
-    for slot_idx, opponent_group in zip(THIRD_PLACE_SLOTS, THIRD_PLACE_OPPONENTS):
-        # Find a 3rd-place team that isn't from the opponent's group
-        for g in available_groups:
-            if g not in used_groups and g != opponent_group:
-                assignment[slot_idx] = by_group[g]
-                used_groups.add(g)
-                break
-        else:
-            # Fallback: assign any remaining
-            for g in available_groups:
-                if g not in used_groups:
-                    assignment[slot_idx] = by_group[g]
-                    used_groups.add(g)
-                    break
-
-    return assignment
+    third_by_group = {g: team for team, g, *_ in qualifying_thirds}
+    mapping = assign_third_places(third_by_group.keys())
+    return {
+        slot: third_by_group[mapping[winner]]
+        for slot, winner in zip(THIRD_PLACE_SLOTS, THIRD_PLACE_SLOT_WINNERS)
+    }
 
 
 def simulate_tournament(
