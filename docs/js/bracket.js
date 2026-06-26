@@ -37,16 +37,23 @@ const SCHEDULE = {
     L: [[0,1,"Jun 17","Arlington"],[2,3,"Jun 17","Toronto"],[0,2,"Jun 23","Foxborough"],[3,1,"Jun 23","Toronto"],[3,0,"Jun 27","East Rutherford"],[1,2,"Jun 27","Philadelphia"]],
 };
 
+// FIFA bracket-LEAF order: the knockout rounds advance by pairing consecutive
+// entries (0,1),(2,3),... so this layout must reproduce FIFA's tree (M89-M96).
+// Match numbers in comments; each pair of lines feeds one R16 match.
 const R32_BRACKET = [
-    ["2A","2B"],["1E","3"],["1F","2C"],["1C","2F"],
-    ["1I","3"],["2E","2I"],["1A","3"],["1L","3"],
-    ["1D","3"],["1G","3"],["2K","2L"],["1H","2J"],
-    ["1B","3"],["1J","2H"],["1K","3"],["2D","2G"],
+    ["1E","3"], ["1I","3"],   // M74,M77 -> M89
+    ["2A","2B"],["1F","2C"],  // M73,M75 -> M90
+    ["2K","2L"],["1H","2J"],  // M83,M84 -> M93
+    ["1D","3"], ["1G","3"],   // M81,M82 -> M94
+    ["1C","2F"],["2E","2I"],  // M76,M78 -> M91
+    ["1A","3"], ["1L","3"],   // M79,M80 -> M92
+    ["1J","2H"],["2D","2G"],  // M86,M88 -> M95
+    ["1B","3"], ["1K","3"],   // M85,M87 -> M96
 ];
 
-const THIRD_PLACE_SLOTS = [1, 4, 6, 7, 8, 9, 12, 14];
+const THIRD_PLACE_SLOTS = [0, 1, 6, 7, 10, 11, 14, 15];
 // The group winner occupying each third-place slot, in slot order.
-const THIRD_PLACE_SLOT_WINNERS = ["E", "I", "A", "L", "D", "G", "B", "K"];
+const THIRD_PLACE_SLOT_WINNERS = ["E", "I", "D", "G", "A", "L", "B", "K"];
 
 const ROUND_NAMES = { r32: "Round of 32", r16: "Round of 16", qf: "Quarterfinals", sf: "Semifinals", final: "Final" };
 const ROUND_ORDER = ["r32", "r16", "qf", "sf", "final"];

@@ -144,31 +144,36 @@ MATCH_SCHEDULE = {
 
 # R32 bracket: each entry is (team_a_source, team_b_source)
 # Sources: "1X" = winner of group X, "2X" = runner-up of group X, "3" = 3rd place slot
-# R32 matches pair into R16 matches (consecutive pairs)
+#
+# Order is FIFA's bracket-LEAF order, not match-number order: the knockout
+# simulation advances winners by pairing consecutive entries (0,1), (2,3), ...
+# into the next round, so the list must be laid out so those pairings reproduce
+# FIFA's published tree. The trailing comments give the official match number
+# and the R16 match each consecutive pair feeds (M89-M96).
 R32_BRACKET = [
-    ("2A", "2B"),    # M73 → R16 top half
-    ("1E", "3"),     # M74 (3rd place slot 0)
-    ("1F", "2C"),    # M75
-    ("1C", "2F"),    # M76
-    ("1I", "3"),     # M77 (3rd place slot 1)
-    ("2E", "2I"),    # M78
-    ("1A", "3"),     # M79 (3rd place slot 2)
-    ("1L", "3"),     # M80 (3rd place slot 3)
-    ("1D", "3"),     # M81 (3rd place slot 4)
-    ("1G", "3"),     # M82 (3rd place slot 5)
-    ("2K", "2L"),    # M83
-    ("1H", "2J"),    # M84
-    ("1B", "3"),     # M85 (3rd place slot 6)
-    ("1J", "2H"),    # M86
-    ("1K", "3"),     # M87 (3rd place slot 7)
-    ("2D", "2G"),    # M88
+    ("1E", "3"),     # M74 ┐ M89
+    ("1I", "3"),     # M77 ┘
+    ("2A", "2B"),    # M73 ┐ M90
+    ("1F", "2C"),    # M75 ┘
+    ("2K", "2L"),    # M83 ┐ M93
+    ("1H", "2J"),    # M84 ┘
+    ("1D", "3"),     # M81 ┐ M94
+    ("1G", "3"),     # M82 ┘
+    ("1C", "2F"),    # M76 ┐ M91
+    ("2E", "2I"),    # M78 ┘
+    ("1A", "3"),     # M79 ┐ M92
+    ("1L", "3"),     # M80 ┘
+    ("1J", "2H"),    # M86 ┐ M95
+    ("2D", "2G"),    # M88 ┘
+    ("1B", "3"),     # M85 ┐ M96
+    ("1K", "3"),     # M87 ┘
 ]
 
 # R32 slots (indices into R32_BRACKET) where a group winner faces a 3rd-place
 # team, paired with the winner's group at that slot. Order matters: it lines up
 # each slot with the winner whose FIFA-assigned third-place opponent we look up.
-THIRD_PLACE_SLOTS = [1, 4, 6, 7, 8, 9, 12, 14]
-THIRD_PLACE_SLOT_WINNERS = ["E", "I", "A", "L", "D", "G", "B", "K"]
+THIRD_PLACE_SLOTS = [0, 1, 6, 7, 10, 11, 14, 15]
+THIRD_PLACE_SLOT_WINNERS = ["E", "I", "D", "G", "A", "L", "B", "K"]
 
 # Tournament calendar boundaries used to classify played results.
 # Group stage runs Jun 11-27; the Round of 32 starts Jun 28.
