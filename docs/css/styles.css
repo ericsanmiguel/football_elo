@@ -1086,6 +1086,25 @@ a:hover { color: var(--accent-hover); }
     color: var(--text-secondary);
 }
 .vb-winner .vb-team-champ { color: var(--accent); opacity: 0.9; }
+/* Collapsed group-stage results below the knockout bracket. */
+.bracket-groups-collapse {
+    margin-top: 36px;
+    border-top: 1px solid var(--border);
+    padding-top: 12px;
+}
+.bracket-groups-collapse > summary {
+    cursor: pointer;
+    list-style: none;
+    user-select: none;
+    padding: 8px 0;
+    font-family: var(--font-display);
+    font-size: 1rem;
+    color: var(--text-secondary);
+}
+.bracket-groups-collapse > summary::-webkit-details-marker { display: none; }
+.bracket-groups-collapse > summary::before { content: '▸ '; color: var(--accent); }
+.bracket-groups-collapse[open] > summary::before { content: '▾ '; }
+.bracket-groups-collapse > summary:hover { color: var(--accent); }
 .bracket-champion {
     text-align: center;
     padding: 40px 20px;

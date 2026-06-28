@@ -560,14 +560,17 @@ export function renderBracketBuilder(container, wcData, flagsData) {
     }
 
     const section = el('div', { class: 'bracket-builder' });
+    const knockoutStage = allGroupsComplete();
 
     // Header
-    section.appendChild(el('div', { class: 'bracket-section-title', text: 'Build Your Bracket' }));
+    section.appendChild(el('div', { class: 'bracket-section-title', text: 'Knockout Predictions' }));
     section.appendChild(el('p', {
         style: 'text-align:center;color:var(--text-tertiary);margin-bottom:24px;font-size:0.9rem',
-        text: Object.keys(actualScores).length > 0 || Object.keys(actualKnockout).length > 0
-            ? 'Matches already played are locked to their real results — predict the rest.'
-            : 'Predict every match and build your path to the final.',
+        text: knockoutStage
+            ? 'Pick a winner in any tie to see how every team’s title odds shift. Played matches are locked to their real results.'
+            : Object.keys(actualScores).length > 0 || Object.keys(actualKnockout).length > 0
+                ? 'Matches already played are locked to their real results — predict the rest.'
+                : 'Predict every match and build your path to the final.',
     }));
 
     // Action buttons
@@ -580,18 +583,28 @@ export function renderBracketBuilder(container, wcData, flagsData) {
     }));
     section.appendChild(actions);
 
-    // Progress bar
-    section.appendChild(renderProgress());
-
-    // Group panels
+    // Group panels (with progress) — the heart of the page during the group
+    // stage, but once it's complete they're just locked results, so tuck them
+    // into a collapsed panel and lead with the knockout bracket.
+    const groupsBlock = el('div', {}, [renderProgress()]);
     const groupsGrid = el('div', { class: 'wc-grid' });
     for (const g of Object.keys(GROUPS).sort()) {
         groupsGrid.appendChild(renderGroupPanel(g));
     }
-    section.appendChild(groupsGrid);
+    groupsBlock.appendChild(groupsGrid);
 
-    // Knockout rounds container
-    section.appendChild(el('div', { id: 'bracket-knockout' }));
+    const knockoutContainer = el('div', { id: 'bracket-knockout' });
+
+    if (knockoutStage) {
+        section.appendChild(knockoutContainer);
+        const details = el('details', { class: 'bracket-groups-collapse' });
+        details.appendChild(el('summary', { text: 'Group stage results' }));
+        details.appendChild(groupsBlock);
+        section.appendChild(details);
+    } else {
+        section.appendChild(groupsBlock);
+        section.appendChild(knockoutContainer);
+    }
 
     container.appendChild(section);
 

@@ -110,7 +110,7 @@ function renderView(container) {
     // The interactive bracket only makes sense against live data
     if (!isLive && currentTab === 'bracket') currentTab = 'overview';
     const tabDefs = [['overview', 'Overview'], ['groups', 'Groups'], ['squads', 'Squads']];
-    if (isLive) tabDefs.push(['bracket', 'Build Your Bracket']);
+    if (isLive) tabDefs.push(['bracket', 'Knockout Predictions']);
 
     const tabs = el('div', { class: 'wc-tabs' });
     for (const [id, label] of tabDefs) {
