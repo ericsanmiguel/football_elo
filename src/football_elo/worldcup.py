@@ -222,9 +222,16 @@ def collect_results(elo: EloSystem):
                 winner = home
             elif as_ > hs:
                 winner = away
+            elif shootout in (home, away):
+                # Level after extra time — decided on penalties.
+                winner = shootout
             else:
-                # Level after extra time — decided on penalties
-                winner = shootout if shootout in (home, away) else home
+                # Level score but no recorded shootout winner: the match isn't
+                # actually decided in our data yet (e.g. ESPN flagged it
+                # complete before publishing the shootout result). Treat it as
+                # undecided so the simulator handles this pair until real data
+                # arrives, rather than silently advancing the home team.
+                continue
             knockout_results.append({
                 "team_a": home, "team_b": away,
                 "score": [hs, as_],

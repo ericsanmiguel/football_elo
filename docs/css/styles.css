@@ -1065,6 +1065,27 @@ a:hover { color: var(--accent-hover); }
     text-transform: uppercase;
     flex-shrink: 0;
 }
+/* Per-game win bar + conditional title-odds badge on bracket slots. */
+.bracket-matchup-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+.bracket-matchup-prob {
+    height: 16px;
+    min-width: 0;
+    border-radius: 4px;
+}
+.vb-team-champ {
+    margin-left: auto;
+    padding-left: 8px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    opacity: 0.7;
+    font-variant-numeric: tabular-nums;
+    color: var(--text-secondary);
+}
+.vb-winner .vb-team-champ { color: var(--accent); opacity: 0.9; }
 .bracket-champion {
     text-align: center;
     padding: 40px 20px;
@@ -1167,6 +1188,8 @@ a:hover { color: var(--accent-hover); }
     .vb-column { min-width: 110px; }
     .vb-team-slot { font-size: 0.72rem; padding: 6px 6px; }
     .vb-round-label { font-size: 0.65rem; }
+    .bracket-matchup-prob { height: 14px; }
+    .vb-team-champ { font-size: 0.62rem; padding-left: 4px; }
 }
 
 /* ===== History Slider ===== */

@@ -64,7 +64,8 @@ const STORAGE_KEY = "wc2026-bracket";
 let state = { scores: {}, knockoutPicks: { r32: [], r16: [], qf: [], sf: [], final: [] } };
 let flags = {};
 let containerRef = null;
-let teamRatings = {};  // team name -> Elo rating from JSON
+let teamRatings = {};  // team name -> composite (Elo + squad) rating from JSON
+let reachProbs = null;  // team -> {r16,qf,sf,final,champion} %, conditional on picks
 let cachedWcData = null;  // preserve across re-renders
 // Real results from the JSON export — taken as given and locked in the UI.
 let actualScores = {};    // "G-hi-ai" -> {home, away} in schedule orientation
@@ -118,6 +119,8 @@ const HOME_ADV = 50;
 // single "Simulate Tournament" run reflects the same uncertainty model.
 const RATING_SIGMA = 120;
 
+const HOST_NATIONS = new Set(['United States', 'Mexico', 'Canada']);
+
 function gaussianSample() {
     // Box-Muller
     let u = 0, v = 0;
@@ -151,6 +154,35 @@ function simKnockout(ratingA, ratingB, teamA, teamB, ha = 0) {
     if (gB > gA) return teamB;
     // Penalty shootout — use Elo expected result
     return Math.random() < eloExpected(ratingA + ha, ratingB) ? teamA : teamB;
+}
+
+// Home advantage applied to team A's side (matches worldcup.py
+// simulate_knockout_match): a lone host gets +/-HOME_ADV, neutral/both = 0.
+function hostHA(teamA, teamB) {
+    const a = HOST_NATIONS.has(teamA), b = HOST_NATIONS.has(teamB);
+    if (a && !b) return HOME_ADV;
+    if (b && !a) return -HOME_ADV;
+    return 0;
+}
+
+// P(teamA advances past teamB) in a single knockout match, marginalized over
+// RATING_SIGMA rating uncertainty so it lines up with the published server
+// probabilities. Knockout has no draw outcome — the shootout decides — so this
+// is the chance teamA goes through. Cached by ordered pair (ratings are fixed).
+const matchProbCache = {};
+function matchAdvanceProb(teamA, teamB, nSamples = 4000) {
+    if (!teamA || !teamB || teamA === 'TBD' || teamB === 'TBD') return null;
+    const key = `${teamA}>${teamB}`;
+    if (key in matchProbCache) return matchProbCache[key];
+    const ha = hostHA(teamA, teamB);
+    const muA = teamRatings[teamA] ?? 1500, muB = teamRatings[teamB] ?? 1500;
+    let aWins = 0;
+    for (let s = 0; s < nSamples; s++) {
+        if (simKnockout(muA + RATING_SIGMA * gaussianSample(),
+                        muB + RATING_SIGMA * gaussianSample(),
+                        teamA, teamB, ha) === teamA) aWins++;
+    }
+    return (matchProbCache[key] = aWins / nSamples);
 }
 
 function simulateFullTournament() {
@@ -188,7 +220,7 @@ function simulateFullTournament() {
     // 3. Build R32 matchups and simulate knockout with Poisson.
     //    Knockout matches already decided keep their real winner.
     const pickOrSim = (m) => lockedWinner(m.teamA, m.teamB)
-        ?? simKnockout(r(m.teamA), r(m.teamB), m.teamA, m.teamB);
+        ?? simKnockout(r(m.teamA), r(m.teamB), m.teamA, m.teamB, hostHA(m.teamA, m.teamB));
 
     const r32 = buildR32Matchups();
     r32.forEach((m, i) => {
@@ -204,6 +236,71 @@ function simulateFullTournament() {
     }
 
     saveState();
+}
+
+// Conditional "odds of advancing" given the current fixed state — real group
+// results, real knockout results, and the user's picks so far. Runs a Monte
+// Carlo over only the UNDECIDED knockout matches and tallies, for every team,
+// how often it reaches each subsequent stage. Does NOT mutate state: it builds
+// each round's matchups from a local winners array (never getKnockoutMatchups,
+// which reads global picks) and resolves each match by priority
+// (1) real result -> (2) a still-valid user pick -> (3) simulate.
+const NEXT_STAGE = { r32: 'r16', r16: 'qf', qf: 'sf', sf: 'final', final: 'champion' };
+
+function conditionalReachProbs(nSims = 3000) {
+    const baseR32 = buildR32Matchups();
+    if (baseR32.length < 16 || baseR32.some(m => m.teamA === 'TBD' || m.teamB === 'TBD')) {
+        return null;
+    }
+    const teams = Object.keys(teamRatings);
+    const reach = {};
+    for (const t of teams) reach[t] = { r16: 0, qf: 0, sf: 0, final: 0, champion: 0 };
+    const qualified = new Set();
+    baseR32.forEach(m => { qualified.add(m.teamA); qualified.add(m.teamB); });
+
+    for (let s = 0; s < nSims; s++) {
+        // Coherent per-team rating noise, fixed across all rounds of this sim.
+        const sr = {};
+        for (const t of teams) sr[t] = teamRatings[t] + RATING_SIGMA * gaussianSample();
+        const r = (t) => sr[t] ?? (1500 + RATING_SIGMA * gaussianSample());
+
+        let matchups = baseR32;
+        for (const round of ROUND_ORDER) {
+            const winners = [];
+            for (let i = 0; i < matchups.length; i++) {
+                const m = matchups[i];
+                let w = lockedWinner(m.teamA, m.teamB);            // 1) real result
+                if (!w) {
+                    const p = state.knockoutPicks[round]?.[i];     // 2) user pick,
+                    if (p === m.teamA || p === m.teamB) w = p;     //    only if still valid
+                }
+                if (!w) {
+                    w = simKnockout(r(m.teamA), r(m.teamB),        // 3) simulate
+                                    m.teamA, m.teamB, hostHA(m.teamA, m.teamB));
+                }
+                winners[i] = w;
+                reach[w][NEXT_STAGE[round]]++;
+            }
+            if (round === 'final') break;
+            const next = [];
+            for (let j = 0; j < winners.length; j += 2) {
+                next.push({ teamA: winners[j], teamB: winners[j + 1] });
+            }
+            matchups = next;
+        }
+    }
+
+    const out = {};
+    for (const t of teams) {
+        const c = reach[t];
+        out[t] = {
+            r32: qualified.has(t) ? 100 : 0,
+            r16: c.r16 / nSims * 100, qf: c.qf / nSims * 100,
+            sf: c.sf / nSims * 100, final: c.final / nSims * 100,
+            champion: c.champion / nSims * 100,
+        };
+    }
+    return out;
 }
 
 async function animatedSimulate() {
@@ -697,6 +794,12 @@ function renderKnockoutRounds() {
 
     applyActualKnockout();
 
+    // Recompute conditional advancement odds for the current fixed state (real
+    // results + user picks). Runs on the initial render and after every pick
+    // (pickWinner re-enters here), without clobbering picks. Cheap: ~31
+    // matches/sim. null until the bracket is fully resolvable.
+    reachProbs = conditionalReachProbs(3000);
+
     // R32 as sequential card
     const r32Matchups = getKnockoutMatchups('r32');
     if (r32Matchups.length > 0) {
@@ -719,7 +822,14 @@ function renderKnockoutRounds() {
                 matchup.appendChild(el('span', { class: 'bracket-vs', text: 'vs' }));
             }
             matchup.appendChild(teamButton(m.teamB, picked === m.teamB, picked === m.teamA, locked ? null : () => pickWinner('r32', i, m.teamB)));
-            grid.appendChild(matchup);
+
+            const wrap = el('div', { class: 'bracket-matchup-wrap' });
+            wrap.appendChild(matchup);
+            if (!locked) {
+                const pA = matchAdvanceProb(m.teamA, m.teamB);
+                if (pA != null) wrap.appendChild(probBar(pA));
+            }
+            grid.appendChild(wrap);
         });
 
         card.appendChild(grid);
@@ -832,6 +942,8 @@ function renderBracketMatchup(round, m, allPicks, idx) {
     const fA = flagImg(flags[slugify(m.teamA)], m.teamA, 'sm');
     if (fA) btnA.appendChild(fA);
     btnA.appendChild(document.createTextNode(` ${m.teamA}`));
+    const cbA = champBadge(m.teamA);
+    if (cbA) btnA.appendChild(cbA);
 
     const btnB = el('div', {
         class: `vb-team-slot${picked === m.teamB ? ' vb-winner' : ''}${picked === m.teamA ? ' vb-loser' : ''}${locked ? ' vb-locked' : ''}`,
@@ -840,6 +952,8 @@ function renderBracketMatchup(round, m, allPicks, idx) {
     const fB = flagImg(flags[slugify(m.teamB)], m.teamB, 'sm');
     if (fB) btnB.appendChild(fB);
     btnB.appendChild(document.createTextNode(` ${m.teamB}`));
+    const cbB = champBadge(m.teamB);
+    if (cbB) btnB.appendChild(cbB);
 
     matchup.appendChild(btnA);
     if (locked) {
@@ -849,6 +963,9 @@ function renderBracketMatchup(round, m, allPicks, idx) {
             class: 'vb-score-note',
             text: `FT ${scoreA}–${scoreB}${result.pens ? ' (pens)' : ''}`,
         }));
+    } else {
+        const pA = matchAdvanceProb(m.teamA, m.teamB);
+        if (pA != null) matchup.appendChild(probBar(pA));
     }
     matchup.appendChild(btnB);
     return matchup;
@@ -872,6 +989,25 @@ function resetButton() {
     ]);
 }
 
+// Per-game two-sided win bar (Feature A — "the prob of every game").
+function probBar(pA) {
+    const a = Math.round(pA * 100), b = 100 - a;
+    return el('div', { class: 'wc-prob-bar bracket-matchup-prob' }, [
+        el('div', { class: 'wc-prob-segment wc-prob-home', style: `width:${a}%`, text: `${a}%` }),
+        el('div', { class: 'wc-prob-segment wc-prob-away', style: `width:${b}%`, text: `${b}%` }),
+    ]);
+}
+
+// Championship-odds badge for a team slot (Feature B — conditional on picks).
+// Hidden for teams already knocked out (champion odds drop to 0).
+function champBadge(team) {
+    if (!reachProbs || !reachProbs[team]) return null;
+    const c = reachProbs[team].champion;
+    if (c <= 0) return null;
+    const txt = c >= 9.95 ? `${Math.round(c)}%` : `${c.toFixed(1)}%`;
+    return el('span', { class: 'vb-team-champ', title: 'Title odds, given your picks', text: txt });
+}
+
 function teamButton(team, isSelected, isEliminated, onClick) {
     const cls = `bracket-team${isSelected ? ' bracket-team-selected' : ''}${isEliminated ? ' bracket-team-eliminated' : ''}${onClick ? '' : ' bracket-team-locked'}`;
     const attrs = { class: cls };
@@ -880,5 +1016,7 @@ function teamButton(team, isSelected, isEliminated, onClick) {
     const f = flagImg(flags[slugify(team)], team, 'sm');
     if (f) btn.appendChild(f);
     btn.appendChild(document.createTextNode(` ${team}`));
+    const badge = champBadge(team);
+    if (badge) btn.appendChild(badge);
     return btn;
 }
