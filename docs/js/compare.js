@@ -3,7 +3,7 @@
  */
 
 import { getRankings, getTeamHistory, getTeamColors, getGender } from './data.js';
-import { getChartLayout, CHART_CONFIG, DEFAULT_COLOR, baselineShape } from './charts.js';
+import { getChartLayout, CHART_CONFIG, DEFAULT_COLOR, baselineShape, attachAutoscaleY } from './charts.js';
 import { el, formatRating } from './utils.js';
 
 let selectedSlugs = [];
@@ -145,12 +145,16 @@ async function renderCompareChart() {
     if (selectedSlugs.length === 0) { renderEmptyChart(); return; }
 
     const traces = [];
+    let maxDate = '';
     for (const slug of selectedSlugs) {
         const data = await getTeamHistory(slug);
         const team = allTeams.find(t => t.slug === slug);
         const color = colors[slug] || DEFAULT_COLOR;
+        const x = data.history.map(h => h.date);
+        const last = x[x.length - 1];
+        if (last && last > maxDate) maxDate = last;
         traces.push({
-            x: data.history.map(h => h.date),
+            x,
             y: data.history.map(h => h.ra),
             type: 'scatter',
             mode: 'lines',
@@ -159,16 +163,19 @@ async function renderCompareChart() {
         });
     }
 
+    const base = getChartLayout();
     const layout = {
-        ...getChartLayout(),
+        ...base,
         shapes: [baselineShape()],
         xaxis: {
-            ...getChartLayout().xaxis,
-            range: [getGender() === 'men' ? '1900-01-01' : '1990-01-01', undefined],
+            ...base.xaxis,
+            rangeslider: {},
+            range: [getGender() === 'men' ? '1900-01-01' : '1990-01-01', maxDate || undefined],
         },
     };
 
-    Plotly.newPlot('compare-chart', traces, layout, CHART_CONFIG);
+    Plotly.newPlot('compare-chart', traces, layout, CHART_CONFIG)
+        .then(gd => attachAutoscaleY(gd, traces.map(t => ({ x: t.x, y: t.y })), false));
 }
 
 function renderEmptyChart() {

@@ -4,7 +4,7 @@
  */
 
 import { getRankings, getTeamHistory, getTeamColors, getTeamFlags, getGender } from './data.js';
-import { CHART_CONFIG, DEFAULT_COLOR, baselineShape, getChartLayout } from './charts.js';
+import { CHART_CONFIG, DEFAULT_COLOR, baselineShape, getChartLayout, attachAutoscaleY } from './charts.js';
 import { el, formatRating, formatChange, changeClass, flagImg } from './utils.js';
 
 let currentChartMode = 'elo';
@@ -178,68 +178,103 @@ function switchChart(mode) {
     renderChart(mode);
 }
 
+/**
+ * Centered rolling mean over a time window (equal weight per point). Mirrors
+ * the 365-day smoothing used for the Elo "Trend" so the smoothed rank line has
+ * the same character. Dates must be ascending (history is chronological).
+ */
+function movingAverageByDays(dates, values, windowDays = 365) {
+    const ts = dates.map(d => new Date(d).getTime());
+    const half = (windowDays * 86400000) / 2;
+    const out = new Array(values.length);
+    let lo = 0, hi = 0;
+    for (let i = 0; i < values.length; i++) {
+        while (lo < ts.length && ts[lo] < ts[i] - half) lo++;
+        while (hi < ts.length && ts[hi] <= ts[i] + half) hi++;
+        let sum = 0, n = 0;
+        for (let j = lo; j < hi; j++) { sum += values[j]; n++; }
+        out[i] = n ? sum / n : values[i];
+    }
+    return out;
+}
+
 function renderChart(mode) {
     const history = cachedHistory;
     const color = cachedColor;
     const teamName = cachedTeamName;
     if (!history || history.length === 0) return;
 
-    const dates = history.map(h => h.date);
-    let yData, yTitle, hoverText, invertY = false;
+    const lineColor = color === '#ffffff' ? '#94a3b8' : color;
 
-    if (mode === 'elo') {
+    if (mode === 'ranking') {
+        // Raw rank (faint, steppy) + a smoothed trend line on top.
+        const pts = history.filter(h => h.rk != null);
+        const rDates = pts.map(h => h.date);
+        const rRaw = pts.map(h => h.rk);
+        const rSmooth = movingAverageByDays(rDates, rRaw, 365);
+        const rawTrace = {
+            x: rDates, y: rRaw, type: 'scatter', mode: 'lines',
+            line: { color: lineColor, width: 1, shape: 'hv' }, opacity: 0.3,
+            name: 'Rank',
+            hovertext: pts.map(h => `${h.date}<br>Rank: #${h.rk}`), hoverinfo: 'text',
+        };
+        const smoothTrace = {
+            x: rDates, y: rSmooth, type: 'scatter', mode: 'lines',
+            line: { color: lineColor, width: 2.5 },
+            name: 'Trend',
+            hovertext: rSmooth.map((v, i) => `${rDates[i]}<br>Smoothed rank: ${v.toFixed(1)}`),
+            hoverinfo: 'text',
+        };
+        renderPlotly([rawTrace, smoothTrace], [{ x: rDates, y: rRaw }], 'Ranking', true, true);
+        return;
+    }
+
+    const dates = history.map(h => h.date);
+    let yData, yTitle, hoverText;
+    if (mode === 'trend') {
+        yData = history.map(h => h.rs ?? h.ra);
+        yTitle = 'Elo Rating (Smoothed)';
+        hoverText = history.map(h => `${h.date}<br>Trend: ${h.rs ?? h.ra}`);
+    } else {
         yData = history.map(h => h.ra);
         yTitle = 'Elo Rating';
         hoverText = history.map(h => {
             const result = h.ts > h.os ? 'W' : h.ts < h.os ? 'L' : 'D';
             return `${h.date}<br>${result} ${h.ts}-${h.os} vs ${h.opponent}<br>Rating: ${h.ra} (${h.rc >= 0 ? '+' : ''}${h.rc})<br>${h.tournament}`;
         });
-    } else if (mode === 'trend') {
-        yData = history.map(h => h.rs ?? h.ra);
-        yTitle = 'Elo Rating (Smoothed)';
-        hoverText = history.map(h => `${h.date}<br>Trend: ${h.rs ?? h.ra}`);
-    } else {
-        yData = history.filter(h => h.rk != null).map(h => h.rk);
-        const rankDates = history.filter(h => h.rk != null).map(h => h.date);
-        yTitle = 'Ranking';
-        invertY = true;
-        hoverText = history.filter(h => h.rk != null).map(h => `${h.date}<br>Rank: #${h.rk}`);
-        // Use rankDates for x-axis
-        return renderPlotly(rankDates, yData, yTitle, hoverText, color, teamName, invertY);
     }
 
-    renderPlotly(dates, yData, yTitle, hoverText, color, teamName, invertY);
+    const trace = {
+        x: dates, y: yData, type: 'scatter', mode: 'lines',
+        line: { color: lineColor, width: 2 },
+        name: teamName, hovertext: hoverText, hoverinfo: 'text',
+    };
+    renderPlotly([trace], [{ x: dates, y: yData }], yTitle, false, false);
 }
 
-function renderPlotly(dates, yData, yTitle, hoverText, color, teamName, invertY) {
-    const trace = {
-        x: dates,
-        y: yData,
-        type: 'scatter',
-        mode: 'lines',
-        line: { color: color === '#ffffff' ? '#94a3b8' : color, width: 2 },
-        name: teamName,
-        hovertext: hoverText,
-        hoverinfo: 'text',
-    };
+function renderPlotly(traces, scaleSeries, yTitle, invertY, showLegend) {
+    const base = getChartLayout();
+    const lastDates = scaleSeries.map(s => s.x[s.x.length - 1]).filter(Boolean).sort();
+    const lastDate = lastDates[lastDates.length - 1];
 
     const layout = {
-        ...getChartLayout(),
-        showlegend: false,
+        ...base,
+        showlegend: !!showLegend,
         shapes: invertY ? [] : [baselineShape()],
         xaxis: {
-            ...getChartLayout().xaxis,
+            ...base.xaxis,
             rangeslider: {},
-            range: [getGender() === 'men' ? '1900-01-01' : '1990-01-01', dates[dates.length - 1]],
+            range: [getGender() === 'men' ? '1900-01-01' : '1990-01-01', lastDate],
         },
         yaxis: {
-            ...getChartLayout().yaxis,
+            ...base.yaxis,
             title: { text: yTitle, font: { size: 12 } },
             autorange: invertY ? 'reversed' : true,
         },
     };
 
-    Plotly.newPlot('team-chart', [trace], layout, CHART_CONFIG);
+    Plotly.newPlot('team-chart', traces, layout, CHART_CONFIG)
+        .then(gd => attachAutoscaleY(gd, scaleSeries, invertY));
 }
 
 function buildWorldCupHistory(history, flags) {
