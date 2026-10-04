@@ -2,12 +2,10 @@ name: Update Elo Ratings
 
 on:
   schedule:
-    # Hourly through the 2026 World Cup. The export pulls finished matches
-    # straight from ESPN (see espn_override.py), so a final lands on the site
-    # within the hour instead of waiting for martj42's once-a-day update. Runs
-    # with no new results are cheap no-ops (nothing to commit). Revert to
-    # '0 0,6,12,18 * * *' after the final (2026-07-19).
-    - cron: '0 * * * *'
+    # Every 6 hours. Results come from martj42/international_results, which
+    # posts in batches a few days after each international window; runs with
+    # no new results are no-ops (nothing to commit).
+    - cron: '0 0,6,12,18 * * *'
   workflow_dispatch:  # Allow manual trigger from GitHub UI
 
 jobs:

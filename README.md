@@ -94,7 +94,7 @@ python -m football_elo export-web --gender women
 - **Backend:** Python (pandas, matplotlib, statsmodels) — Elo computation, Poisson calibration, Monte Carlo simulation, JSON export
 - **Frontend:** Vanilla JS, CSS, Plotly.js — no build tools, served as static files from `docs/`
 - **Hosting:** GitHub Pages (from `docs/` folder)
-- **Automation:** GitHub Actions runs every Monday at 06:00 UTC to refresh men's and women's ratings
+- **Automation:** GitHub Actions runs every 6 hours to refresh men's and women's ratings
 
 ## Project Structure
 
@@ -121,7 +121,7 @@ football_elo/
 │   ├── data/                  # Generated JSON
 │   └── methodology_appendix.tex
 ├── tests/                     # Unit tests
-└── .github/workflows/         # Weekly auto-update
+└── .github/workflows/         # Scheduled auto-update
 ```
 
 ## License

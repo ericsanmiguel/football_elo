@@ -1,5 +1,9 @@
 """Live 2026 World Cup result overrides from ESPN's public scoreboard API.
 
+Not wired into the export since the tournament ended: ``export-web`` reads
+martj42 only. Kept for reference; re-enable by calling
+``apply_espn_overrides(matches)`` in ``__main__._export_gender``.
+
 Our canonical source, martj42/international_results, publishes new match
 results about once a day -- usually the morning after the matches are played.
 During the 2026 World Cup that means the site's Elo ratings and tournament
