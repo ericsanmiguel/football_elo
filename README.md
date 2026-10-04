@@ -1,6 +1,6 @@
 # Football Elo Ratings
 
-Elo ratings for men's and women's international football (soccer) teams, with an interactive website and 2026 World Cup predictions.
+Elo ratings for men's and women's international football (soccer) teams, with an interactive website and an archive of the 2026 World Cup predictions.
 
 **Live site: [ericsanmiguel.github.io/football_elo](https://ericsanmiguel.github.io/football_elo/)**
 
@@ -15,7 +15,6 @@ Elo ratings for men's and women's international football (soccer) teams, with an
 - Per-edition World Cup history with opponent Elo and rank snapshots
 - World Cup winner stars next to team names
 - Light/dark theme toggle (persisted to browser)
-- Featured 2026 World Cup banner on the rankings page (men's only)
 
 ### Compare & History
 - Compare up to 5 teams on a single overlay chart
@@ -28,12 +27,14 @@ Elo ratings for men's and women's international football (soccer) teams, with an
 - Win/draw/loss probabilities, expected goals, and top 6 scorelines
 - Uses the same calibrated Poisson score model as the World Cup simulator
 
-### 2026 World Cup Predictions (men's only)
+### 2026 World Cup Predictions archive (men's only)
+- Frozen since the final (Spain 1–0 Argentina, July 19, 2026) and linked as **Archive** in the nav
+- Opens on the pre-tournament predictions; a date selector steps through the snapshots saved after each match day, up to the final
 - Full tournament simulation (10,000 Monte Carlo iterations)
 - **Overview tab** — all 48 teams with Elo, Squad Index, Combined Index, and round-by-round advancement probabilities (R32 → Winner)
 - **Groups tab** — 12 groups with per-team standings probabilities (1st / 2nd / 3rd / 4th) and per-match W/D/L bars
 - **Squads tab** — official 26-man rosters with every player rated within his position (50–100, average 75), plus GK / defense / midfield / attack unit scores for each team (display only — does not feed predictions)
-- **Build Your Bracket** — predict every group-stage score (auto-computes standings and 3rd-place qualification), pick knockout winners, or hit *Simulate Tournament* to fill from a Monte Carlo draw; state persists in `localStorage`
+- **Knockout Predictions** (final snapshot only) — the bracket builder with every real result locked in, so it shows the tournament as played
 
 ## Methodology
 

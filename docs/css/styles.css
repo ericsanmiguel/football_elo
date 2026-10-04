@@ -1536,136 +1536,6 @@ a:hover { color: var(--accent-hover); }
     .predict-stats-grid { grid-template-columns: 1fr; }
 }
 
-/* ===== World Cup Banner (rankings page, men's only) ===== */
-.wc-banner {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 32px;
-    align-items: center;
-    padding: 28px 32px;
-    margin-bottom: 32px;
-    border-radius: 16px;
-    background:
-        radial-gradient(circle at 0% 0%, rgba(6, 214, 160, 0.18), transparent 55%),
-        radial-gradient(circle at 100% 100%, rgba(93, 143, 255, 0.18), transparent 55%),
-        linear-gradient(135deg, var(--bg-secondary), var(--bg-surface));
-    border: 1px solid var(--border);
-    position: relative;
-    overflow: hidden;
-}
-.wc-banner::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    border-radius: inherit;
-    padding: 1px;
-    background: linear-gradient(135deg, rgba(6, 214, 160, 0.4), transparent 40%, rgba(93, 143, 255, 0.3));
-    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-    -webkit-mask-composite: xor;
-            mask-composite: exclude;
-}
-.wc-banner-left { min-width: 0; }
-.wc-banner-eyebrow {
-    font-size: 0.7rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    font-weight: 700;
-    color: var(--accent);
-    margin-bottom: 8px;
-}
-.wc-banner-title {
-    font-family: var(--font-display);
-    font-size: 2rem;
-    font-weight: 800;
-    text-transform: uppercase;
-    margin: 0 0 8px;
-    background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    line-height: 1.1;
-}
-.wc-banner-sub {
-    color: var(--text-secondary);
-    font-size: 0.95rem;
-    margin: 0 0 18px;
-}
-.wc-banner-cta {
-    display: inline-block;
-}
-.wc-banner-right { min-width: 0; }
-.wc-banner-right-label {
-    font-size: 0.7rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--text-tertiary);
-    margin-bottom: 10px;
-    font-weight: 600;
-}
-.wc-banner-favorites {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-}
-.wc-banner-favorite {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 8px 14px;
-    border-radius: 8px;
-    background: var(--bg-tertiary);
-    border: 1px solid var(--border);
-    color: var(--text-primary);
-    text-decoration: none;
-    transition: transform 0.15s ease, border-color 0.15s ease, background 0.15s ease;
-}
-.wc-banner-favorite:hover {
-    transform: translateX(4px);
-    border-color: var(--accent);
-    background: var(--bg-surface);
-}
-.wc-banner-fav-name {
-    flex: 1;
-    font-weight: 600;
-    font-size: 0.92rem;
-}
-.wc-banner-fav-pct {
-    font-family: var(--font-display);
-    font-weight: 700;
-    color: var(--accent);
-    font-size: 1rem;
-    letter-spacing: 0.02em;
-}
-
-@media (max-width: 760px) {
-    .wc-banner {
-        grid-template-columns: 1fr;
-        gap: 20px;
-        padding: 22px;
-    }
-    .wc-banner-title { font-size: 1.5rem; }
-}
-
-/* ===== Nav link badge ===== */
-.nav-link-featured {
-    position: relative;
-    color: var(--accent) !important;
-}
-.nav-badge {
-    display: inline-block;
-    margin-left: 6px;
-    padding: 2px 7px;
-    font-size: 0.65rem;
-    font-weight: 700;
-    letter-spacing: 0.05em;
-    background: var(--accent);
-    color: var(--bg-primary);
-    border-radius: 999px;
-    vertical-align: middle;
-    line-height: 1.2;
-}
-
 /* ===== World Cup live results & archive ===== */
 .wc-match-score {
     flex: 1;
@@ -1713,11 +1583,11 @@ a:hover { color: var(--accent-hover); }
     cursor: pointer;
 }
 .wc-snapshot-select:focus { border-color: var(--accent); outline: none; }
-.wc-snapshot-banner {
+.wc-archive-note {
     text-align: center;
     font-size: 0.82rem;
-    color: var(--accent-secondary);
-    border: 1px solid var(--accent-secondary);
+    color: var(--text-secondary);
+    border: 1px solid var(--border);
     border-radius: 8px;
     padding: 8px 14px;
     margin: 0 auto 20px;

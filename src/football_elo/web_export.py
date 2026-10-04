@@ -11,7 +11,6 @@ import pandas as pd
 from .config import OUTPUT_DIR
 from .output import TEAM_COLORS
 from .pipeline import EloSystem
-from .worldcup import export_worldcup_json
 
 # World Cup winners (hardcoded historical data)
 MEN_WC_WINNERS = {
@@ -22,7 +21,7 @@ MEN_WC_WINNERS = {
     "France": [1998, 2018],
     "Uruguay": [1930, 1950],
     "England": [1966],
-    "Spain": [2010],
+    "Spain": [2010, 2026],
 }
 
 WOMEN_WC_WINNERS = {
@@ -48,6 +47,7 @@ WOMEN_TOURNAMENTS = [
 ]
 
 MEN_TOURNAMENTS = [
+    {"name": "After 2026 WC", "date": "2026-07-19"},
     {"name": "After 2022 WC", "date": "2022-12-18"},
     {"name": "After 2018 WC", "date": "2018-07-15"},
     {"name": "After 2014 WC", "date": "2014-07-13"},
@@ -651,9 +651,7 @@ def export_all(
     export_historical_rankings(elo, output_dir, start_date)
     print("    historical_rankings.json")
 
-    if gender == "men":
-        print("    Computing World Cup 2026 predictions...")
-        export_worldcup_json(elo, output_dir)
-        print("    worldcup2026.json")
-        export_squads_json(output_dir)
-        print("    squads2026.json")
+    # The 2026 World Cup files (worldcup2026.json, squads2026.json,
+    # worldcup_archive/) are frozen since the final. Re-running
+    # worldcup.export_worldcup_json would stamp current Elo ratings onto the
+    # final snapshot, so the regular export leaves them alone.

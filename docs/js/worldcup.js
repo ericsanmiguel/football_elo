@@ -1,5 +1,8 @@
 /**
  * 2026 World Cup predictions view — tabbed layout.
+ *
+ * Archived since the final: the page reads the frozen snapshots in
+ * worldcup_archive/ and opens on the pre-tournament predictions.
  */
 
 import { getTeamFlags } from './data.js';
@@ -17,26 +20,28 @@ let rankingsSort = { key: 'default', asc: false };
 // Squads tab state.
 let cachedSquads = null;
 let squadsSort = 'overall';
-// Archive state: 'live' or a snapshot filename from worldcup_archive/index.json.
-let liveWcData = null;
+// Archive state: snapshot filenames from worldcup_archive/index.json, which
+// lists them in date order from pre-tournament to the final.
+const DEFAULT_SNAPSHOT = 'pre-tournament.json';
 let archiveIndex = [];
-let currentSnapshot = 'live';
+let currentSnapshot = DEFAULT_SNAPSHOT;
+
+function loadSnapshot(file) {
+    return fetch(`${BASE}data/men/worldcup_archive/${file}`).then(r => r.json());
+}
 
 export async function render(container) {
     container.innerHTML = '<div class="loading">Loading World Cup data...</div>';
 
-    const [wcData, flags, archIdx] = await Promise.all([
-        fetch(`${BASE}data/men/worldcup2026.json`).then(r => r.json()),
+    const [flags, archIdx] = await Promise.all([
         getTeamFlags(),
-        fetch(`${BASE}data/men/worldcup_archive/index.json`)
-            .then(r => (r.ok ? r.json() : []))
-            .catch(() => []),
+        fetch(`${BASE}data/men/worldcup_archive/index.json`).then(r => r.json()),
     ]);
-    liveWcData = wcData;
-    cachedWcData = wcData;
     cachedFlags = flags;
-    archiveIndex = Array.isArray(archIdx) ? archIdx : [];
-    currentSnapshot = 'live';
+    archiveIndex = archIdx;
+    const start = archiveIndex.find(e => e.file === DEFAULT_SNAPSHOT) || archiveIndex[0];
+    cachedWcData = await loadSnapshot(start.file);
+    currentSnapshot = start.file;
 
     renderView(container);
 }
@@ -55,16 +60,11 @@ function snapshotLabel(entry) {
 }
 
 async function selectSnapshot(value, container) {
-    if (value === 'live') {
-        cachedWcData = liveWcData;
-        currentSnapshot = 'live';
-    } else {
-        try {
-            cachedWcData = await fetch(`${BASE}data/men/worldcup_archive/${value}`).then(r => r.json());
-            currentSnapshot = value;
-        } catch (e) {
-            return;
-        }
+    try {
+        cachedWcData = await loadSnapshot(value);
+        currentSnapshot = value;
+    } catch (e) {
+        return;
     }
     renderView(container);
 }
@@ -72,10 +72,12 @@ async function selectSnapshot(value, container) {
 function renderView(container) {
     container.innerHTML = '';
     const d = cachedWcData;
-    const isLive = currentSnapshot === 'live';
+    // The final snapshot holds every real result, so the bracket builder
+    // shows the tournament as played; earlier snapshots don't get the tab.
+    const isFinal = currentSnapshot === archiveIndex[archiveIndex.length - 1]?.file;
 
     // Header
-    let subtitle = 'Based on current Elo ratings \u00b7 10,000 simulations';
+    let subtitle = 'Before kickoff \u00b7 10,000 simulations';
     if (d.completed > 0 && d.stage) {
         subtitle = `${d.stage} \u00b7 Results through ${fmtSnapDate(d.results_through)} \u00b7 10,000 simulations`;
     }
@@ -85,32 +87,24 @@ function renderView(container) {
     ]);
     container.appendChild(hero);
 
-    // Archive selector (only once snapshots exist)
-    if (archiveIndex.length > 0) {
-        const select = el('select', { class: 'wc-snapshot-select' });
-        select.appendChild(el('option', { value: 'live', text: 'Live (latest)' }));
-        for (const entry of [...archiveIndex].reverse()) {
-            select.appendChild(el('option', { value: entry.file, text: snapshotLabel(entry) }));
-        }
-        select.value = currentSnapshot;
-        select.addEventListener('change', () => selectSnapshot(select.value, container));
-        const bar = el('div', { class: 'wc-snapshot-bar' }, [
-            el('span', { class: 'wc-snapshot-label', text: 'Predictions as of' }),
-            select,
-        ]);
-        container.appendChild(bar);
-        if (!isLive) {
-            container.appendChild(el('div', {
-                class: 'wc-snapshot-banner',
-                text: 'Viewing an archived snapshot \u2014 probabilities reflect results known at that point.',
-            }));
-        }
+    const select = el('select', { class: 'wc-snapshot-select' });
+    for (const entry of archiveIndex) {
+        select.appendChild(el('option', { value: entry.file, text: snapshotLabel(entry) }));
     }
+    select.value = currentSnapshot;
+    select.addEventListener('change', () => selectSnapshot(select.value, container));
+    container.appendChild(el('div', { class: 'wc-snapshot-bar' }, [
+        el('span', { class: 'wc-snapshot-label', text: 'Predictions as of' }),
+        select,
+    ]));
+    container.appendChild(el('div', {
+        class: 'wc-archive-note',
+        text: 'Archive \u00b7 The tournament ended on July 19, 2026. Each date shows the predictions with the results known at that point.',
+    }));
 
-    // The interactive bracket only makes sense against live data
-    if (!isLive && currentTab === 'bracket') currentTab = 'overview';
+    if (!isFinal && currentTab === 'bracket') currentTab = 'overview';
     const tabDefs = [['overview', 'Overview'], ['groups', 'Groups'], ['squads', 'Squads']];
-    if (isLive) tabDefs.push(['bracket', 'Knockout Predictions']);
+    if (isFinal) tabDefs.push(['bracket', 'Knockout Predictions']);
 
     const tabs = el('div', { class: 'wc-tabs' });
     for (const [id, label] of tabDefs) {

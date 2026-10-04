@@ -25,14 +25,6 @@ export async function render(container) {
     ]);
     container.appendChild(hero);
 
-    // World Cup banner (men only)
-    if (getGender() === 'men') {
-        const banner = el('div', { class: 'wc-banner', id: 'wc-banner' });
-        banner.appendChild(el('div', { class: 'loading', style: 'padding:30px', text: 'Loading World Cup favorites...' }));
-        container.appendChild(banner);
-        buildWorldCupBanner(banner);
-    }
-
     // Stat cards
     const top = allTeams[0];
     const stats = el('div', { class: 'stat-cards' }, [
@@ -63,67 +55,6 @@ export async function render(container) {
     // Footer update
     const footerEl = document.getElementById('footer-updated');
     if (footerEl) footerEl.textContent = `Last updated: ${data.last_updated}`;
-}
-
-async function buildWorldCupBanner(banner) {
-    const BASE = document.querySelector('base')?.href
-        || window.location.pathname.replace(/\/[^/]*$/, '/');
-    let wcData;
-    try {
-        wcData = await fetch(`${BASE}data/men/worldcup2026.json`).then(r => r.json());
-    } catch {
-        banner.remove();
-        return;
-    }
-
-    // Collect all teams, sort by p_winner, take top 5
-    const all = [];
-    for (const [g, grp] of Object.entries(wcData.groups)) {
-        for (const t of grp.teams) all.push({ ...t, group: g });
-    }
-    all.sort((a, b) => (b.p_winner ?? 0) - (a.p_winner ?? 0));
-    const top = all.slice(0, 5);
-
-    // Days until kickoff (June 11, 2026)
-    const kickoff = new Date('2026-06-11T00:00:00Z');
-    const today = new Date();
-    const daysUntil = Math.max(0, Math.ceil((kickoff - today) / (1000 * 60 * 60 * 24)));
-
-    banner.innerHTML = '';
-
-    const left = el('div', { class: 'wc-banner-left' });
-    left.appendChild(el('div', { class: 'wc-banner-eyebrow', text: '\u2726 Featured' }));
-    left.appendChild(el('h2', { class: 'wc-banner-title', text: '2026 World Cup Predictions' }));
-    left.appendChild(el('p', {
-        class: 'wc-banner-sub',
-        text: daysUntil > 0
-            ? `${daysUntil} days until kickoff \u00b7 10,000 Monte Carlo simulations`
-            : 'Live tournament \u00b7 10,000 Monte Carlo simulations',
-    }));
-    left.appendChild(el('a', {
-        href: '#/worldcup',
-        class: 'wc-cta-btn wc-banner-cta',
-        text: 'See predictions \u2192',
-    }));
-
-    const right = el('div', { class: 'wc-banner-right' });
-    right.appendChild(el('div', { class: 'wc-banner-right-label', text: 'Title favorites' }));
-    const favorites = el('div', { class: 'wc-banner-favorites' });
-    for (const t of top) {
-        const fav = el('a', {
-            href: '#/worldcup',
-            class: 'wc-banner-favorite',
-        });
-        const f = flagImg(flags[t.slug], t.team, 'sm');
-        if (f) fav.appendChild(f);
-        fav.appendChild(el('span', { class: 'wc-banner-fav-name', text: t.team }));
-        fav.appendChild(el('span', { class: 'wc-banner-fav-pct', text: `${t.p_winner.toFixed(1)}%` }));
-        favorites.appendChild(fav);
-    }
-    right.appendChild(favorites);
-
-    banner.appendChild(left);
-    banner.appendChild(right);
 }
 
 function statCard(value, label) {
